@@ -6,7 +6,7 @@
  *
  * @package		CodeIgniter
  * @author		ExpressionEngine Dev Team
- * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc.
+ * @copyright	Copyright (c) 2008 - 2011, EllisLab, Inc.
  * @license		http://codeigniter.com/user_guide/license.html
  * @link		http://codeigniter.com
  * @since		Version 1.0
@@ -32,7 +32,7 @@ class CI_Calendar {
 	var $lang;
 	var $local_time;
 	var $template		= '';
-	var $start_day		= 'sunday';
+	var $start_day		= 'lunes';
 	var $month_type		= 'long';
 	var $day_type		= 'abr';
 	var $show_next_prev	= FALSE;
@@ -122,7 +122,7 @@ class CI_Calendar {
 		$total_days = $this->get_total_days($month, $year);
 
 		// Set the starting day of the week
-		$start_days	= array('sunday' => 0, 'monday' => 1, 'tuesday' => 2, 'wednesday' => 3, 'thursday' => 4, 'friday' => 5, 'saturday' => 6);
+		$start_days	= array('domingo' => 0, 'lunes' => 1, 'martes' => 2, 'miercoles' => 3, 'jueves' => 4, 'viernes' => 5, 'sabado' => 6);
 		$start_day = ( ! isset($start_days[$this->start_day])) ? 0 : $start_days[$this->start_day];
 
 		// Set the starting day number
@@ -264,11 +264,11 @@ class CI_Calendar {
 	{
 		if ($this->month_type == 'short')
 		{
-			$month_names = array('01' => 'cal_jan', '02' => 'cal_feb', '03' => 'cal_mar', '04' => 'cal_apr', '05' => 'cal_may', '06' => 'cal_jun', '07' => 'cal_jul', '08' => 'cal_aug', '09' => 'cal_sep', '10' => 'cal_oct', '11' => 'cal_nov', '12' => 'cal_dec');
+			$month_names = array('01' => 'cal_ene', '02' => 'cal_feb', '03' => 'cal_mar', '04' => 'cal_abr', '05' => 'cal_may', '06' => 'cal_jun', '07' => 'cal_jul', '08' => 'cal_ago', '09' => 'cal_sep', '10' => 'cal_oct', '11' => 'cal_nov', '12' => 'cal_dic');
 		}
 		else
 		{
-			$month_names = array('01' => 'cal_january', '02' => 'cal_february', '03' => 'cal_march', '04' => 'cal_april', '05' => 'cal_mayl', '06' => 'cal_june', '07' => 'cal_july', '08' => 'cal_august', '09' => 'cal_september', '10' => 'cal_october', '11' => 'cal_november', '12' => 'cal_december');
+			$month_names = array('01' => 'cal_enero', '02' => 'cal_febrero', '03' => 'cal_marzo', '04' => 'cal_abril', '05' => 'cal_mayo', '06' => 'cal_junio', '07' => 'cal_julio', '08' => 'cal_agosto', '09' => 'cal_septiembre', '10' => 'cal_octubre', '11' => 'cal_noviembre', '12' => 'cal_diciembre');
 		}
 
 		$month = $month_names[$month];
@@ -300,15 +300,15 @@ class CI_Calendar {
 
 		if ($this->day_type == 'long')
 		{
-			$day_names = array('sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday');
+			$day_names = array('domingo', 'lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado');
 		}
 		elseif ($this->day_type == 'short')
 		{
-			$day_names = array('sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat');
+			$day_names = array( 'dom', 'lun', 'mar', 'mie', 'jue', 'vie', 'sab');
 		}
 		else
 		{
-			$day_names = array('su', 'mo', 'tu', 'we', 'th', 'fr', 'sa');
+			$day_names = array('do', 'lu', 'ma', 'mi', 'ju', 'vi', 'sa');
 		}
 
 		$days = array();
