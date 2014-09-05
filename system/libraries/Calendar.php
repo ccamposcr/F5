@@ -6,7 +6,7 @@
  *
  * @package		CodeIgniter
  * @author		ExpressionEngine Dev Team
- * @copyright	Copyright (c) 2008 - 2011, EllisLab, Inc.
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc.
  * @license		http://codeigniter.com/user_guide/license.html
  * @link		http://codeigniter.com
  * @since		Version 1.0
@@ -32,7 +32,7 @@ class CI_Calendar {
 	var $lang;
 	var $local_time;
 	var $template		= '';
-	var $start_day		= 'lunes';
+	var $start_day		= 'domingo';
 	var $month_type		= 'long';
 	var $day_type		= 'abr';
 	var $show_next_prev	= FALSE;
@@ -300,15 +300,15 @@ class CI_Calendar {
 
 		if ($this->day_type == 'long')
 		{
-			$day_names = array('domingo', 'lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado');
+			$day_names = array('doming', 'lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado');
 		}
 		elseif ($this->day_type == 'short')
 		{
-			$day_names = array( 'dom', 'lun', 'mar', 'mie', 'jue', 'vie', 'sab');
+			$day_names = array('dom', 'lun', 'mar', 'mier', 'jue', 'vier', 'sab');
 		}
 		else
 		{
-			$day_names = array('do', 'lu', 'ma', 'mi', 'ju', 'vi', 'sa');
+			$day_names = array('do', 'ma', 'mi', 'ju', 'vi', 'sa', 'do');
 		}
 
 		$days = array();

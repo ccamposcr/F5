@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://localhost/calendario_ci/';
+$config['base_url']	= 'http://localhost/F5-git/index.php/';
 
 /*
 |--------------------------------------------------------------------------
@@ -224,7 +224,7 @@ $config['cache_path'] = '';
 | MUST set an encryption key.  See the user guide for info.
 |
 */
-$config['encryption_key'] = 'iuvjh,k.hgvfchggiuyftrserxdxcvuiklokjnioy875743243765789';
+$config['encryption_key'] = '';
 
 /*
 |--------------------------------------------------------------------------
