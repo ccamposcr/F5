@@ -300,7 +300,7 @@ class CI_Calendar {
 
 		if ($this->day_type == 'long')
 		{
-			$day_names = array('doming', 'lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado');
+			$day_names = array('domingo', 'lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado');
 		}
 		elseif ($this->day_type == 'short')
 		{
@@ -308,7 +308,7 @@ class CI_Calendar {
 		}
 		else
 		{
-			$day_names = array('do', 'ma', 'mi', 'ju', 'vi', 'sa', 'do');
+			$day_names = array('do', 'lu', 'ma', 'mi', 'ju', 'vi', 'sa');
 		}
 
 		$days = array();
