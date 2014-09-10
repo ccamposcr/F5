@@ -38,12 +38,11 @@
         	<input type="hidden" value="<?=$year?>" id="year" />
 			<input type="hidden" value="<?=$month?>" id="month" />
         </div>
-        <div id="dailyResevations">
-
-        </div>
+        <div id="dailyResevations"></div>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="<?php echo base_url(); ?>js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.24/angular.min.js"></script>
         <script src="<?php echo base_url(); ?>js/plugins.js"></script>
         <script src="<?php echo base_url(); ?>js/main.js"></script>
 
