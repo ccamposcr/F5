@@ -10,7 +10,7 @@ class Calendar_controller extends CI_Controller {
            'month_type'   => 'long',
            'day_type'     => 'abr',
            'show_next_prev' => 'true',
-           'next_prev_url' => base_url() . 'index.php/calendar',
+           'next_prev_url' => base_url() . 'calendar',
            'local_time' => time()
          );
 
@@ -63,14 +63,17 @@ class Calendar_controller extends CI_Controller {
     public function calendar($year = null, $month = null){
         $data['calendar'] = $this->calendar->generate($year, $month);
         $this->load->view('calendar_view', $data);
-        //$this->getReservation('2014','9','5','09-10');
-
+        //$this->getReservation();
     }
 
-    public function getReservation($reservation_year,$reservation_month,$reservation_day,$reservation_time=null){
+    public function getReservation(){
         $this->load->model("calendar_model");
+        $reservation_year = ( isset($_POST['year']) ) ? $_POST['year'] : '2014';
+        $reservation_month = ( isset($_POST['month']) ) ? $_POST['month'] : '9';
+        $reservation_day = ( isset($_POST['day']) ) ? $_POST['day'] : '5';
+        $reservation_time = ( isset($_POST['time']) ) ? $_POST['time'] : '09-10';
         $reservation = $this->calendar_model->getReservation($reservation_year,$reservation_month,$reservation_day,$reservation_time);
-        //echo json_encode($reservation);
+        echo json_encode($reservation);
     }
 
 }

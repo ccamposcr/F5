@@ -16,7 +16,7 @@
         <link rel="stylesheet" href="<?php echo base_url(); ?>css/main.css">
         <script src="<?php echo base_url(); ?>js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
-    <body>
+    <body ng-app="F5App" ng-controller="mainController">
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -38,11 +38,18 @@
         	<input type="hidden" value="<?=$year?>" id="year" />
 			<input type="hidden" value="<?=$month?>" id="month" />
         </div>
-        <div id="dailyResevations"></div>
+        <div id="dailyResevations">
+            <ul>
+                <li ng-repeat="group in reservations">
+                    <div ng-repeat="item in group">
+                        <p>{{item.reservation_user_name}}</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
 
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="<?php echo base_url(); ?>js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
-        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.24/angular.min.js"></script>
+        <script src="<?php echo base_url(); ?>js/vendor/jquery-1.10.2.min.js"></script>
+        <script src="<?php echo base_url(); ?>js/vendor/angular.min.js"></script>
         <script src="<?php echo base_url(); ?>js/plugins.js"></script>
         <script src="<?php echo base_url(); ?>js/main.js"></script>
 

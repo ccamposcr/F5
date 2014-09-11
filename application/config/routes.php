@@ -42,6 +42,7 @@ $route['default_controller'] = "calendar_controller";
 $route['404_override'] = '';
 $route['calendar'] = 'calendar_controller/calendar/';
 $route['calendar/(:num)/(:any)'] = 'calendar_controller/calendar/$1/$2';
+$route['getReservation'] = 'calendar_controller/getReservation';
 
 
 /* End of file routes.php */
