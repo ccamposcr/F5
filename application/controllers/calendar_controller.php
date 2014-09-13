@@ -66,13 +66,13 @@ class Calendar_controller extends CI_Controller {
         //$this->getReservation();
     }
 
-    public function getReservation(){
+    public function getReservationByTime(){
         $this->load->model("calendar_model");
         $reservation_year = ( isset($_POST['year']) ) ? $_POST['year'] : '2014';
         $reservation_month = ( isset($_POST['month']) ) ? $_POST['month'] : '9';
         $reservation_day = ( isset($_POST['day']) ) ? $_POST['day'] : '5';
         $reservation_time = ( isset($_POST['time']) ) ? $_POST['time'] : '09-10';
-        $reservation = $this->calendar_model->getReservation($reservation_year,$reservation_month,$reservation_day,$reservation_time);
+        $reservation = $this->calendar_model->getReservationByTime($reservation_year,$reservation_month,$reservation_day,$reservation_time);
         echo json_encode($reservation);
     }
 

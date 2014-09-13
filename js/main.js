@@ -11,7 +11,7 @@ var myApp = angular.module("F5App", ["ng"]);
 
 					type: 'POST',
 
-					url : "../getReservation",
+					url : "../getReservationByTime",
 
 					data: { year: $('#year').val(), month: $('#month').val() , day: ( $('.today').text() ) ? $('.today').text() : '1', time:$scope.times[i]},
 
