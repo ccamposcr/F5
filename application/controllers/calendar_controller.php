@@ -76,6 +76,15 @@ class Calendar_controller extends CI_Controller {
         echo json_encode($reservation);
     }
 
+    public function getReservationByDay(){
+        $this->load->model("calendar_model");
+        $reservation_year = ( isset($_POST['year']) ) ? $_POST['year'] : '2014';
+        $reservation_month = ( isset($_POST['month']) ) ? $_POST['month'] : '9';
+        $reservation_day = ( isset($_POST['day']) ) ? $_POST['day'] : '5';
+        $reservation = $this->calendar_model->getReservationByDay($reservation_year,$reservation_month,$reservation_day);
+        echo json_encode($reservation);
+    }
+
 }
 
 /* End of file welcome.php */

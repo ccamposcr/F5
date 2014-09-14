@@ -16,7 +16,7 @@
         <link rel="stylesheet" href="<?php echo base_url(); ?>css/main.css">
         <script src="<?php echo base_url(); ?>js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
-    <body ng-app="F5App" ng-controller="mainController">
+    <body ng-app="F5App" ng-controller="reservationController">
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -41,7 +41,7 @@
         <div id="dailyResevations">
             <ul>
                 <li ng-repeat="item in reservations">
-                    <p>{{item[0].reservation_user_name}}</p>
+                    <p><span>{{times[$index]}}</span>{{item.reservation_user_name}}</p>
                 </li>
             </ul>
         </div>
