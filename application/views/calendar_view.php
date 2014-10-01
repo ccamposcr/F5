@@ -40,8 +40,11 @@
         </div>
         <div id="dailyResevations">
             <ul>
-                <li ng-repeat="item in reservations">
-                    <p><span>{{times[$index]}}</span>{{item.reservation_user_name}}</p>
+                <li ng-repeat="data in reservations">
+                    <span>{{times[$index]}}</span>
+                    <span ng-repeat="reservation in data">
+                        {{reservation.name}} {{reservation.lastname}}
+                    </span>
                 </li>
             </ul>
         </div>

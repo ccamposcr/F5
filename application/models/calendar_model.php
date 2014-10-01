@@ -2,12 +2,12 @@
 class Calendar_model extends CI_MODEL
 {
     function getReservationByTime($reservation_year,$reservation_month,$reservation_day,$reservation_time){
-        $query = $this->db->query("SELECT * FROM phpmyreservation_reservations WHERE reservation_year = '$reservation_year' AND reservation_week = '$reservation_month' AND reservation_day='$reservation_day' AND reservation_time='$reservation_time'");
+        $query = $this->db->query("SELECT * FROM t_reservations WHERE reservation_year = '$reservation_year' AND reservation_month = '$reservation_month' AND reservation_day='$reservation_day' AND reservation_time='$reservation_time'");
         return $query->result_array();
     }
 
     function getReservationByDay($reservation_year,$reservation_month,$reservation_day){
-    	$query = $this->db->query("SELECT * FROM phpmyreservation_reservations WHERE reservation_year = '$reservation_year' AND reservation_week = '$reservation_month' AND reservation_day='$reservation_day' ORDER BY reservation_time ASC;");
+    	$query = $this->db->query("SELECT * FROM t_reservations WHERE reservation_year = '$reservation_year' AND reservation_month = '$reservation_month' AND reservation_day='$reservation_day' ORDER BY reservation_time ASC;");
         return $query->result_array();
     }
 }

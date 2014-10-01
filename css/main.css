@@ -101,6 +101,9 @@ textarea {
     display: none;
 }
 
+.active{
+    font-weight: bold;
+}
 
 
 
