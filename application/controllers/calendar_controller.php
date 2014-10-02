@@ -57,6 +57,7 @@ class Calendar_controller extends CI_Controller {
 
         {table_close}</table>{/table_close}';
         $this->load->library('calendar', $prefs);
+        $this->load->library('session');
     }
 
 
