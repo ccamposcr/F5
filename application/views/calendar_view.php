@@ -41,8 +41,8 @@
         <div id="dailyResevations">
             <ul>
                 <li ng-repeat="data in reservations">
-                    <span>{{times[$index]}}</span>
-                    <span ng-repeat="reservation in data">
+                    <span class="reservation_time">{{times[$index]}}</span>
+                    <span class="{{reservation.id ? 'blocked' : 'available'}}" data-team="{{$index+1}}" ng-repeat="reservation in data">
                         {{reservation.name}} {{reservation.lastname}}
                     </span>
                 </li>

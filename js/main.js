@@ -38,6 +38,13 @@ myApp.controller("reservationController", function ($scope, $rootScope){
 					reservations[i].push(data[j]);
 				}
 			}
+			if( reservations[i].length == 1 ){
+				reservations[i][1] = {};
+			}
+			else if( reservations[i].length == 0 ){
+				reservations[i][0] = {};
+				reservations[i][1] = {};
+			}
 		}
 		return reservations;
 	}
