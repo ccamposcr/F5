@@ -6,25 +6,17 @@ class Login_model extends CI_MODEL {
         parent::__construct();
     }
  
-    function login($username, $password) {
+    function login($user, $password) {
         //create query to connect user login database
-       /* $this->db->select('id, user, password');
-        $this->db->from('');
-        $this->db->where('', $username);
-        $this->db->where('password', MD5($password));
-        $this->db->limit(1);*/
-         
-         $query = $this->db->query("SELECT * FROM t_admin WHERE username = '$username' AND password = 'MD5($password)'");
-        //return $query->result_array();
+        $password =  MD5($password);
+        $query = $this->db->query("SELECT * FROM t_admin WHERE user = '$user' AND password = '$password'");
+        $result = false;
 
-
-        //get query and processing
-        //$query = $this->db->get();
         if($query->num_rows() == 1) { 
-            return $query->result(); //if data is true
-        } else {
-            return false; //if data is wrong
+            $result =  $query->result(); //if data is true
         }
+
+        return $result;
     }
 }
   

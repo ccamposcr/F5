@@ -57,18 +57,16 @@ class Calendar_controller extends CI_Controller {
 
         {table_close}</table>{/table_close}';
         $this->load->library('calendar', $prefs);
-        $this->load->library('session');
+        $this->load->model("calendar_model");
     }
 
 
     public function calendar($year = null, $month = null){
         $data['calendar'] = $this->calendar->generate($year, $month);
         $this->load->view('calendar_view', $data);
-        //$this->getReservation();
     }
 
     public function getReservationByTime(){
-        $this->load->model("calendar_model");
         $reservation_year = ( isset($_POST['year']) ) ? $_POST['year'] : '2014';
         $reservation_month = ( isset($_POST['month']) ) ? $_POST['month'] : '9';
         $reservation_day = ( isset($_POST['day']) ) ? $_POST['day'] : '5';
@@ -78,7 +76,6 @@ class Calendar_controller extends CI_Controller {
     }
 
     public function getReservationByDay(){
-        $this->load->model("calendar_model");
         $reservation_year = ( isset($_POST['year']) ) ? $_POST['year'] : '2014';
         $reservation_month = ( isset($_POST['month']) ) ? $_POST['month'] : '9';
         $reservation_day = ( isset($_POST['day']) ) ? $_POST['day'] : '5';
