@@ -11,7 +11,8 @@ class Admin_controller extends CI_Controller {
             $session_data = $this->session->userdata('logged_in');
             $data['user'] = $session_data['user'];
             $data['id'] = $session_data['id'];
-            $this->load->view('admin_view', $data);
+            //$this->load->view('', $data);
+            redirect(base_url('admin/calendar'), 'refresh');
         } else {
             redirect('login_controller', 'refresh');
         }
@@ -20,7 +21,7 @@ class Admin_controller extends CI_Controller {
     function logout() {
         $this->session->unset_userdata('logged_in');
         $this->session->sess_destroy();
-        redirect(base_url('login_controller'), 'refresh');
+        redirect(base_url('calendar'), 'refresh');
      }
  
 }

@@ -46,6 +46,12 @@ $route['calendar/(:num)/(:any)'] = 'calendar_controller/calendar/$1/$2';
 //$route['getReservationByTime'] = 'calendar_controller/getReservationByTime';
 $route['getReservationByDay'] = 'calendar_controller/getReservationByDay';
 $route['calendar/(:any)'] = 'calendar_controller/$1';
+$route['login'] = 'login_controller';
+$route['logout'] = 'admin_controller/logout';
+
+//Admin Routes
+$route['admin/calendar/(:any)'] = 'calendar_controller/$1';
+$route['admin/calendar'] = 'calendar_controller/calendar';
 
 
 /* End of file routes.php */

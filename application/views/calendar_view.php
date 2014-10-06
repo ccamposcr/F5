@@ -48,6 +48,19 @@
                 </li>
             </ul>
         </div>
+        <?php 
+        if( isset($user) ){
+        ?>
+            <span>Bienvenido <?php echo $user;?></span> <a href="../logout">Cerrar Sesi&oacute;n</a>
+        <?php
+        }
+        else{
+        ?>
+            <a href="login">Administrar</a>
+        <?php
+        }
+        ?>
+        
 
         <script src="<?php echo base_url(); ?>js/vendor/jquery-1.10.2.min.js"></script>
         <script src="<?php echo base_url(); ?>js/vendor/angular.min.js"></script>
