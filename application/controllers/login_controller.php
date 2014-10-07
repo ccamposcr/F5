@@ -22,25 +22,20 @@ class Login_controller extends CI_Controller {
      }
 
      function checkUser($password) {
-        //Field validation succeeded.  Validate against database
         $user = $this->input->post('username');
-        $result = $this->login_model->login($user, $password);
+        $userInfo = $this->login_model->login($user, $password);
+        $result = false;
+        if( $userInfo ) {
+            $sess_array = array('id' => $userInfo[0]->id, 'user' => $userInfo[0]->user);
+	        $this->session->set_userdata('logged_in', $sess_array);
+         	$result = true;
+        }
+        else {
+          	$this->form_validation->set_message('checkUser', 'Invalid username or password');
+          	$result = false;
+        }
 
-
-        if($result) {
-            $sess_array = array();
-            foreach($result as $row) {
-	             //create the session
-	             $sess_array = array('id' => $row->id, 'user' => $row->user);
-	             //set session with value from database
-	             $this->session->set_userdata('logged_in', $sess_array);
-            }
-         	return TRUE;
-          } else {
-              //if form validate false
-              $this->form_validation->set_message('checkUser', 'Invalid username or password');
-              return FALSE;
-          }
+        return $result;
       }
 }
 /* End of file login_view.php */

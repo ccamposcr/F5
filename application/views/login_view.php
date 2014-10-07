@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<html>
- <head>
-   <title>Login</title>
- </head>
- <body>
+<?php include('includes/header.php') ?>
    <h1>Login</h1>
    <?php echo validation_errors(); ?>
    <?php echo form_open('login_controller/verify'); 
@@ -14,5 +9,4 @@
    echo form_submit("","Login");
    echo form_close();
    ?>
- </body>
-</html>
+<?php include('includes/footer.php') ?>

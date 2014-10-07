@@ -10,7 +10,7 @@ class Calendar_controller extends CI_Controller {
            'month_type'   => 'long',
            'day_type'     => 'abr',
            'show_next_prev' => 'true',
-           'next_prev_url' => base_url() . 'calendar',
+           'next_prev_url' => base_url() . 'reservaciones',
            'local_time' => time()
          );
 
