@@ -40,19 +40,23 @@
 
 $route['default_controller'] = "calendar_controller";
 $route['404_override'] = '';
+
+//Reservaciones Routs
 $route['reservaciones'] = 'calendar_controller/calendar/';
 $route['reservaciones/(:num)/(:any)'] = 'calendar_controller/calendar/$1/$2';
-//$route['calendar/(:num)/(:num)/'] = 'calendar_controller/calendar/$1/$2';
-//$route['getReservationByTime'] = 'calendar_controller/getReservationByTime';
-$route['getReservationByDay'] = 'calendar_controller/getReservationByDay';
 $route['reservaciones/(:any)'] = 'calendar_controller/$1';
-$route['login'] = 'login_controller';
-$route['logout'] = 'admin_controller/logout';
 
 //Admin Routes
-$route['admin/reservaciones/(:any)'] = 'calendar_controller/$1';
-$route['admin/reservaciones'] = 'calendar_controller/calendar';
+$route['admin'] = 'calendar_controller/admin/';
+$route['admin/(:num)/(:any)'] = 'calendar_controller/admin/$1/$2';
+$route['admin/(:any)'] = 'calendar_controller/$1';
 
+//Services Routs
+$route['getReservationByDay'] = 'calendar_controller/getReservationByDay';
+
+//Login - Logout Routes
+$route['login'] = 'login_controller';
+$route['logout'] = 'admin_controller/logout';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

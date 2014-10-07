@@ -11,9 +11,9 @@ class Admin_controller extends CI_Controller {
             $session_data = $this->session->userdata('logged_in');
             $data['user'] = $session_data['user'];
             $data['id'] = $session_data['id'];
-            redirect(base_url('admin/reservaciones'), 'refresh');
+            redirect(base_url('admin'), 'refresh');
         } else {
-            redirect('login_controller', 'refresh');
+            redirect(base_url('login'), 'refresh');
         }
     }
  

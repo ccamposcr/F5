@@ -5,12 +5,13 @@ class Calendar_controller extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
+        $next_prev_controller = $this->session->userdata('logged_in') ? 'admin' : 'reservaciones';
         $prefs = array (
            'start_day'    => 'lunes',
            'month_type'   => 'long',
            'day_type'     => 'abr',
            'show_next_prev' => 'true',
-           'next_prev_url' => base_url() . 'reservaciones',
+           'next_prev_url' => base_url() . $next_prev_controller,
            'local_time' => time()
          );
 
@@ -66,14 +67,24 @@ class Calendar_controller extends CI_Controller {
 
         if($this->session->userdata('logged_in'))
         {
+            redirect(base_url('admin'), 'refresh');
+        } else {
+            $data['calendar'] = $this->calendar->generate($year, $month);
+            $this->load->view('calendar_view', $data);
+        }
+    }
+
+    public function admin($year = null, $month = null){
+
+        if($this->session->userdata('logged_in'))
+        {
             $session_data = $this->session->userdata('logged_in');
             $data['user'] = $session_data['user'];
             $data['id'] = $session_data['id'];
             $data['calendar'] = $this->calendar->generate($year, $month);
             $this->load->view('calendar_view', $data);
         } else {
-            $data['calendar'] = $this->calendar->generate($year, $month);
-            $this->load->view('calendar_view', $data);
+            redirect(base_url('login'), 'refresh');
         }
     }
 
