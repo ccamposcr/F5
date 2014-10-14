@@ -55,10 +55,24 @@ myApp.controller("reservationController", function ($scope, $rootScope){
 myApp.directive('loadDay', ['$document', function($document) {
     return function(scope, element, attr) {
       element.on('click', function(event) {
-        // Prevent default dragging of selected content
         event.preventDefault();
         scope.loadReservations($(this).text());
       });
 
     };
+  }]);
+
+
+myApp.directive('available', ['$document', function($document) {
+    function link(scope, element, attr) {
+      element.on('click', function(event) {
+        event.preventDefault();
+        console.log('Reservando ...');
+      });
+
+    }
+    return {
+    	restrict : 'C',
+    	link:link
+	}
   }]);

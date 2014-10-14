@@ -19,8 +19,8 @@
         </div>
         <div id="dailyResevations">
             <ul>
-                <li ng-repeat="data in reservations">
-                    <span class="reservation_time">{{times[$index]}}</span>
+                <li class="row clearfix" ng-repeat="data in reservations">
+                    <span class="reservation-time">{{times[$index]}}</span>
                     <span class="{{reservation.id ? 'blocked' : 'available'}} {{reservation.type_reservation == 1 ? 'completa' : ''}}" data-team="{{$index+1}}" ng-repeat="reservation in data">
                         {{reservation.name}} {{reservation.lastname}}
                     </span>

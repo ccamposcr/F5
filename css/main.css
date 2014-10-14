@@ -99,15 +99,43 @@ textarea {
 
 #dailyResevations{
     display: none;
+    width: 50%;
+    margin: 0 auto;
 }
 
 .active{
     font-weight: bold;
 }
 
+#dailyResevations ul{
+    list-style-type: none;
+}
 
+#dailyResevations li.row > span{
+    display: block;
+    float: left;
+    border: 1px solid #000;
+    width: 44%;
+    height: 50px;
+    text-align: center;
+}
 
+#dailyResevations li.row > span.reservation-time{
+    border: none;
+    width: 100px;
+}
 
+#dailyResevations li.row > span.completa{
+    width: 88%;
+}
+
+#dailyResevations li.row > span.available{
+    cursor: pointer;
+}
+
+#calendar .day{
+    cursor: pointer;
+}
 
 
 
