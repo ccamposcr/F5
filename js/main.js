@@ -67,7 +67,7 @@ myApp.directive('available', ['$document', function($document) {
     function link(scope, element, attr) {
       element.on('click', function(event) {
         event.preventDefault();
-        console.log('Reservando ...');
+        //console.log('Reservando ...');
       });
 
     }
