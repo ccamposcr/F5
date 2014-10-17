@@ -10,9 +10,9 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        <link rel="stylesheet" href="<?php echo base_url(); ?>css/fonts.css"/>
         <link rel="stylesheet" href="<?php echo base_url(); ?>css/bootstrap.css"/>
         <link rel="stylesheet" href="<?php echo base_url(); ?>css/normalize.css">
-        <link rel="stylesheet" href="<?php echo base_url(); ?>css/path/to/font-awesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="<?php echo base_url(); ?>css/style.css"/>
         
         <script src="<?php echo base_url(); ?>js/vendor/modernizr-2.6.2.min.js"></script>
