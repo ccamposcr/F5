@@ -166,7 +166,8 @@ textarea {
 }
 #navPrincipal 
 {
-    display: inline;
+    display: block;
+    float: right;
 }
 #navPrincipal li
 { 

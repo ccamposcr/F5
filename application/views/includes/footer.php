@@ -14,12 +14,11 @@
 		        </div>
 		        <p id="copy">© 2014 by C&C Designs   Carolina Borge and Christian Campos The best web designs inspirations.</p>
 		    </div>
-
 		</div>
-
-        <script src="<?php echo base_url(); ?>js/vendor/jquery-1.10.2.min.js"></script>
-        <script src="<?php echo base_url(); ?>js/vendor/angular.min.js"></script>
-        <script src="<?php echo base_url(); ?>js/plugins.js"></script>
-        <script src="<?php echo base_url(); ?>js/main.js"></script>
+	</div>
+    <script src="<?php echo base_url(); ?>js/vendor/jquery-1.10.2.min.js"></script>
+    <script src="<?php echo base_url(); ?>js/vendor/angular.min.js"></script>
+    <script src="<?php echo base_url(); ?>js/plugins.js"></script>
+    <script src="<?php echo base_url(); ?>js/main.js"></script>
     </body>
 </html>
