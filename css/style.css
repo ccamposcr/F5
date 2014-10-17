@@ -137,8 +137,122 @@ textarea {
     cursor: pointer;
 }
 
+#divGeneralContent
+{
+    width: 100%;
+    background-image: url('../img/img-fondo.png');
+    background-repeat: no-repeat;
+    margin: 0 auto;
+
+}
+/*************HEADER*******************/
+#divWrapperHeader
+{
+    width: 100%;
+    height: 110px;
+    background-color: black;
+    opacity: 0.5;
+    margin-top: 20px;
+}
+#divContentHeader
+{
+    width: 960px;
+    margin: 0 auto;
+}
+#imgLogoPrincipal
+{
+    margin: 10px 200px 10px 20px;
+    float: left;
+}
+#navPrincipal 
+{
+    display: inline;
+}
+#navPrincipal li
+{ 
+    width: 150px;
+    height: 110px;
+    list-style: none;
+    float: left;
+    text-align: center;
+    padding: 50px 0px;
+}
+#navPrincipal li a 
+{
+    text-decoration: none;
+    color: white;
+}
+#navPrincipal li:hover
+{
+    background-color: #C4302C;
+}
+#navPrincipal li:visited
+{
+    background-color:#C4302C;
+}
 
 
+/*************CONTENT******************/
+#divContent
+{
+    width: 960px;
+    height: 500px;
+    padding: 20px;
+    background-color: black;
+    opacity: 0.5;
+    margin:10px auto;
+}
+#divContent
+{
+    color:white;
+}
+#divContent h1,#divContent h2
+{
+    color:white;
+    text-align: center;
+    margin: 30px;
+    font-family: 'nakamuraregular';
+}
+#divContent p
+{
+    color:gray;
+}
+#divButton1, #divButton2
+{
+    width: 280px;
+    height: 130px;
+    border-radius: 10px;
+    border:1px solid black;
+    background-color: #FF5500;
+}
+#divButton1
+{
+    float: left;
+}
+#divButton2
+{
+    float: right;
+}
+/*************FOOTER******************/
+#divWrapperFooter
+{
+    width: 100%;
+    height: 200px;
+    background-image: url(../img/Fondo-Footer.png);
+    background-repeat: repeat;
+}
+#divContentFooter
+{
+    width: 960px;
+    margin: 0 auto;
+}
+#divSocialsIcons
+{
+}
+#copy
+{
+    color: white;
+}
 
 
 
