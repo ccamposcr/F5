@@ -12,7 +12,7 @@
 			            <i class="fa fa-envelope"></i>
 			            <i class="fa fa-skype"></i>
 		        </div>-->
-		        <p id="copy-right">© 2014 Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+		        <p id="copy-right">© 2014Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil consequuntur, nesciunt dicta, esse rem ducimus itaque quis.</p>
 		    </div>
 		</div>
 	</div>
