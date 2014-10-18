@@ -55,7 +55,7 @@ $route['admin/(:any)'] = 'calendar_controller/$1';
 $route['getReservationByDay'] = 'calendar_controller/getReservationByDay';
 
 //Login - Logout Routes
-$route['(:any)/login'] = 'login_controller';
+$route['login'] = 'login_controller';
 $route['logout'] = 'admin_controller/logout';
 
 /* End of file routes.php */
