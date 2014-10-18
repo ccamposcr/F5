@@ -18,14 +18,14 @@ myApp.controller("reservationController", function ($scope, $rootScope){
 
 			success : function(response){
 				$scope.$apply(function(){
-					$scope.reservations = $scope.loadReservationsArray(jQuery.parseJSON(response));
+					$scope.reservations = $scope.sortReservations(jQuery.parseJSON(response));
 					$('#dailyResevations').show();
 				});
 			}
 		});
 	}
 
-	$scope.loadReservationsArray = function (data){
+	$scope.sortReservations = function (data){
 		var reservations = [];
 
 		for(var i=0; i < $scope.times.length ; i++){
