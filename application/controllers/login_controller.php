@@ -17,7 +17,7 @@ class Login_controller extends CI_Controller {
             $this->load->view('login_view');
         }
         else{
-            redirect(base_url('admin_controller'), 'refresh');
+            redirect('admin', 'refresh');
         }       
      }
 

@@ -29,7 +29,7 @@
             }
             else{
             ?>
-                <a href="<?php echo base_url(); ?>login">Administrar</a>
+                <a href="login">Administrar</a>
             <?php
             }
             ?>

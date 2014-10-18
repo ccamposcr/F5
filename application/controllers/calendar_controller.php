@@ -67,7 +67,7 @@ class Calendar_controller extends CI_Controller {
 
         if($this->session->userdata('logged_in'))
         {
-            redirect(base_url('admin'), 'refresh');
+            redirect('admin', 'refresh');
         } else {
             $data['calendar'] = $this->calendar->generate($year, $month);
             $this->load->view('calendar_view', $data);
@@ -84,7 +84,7 @@ class Calendar_controller extends CI_Controller {
             $data['calendar'] = $this->calendar->generate($year, $month);
             $this->load->view('calendar_view', $data);
         } else {
-            redirect(base_url('login'), 'refresh');
+            redirect('login', 'refresh');
         }
     }
 

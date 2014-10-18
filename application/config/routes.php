@@ -47,7 +47,7 @@ $route['reservaciones/(:num)/(:any)'] = 'calendar_controller/calendar/$1/$2';
 $route['reservaciones/(:any)'] = 'calendar_controller/$1';
 
 //Admin Routes
-$route['admin'] = 'calendar_controller/admin/';
+$route['(:any)/admin'] = 'calendar_controller/admin/';
 $route['admin/(:num)/(:any)'] = 'calendar_controller/admin/$1/$2';
 $route['admin/(:any)'] = 'calendar_controller/$1';
 
@@ -55,7 +55,7 @@ $route['admin/(:any)'] = 'calendar_controller/$1';
 $route['getReservationByDay'] = 'calendar_controller/getReservationByDay';
 
 //Login - Logout Routes
-$route['login'] = 'login_controller';
+$route['(:any)/login'] = 'login_controller';
 $route['logout'] = 'admin_controller/logout';
 
 /* End of file routes.php */

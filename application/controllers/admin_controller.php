@@ -11,16 +11,16 @@ class Admin_controller extends CI_Controller {
             $session_data = $this->session->userdata('logged_in');
             $data['user'] = $session_data['user'];
             $data['id'] = $session_data['id'];
-            redirect(base_url('admin'), 'refresh');
+            redirect('admin', 'refresh');
         } else {
-            redirect(base_url('login'), 'refresh');
+            redirect('login', 'refresh');
         }
     }
  
     function logout() {
         $this->session->unset_userdata('logged_in');
         $this->session->sess_destroy();
-        redirect(base_url('reservaciones'), 'refresh');
+        redirect('reservaciones', 'refresh');
      }
  
 }
