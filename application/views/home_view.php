@@ -5,13 +5,13 @@
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil consequuntur, nesciunt dicta, esse rem ducimus itaque quis. Adipisci ullam nam qui illum debitis sit ad in lectus. 
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil consequuntur, nesciunt dicta.
         </p>
-        <h2>¿Dónde quiere jugar?</h2>
+        <h2>¿Donde quiere jugar?</h2>
         <div id="divContentButtons">
             <div id="divButton1">
-                <a href="#"><img id="imgLogoBoton" src="<?php echo base_url(); ?>img/logo-boton.png" alt="F5" height="98" width="198"></a>
+                <a href="#"><img id="imgLogoBoton1" src="<?php echo base_url(); ?>img/logo-boton.png" alt="F5" height="98" width="198"></a>
             </div>
              <div id="divButton2">
-                <a href="#"><img id="imgLogoBoton" src="<?php echo base_url(); ?>img/logo-boton.png" alt="F5" height="98" width="198"></a>
+                <a href="#"><img id="imgLogoBoton2" src="<?php echo base_url(); ?>img/logo-boton.png" alt="F5" height="98" width="198"></a>
             </div>
 
         </div>

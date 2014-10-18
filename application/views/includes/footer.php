@@ -1,17 +1,17 @@
 		<div id="divWrapperFooter">
 		    <div id="divContentFooter">
 		        <div id="divSocialsIcons">
-		            <i class="fa fa-facebook"></i>
-		            <i class="fa fa-twitter"></i>
-		            <i class="fa fa-youtube"></i>                 
+		            <a href=""><div id="socialFacebookCircle"><i class="fa fa-facebook"></i></div></a>
+		            <a href=""><div id="socialTwitterCircle"><i class="fa fa-twitter"></i></div></a>
+		            <a href=""><div id="socialYoutubeCircle"><i class="fa fa-youtube"></i></div></a>       
 		        </div>
 
-		        <div id="divContactIcons">
-		            <i class="fa fa-map-marker"></i>
-		            <i class="fa fa-phone-square"></i>
-		            <i class="fa fa-envelope"></i>
-		            <i class="fa fa-skype"></i>
-		        </div>
+		   <!-- <div id="divContactIcons">
+			            <i class="fa fa-map-marker"></i>
+			            <i class="fa fa-phone-square"></i>
+			            <i class="fa fa-envelope"></i>
+			            <i class="fa fa-skype"></i>
+		        </div>-->
 		        <p id="copy">© 2014 by C&C Designs   Carolina Borge and Christian Campos The best web designs inspirations.</p>
 		    </div>
 		</div>
