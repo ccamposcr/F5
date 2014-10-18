@@ -39,7 +39,7 @@
 
             <div id="divWrapperHeader" class="clearfix">
                 <div id="divContentHeader" class="clearfix">
-                    <img id="imgLogoPrincipal" src="<?php echo base_url(); ?>img/Logo-home.png" alt="F5" height="93" width="242">
+                    <a href=""><img id="imgLogoPrincipal" src="<?php echo base_url(); ?>img/Logo-home.png" alt="F5" height="93" width="242"></a>
                     <ul id="navPrincipal" class="clearfix">
                         <li><a href="">Inicio</a></li>
                         <li><a href="">F5 Escazú</a></li>
