@@ -258,40 +258,47 @@ textarea {
     width: 960px;
     margin: 0 auto;
 }
-#divSocialsIcons
-{
-    font-size: 36px;
-    color: white;
+
+/*************ICONS FOOTER******************/
+#divSocialsIcons{
+    float: right;
 }
-#socialFacebookCircle, #socialTwitterCircle, #socialYoutubeCircle
+
+a.fa-facebook, a.fa-twitter, a.fa-youtube
 {
     height: 50px;
     width: 50px;
     border-radius: 100px;
-    float: right;
+    float: left;
     margin:20px 10px;
+    text-decoration: none;
+    display: block;
+    font-size: 36px;
+    color: #ffffff;
+    text-align: center;
+    line-height: 50px;
 }
-#socialFacebookCircle a, #socialTwitterCircle a, #socialYoutubeCircle a
-{
-   text-decoration: none;
-   display: block;
 
+a.fa-facebook:hover, a.fa-twitter:hover, a.fa-youtube:hover{
+    text-decoration: none;
 }
-#socialFacebookCircle
+
+.fa-facebook
 {
     background-color: #3B5A99;
 }
-#socialTwitterCircle
+.fa-twitter
 {
     background-color: #009FD1;
 }
- #socialYoutubeCircle
+.fa-youtube
 {
     background-color: #C4302C;
 }
-#copy
+#copy-right
 {
-    color: white;
+    color: #ffffff;
+    float: left;
 }
 
 

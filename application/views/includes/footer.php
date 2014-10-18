@@ -1,9 +1,9 @@
-		<div id="divWrapperFooter">
+		<div id="divWrapperFooter" class="clearfix">
 		    <div id="divContentFooter">
 		        <div id="divSocialsIcons">
-		            <a href=""><div id="socialFacebookCircle"><i class="fa fa-facebook"></i></div></a>
-		            <a href=""><div id="socialTwitterCircle"><i class="fa fa-twitter"></i></div></a>
-		            <a href=""><div id="socialYoutubeCircle"><i class="fa fa-youtube"></i></div></a>       
+		            <a href="" class="fa fa-facebook"></a>
+		            <a href="" class="fa fa-twitter"></a>
+		            <a href="" class="fa fa-youtube"></a>       
 		        </div>
 
 		   <!-- <div id="divContactIcons">
@@ -12,7 +12,7 @@
 			            <i class="fa fa-envelope"></i>
 			            <i class="fa fa-skype"></i>
 		        </div>-->
-		        <p id="copy">© 2014 by C&C Designs   Carolina Borge and Christian Campos The best web designs inspirations.</p>
+		        <p id="copy-right">© 2014 Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
 		    </div>
 		</div>
 	</div>
