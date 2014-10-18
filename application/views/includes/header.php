@@ -35,7 +35,7 @@
             ?>
         </div>
 
-        <div id="divGeneralContent">
+        <div id="mainWrapper" class="clearfix">
 
             <div id="divWrapperHeader" class="clearfix">
                 <div id="divContentHeader" class="clearfix">
