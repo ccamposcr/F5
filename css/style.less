@@ -89,7 +89,7 @@ textarea {
 .browsehappy {
     margin: 0.2em 0;
     background: #ccc;
-    color: #000;
+    color: @black;
     padding: 0.2em 0;
 }
 
@@ -97,6 +97,14 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+/* Color Variables */
+
+@black: #000;
+@white: #fff;
+@red: #C4302C;
+@orange: #FF5500;
+@blueFacebook: #3B5A99;
+@blueLightTwitter: #009FD1;
 
 #dailyResevations{
     display: none;
@@ -109,7 +117,7 @@ textarea {
         li.row > span{
             display: block;
             float: left;
-            border: 1px solid #000;
+            border: 1px solid @black;
             width: 44%;
             height: 50px;
             text-align: center;
@@ -117,7 +125,7 @@ textarea {
             &.reservation-time{
                 border: none;
                 width: 70px;
-                color: #000;
+                color: @black;
             }
 
             &.completa{
@@ -138,47 +146,40 @@ textarea {
     cursor: pointer;
 }
 
-#divGeneralContent
-{
+#divGeneralContent{
     width: 100%;
     background-image: url('../img/img-fondo.png');
     background-repeat: no-repeat;
     margin: 0 auto;
-
 }
 
 
 /*************HEADER*******************/
 
-#divWrapperHeader
-{
+#divWrapperHeader{
     width: 100%;
     height: 110px;
     background-color: rgba(42, 38, 38, 0.51);
     margin-top: 20px;
 }
 
-#divContentHeader
-{
+#divContentHeader{
     width: 960px;
     margin: 0 auto;
 }
 
-#imgLogoPrincipal
-{
+#imgLogoPrincipal{
     margin: 10px 200px 10px 20px;
     float: left;
 }
 
-#navPrincipal 
-{
+#navPrincipal {
     display: block;
     float: right;
     padding: 0px;
 }
 
-#navPrincipal li
-{ 
+#navPrincipal li{ 
     width: 150px;
     height: 110px;
     list-style: none;
@@ -195,17 +196,16 @@ textarea {
     }
 
     &:hover{
-        background-color: #C4302C;
+        background-color: @red;
     }
 
     &.active{
-        background-color:#C4302C;
+        background-color:@red;
     }
 }
 
 /*************CONTENT******************/
-#divContent
-{
+#divContent{
     width: 960px;
     height: 500px;
     padding: 40px;
@@ -220,7 +220,7 @@ textarea {
     }
 
     h2{
-        color: #C4302C;/*rojo*/
+        color: @red;/*rojo*/
     }
 
     p{
@@ -230,42 +230,37 @@ textarea {
     }
 }
 
-#divButton1, #divButton2
-{
+#divButton1, #divButton2{
     width: 240px;
     height: 120px;
     border-radius: 10px;
-    background-color: #FF5500;
+    background-color: @orange;
 
     a{
        display: block; 
     }
 }
 
-#divButton1
-{
+#divButton1{
     float: left;
 }
 
-#divButton2
-{
+#divButton2{
     float: right;
 }
 
-#imgLogoBoton1, #imgLogoBoton2
-{
+#imgLogoBoton1, #imgLogoBoton2{
     margin: 8px 15px;
 }
 /*************FOOTER******************/
-#divWrapperFooter
-{
+#divWrapperFooter{
     width: 100%;
     height: 200px;
     background-image: url(../img/Fondo-Footer.png);
     background-repeat: repeat;
 }
-#divContentFooter
-{
+
+#divContentFooter{
     width: 960px;
     margin: 0 auto;
 }
@@ -283,7 +278,7 @@ textarea {
         text-decoration: none;
         display: block;
         font-size: 36px;
-        color: #ffffff;
+        color: @white;
         text-align: center;
         line-height: 50px;
 
@@ -294,19 +289,19 @@ textarea {
 }
 
 a.fa-facebook{
-    background-color: #3B5A99;
+    background-color: @blueFacebook;
 }
 
 a.fa-twitter{
-    background-color: #009FD1;
+    background-color: @blueLightTwitter;
 }
 
 a.fa-youtube{
-    background-color: #C4302C;
+    background-color: @red;
 }
 
 #copy-right{
-    color: #ffffff;
+    color: @white;
     float: left;
 }
 
@@ -436,7 +431,7 @@ a.fa-youtube{
 @media print {
     * {
         background: transparent !important;
-        color: #000 !important; /* Black prints faster: h5bp.com/s */
+        color: @black !important; /* Black prints faster: h5bp.com/s */
         box-shadow: none !important;
         text-shadow: none !important;
     }
