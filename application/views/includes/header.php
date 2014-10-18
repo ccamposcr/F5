@@ -41,9 +41,9 @@
                 <div id="divContentHeader" class="clearfix">
                     <a href="#"><img id="imgLogoPrincipal" src="<?php echo base_url(); ?>img/logo.png" alt="F5" height="93" width="242"></a>
                     <ul id="navPrincipal" class="clearfix">
-                        <li><a href="">Inicio</a></li>
-                        <li><a href="">F5 Escazú</a></li>
-                        <li><a href="">F5 Desamparados</a></li>
+                        <li><a href="<?php echo base_url(); ?>">Inicio</a></li>
+                        <li><a href="<?php echo base_url(); ?>escazu/">F5 Escazú</a></li>
+                        <li><a href="<?php echo base_url(); ?>desamparados/">F5 Desamparados</a></li>
                     </ul>
                 </div>
             </div>

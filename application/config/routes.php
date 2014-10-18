@@ -42,7 +42,7 @@ $route['default_controller'] = "home_controller";
 $route['404_override'] = '';
 
 //Reservaciones Routs
-$route['reservaciones'] = 'calendar_controller/calendar/';
+$route['(:any)/reservaciones'] = 'calendar_controller/calendar/';
 $route['reservaciones/(:num)/(:any)'] = 'calendar_controller/calendar/$1/$2';
 $route['reservaciones/(:any)'] = 'calendar_controller/$1';
 
