@@ -38,27 +38,49 @@
 |
 */
 
-$route['default_controller'] = "home_controller";
+$route['default_controller'] = "pages_controller";
 $route['404_override'] = '';
 
-//Reservaciones Routs
+//Reservaciones Routes
+
+//Desamparados
 $route['desamparados/reservaciones'] = 'calendar_controller/calendar/';
+$route['desamparados/reservaciones/(:num)/(:any)'] = 'calendar_controller/calendar/$1/$2';
+$route['desamparados/reservaciones/(:any)'] = 'calendar_controller/$1';
+
+//Escazu
 $route['escazu/reservaciones'] = 'calendar_controller/calendar/';
-$route['reservaciones/(:num)/(:any)'] = 'calendar_controller/calendar/$1/$2';
-$route['reservaciones/(:any)'] = 'calendar_controller/$1';
+$route['escazu/reservaciones/(:num)/(:any)'] = 'calendar_controller/calendar/$1/$2';
+$route['escazu/reservaciones/(:any)'] = 'calendar_controller/$1';
+
+/*  ------------------------------------------------------------------ */
 
 //Admin Routes
+
+//Desamparados
 $route['desamparados/admin'] = 'calendar_controller/admin/';
+$route['desamparados/admin/(:num)/(:any)'] = 'calendar_controller/admin/$1/$2';
+$route['desamparados/admin/(:any)'] = 'calendar_controller/$1';
+
+//Escazu
 $route['escazu/admin'] = 'calendar_controller/admin/';
-$route['admin/(:num)/(:any)'] = 'calendar_controller/admin/$1/$2';
-$route['admin/(:any)'] = 'calendar_controller/$1';
+$route['escazu/admin/(:num)/(:any)'] = 'calendar_controller/admin/$1/$2';
+$route['escazu/admin/(:any)'] = 'calendar_controller/$1';
+
+/* ------------------------------------------------------------------- */
 
 //Services Routs
 $route['getReservationByDay'] = 'calendar_controller/getReservationByDay';
+$route['(:any)/getReservationByDay'] = 'calendar_controller/getReservationByDay';
 
 //Login - Logout Routes
 $route['login'] = 'login_controller';
 $route['logout'] = 'admin_controller/logout';
+
+/* ------------------------------------------------------------------- */
+//Pages Routes
+$route['escazu'] = 'pages_controller/f5_escazu';
+$route['desamparados'] = 'pages_controller/f5_desamparados';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
