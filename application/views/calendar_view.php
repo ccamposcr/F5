@@ -4,8 +4,8 @@
         <div id="calendar">
         	<?=$calendar?>
         	<?php
-	        	$year = $this->uri->segment(2);
-	        	$month = $this->uri->segment(3);
+	        	$year = $this->uri->segment(3);
+	        	$month = $this->uri->segment(4);
 	        	if ($year == ''){
 					$year  = date("Y", time());
 				}
