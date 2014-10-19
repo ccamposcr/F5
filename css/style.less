@@ -166,6 +166,21 @@ textarea {
 #divContentHeader{
     width: 960px;
     margin: 0 auto;
+    position: relative;
+
+    #userStatus{
+        position: absolute;
+        right: 0;
+        top: -20px;
+
+        a{
+            color: @white;
+
+            &:hover{
+                color: @red;
+            }
+        }
+    }
 }
 
 #mainLogo{

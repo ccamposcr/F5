@@ -20,21 +20,7 @@
     </head>
 
     <body ng-app="F5App">
-        <div id="nav">
-            <?php 
-            if( isset($user) ){
-            ?>
-                <span>Bienvenido <?php echo $user;?></span> <a href="<?php echo base_url(); ?>logout">Cerrar Sesi&oacute;n</a>
-            <?php
-            }
-            else{
-            ?>
-                <a href="login">Administrar</a>
-            <?php
-            }
-            ?>
-        </div>
-
+        
         <div id="mainWrapper" class="clearfix">
 
             <div id="divWrapperHeader" class="clearfix">
@@ -45,5 +31,19 @@
                         <li><a href="<?php echo base_url(); ?>escazu/">F5 Escazú</a></li>
                         <li><a href="<?php echo base_url(); ?>desamparados/">F5 Desamparados</a></li>
                     </ul>
+                    <div id="userStatus">
+                        <?php 
+                        if( isset($user) ){
+                        ?>
+                            <span>Bienvenido <?php echo $user;?></span> <a href="<?php echo base_url(); ?>logout">Cerrar Sesi&oacute;n</a>
+                        <?php
+                        }
+                        else{
+                        ?>
+                            <a href="login">Administrar</a>
+                        <?php
+                        }
+                        ?>
+                    </div>
                 </div>
             </div>

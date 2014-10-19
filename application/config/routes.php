@@ -42,12 +42,14 @@ $route['default_controller'] = "home_controller";
 $route['404_override'] = '';
 
 //Reservaciones Routs
-$route['(:any)/reservaciones'] = 'calendar_controller/calendar/';
+$route['desamparados/reservaciones'] = 'calendar_controller/calendar/';
+$route['escazu/reservaciones'] = 'calendar_controller/calendar/';
 $route['reservaciones/(:num)/(:any)'] = 'calendar_controller/calendar/$1/$2';
 $route['reservaciones/(:any)'] = 'calendar_controller/$1';
 
 //Admin Routes
-$route['(:any)/admin'] = 'calendar_controller/admin/';
+$route['desamparados/admin'] = 'calendar_controller/admin/';
+$route['escazu/admin'] = 'calendar_controller/admin/';
 $route['admin/(:num)/(:any)'] = 'calendar_controller/admin/$1/$2';
 $route['admin/(:any)'] = 'calendar_controller/$1';
 

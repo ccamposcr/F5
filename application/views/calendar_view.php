@@ -1,4 +1,4 @@
-<?php include('includes/header.php') ?>
+<?php include('includes/internal-header.php') ?>
 
     <div ng-controller="reservationController">
         <div id="calendar">
@@ -29,4 +29,4 @@
         </div>
     </div>
         
-<?php include('includes/footer.php') ?>
+<?php include('includes/internal-footer.php') ?>
