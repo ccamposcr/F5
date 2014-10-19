@@ -39,7 +39,7 @@
 */
 
 $route['default_controller'] = "pages_controller";
-$route['404_override'] = '';
+$route['404_override'] = 'pages_controller/page_404';
 
 //Reservaciones Routes
 
@@ -74,13 +74,24 @@ $route['getReservationByDay'] = 'calendar_controller/getReservationByDay';
 $route['(:any)/getReservationByDay'] = 'calendar_controller/getReservationByDay';
 
 //Login - Logout Routes
-$route['login'] = 'login_controller';
-$route['logout'] = 'admin_controller/logout';
+//Escazu
+$route['escazu/login'] = 'login_controller';
+
+$route['escazu/verifyLogin'] = 'login_controller/verify';
+$route['escazu/verifyLogin'] = 'login_controller/verify';
+
+//Desamparados
+$route['desamparados/login'] = 'login_controller';
+
+$route['desamparados/verifyLogin'] = 'login_controller/verify';
+$route['desamparados/verifyLogin'] = 'login_controller/verify';
 
 /* ------------------------------------------------------------------- */
 //Pages Routes
 $route['escazu'] = 'pages_controller/f5_escazu';
 $route['desamparados'] = 'pages_controller/f5_desamparados';
+$route['logout'] = 'admin_controller/logout';
+
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

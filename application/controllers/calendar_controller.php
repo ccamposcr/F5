@@ -11,7 +11,7 @@ class Calendar_controller extends CI_Controller {
            'month_type'   => 'long',
            'day_type'     => 'abr',
            'show_next_prev' => 'true',
-           'next_prev_url' => base_url() . $next_prev_controller,
+           'next_prev_url' => base_url() . explode('/', current_url())[2] . '/' . $next_prev_controller,
            'local_time' => time()
          );
 
@@ -67,7 +67,7 @@ class Calendar_controller extends CI_Controller {
 
         if($this->session->userdata('logged_in'))
         {
-            redirect('admin', 'refresh');
+            redirect(explode('/', current_url())[2] . '/admin', 'refresh');
         } else {
             $data['calendar'] = $this->calendar->generate($year, $month);
             $this->load->view('calendar_view', $data);
@@ -84,7 +84,7 @@ class Calendar_controller extends CI_Controller {
             $data['calendar'] = $this->calendar->generate($year, $month);
             $this->load->view('calendar_view', $data);
         } else {
-            redirect('login', 'refresh');
+            redirect(explode('/', current_url())[2] . '/login', 'refresh');
         }
     }
 

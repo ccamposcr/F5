@@ -5,7 +5,7 @@ class Admin_controller extends CI_Controller {
         $this->load->model('login_model','',true);
     }
  
-    function index() {
+   /* function index() {
         if($this->session->userdata('logged_in'))
         {
             $session_data = $this->session->userdata('logged_in');
@@ -16,11 +16,12 @@ class Admin_controller extends CI_Controller {
             redirect('login', 'refresh');
         }
     }
+    */
  
     function logout() {
         $this->session->unset_userdata('logged_in');
         $this->session->sess_destroy();
-        redirect('reservaciones', 'refresh');
+        redirect('/', 'refresh');
      }
  
 }
