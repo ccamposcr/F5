@@ -8,12 +8,12 @@ class Pages_controller extends CI_Controller {
         $this->load->view('home_view');
     }
 
-    function f5_escazu(){
-    	$this->load->view('f5_escazu_view');
+    function f5_escazu_galeria(){
+    	$this->load->view('f5_escazu_galeria_view');
     }
 
-    function f5_desamparados(){
-    	$this->load->view('f5_desamparados_view');
+    function f5_desamparados_galeria(){
+    	$this->load->view('f5_desamparados_galeria_view');
     }
 
     function page_404(){
