@@ -52,6 +52,14 @@ myApp.controller("reservationController", function ($scope, $rootScope){
 	$scope.loadReservations($('.today').text());
 });
 
+myApp.controller("galleryController", function ($scope, $rootScope){
+
+   $scope.loadGallery = function (){
+   	console.log('loading gallery');
+   };
+
+});
+
 myApp.directive('loadDay', ['$document', function($document) {
     return function(scope, element, attr) {
       element.on('click', function(event) {

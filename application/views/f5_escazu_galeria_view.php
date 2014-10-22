@@ -1,4 +1,4 @@
-<div id="divMainContentGallery">
+<div id="divMainContentGallery" ng-controller="galleryController" ng-init="loadGallery()">
 	<div class="flexslider">
 	  <ul class="slides">
 	    <li data-thumb="slide1-thumb.jpg">
