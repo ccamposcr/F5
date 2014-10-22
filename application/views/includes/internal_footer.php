@@ -1,17 +1,13 @@
 		<div id="divWrapperFooter" class="clearfix">
 		    <div id="divContentFooter">
-		        <div id="divSocialsIcons">
-		            <a href="" class="fa fa-facebook"></a>
-		            <a href="" class="fa fa-twitter"></a>
-		            <a href="" class="fa fa-youtube"></a>       
-		        </div>
+		       
 
-		   <!-- <div id="divContactIcons">
-			            <i class="fa fa-map-marker"></i>
-			            <i class="fa fa-phone-square"></i>
-			            <i class="fa fa-envelope"></i>
-			            <i class="fa fa-skype"></i>
-		        </div>-->
+		   <div id="divContactIcons">
+	            <i class="fa fa-map-marker"></i>
+	            <i class="fa fa-phone-square"></i>
+	            <i class="fa fa-envelope"></i>
+	            <i class="fa fa-skype"></i>
+		    </div>
 		        <p id="copy-right">© 2014Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil consequuntur, nesciunt dicta, esse rem ducimus itaque quis.</p>
 		    </div>
 		</div>
