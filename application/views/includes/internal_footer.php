@@ -1,25 +1,31 @@
 		<div id="divWrapperFooter" class="clearfix">
-		    <div id="divContentFooter">
-		    	<div id="divContentInfoFooter">
+		    <div id="divContentFooter" class="clearfix">
 
+		    	<div id="divContentInfoFooter">
+		    		<span>Fe Escazú</span>
+		    		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil consequuntur, nesciunt dicta, esse rem ducimus itaque quis. Adipisci ullam nam qui illum debitis sit ad in lectus. 
+       				 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil consequuntur, nesciunt dicta.
+        			</p>
 		    	</div>
 		    	
-		    	<div id="divSocialsIcons">
-		    		<div id="divSocialsIcons">
+		    	<div id="divSocialsIconsFooter" class="clearfix">
+		    		<span>Síguenos en:</span>	
 		            <a href="" class="fa fa-facebook"></a>
 		            <a href="" class="fa fa-twitter"></a>
 		            <a href="" class="fa fa-youtube"></a>       
-		        </div>
+		    	</div>	       
 
-		    	</div>
-		       
-
-			    <div id="divContactIcons">
-		            <i class="fa fa-map-marker"></i>
-		            <i class="fa fa-phone-square"></i>
-		            <i class="fa fa-envelope"></i>
-		            <i class="fa fa-skype"></i>
+			    <div id="divContactIcons" class="clearfix">
+			    	<span>Contacto:</span>
+			    	<ul>
+				    	<li><a href="" class="fa fa-map-marker"></a></li>
+			            <li><a href="" class="fa fa-phone-square"></a></li>
+			            <li><a href=""class="fa fa-envelope"></a></li>
+			            <li><a href="" class="fa fa-skype"></a></li>
+			    	</ul>
+		            
 			    </div>
+
 		        <p id="copy-right">© 2014Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil consequuntur, nesciunt dicta, esse rem ducimus itaque quis.</p>
 		    </div>
 		</div>
