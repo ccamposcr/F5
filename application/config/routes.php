@@ -88,8 +88,8 @@ $route['desamparados/verifyLogin'] = 'login_controller/verify';
 
 /* ------------------------------------------------------------------- */
 //Pages Routes
-$route['escazu/galeria'] = 'pages_controller/f5_escazu_galeria';
-$route['desamparados/galeria'] = 'pages_controller/f5_desamparados_galeria';
+$route['escazu/galeria'] = 'pages_controller/escazu_gallery';
+$route['desamparados/galeria'] = 'pages_controller/desamparados_gallery';
 $route['logout'] = 'admin_controller/logout';
 
 

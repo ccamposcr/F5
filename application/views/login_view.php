@@ -1,4 +1,3 @@
-<?php include('includes/header.php') ?>
    <h1>Login</h1>
    <?php echo validation_errors(); ?>
    <?php echo form_open($this->uri->segment(1) . '/verifyLogin'); 
@@ -9,4 +8,3 @@
    echo form_submit("","Login");
    echo form_close();
    ?>
-<?php include('includes/footer.php') ?>

@@ -70,7 +70,15 @@ class Calendar_controller extends CI_Controller {
             redirect($this->uri->segment(1) . '/admin', 'refresh');
         } else {
             $data['calendar'] = $this->calendar->generate($year, $month);
+            $headerOptions['menu'] = array (
+                array('text' => 'Inicio', 'url' => ''),
+                array('text' => 'Reservaciones', 'url' => $this->uri->segment(1) . '/reservaciones'),
+                array('text' => 'Galeria', 'url' => $this->uri->segment(1) . '/galeria')
+            );
+            $headerOptions['adminBtn'] = true;
+            $this->load->view('includes/header', $headerOptions);
             $this->load->view('calendar_view', $data);
+            $this->load->view('includes/internal_footer');
         }
     }
 
@@ -82,25 +90,32 @@ class Calendar_controller extends CI_Controller {
             $data['user'] = $session_data['user'];
             $data['id'] = $session_data['id'];
             $data['calendar'] = $this->calendar->generate($year, $month);
+            $headerOptions['menu'] = array (
+                array('text' => 'Inicio', 'url' => ''),
+                array('text' => 'Reservaciones', 'url' => $this->uri->segment(1) . '/reservaciones'),
+                array('text' => 'Galeria', 'url' => $this->uri->segment(1) . '/galeria')
+            );
+            $this->load->view('includes/header', $headerOptions);
             $this->load->view('calendar_view', $data);
+            $this->load->view('includes/internal_footer');
         } else {
             redirect($this->uri->segment(1) . '/login', 'refresh');
         }
     }
 
     public function getReservationByTime(){
-        $reservation_year = ( isset($_POST['year']) ) ? $_POST['year'] : '2014';
-        $reservation_month = ( isset($_POST['month']) ) ? $_POST['month'] : '9';
-        $reservation_day = ( isset($_POST['day']) ) ? $_POST['day'] : '5';
-        $reservation_time = ( isset($_POST['time']) ) ? $_POST['time'] : '09-10';
+        $reservation_year = ( isset($_POST['year']) ) ? $_POST['year'] : date("Y", time());
+        $reservation_month = ( isset($_POST['month']) ) ? $_POST['month'] : date("m", time());
+        $reservation_day = ( isset($_POST['day']) ) ? $_POST['day'] : date("d", time());
+        $reservation_time = ( isset($_POST['time']) ) ? $_POST['time'] : '08-09';
         $reservation = $this->calendar_model->getReservationByTime($reservation_year,$reservation_month,$reservation_day,$reservation_time);
         echo json_encode($reservation);
     }
 
     public function getReservationByDay(){
-        $reservation_year = ( isset($_POST['year']) ) ? $_POST['year'] : '2014';
-        $reservation_month = ( isset($_POST['month']) ) ? $_POST['month'] : '9';
-        $reservation_day = ( isset($_POST['day']) ) ? $_POST['day'] : '5';
+        $reservation_year = ( isset($_POST['year']) ) ? $_POST['year'] : date("Y", time());
+        $reservation_month = ( isset($_POST['month']) ) ? $_POST['month'] : date("m", time());
+        $reservation_day = ( isset($_POST['day']) ) ? $_POST['day'] : date("d", time());
         $reservation = $this->calendar_model->getReservationByDay($reservation_year,$reservation_month,$reservation_day);
         echo json_encode($reservation);
     }

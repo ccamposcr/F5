@@ -2,7 +2,7 @@
 class Admin_controller extends CI_Controller {
     function __construct() {
         parent::__construct();
-        $this->load->model('login_model','',true);
+        //$this->load->model('login_model','',true);
     }
  
    /* function index() {

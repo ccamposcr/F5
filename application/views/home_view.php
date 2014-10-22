@@ -1,5 +1,3 @@
-<?php include('includes/header.php') ?>
-
     <div id="divContent">
         <h1>Canchas de futbol 5</h1>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil consequuntur, nesciunt dicta, esse rem ducimus itaque quis. Adipisci ullam nam qui illum debitis sit ad in lectus. 
@@ -16,5 +14,3 @@
 
         </div>
     </div>
-
-<?php include('includes/footer.php') ?>

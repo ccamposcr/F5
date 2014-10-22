@@ -27,9 +27,27 @@
                 <div id="divContentHeader" class="clearfix">
                     <a href="<?php echo base_url(); ?>"><img id="mainLogo" src="<?php echo base_url(); ?>img/logo.png" alt="F5" height="93" width="242"></a>
                     <ul id="navPrincipal" class="clearfix">
-                        <li><a href="<?php echo base_url(); ?>">Inicio</a></li>
-                        <li><a href="<?php echo base_url(); ?>escazu/reservaciones">F5 Escazú</a></li>
-                        <li><a href="<?php echo base_url(); ?>desamparados/reservaciones">F5 Desamparados</a></li>
+                        <?php foreach ($menu as $row) {
+                            echo '<li><a href="' . base_url() . $row['url'] .'">'. $row['text'] .'</a></li>';
+                        }?>
                     </ul>
+                     <?php if( isset($adminBtn) ){ ?>
+                        <div id="userStatus">
+                            <?php 
+                            if( isset($user) ){
+                            ?>
+                                <span>Bienvenido <?php echo $user;?></span> <a href="<?php echo base_url(); ?>logout">Cerrar Sesi&oacute;n</a>
+                            <?php
+                            }
+                            else{
+                            ?>
+                                <a href="login">Administrar</a>
+                            <?php
+                            }
+                            ?>
+                        </div>
+                     <?php 
+                        } 
+                    ?>
                 </div>
             </div>

@@ -1,5 +1,3 @@
-<?php include('includes/internal-header.php') ?>
-
     <div ng-controller="reservationController">
         <div id="calendar">
         	<?=$calendar?>
@@ -28,5 +26,3 @@
             </ul>
         </div>
     </div>
-        
-<?php include('includes/internal-footer.php') ?>
