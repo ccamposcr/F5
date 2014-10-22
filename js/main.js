@@ -55,7 +55,10 @@ myApp.controller("reservationController", function ($scope, $rootScope){
 myApp.controller("galleryController", function ($scope, $rootScope){
 
    $scope.loadGallery = function (){
-   	console.log('loading gallery');
+	   $('.flexslider').flexslider({
+		    animation: "slide",
+		    controlNav: "thumbnails"
+	  	});
    };
 
 });
