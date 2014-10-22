@@ -22,7 +22,7 @@ class Pages_controller extends CI_Controller {
             array('text' => 'Galeria', 'url' => 'escazu/galeria')
         );
         $this->load->view('includes/header',$headerOptions);
-    	$this->load->view('f5_escazu_galeria_view');
+    	$this->load->view('escazu_gallery_view');
         $this->load->view('includes/internal_footer');
     }
 
@@ -33,7 +33,7 @@ class Pages_controller extends CI_Controller {
             array('text' => 'Galeria', 'url' => 'desamparados/galeria')
         );
         $this->load->view('includes/header', $headerOptions);
-    	$this->load->view('f5_desamparados_galeria_view');
+    	$this->load->view('desamparados_gallery_view');
         $this->load->view('includes/internal_footer');
     }
 
