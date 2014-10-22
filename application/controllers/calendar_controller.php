@@ -87,8 +87,7 @@ class Calendar_controller extends CI_Controller {
         if($this->session->userdata('logged_in'))
         {
             $session_data = $this->session->userdata('logged_in');
-            $data['user'] = $session_data['user'];
-            $data['id'] = $session_data['id'];
+            $headerOptions['user'] = $session_data['user'];
             $data['calendar'] = $this->calendar->generate($year, $month);
             $headerOptions['menu'] = array (
                 array('text' => 'Inicio', 'url' => ''),

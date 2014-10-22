@@ -21,7 +21,6 @@ class Pages_controller extends CI_Controller {
             array('text' => 'Reservaciones', 'url' => 'escazu/reservaciones'),
             array('text' => 'Galeria', 'url' => 'escazu/galeria')
         );
-        $headerOptions['adminBtn'] = true;
         $this->load->view('includes/header',$headerOptions);
     	$this->load->view('f5_escazu_galeria_view');
         $this->load->view('includes/internal_footer');
@@ -33,7 +32,6 @@ class Pages_controller extends CI_Controller {
             array('text' => 'Reservaciones', 'url' => 'desamparados/reservaciones'),
             array('text' => 'Galeria', 'url' => 'desamparados/galeria')
         );
-        $headerOptions['adminBtn'] = true;
         $this->load->view('includes/header', $headerOptions);
     	$this->load->view('f5_desamparados_galeria_view');
         $this->load->view('includes/internal_footer');
