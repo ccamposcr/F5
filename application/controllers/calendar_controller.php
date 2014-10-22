@@ -59,6 +59,9 @@ class Calendar_controller extends CI_Controller {
         {table_close}</table>{/table_close}';
         $this->load->library('calendar', $prefs);
         $this->load->model("calendar_model");
+
+        $GLOBALS['pitchs'] = array('escazu_1' => 1, 'desamparados_1' => 2);
+        $GLOBALS['current_pitch'];
     }
 
 
@@ -107,6 +110,8 @@ class Calendar_controller extends CI_Controller {
         $reservation_month = ( isset($_POST['month']) ) ? $_POST['month'] : date("m", time());
         $reservation_day = ( isset($_POST['day']) ) ? $_POST['day'] : date("d", time());
         $reservation_time = ( isset($_POST['time']) ) ? $_POST['time'] : '08-09';
+        //$pitch_id = 
+        echo $pitchs['escazu_1'];
         $reservation = $this->calendar_model->getReservationByTime($reservation_year,$reservation_month,$reservation_day,$reservation_time);
         echo json_encode($reservation);
     }
@@ -115,6 +120,7 @@ class Calendar_controller extends CI_Controller {
         $reservation_year = ( isset($_POST['year']) ) ? $_POST['year'] : date("Y", time());
         $reservation_month = ( isset($_POST['month']) ) ? $_POST['month'] : date("m", time());
         $reservation_day = ( isset($_POST['day']) ) ? $_POST['day'] : date("d", time());
+        echo $GLOBALS['pitchs']['escazu_1'];
         $reservation = $this->calendar_model->getReservationByDay($reservation_year,$reservation_month,$reservation_day);
         echo json_encode($reservation);
     }
