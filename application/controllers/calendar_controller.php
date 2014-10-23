@@ -79,7 +79,6 @@ class Calendar_controller extends CI_Controller {
                 array('text' => 'Galeria', 'url' => $this->uri->segment(1) . '/galeria')
             );
             $headerOptions['adminBtn'] = true;
-            $headerOptions['pitch'] = $this->uri->segment(1);
             $this->load->view('includes/header', $headerOptions);
             $this->load->view('calendar_view', $data);
             $this->load->view('includes/internal_footer');
@@ -98,7 +97,6 @@ class Calendar_controller extends CI_Controller {
                 array('text' => 'Reservaciones', 'url' => $this->uri->segment(1) . '/reservaciones'),
                 array('text' => 'Galeria', 'url' => $this->uri->segment(1) . '/galeria')
             );
-            $headerOptions['pitch'] = $this->uri->segment(1);
             $this->load->view('includes/header', $headerOptions);
             $this->load->view('calendar_view', $data);
             $this->load->view('includes/internal_footer');

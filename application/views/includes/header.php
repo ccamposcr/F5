@@ -26,7 +26,10 @@
 
             <div id="divWrapperHeader" class="clearfix">
                 <div id="divContentHeader" class="clearfix">
-                    <a href="<?php echo base_url(); ?>"><img id="mainLogo" src="<?php echo base_url(); ?>img/logo.png" alt="F5" height="93" width="242"></a>
+                    <h1 id="logo"><a class="clearfix" href="<?php echo base_url(); ?>">
+                        <img id="mainLogo" src="<?php echo base_url(); ?>img/logo.png" alt="F5" height="93" width="242">
+                        <span><?php echo $this->uri->segment(1)?></span>
+                    </a></h1>
                     <ul id="navPrincipal" class="clearfix">
                         <?php foreach ($menu as $row) {
                             echo '<li><a href="' . base_url() . $row['url'] .'">'. $row['text'] .'</a></li>';
@@ -41,10 +44,7 @@
                             }
                             if( isset($adminBtn) ){
                             ?>
-                                <?php  if( isset($pitch) ){
-                                    $url = base_url() . $pitch;
-                                }?>
-                                <a href="<?php echo $url ?>/login">Administrar</a>
+                                <a href="<?php echo base_url() . $this->uri->segment(1)?>/login">Administrar</a>
                             <?php
                             }
                             ?>
