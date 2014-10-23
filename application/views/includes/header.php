@@ -41,7 +41,10 @@
                             }
                             if( isset($adminBtn) ){
                             ?>
-                                <a href="login">Administrar</a>
+                                <?php  if( isset($pitch) ){
+                                    $url = base_url() . $pitch;
+                                }?>
+                                <a href="<?php echo $url ?>/login">Administrar</a>
                             <?php
                             }
                             ?>
