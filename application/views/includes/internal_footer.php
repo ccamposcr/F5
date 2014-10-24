@@ -15,19 +15,13 @@
 		            <a href="" class="fa fa-youtube"></a>       
 		    	</div>	       
 
-			    <div id="divContentContact" class="clearfix">
-			    	<span>Contacto:</span>
-			    	<ul id="iconsContact" class="clearfix">
-				    	<li class="fa fa-map-marker"></li>
-			            <li class="fa fa-phone-square"></li>
-			            <li class="fa fa-envelope"></li>
-			            <li class="fa fa-skype"></li>
-			    	</ul>
-			    	<ul id="infoContact">
-			    		<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil consequuntur, nesciunt dicta</li>
-			            <li>(506)8888-8888</a></li>
-			            <li>San José, Costa Rica. Apartado 2001-99</li>
-			            <li>f5Escazu</li>
+		    	<div id="infoContact" class="clearfix">
+		    		<span>Cont&aacute;ctenos:</span> 	 
+			    	<ul>
+			    		<li><span class=" iconsContact fa fa-map-marker"></span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil consequuntur, nesciunt dicta</li>
+			            <li><span class=" iconsContact fa fa-phone-square"></span>(506)8888-8888</a></li>
+			            <li><span class=" iconsContact fa fa-envelope"></span>info_f5escazu@gmail.com</li>
+			            <li><span class=" iconsContact fa fa-skype"></span>f5Escazu</li>
 			    	</ul>
 		            
 			    </div>

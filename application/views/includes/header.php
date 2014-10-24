@@ -26,10 +26,10 @@
 
             <div id="divWrapperHeader" class="clearfix">
                 <div id="divContentHeader" class="clearfix">
-                    <h1 id="logo"><a class="clearfix" href="<?php echo base_url(); ?>">
+                    <a id="logo" class="clearfix" href="<?php echo base_url(); ?>">
                         <img id="mainLogo" src="<?php echo base_url(); ?>img/logo.png" alt="F5" height="93" width="242">
                         <span><?php echo $this->uri->segment(1)?></span>
-                    </a></h1>
+                    </a>
                     <ul id="navPrincipal" class="clearfix">
                         <?php foreach ($menu as $row) {
                             echo '<li><a href="' . base_url() . $row['url'] .'">'. $row['text'] .'</a></li>';

@@ -55,10 +55,28 @@ myApp.controller("reservationController", function ($scope, $rootScope){
 myApp.controller("galleryController", function ($scope, $rootScope){
 
    $scope.loadGallery = function (){
-	   $('.flexslider').flexslider({
+	   	$('#carousel').flexslider({
+	    animation: "slide",
+	    controlNav: false,
+	    animationLoop: true,
+	    slideshow: false,
+	    itemWidth: 210,
+	    itemMargin: 5,
+	    asNavFor: '#slider'
+	  });
+	   
+	  $('#slider').flexslider({
+	    animation: "slide",
+	    controlNav: false,
+	    animationLoop: true,
+	    slideshow: false,
+	    sync: "#carousel"
+	  });
+	  
+	   /*$('.flexslider').flexslider({
 		    animation: "slide",
 		    controlNav: "thumbnails"
-	  	});
+	  	});*/
    };
 
 });
