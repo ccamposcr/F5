@@ -11,7 +11,7 @@ class Calendar_controller extends CI_Controller {
            'month_type'   => 'long',
            'day_type'     => 'abr',
            'show_next_prev' => 'true',
-           'next_prev_url' => base_url() . $this->uri->segment(1) . '/' . $next_prev_controller,
+           'next_prev_url' => base_url() . $this->uri->segment(1) . '/' . $this->uri->segment(2) . '/' . $next_prev_controller,
            'local_time' => time()
          );
 

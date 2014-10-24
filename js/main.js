@@ -1,16 +1,16 @@
 
 var myApp = angular.module("F5App", ["ng"]);
 myApp.controller("reservationController", function ($scope, $rootScope){
-
+   var base_url = '/F5-git/'	
    $scope.times = ['08-09','09-10','10-11','11-12','12-13','13-14','14-15','15-16','16-17','17-18','18-19','19-20','20-21','21-22','23-24'];
-	var path = ( window.location.pathname.replace('/','').replace(/\/$/, '').split('/').length <= 2 ) ? './' : '../';
+	//var path = ( window.location.pathname.replace('/','').replace(/\/$/, '').split('/').length <= 2 ) ? './' : '../';
 
    $scope.loadReservations = function (day){
 		$.ajax({
 
 			type: 'POST',
 
-			url : path + "getReservationByDay",
+			url : base_url + "getReservationByDay",
 
 			data: { year: $('#year').val(), month: $('#month').val() , day: ( day) ? day : $('.today').text()},
 

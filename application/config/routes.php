@@ -44,14 +44,14 @@ $route['404_override'] = 'pages_controller/page_404';
 //Reservaciones Routes
 
 //Desamparados
-$route['desamparados/reservaciones'] = 'calendar_controller/calendar/';
-$route['desamparados/reservaciones/(:num)/(:any)'] = 'calendar_controller/calendar/$1/$2';
-$route['desamparados/reservaciones/(:any)'] = 'calendar_controller/$1';
+$route['desamparados/(:num)/reservaciones'] = 'calendar_controller/calendar/';
+$route['desamparados/(:num)/reservaciones/(:num)/(:any)'] = 'calendar_controller/calendar/$1/$2';
+$route['desamparados/(:num)/reservaciones/(:any)'] = 'calendar_controller/$1';
 
 //Escazu
-$route['escazu/reservaciones'] = 'calendar_controller/calendar/';
-$route['escazu/reservaciones/(:num)/(:any)'] = 'calendar_controller/calendar/$1/$2';
-$route['escazu/reservaciones/(:any)'] = 'calendar_controller/$1';
+$route['escazu/(:num)/reservaciones'] = 'calendar_controller/calendar/';
+$route['escazu/(:num)/reservaciones/(:num)/(:any)'] = 'calendar_controller/calendar/$1/$2';
+$route['escazu/(:num)/reservaciones/(:any)'] = 'calendar_controller/$1';
 
 /*  ------------------------------------------------------------------ */
 
@@ -59,19 +59,19 @@ $route['escazu/reservaciones/(:any)'] = 'calendar_controller/$1';
 
 //Desamparados
 $route['desamparados/admin'] = 'calendar_controller/admin/';
-$route['desamparados/admin/(:num)/(:any)'] = 'calendar_controller/admin/$1/$2';
-$route['desamparados/admin/(:any)'] = 'calendar_controller/$1';
+$route['desamparados/(:num)/admin/(:num)/(:any)'] = 'calendar_controller/admin/$1/$2';
+$route['desamparados/(:num)/admin/(:any)'] = 'calendar_controller/$1';
 
 //Escazu
 $route['escazu/admin'] = 'calendar_controller/admin/';
-$route['escazu/admin/(:num)/(:any)'] = 'calendar_controller/admin/$1/$2';
-$route['escazu/admin/(:any)'] = 'calendar_controller/$1';
+$route['escazu/(:num)/admin/(:num)/(:any)'] = 'calendar_controller/admin/$1/$2';
+$route['escazu/(:num)/admin/(:any)'] = 'calendar_controller/$1';
 
 /* ------------------------------------------------------------------- */
 
 //Services Routs
 $route['getReservationByDay'] = 'calendar_controller/getReservationByDay';
-$route['(:any)/getReservationByDay'] = 'calendar_controller/getReservationByDay';
+//$route['(:any)/getReservationByDay'] = 'calendar_controller/getReservationByDay';
 
 //Login - Logout Routes
 //Escazu
