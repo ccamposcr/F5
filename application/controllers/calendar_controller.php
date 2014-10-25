@@ -73,15 +73,24 @@ class Calendar_controller extends CI_Controller {
             redirect($this->uri->segment(1) . '/admin', 'refresh');
         } else {
             $data['calendar'] = $this->calendar->generate($year, $month);
-            $headerOptions['menu'] = array (
-                array('text' => 'Inicio', 'url' => ''),
-                array('text' => 'Reservaciones', 'url' => $this->uri->segment(1) . '/reservaciones'),
-                array('text' => 'Galeria', 'url' => $this->uri->segment(1) . '/galeria')
-            );
+            $headerOptions = simplexml_load_file("xml/header.xml");
             $headerOptions['adminBtn'] = true;
-            $this->load->view('includes/header', $headerOptions);
+            $this->load->view('includes/header', $headerOptions->internal);
             $this->load->view('calendar_view', $data);
-            $this->load->view('includes/internal_footer');
+
+            $footerOptions = simplexml_load_file("xml/footer.xml");
+
+            switch ( $this->uri->segment(1) ) {
+                case 'escazu':
+                    $footerOptions = $footerOptions->escazu;
+                    break;
+                
+               case 'desamparados':
+                    $footerOptions = $footerOptions->desamparados;
+                    break;
+            }
+
+            $this->load->view('includes/internal_footer', $footerOptions);
         }
     }
 
@@ -92,14 +101,23 @@ class Calendar_controller extends CI_Controller {
             $session_data = $this->session->userdata('logged_in');
             $headerOptions['user'] = $session_data['user'];
             $data['calendar'] = $this->calendar->generate($year, $month);
-            $headerOptions['menu'] = array (
-                array('text' => 'Inicio', 'url' => ''),
-                array('text' => 'Reservaciones', 'url' => $this->uri->segment(1) . '/reservaciones'),
-                array('text' => 'Galeria', 'url' => $this->uri->segment(1) . '/galeria')
-            );
-            $this->load->view('includes/header', $headerOptions);
+            $headerOptions = simplexml_load_file("xml/header.xml");
+            $this->load->view('includes/header', $headerOptions->internal);
             $this->load->view('calendar_view', $data);
-            $this->load->view('includes/internal_footer');
+            
+            $footerOptions = simplexml_load_file("xml/footer.xml");
+
+            switch ( $this->uri->segment(1) ) {
+                case 'escazu':
+                    $footerOptions = $footerOptions->escazu;
+                    break;
+                
+               case 'desamparados':
+                    $footerOptions = $footerOptions->desamparados;
+                    break;
+            }
+
+            $this->load->view('includes/internal_footer', $footerOptions);
         } else {
             redirect($this->uri->segment(1) . '/login', 'refresh');
         }

@@ -31,8 +31,15 @@
                         <span><?php echo $this->uri->segment(1)?></span>
                     </a>
                     <ul id="navPrincipal" class="clearfix">
-                        <?php foreach ($menu as $row) {
-                            echo '<li><a href="' . base_url() . $row['url'] .'">'. $row['text'] .'</a></li>';
+                        <?php foreach ($button as $index => $row) {
+                            
+                            if( $row == 0){
+                                echo '<li><a href="' . base_url() . $row->url .'">'. $row->text .'</a></li>';
+                            }
+                            else{
+                                echo '<li><a href="' . base_url() . $this->uri->segment(1) . $row->url .'">'. $row->text .'</a></li>';
+                            }
+                            
                         }?>
                     </ul>
                         <div id="userStatus">

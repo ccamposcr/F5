@@ -5,45 +5,33 @@ class Pages_controller extends CI_Controller {
     }
  
     function index() {
-        $headerOptions['menu'] = array (
-            array('text' => 'Inicio', 'url' => ''),
-            array('text' => 'F5 Escaz&uacute', 'url' => 'escazu/reservaciones'),
-            array('text' => 'F5 Desamparados', 'url' => 'desamparados/reservaciones')
-        );
-        $this->load->view('includes/header',$headerOptions);
+        $headerOptions = simplexml_load_file("xml/header.xml");
+        $this->load->view('includes/header',$headerOptions->external);
         $this->load->view('home_view');
         $this->load->view('includes/footer');
     }
 
     function escazu_gallery(){
-        $headerOptions['menu'] = array (
-            array('text' => 'Inicio', 'url' => ''),
-            array('text' => 'Reservaciones', 'url' => 'escazu/reservaciones'),
-            array('text' => 'Galeria', 'url' => 'escazu/galeria')
-        );
-        $this->load->view('includes/header',$headerOptions);
+        $headerOptions = simplexml_load_file("xml/header.xml");
+        $this->load->view('includes/header',$headerOptions->internal);
     	$this->load->view('escazu_gallery_view');
-        $this->load->view('includes/internal_footer');
+
+        $footerOptions = simplexml_load_file("xml/footer.xml");
+        $this->load->view('includes/internal_footer', $footerOptions->escazu);
     }
 
     function desamparados_gallery(){
-        $headerOptions['menu'] = array (
-            array('text' => 'Inicio', 'url' => ''),
-            array('text' => 'Reservaciones', 'url' => 'desamparados/reservaciones'),
-            array('text' => 'Galeria', 'url' => 'desamparados/galeria')
-        );
-        $this->load->view('includes/header', $headerOptions);
+        $headerOptions = simplexml_load_file("xml/header.xml");
+        $this->load->view('includes/header', $headerOptions->internal);
     	$this->load->view('desamparados_gallery_view');
-        $this->load->view('includes/internal_footer');
+
+        $footerOptions = simplexml_load_file("xml/footer.xml");
+        $this->load->view('includes/internal_footer', $footerOptions->desamparados);
     }
 
     function page_404(){
-        $headerOptions['menu'] = array (
-            array('text' => 'Inicio', 'url' => ''),
-            array('text' => 'F5 Escaz&uacute', 'url' => 'escazu/reservaciones'),
-            array('text' => 'F5 Desamparados', 'url' => 'desamparados/reservaciones')
-        );
-        $this->load->view('includes/header',$headerOptions);
+        $headerOptions = simplexml_load_file("xml/header.xml");
+        $this->load->view('includes/header',$headerOptions->external);
     	$this->load->view('404_view');
         $this->load->view('includes/footer');
     }

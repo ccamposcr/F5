@@ -6,14 +6,23 @@ class Login_controller extends CI_Controller {
     }
 
     function index() {
-        $headerOptions['menu'] = array (
-            array('text' => 'Inicio', 'url' => ''),
-            array('text' => 'Reservaciones', 'url' => $this->uri->segment(1) . '/reservaciones'),
-            array('text' => 'Galeria', 'url' => $this->uri->segment(1) . '/galeria')
-        );
-        $this->load->view('includes/header', $headerOptions);
+        $headerOptions = simplexml_load_file("xml/header.xml");
+        $this->load->view('includes/header', $headerOptions->internal);
         $this->load->view('login_view'); //load view for login
-        $this->load->view('includes/internal_footer');
+        
+        $footerOptions = simplexml_load_file("xml/footer.xml");
+
+        switch ( $this->uri->segment(1) ) {
+            case 'escazu':
+                $footerOptions = $footerOptions->escazu;
+                break;
+            
+           case 'desamparados':
+                $footerOptions = $footerOptions->desamparados;
+                break;
+        }
+
+        $this->load->view('includes/internal_footer', $footerOptions);
     }
 
     function verify() {
@@ -21,14 +30,23 @@ class Login_controller extends CI_Controller {
         $this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean|callback_checkUser');
  
         if( !$this->form_validation->run() ) {
-            $headerOptions['menu'] = array (
-                array('text' => 'Inicio', 'url' => ''),
-                array('text' => 'Reservaciones', 'url' => $this->uri->segment(1) . '/reservaciones'),
-                array('text' => 'Galeria', 'url' => $this->uri->segment(1) . '/galeria')
-            );
-            $this->load->view('includes/header', $headerOptions);
+            $headerOptions = simplexml_load_file("xml/header.xml");
+            $this->load->view('includes/header', $headerOptions->internal);
             $this->load->view('login_view');
-            $this->load->view('includes/internal_footer');
+
+            $footerOptions = simplexml_load_file("xml/footer.xml");
+
+            switch ( $this->uri->segment(1) ) {
+                case 'escazu':
+                    $footerOptions = $footerOptions->escazu;
+                    break;
+                
+               case 'desamparados':
+                    $footerOptions = $footerOptions->desamparados;
+                    break;
+            }
+
+            $this->load->view('includes/internal_footer', $footerOptions);
         }
         else{
             redirect($this->uri->segment(1) . '/admin', 'refresh');
