@@ -45,13 +45,13 @@ $route['404_override'] = 'pages_controller/page_404';
 
 //Desamparados
 $route['desamparados/(:num)/reservaciones'] = 'calendar_controller/calendar/';
-$route['desamparados/(:num)/reservaciones/(:num)/(:any)'] = 'calendar_controller/calendar/$1/$2';
-$route['desamparados/(:num)/reservaciones/(:any)'] = 'calendar_controller/$1';
+$route['desamparados/(:num)/reservaciones/(:num)/(:any)'] = 'calendar_controller/calendar/$2/$3';
+//$route['desamparados/(:num)/reservaciones/(:any)'] = 'calendar_controller/$1';
 
 //Escazu
 $route['escazu/(:num)/reservaciones'] = 'calendar_controller/calendar/';
-$route['escazu/(:num)/reservaciones/(:num)/(:any)'] = 'calendar_controller/calendar/$1/$2';
-$route['escazu/(:num)/reservaciones/(:any)'] = 'calendar_controller/$1';
+$route['escazu/(:num)/reservaciones/(:num)/(:any)'] = 'calendar_controller/calendar/$2/$3';
+//$route['escazu/(:num)/reservaciones/(:any)'] = 'calendar_controller/$1';
 
 /*  ------------------------------------------------------------------ */
 
@@ -59,13 +59,13 @@ $route['escazu/(:num)/reservaciones/(:any)'] = 'calendar_controller/$1';
 
 //Desamparados
 $route['desamparados/admin'] = 'calendar_controller/admin/';
-$route['desamparados/(:num)/admin/(:num)/(:any)'] = 'calendar_controller/admin/$1/$2';
-$route['desamparados/(:num)/admin/(:any)'] = 'calendar_controller/$1';
+$route['desamparados/(:num)/admin/(:num)/(:any)'] = 'calendar_controller/admin/$2/$3';
+//$route['desamparados/(:num)/admin/(:any)'] = 'calendar_controller/$1';
 
 //Escazu
 $route['escazu/admin'] = 'calendar_controller/admin/';
-$route['escazu/(:num)/admin/(:num)/(:any)'] = 'calendar_controller/admin/$1/$2';
-$route['escazu/(:num)/admin/(:any)'] = 'calendar_controller/$1';
+$route['escazu/(:num)/admin/(:num)/(:any)'] = 'calendar_controller/admin/$2/$3';
+//$route['escazu/(:num)/admin/(:any)'] = 'calendar_controller/$1';
 
 /* ------------------------------------------------------------------- */
 
