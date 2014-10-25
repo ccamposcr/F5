@@ -107,6 +107,12 @@ textarea {
 @blueLightTwitter: #009FD1;
 @gray:#968E8E;
 
+/* Variables */
+@font-content:'eurostileregular';
+
+
+
+
 #dailyResevations{
     display: none;
     width: 50%;
@@ -198,7 +204,7 @@ textarea {
     list-style: none;
     float: left;
     text-align: center;
-    font-family: 'eurostileregular';
+    font-family: @font-content;
     font-size: 16px;
     line-height: 110px;
 
@@ -245,11 +251,14 @@ textarea {
 
     h2{
         color: @red;
+        font-family: @font-content;
+        font-size: 36px;
+        font-weight: bolder;
     }
 
     p{
         color:white;
-        font-family: 'eurostileregular';
+        font-family: @font-content;
         font-size: 20px;  
     }
 }
@@ -284,23 +293,44 @@ textarea {
 }
 /* ==========================================================================
    GALLERY
-   ========================================================================== */
-#divMainContentGallery
-{
+========================================================================== */
+#divMainContentGallery{
     width: 960px;
     padding: 40px;
     background-color: rgba(0, 0, 0, 0.25);
     margin: 10px auto;
-     h1{
-        text-align: center;
-        margin:0 0  20px;
-        font-family: 'nakamuraregular';
-        color: @white;
-     }
+    
+        h1{
+            text-align: center;
+            margin:0 0  20px;
+            font-family: 'nakamuraregular';
+            color: @white;
+        }
+            #slider{
+                width:750px;
+                height: 520px;
+                margin: 0 auto;
+                border-color: @black;
+            }
+            .slides img{
+                width: 750px;
+                height: 513px;
+            }
 }
-.flexslider{
-    border:solid 8px @black;
+#carousel{
+    width: 750px;
+    height: 150px;
+    margin: 0 auto;
+    margin-top: 10px;
+    background-color: rgba(0, 0, 0, 0.25);
+    border:none;
+    .slides img{
+                width: 195px;
+                height: 144px;
+            }
+
 }
+
 
 /* ==========================================================================
    FOOTER 
@@ -315,7 +345,6 @@ textarea {
     width: 960px;
     margin: 0 auto;
 }
-
 
 /*************ICONS FOOTER******************/
 #divSocialsIcons{
@@ -335,9 +364,9 @@ textarea {
         text-align: center;
         line-height: 40px;
 
-        &:hover{
-            text-decoration: none;
-        }
+            &:hover{
+                text-decoration: none;
+            }
     }
 }
 
@@ -364,95 +393,92 @@ a.fa-youtube{
         background-color: @gray;
     }
 }
-
 #copy-right{
     color: @white;
     float: left;
     margin: 10px 40px;
-    font-family: 'eurostileregular';
+    font-family: @font-content;
     font-size: 16px; 
 }
 /* ==========================================================================
   INTERNAL FOOTER
    ========================================================================== */
-#divContentInfoFooter
-{
-    width: 250px;
+#divContentInfoFooter{
+    width: 300px;
     padding:5px;
-    margin: 5px 35px 5px 0;
+    margin: 0;
     float: left;
 
         span{
             color: @white;
-            font-family: 'eurostileregular';
+            font-family: @font-content;
             font-size: 14px;
             font-weight: bold;
         }
 
         p{
             color: @white;
-            font-family: 'eurostileregular';
+            font-family: @font-content;
             font-size: 14px;
         }
 }
-#divSocialsIconsFooter
-{
-    width: 315px;
+#contentSocialIcons{
+    width: 300px;
     padding:5px;
-    margin: 5px 35px 5px 0;
+    margin:0;
     float: left;
 
     span{
-        float: left;
         color: @white;
-        font-family: 'eurostileregular';
+        font-family: @font-content;
         font-size: 14px;
         font-weight: bold;
+        margin-left: 40px;
     }
-
-    a.fa-facebook, a.fa-twitter, a.fa-youtube{
-        height: 40px;
-        width: 40px;
-        border-radius: 100px;
-        float: left;
-        margin:20px 10px;
-        text-decoration: none;
-        display: block;
-        font-size: 25px;
-        color: @white;
-        text-align: center;
-        line-height: 40px;
-
-        &:hover{
-            text-decoration: none;
+        #socialIcons{
+            width: 200px;
+            margin-left: 25px;
         }
-    }
+        a.fa-facebook, a.fa-twitter, a.fa-youtube{
+            height: 40px;
+            width: 40px;
+            border-radius: 100px;
+            float: left;
+            margin:20px 10px;
+            text-decoration: none;
+            display: block;
+            font-size: 25px;
+            color: @white;
+            text-align: center;
+            line-height: 40px;
 
-    
+                &:hover{
+                    text-decoration: none;
+        }
+    }  
 }
 #divContentContact
 {
     width: 300px;
     padding:5px;
-    margin: 5px 0;
+    margin: 0;
     float: right;
 
     span{
         float: left;
         color: @white;
-        font-family: 'eurostileregular';
+        font-family: @font-content;
         font-size: 14px;
         font-weight: bold;
     }
 }
-
 #infoContact{
     float: right;
     width: 290px;
     padding: 5px;
-    margin: 5px 10px 5px 0;
-
-     span{
+    margin: 0;
+ 
+    span{
         color: @white;
         font-size: 14px;
         font-weight: bold;
@@ -461,16 +487,15 @@ a.fa-youtube{
     ul{
     list-style: none;
     color: @white;
-    font-family: 'eurostileregular';
+    font-family: @font-content;
     font-size: 14px;
     padding: 0;
     }
-
         .iconsContact {
             font-size: 20px;
             color: @orange;
             padding: 3px 0;
-            margin:0 10px ;
+            margin:0 10px;
             }
 }
 /* ==========================================================================

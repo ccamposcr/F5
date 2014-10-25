@@ -60,7 +60,7 @@ myApp.controller("galleryController", function ($scope, $rootScope){
 	    controlNav: false,
 	    animationLoop: true,
 	    slideshow: false,
-	    itemWidth: 210,
+	    itemWidth: 200,
 	    itemMargin: 5,
 	    asNavFor: '#slider'
 	  });
