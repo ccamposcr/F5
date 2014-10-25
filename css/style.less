@@ -107,6 +107,12 @@ textarea {
 @blueLightTwitter: #009FD1;
 @gray:#968E8E;
 
+/* Variables */
+@font-content:'eurostileregular';
+
+
+
+
 #dailyResevations{
     display: none;
     width: 50%;
@@ -198,7 +204,7 @@ textarea {
     list-style: none;
     float: left;
     text-align: center;
-    font-family: 'eurostileregular';
+    font-family: @font-content;
     font-size: 16px;
     line-height: 110px;
 
@@ -245,11 +251,14 @@ textarea {
 
     h2{
         color: @red;
+        font-family: @font-content;
+        font-size: 36px;
+        font-weight: bolder;
     }
 
     p{
         color:white;
-        font-family: 'eurostileregular';
+        font-family: @font-content;
         font-size: 20px;  
     }
 }
@@ -285,13 +294,13 @@ textarea {
 /* ==========================================================================
    GALLERY
    ========================================================================== */
-#divMainContentGallery
-{
+#divMainContentGallery{
     width: 960px;
     padding: 40px;
     background-color: rgba(0, 0, 0, 0.25);
     margin: 10px auto;
-     h1{
+    
+        h1{
         text-align: center;
         margin:0 0  20px;
         font-family: 'nakamuraregular';
@@ -316,7 +325,6 @@ textarea {
     margin: 0 auto;
 }
 
-
 /*************ICONS FOOTER******************/
 #divSocialsIcons{
     float: right;
@@ -335,9 +343,9 @@ textarea {
         text-align: center;
         line-height: 40px;
 
-        &:hover{
-            text-decoration: none;
-        }
+            &:hover{
+                text-decoration: none;
+            }
     }
 }
 
@@ -364,19 +372,17 @@ a.fa-youtube{
         background-color: @gray;
     }
 }
-
 #copy-right{
     color: @white;
     float: left;
     margin: 10px 40px;
-    font-family: 'eurostileregular';
+    font-family: @font-content;
     font-size: 16px; 
 }
 /* ==========================================================================
   INTERNAL FOOTER
    ========================================================================== */
-#divContentInfoFooter
-{
+#divContentInfoFooter{
     width: 300px;
     padding:5px;
     margin: 0;
@@ -384,19 +390,18 @@ a.fa-youtube{
 
         span{
             color: @white;
-            font-family: 'eurostileregular';
+            font-family: @font-content;
             font-size: 14px;
             font-weight: bold;
         }
 
         p{
             color: @white;
-            font-family: 'eurostileregular';
+            font-family: @font-content;
             font-size: 14px;
         }
 }
-#contentSocialIcons
-{
+#contentSocialIcons{
     width: 300px;
     padding:5px;
     margin:0;
@@ -404,7 +409,7 @@ a.fa-youtube{
 
     span{
         color: @white;
-        font-family: 'eurostileregular';
+        font-family: @font-content;
         font-size: 14px;
         font-weight: bold;
         margin-left: 40px;
@@ -413,27 +418,24 @@ a.fa-youtube{
             width: 200px;
             margin-left: 25px;
         }
-    a.fa-facebook, a.fa-twitter, a.fa-youtube{
-        height: 40px;
-        width: 40px;
-        border-radius: 100px;
-        float: left;
-        margin:20px 10px;
-        text-decoration: none;
-        display: block;
-        font-size: 25px;
-        color: @white;
-        text-align: center;
-        line-height: 40px;
-
-        &:hover{
+        a.fa-facebook, a.fa-twitter, a.fa-youtube{
+            height: 40px;
+            width: 40px;
+            border-radius: 100px;
+            float: left;
+            margin:20px 10px;
             text-decoration: none;
+            display: block;
+            font-size: 25px;
+            color: @white;
+            text-align: center;
+            line-height: 40px;
+
+                &:hover{
+                    text-decoration: none;
         }
-    }
-
-    
+    }  
 }
-
 #divContentContact
 {
     width: 300px;
@@ -444,19 +446,18 @@ a.fa-youtube{
     span{
         float: left;
         color: @white;
-        font-family: 'eurostileregular';
+        font-family: @font-content;
         font-size: 14px;
         font-weight: bold;
     }
 }
-
 #infoContact{
     float: right;
     width: 290px;
     padding: 5px;
     margin: 0;
  
-     span{
+    span{
         color: @white;
         font-size: 14px;
         font-weight: bold;
@@ -465,16 +466,15 @@ a.fa-youtube{
     ul{
     list-style: none;
     color: @white;
-    font-family: 'eurostileregular';
+    font-family: @font-content;
     font-size: 14px;
     padding: 0;
     }
-
         .iconsContact {
             font-size: 20px;
             color: @orange;
             padding: 3px 0;
-            margin:0 10px ;
+            margin:0 10px;
             }
 }
 /* ==========================================================================
