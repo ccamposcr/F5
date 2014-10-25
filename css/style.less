@@ -293,7 +293,7 @@ textarea {
 }
 /* ==========================================================================
    GALLERY
-   ========================================================================== */
+========================================================================== */
 #divMainContentGallery{
     width: 960px;
     padding: 40px;
@@ -301,15 +301,36 @@ textarea {
     margin: 10px auto;
     
         h1{
-        text-align: center;
-        margin:0 0  20px;
-        font-family: 'nakamuraregular';
-        color: @white;
-     }
+            text-align: center;
+            margin:0 0  20px;
+            font-family: 'nakamuraregular';
+            color: @white;
+        }
+            #slider{
+                width:750px;
+                height: 520px;
+                margin: 0 auto;
+                border-color: @black;
+            }
+            .slides img{
+                width: 750px;
+                height: 513px;
+            }
 }
-.flexslider{
-    border:solid 8px @black;
+#carousel{
+    width: 750px;
+    height: 150px;
+    margin: 0 auto;
+    margin-top: 10px;
+    background-color: rgba(0, 0, 0, 0.25);
+    border:none;
+    .slides img{
+                width: 195px;
+                height: 144px;
+            }
+
 }
+
 
 /* ==========================================================================
    FOOTER 
