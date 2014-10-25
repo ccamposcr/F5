@@ -8,11 +8,13 @@
         			</p>
 		    	</div>
 		    	
-		    	<div id="divSocialsIconsFooter" class="clearfix">
-		    		<span>Síguenos en:</span>	
-		            <a href="" class="fa fa-facebook"></a>
-		            <a href="" class="fa fa-twitter"></a>
-		            <a href="" class="fa fa-youtube"></a>       
+		    	<div id="contentSocialIcons" class="clearfix">
+		    		<span>Síguenos en:</span>
+		    		<div id="socialIcons">
+			            <a href="" class="fa fa-facebook"></a>
+			            <a href="" class="fa fa-twitter"></a>
+			            <a href="" class="fa fa-youtube"></a>  
+			        </div>	     
 		    	</div>	       
 
 		    	<div id="infoContact" class="clearfix">
