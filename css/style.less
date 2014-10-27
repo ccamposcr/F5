@@ -109,6 +109,7 @@ textarea {
 
 /* Variables */
 @font-content:'eurostileregular';
+@font-Titles:'nakamuraregular';
 
 
 
@@ -238,39 +239,51 @@ textarea {
 #divContent{
     width: 960px;
     padding: 40px;
-    background-color: rgba(0, 0, 0, 0.25); 
-    margin:10px auto;
+    background-color:rgba(2, 2, 2, 0.29); 
+    margin:25px auto;
     //min-height: 930px;
 
     h1,h2{
         color:white;
         text-align: center;
-        margin: 30px;
-        font-family: 'nakamuraregular';
+        margin: 5px;
+        font-family: @font-Titles;
+        font-size: 31px;
     }
 
     h2{
         color: @red;
-        font-family: @font-content;
-        font-size: 36px;
-        font-weight: bolder;
+        font-size: 22px;
+        margin: 34px 0 56px;
+ 
+
     }
 
     p{
         color:white;
         font-family: @font-content;
-        font-size: 20px;  
+        font-size: 24px;
+        margin-top: 42px;  
     }
+}
+#divContentButtons{
+    margin-bottom: 20px;
 }
 
 #divButton1, #divButton2{
-    width: 240px;
-    height: 120px;
+    width: 288px;
+    height: 146px;
     border-radius: 10px;
     background-color: @orange;
 
     a{
-       display: block; 
+       display: block;
+       margin: 0 auto; 
+    }
+    img{
+        display: block;
+       margin: 20px auto; 
+
     }
 
     &:hover{
@@ -280,12 +293,12 @@ textarea {
 
 #divButton1{
     float: left;
-    margin-left:75px; 
+    // margin-left:75px; 
 }
 
 #divButton2{
     float: right;
-    margin-right: 75px;
+    // margin-right: 75px;
 }
 
 #imgLogoBoton1, #imgLogoBoton2{
