@@ -26,7 +26,7 @@
 		            
 			    </div>
 
-		        <p id="copy-right">© 2014Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil consequuntur, nesciunt dicta, esse rem ducimus itaque quis.</p>
+		        <p id="copy-right">© 2014Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil consequuntur, esse rem ducimus itaque quis.</p>
 		    </div>
 		</div>
 	</div>
