@@ -1,4 +1,5 @@
-    <div ng-controller="reservationController">
+    <div id="divContentReservations" ng-controller="reservationController">
+        <h1>Reservaciones</h1>
         <div id="calendar">
         	<?=$calendar?>
         	<?php
