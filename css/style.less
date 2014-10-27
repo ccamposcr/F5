@@ -157,6 +157,7 @@ textarea {
     width: 100%;
     background: url('../img/main-background.jpg') top center no-repeat;
     margin: 0 auto;
+    position: relative;
 }
 
 
@@ -174,21 +175,6 @@ textarea {
 #divContentHeader{
     width: 960px;
     margin: 0 auto;
-    position: relative;
-
-    #userStatus{
-        position: absolute;
-        right: 0;
-        top: -20px;
-
-        a{
-            color: @white;
-
-            &:hover{
-                color: @red;
-            }
-        }
-    }
 }
 
 #navPrincipal {
@@ -230,6 +216,20 @@ textarea {
         display: block;
     }
 
+}
+
+#userStatus{
+    position: absolute;
+    right: 0;
+    top: -20px;
+
+    a{
+        color: @white;
+
+        &:hover{
+            color: @red;
+        }
+    }
 }
 
 /* ==========================================================================

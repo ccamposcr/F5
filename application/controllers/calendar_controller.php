@@ -74,8 +74,8 @@ class Calendar_controller extends CI_Controller {
         } else {
             $data['calendar'] = $this->calendar->generate($year, $month);
             $headerOptions = simplexml_load_file("xml/header.xml");
-            $headerOptions['adminBtn'] = true;
             $this->load->view('includes/header', $headerOptions->internal);
+            $this->load->view('includes/userStatus');
             $this->load->view('calendar_view', $data);
 
             $footerOptions = simplexml_load_file("xml/footer.xml");
@@ -99,10 +99,11 @@ class Calendar_controller extends CI_Controller {
         if($this->session->userdata('logged_in'))
         {
             $session_data = $this->session->userdata('logged_in');
-            $headerOptions['user'] = $session_data['user'];
             $data['calendar'] = $this->calendar->generate($year, $month);
+            $user['user'] = $session_data['user'];
             $headerOptions = simplexml_load_file("xml/header.xml");
             $this->load->view('includes/header', $headerOptions->internal);
+             $this->load->view('includes/userStatus', $user);
             $this->load->view('calendar_view', $data);
             
             $footerOptions = simplexml_load_file("xml/footer.xml");

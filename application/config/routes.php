@@ -58,12 +58,12 @@ $route['escazu/(:num)/reservaciones/(:num)/(:any)'] = 'calendar_controller/calen
 //Admin Routes
 
 //Desamparados
-$route['desamparados/admin'] = 'calendar_controller/admin/';
+$route['desamparados/(:num)/admin'] = 'calendar_controller/admin/';
 $route['desamparados/(:num)/admin/(:num)/(:any)'] = 'calendar_controller/admin/$2/$3';
 //$route['desamparados/(:num)/admin/(:any)'] = 'calendar_controller/$1';
 
 //Escazu
-$route['escazu/admin'] = 'calendar_controller/admin/';
+$route['escazu/(:num)/admin'] = 'calendar_controller/admin/';
 $route['escazu/(:num)/admin/(:num)/(:any)'] = 'calendar_controller/admin/$2/$3';
 //$route['escazu/(:num)/admin/(:any)'] = 'calendar_controller/$1';
 
