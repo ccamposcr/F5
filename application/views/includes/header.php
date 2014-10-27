@@ -32,14 +32,12 @@
                     </a>
                     <ul id="navPrincipal" class="clearfix">
                         <?php foreach ($button as $index => $row) {
-                            
-                            if( $row == 0){
+                            if( $index == 0){
                                 echo '<li><a href="' . base_url() . $row->url .'">'. $row->text .'</a></li>';
                             }
                             else{
                                 echo '<li><a href="' . base_url() . $this->uri->segment(1) . $row->url .'">'. $row->text .'</a></li>';
                             }
-                            
                         }?>
                     </ul>
                         <div id="userStatus">
