@@ -49,7 +49,7 @@ class Login_controller extends CI_Controller {
             $this->load->view('includes/internal_footer', $footerOptions);
         }
         else{
-            redirect($this->uri->segment(1) . '/admin', 'refresh');
+            redirect($this->uri->segment(1) . '/1/admin', 'refresh');
         }       
      }
 

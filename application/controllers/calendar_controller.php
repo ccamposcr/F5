@@ -70,7 +70,7 @@ class Calendar_controller extends CI_Controller {
 
         if($this->session->userdata('logged_in'))
         {
-            redirect($this->uri->segment(1) . '/admin', 'refresh');
+            redirect($this->uri->segment(1) . '/' . $this->uri->segment(2) . '/admin', 'refresh');
         } else {
             $data['calendar'] = $this->calendar->generate($year, $month);
             $headerOptions = simplexml_load_file("xml/header.xml");
@@ -103,7 +103,7 @@ class Calendar_controller extends CI_Controller {
             $user['user'] = $session_data['user'];
             $headerOptions = simplexml_load_file("xml/header.xml");
             $this->load->view('includes/header', $headerOptions->internal);
-             $this->load->view('includes/userStatus', $user);
+            $this->load->view('includes/userStatus', $user);
             $this->load->view('calendar_view', $data);
             
             $footerOptions = simplexml_load_file("xml/footer.xml");
