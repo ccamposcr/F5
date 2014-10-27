@@ -221,12 +221,8 @@ textarea {
 
 #userStatus{
     position: absolute;
-    top: 0;
-    margin: 0 auto;
-    left: 0;
     right: 0;
-    width: 960px;
-    text-align: right;
+    top: -20px;
 
     a{
         color: @white;
@@ -354,25 +350,29 @@ textarea {
 #divContentFooter{
     width: 960px;
     margin: 0 auto;
+    padding: 40px;
+}
+#divSocialsIcons{
+    width: 210px;
+    margin: 0 auto;
 }
 
 /*************ICONS FOOTER******************/
 #divSocialsIcons{
-    float: right;
-    margin-right:360px; 
+    
 
     a.fa-facebook, a.fa-twitter, a.fa-youtube{
-        height: 40px;
-        width: 40px;
+        height: 50px;
+        width: 50px;
         border-radius: 100px;
         float: left;
         margin:20px 10px;
         text-decoration: none;
         display: block;
-        font-size: 25px;
+        font-size: 35px;
         color: @white;
         text-align: center;
-        line-height: 40px;
+        line-height: 50px;
 
             &:hover{
                 text-decoration: none;
@@ -406,7 +406,6 @@ a.fa-youtube{
 #copy-right{
     color: @white;
     float: left;
-    margin: 10px 40px;
     font-family: @font-content;
     font-size: 16px; 
 }
