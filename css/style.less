@@ -343,14 +343,14 @@ textarea {
    ========================================================================== */
 #divWrapperFooter{
     width: 100%;
-    height: 200px;
+    height: 250px;
     background: url(../img/footer-background.jpg) center center repeat;
 }
 
 #divContentFooter{
     width: 960px;
     margin: 0 auto;
-    padding: 40px;
+    padding: 20px 40px;
 }
 #divSocialsIcons{
     width: 210px;
@@ -413,47 +413,31 @@ a.fa-youtube{
   INTERNAL FOOTER
    ========================================================================== */
 #divContentInfoFooter{
-    width: 300px;
-    padding:5px;
+    width: 242px;
     margin: 0;
     float: left;
-
-        span{
-            color: @white;
-            font-family: @font-content;
-            font-size: 14px;
-            font-weight: bold;
-        }
-
         p{
             color: @white;
             font-family: @font-content;
-            font-size: 14px;
+            font-size: 18px;
+            line-height: 18px;
         }
 }
 #contentSocialIcons{
-    width: 300px;
-    padding:5px;
-    margin:0;
+    width: 200px;
+    margin-left: 112px;
     float: left;
 
-    span{
-        color: @white;
-        font-family: @font-content;
-        font-size: 14px;
-        font-weight: bold;
-        margin-left: 40px;
-    }
         #socialIcons{
             width: 200px;
-            margin-left: 25px;
+            margin-left: -11px;
         }
         a.fa-facebook, a.fa-twitter, a.fa-youtube{
             height: 40px;
             width: 40px;
             border-radius: 100px;
             float: left;
-            margin:20px 10px;
+            margin:13px 9px;
             text-decoration: none;
             display: block;
             font-size: 25px;
@@ -466,47 +450,39 @@ a.fa-youtube{
         }
     }  
 }
-#divContentContact
-{
-    width: 300px;
-    padding:5px;
-    margin: 0;
-    float: right;
-
-    span{
-        float: left;
-        color: @white;
-        font-family: @font-content;
-        font-size: 14px;
-        font-weight: bold;
-    }
-}
 #infoContact{
     float: right;
-    width: 290px;
-    padding: 5px;
+    width: 230px;
     margin: 0;
- 
-    span{
-        color: @white;
-        font-size: 14px;
-        font-weight: bold;
-    }
 
     ul{
-    list-style: none;
-    color: @white;
-    font-family: @font-content;
-    font-size: 14px;
-    padding: 0;
+        padding: 0; 
+        margin-top: 5px;
     }
-        .iconsContact {
-            font-size: 20px;
-            color: @orange;
-            padding: 3px 0;
-            margin:0 10px;
-            }
+         li a{
+            list-style: none;
+            color: @white;
+            font-family: @font-content;
+            font-size: 18px;
+            padding: 0;
+            text-decoration: none;
+    }
 }
+#infoContact .iconsContact {
+    font-size: 20px;
+    color: @orange;
+    padding: 7px 3px 0 0;
+    margin:0 10px;
+}
+
+
+#divContentInfoFooter span, #contentSocialIcons span, #infoContact span{
+            color: @white;
+            font-family: @font-content;
+            font-size: 22px;
+            line-height: 17px;
+            text-transform: capitalize;
+        }
 /* ==========================================================================
    Helper classes
    ========================================================================== */

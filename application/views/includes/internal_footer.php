@@ -7,7 +7,7 @@
 		    	</div>
 		    	
 		    	<div id="contentSocialIcons" class="clearfix">
-		    		<span>Síguenos en:</span>
+		    		<span>S&iacute;guenos en:</span>
 		    		<div id="socialIcons">
 			            <a href="" class="fa fa-facebook"></a>
 			            <a href="" class="fa fa-twitter"></a>
