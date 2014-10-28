@@ -18,10 +18,10 @@
 		    	<div id="infoContact" class="clearfix">
 		    		<span>Cont&aacute;ctenos:</span> 	 
 			    	<ul>
-			    		<li><span class=" iconsContact fa fa-map-marker"></span><a href="<?php echo $mapUrl ?>">Localizaci&oacute;n</a></li>
-			            <li><span class=" iconsContact fa fa-phone-square"></span><a href="tel:<?php echo $phone ?>"><?php echo $phone ?></a></li>
-			            <li><span class=" iconsContact fa fa-envelope"></span><a href="mailto:<?php echo $email ?>"><?php echo $email ?></a></li>
-			            <li><span class=" iconsContact fa fa-skype"></span><a href="skype:<?php echo $skype ?>?call"><?php echo $skype ?></a></li>
+			    		<li><span class=" fa fa-map-marker"></span><a href="<?php echo $mapUrl ?>">Localizaci&oacute;n</a></li>
+			            <li><span class=" fa fa-phone-square"></span><a href="tel:<?php echo $phone ?>"><?php echo $phone ?></a></li>
+			            <li><span class=" fa fa-envelope"></span><a href="mailto:<?php echo $email ?>"><?php echo $email ?></a></li>
+			            <li><span class=" fa fa-skype"></span><a href="skype:<?php echo $skype ?>?call"><?php echo $skype ?></a></li>
 			    	</ul>
 		            
 			    </div>

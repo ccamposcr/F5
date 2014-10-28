@@ -251,7 +251,11 @@ textarea {
 #userStatus{
     position: absolute;
     right: 0;
-    top: -20px;
+    left: 0;
+    margin: 0 auto;
+    width: 960px;
+    text-align: right;
+    top: 0;
 
     a{
         color: @white;
@@ -364,10 +368,7 @@ textarea {
                 width: 140px;
                 height: 110px;
             }
-
 }
-
-
 /* ==========================================================================
    FOOTER 
    ========================================================================== */
@@ -389,8 +390,6 @@ textarea {
 
 /*************ICONS FOOTER******************/
 #divSocialsIcons{
-    
-
     a.fa-facebook, a.fa-twitter, a.fa-youtube{
         height: 50px;
         width: 50px;
@@ -409,7 +408,6 @@ textarea {
             }
     }
 }
-
 a.fa-facebook{
     background-color: @blueFacebook;
 
@@ -490,24 +488,28 @@ a.fa-youtube{
         padding: 0; 
         margin-top: 5px;
     }
-         li a{
+    li{
+        a{
             list-style: none;
             color: @white;
             font-family: @font-content;
             font-size: 18px;
             padding: 0;
             text-decoration: none;
+        }
+        
+        span{
+            font-size: 20px;
+            color: @orange;
+            padding: 7px 3px 0 0;
+            margin:0 10px;
+        }
     }
 }
-#infoContact .iconsContact {
-    font-size: 20px;
-    color: @orange;
-    padding: 7px 3px 0 0;
-    margin:0 10px;
-}
 
 
-#divContentInfoFooter span, #contentSocialIcons span, #infoContact span{
+
+#divContentInfoFooter span, #contentSocialIcons span, #infoContact > span{
             color: @white;
             font-family: @font-content;
             font-size: 22px;
