@@ -24,19 +24,19 @@
         
         <div id="mainWrapper" class="clearfix">
 
-            <div id="divWrapperHeader" class="clearfix">
+            <div id="divWrapperHeader" class="clearfix" ng-controller="headerController">
                 <div id="divContentHeader" class="clearfix">
                     <a id="logo" class="clearfix" href="<?php echo base_url(); ?>">
                         <img id="mainLogo" src="<?php echo base_url(); ?>img/logo.png" alt="F5" height="93" width="242">
                         <span><?php echo $this->uri->segment(1)?></span>
                     </a>
-                    <ul id="navPrincipal" class="clearfix">
+                    <ul id="navPrincipal" class="clearfix" ng-init="setActive()">
                         <?php foreach ($button as $index => $row) {
                             if( $index == 0){
-                                echo '<li><a href="' . base_url() . $row->url .'">'. $row->text .'</a></li>';
+                                echo '<li class="' . $row->type . '"><a href="' . base_url() . $row->url .'">'. $row->text .'</a></li>';
                             }
                             else{
-                                echo '<li><a href="' . base_url() . $this->uri->segment(1) . $row->url .'">'. $row->text .'</a></li>';
+                                echo '<li class="' . $row->type . '"><a href="' . base_url() . $this->uri->segment(1) . $row->url .'">'. $row->text .'</a></li>';
                             }
                         }?>
                     </ul>
