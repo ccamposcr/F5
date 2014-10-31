@@ -58,9 +58,6 @@ class Calendar_controller extends CI_Controller {
 
         {table_close}</table>{/table_close}';
         $this->load->library('calendar', $prefs);
-
-        $GLOBALS['pitchs'] = array('escazu_1' => 1, 'desamparados_1' => 2);
-       // $GLOBALS['current_pitch'];
     }
 
 

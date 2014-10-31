@@ -7,7 +7,12 @@ class Api_model extends CI_MODEL
     }
 
     function getReservationByDay($reservation_year,$reservation_month,$reservation_day){
-    	$query = $this->db->query("SELECT * FROM t_reservations WHERE reservation_year = '$reservation_year' AND reservation_month = '$reservation_month' AND reservation_day='$reservation_day' ORDER BY reservation_time ASC;");
+    	$query = $this->db->query("SELECT * FROM t_reservations WHERE reservation_year = '$reservation_year' AND reservation_month = '$reservation_month' AND reservation_day='$reservation_day' ORDER BY reservation_time ASC");
+        return $query->result_array();
+    }
+
+    function getPitchByGroup($group){
+    	$query = $this->db->query("SELECT * FROM t_pitchs WHERE id_group = '$group' AND active ='1'");
         return $query->result_array();
     }
 }

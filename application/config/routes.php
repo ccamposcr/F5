@@ -71,6 +71,7 @@ $route['escazu/(:num)/admin/(:num)/(:any)'] = 'calendar_controller/admin/$2/$3';
 
 //Services Routs
 $route['getReservationByDay'] = 'api_controller/getReservationByDay';
+$route['getPitchByGroup'] = 'api_controller/getPitchByGroup';
 //$route['(:any)/getReservationByDay'] = 'calendar_controller/getReservationByDay';
 
 //Login - Logout Routes

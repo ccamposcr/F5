@@ -1,4 +1,17 @@
     <div id="divContentReservations" ng-controller="reservationController">
+
+        <div id="pitchs">
+            <ul>
+                <li class="row clearfix" ng-repeat="data in pitchs">
+                    <a href="<?php echo base_url() . $this->uri->segment(1) . '/{{data.id_pitch}}/' . 'reservaciones' ?>">Cancha {{data.id_pitch}}</a>
+                </li>
+            </ul>
+            <?php
+                $pitch = $this->uri->segment(1);
+            ?>
+            <input type="hidden" value="<?=$pitch?>" id="pitch" />
+        </div>
+
         <h1>Reservaciones</h1>
         <div id="calendar">
         	<?=$calendar?>
