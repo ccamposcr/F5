@@ -1,5 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-class Calendar_model extends CI_MODEL
+class Api_model extends CI_MODEL
 {
     function getReservationByTime($reservation_year,$reservation_month,$reservation_day,$reservation_time){
         $query = $this->db->query("SELECT * FROM t_reservations WHERE reservation_year = '$reservation_year' AND reservation_month = '$reservation_month' AND reservation_day='$reservation_day' AND reservation_time='$reservation_time'");
