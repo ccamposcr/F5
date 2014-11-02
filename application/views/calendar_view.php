@@ -1,8 +1,8 @@
     <div id="divContentReservations" ng-controller="reservationController">
 
         <div id="pitchs">
-            <ul>
-                <li class="row clearfix" ng-repeat="data in pitchs">
+            <ul class="clearfix">
+                <li class="clearfix" ng-repeat="data in pitchs">
                     <a href="<?php echo base_url() . $this->uri->segment(1) . '/{{data.id_pitch}}/' . 'reservaciones' ?>">Cancha {{data.id_pitch}}</a>
                 </li>
             </ul>

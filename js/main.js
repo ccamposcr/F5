@@ -41,6 +41,7 @@ myApp.controller("reservationController", function ($scope, $rootScope){
 			success : function(response){
 				$scope.$apply(function(){
 					$scope.pitchs = jQuery.parseJSON(response);
+					$('#pitchs').show();
 				});
 			}
 		});

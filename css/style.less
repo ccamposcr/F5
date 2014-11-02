@@ -128,6 +128,7 @@ textarea {
         font-size: 31px;
     }
 }
+
 #dailyResevations{
     display: none;
     width: 50%;
@@ -168,9 +169,11 @@ textarea {
 #calendar {
     margin: 0 auto;
     width: 100px;
+    color: @white;
     .day{
-    cursor: pointer;
-}}
+        cursor: pointer;
+    }
+}
 
 #mainWrapper{
     width: 100%;
@@ -269,6 +272,22 @@ textarea {
     }
 }
 
+#pitchs{
+    display: none;
+    ul{
+        list-style-type: none;
+
+        li{
+            float: left;
+            margin-left: 10px;
+            a{
+                color: @white;
+                display: block;
+            }
+        }
+    }
+}
+
 /* ==========================================================================
    CONTENT
    ========================================================================== */
@@ -301,6 +320,7 @@ textarea {
         line-height: 24px; 
     }
 }
+
 #divContentButtons{
     margin-bottom: 20px;
 }
@@ -342,24 +362,27 @@ textarea {
     background-color: rgba(2, 2, 2, 0.29);
     margin: 20px auto;
     
-        h1{
-            text-align: center;
-            margin-top: 5px;
-            font-family: @font-Titles;
-            color: @white;
-            font-size: 31px;
+    h1{
+        text-align: center;
+        margin-top: 5px;
+        font-family: @font-Titles;
+        color: @white;
+        font-size: 31px;
+    }
+    #slider{
+        width:750px;
+        height: 521px;
+        margin: 0 auto;
+        border: 5px solid #282626;
+    }
+    .slides {
+        img{
+            width: 750px;
+            height: 513px;
         }
-            #slider{
-                width:750px;
-                height: 521px;
-                margin: 0 auto;
-                border: 5px solid #282626;
-            }
-            .slides img{
-                width: 750px;
-                height: 513px;
-            }
+    }
 }
+
 #carousel{
     width: 750px;
     height: 110px;
@@ -367,10 +390,12 @@ textarea {
     margin-top: 10px;
     background-color: rgba(0, 0, 0, 0.25);
     border:none;
-    .slides img{
-                width: 140px;
-                height: 110px;
-            }
+    .slides {
+        img{
+            width: 140px;
+            height: 110px;
+        }
+    }
 }
 /* ==========================================================================
    FOOTER 
@@ -406,11 +431,12 @@ textarea {
         text-align: center;
         line-height: 50px;
 
-            &:hover{
-                text-decoration: none;
-            }
+        &:hover{
+            text-decoration: none;
+        }
     }
 }
+
 a.fa-facebook{
     background-color: @blueFacebook;
 
@@ -434,6 +460,7 @@ a.fa-youtube{
         background-color: @gray;
     }
 }
+
 #copy-right{
     color: @white;
     float: left;
@@ -448,40 +475,42 @@ a.fa-youtube{
     width: 242px;
     margin: 0;
     float: left;
-        p{
-            color: @white;
-            font-family: @font-content;
-            font-size: 18px;
-            line-height: 18px;
-        }
+    p{
+        color: @white;
+        font-family: @font-content;
+        font-size: 18px;
+        line-height: 18px;
+    }
 }
+
 #contentSocialIcons{
     width: 200px;
     margin-left: 95px;
     float: left;
 
-        #socialIcons{
-            width: 200px;
-            margin-left: -11px;
-        }
-        a.fa-facebook, a.fa-twitter, a.fa-youtube{
-            height: 40px;
-            width: 40px;
-            border-radius: 100px;
-            float: left;
-            margin:13px 9px;
-            text-decoration: none;
-            display: block;
-            font-size: 25px;
-            color: @white;
-            text-align: center;
-            line-height: 40px;
+    #socialIcons{
+        width: 200px;
+        margin-left: -11px;
+    }
+    a.fa-facebook, a.fa-twitter, a.fa-youtube{
+        height: 40px;
+        width: 40px;
+        border-radius: 100px;
+        float: left;
+        margin:13px 9px;
+        text-decoration: none;
+        display: block;
+        font-size: 25px;
+        color: @white;
+        text-align: center;
+        line-height: 40px;
 
-                &:hover{
-                    text-decoration: none;
+        &:hover{
+            text-decoration: none;
         }
     }  
 }
+
 #infoContact{
     float: right;
     width: 280px;
@@ -490,22 +519,23 @@ a.fa-youtube{
     ul{
         padding: 0; 
         margin-top: 5px;
-    }
-    li{
-        a{
-            list-style: none;
-            color: @white;
-            font-family: @font-content;
-            font-size: 18px;
-            padding: 0;
-            text-decoration: none;
-        }
-        
-        span{
-            font-size: 20px;
-            color: @orange;
-            padding: 7px 3px 0 0;
-            margin:0 10px;
+
+        li{
+            a{
+                list-style: none;
+                color: @white;
+                font-family: @font-content;
+                font-size: 18px;
+                padding: 0;
+                text-decoration: none;
+            }
+            
+            span{
+                font-size: 20px;
+                color: @orange;
+                padding: 7px 3px 0 0;
+                margin:0 10px;
+            }
         }
     }
 }
@@ -513,12 +543,12 @@ a.fa-youtube{
 
 
 #divContentInfoFooter span, #contentSocialIcons span, #infoContact > span{
-            color: @white;
-            font-family: @font-content;
-            font-size: 22px;
-            line-height: 17px;
-            text-transform: capitalize;
-        }
+    color: @white;
+    font-family: @font-content;
+    font-size: 22px;
+    line-height: 17px;
+    text-transform: capitalize;
+}
 /* ==========================================================================
    Helper classes
    ========================================================================== */
