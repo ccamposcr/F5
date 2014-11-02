@@ -13,7 +13,9 @@ class Api_controller extends CI_Controller {
         $reservation_month = ( isset($_POST['month']) ) ? $_POST['month'] : date("m", time());
         $reservation_day = ( isset($_POST['day']) ) ? $_POST['day'] : date("d", time());
         $reservation_time = ( isset($_POST['time']) ) ? $_POST['time'] : '08-09';
-        $reservation = $this->api_model->getReservationByTime($reservation_year,$reservation_month,$reservation_day,$reservation_time);
+        $group_id = ( isset($_POST['group_id']) ) ? $_POST['group_id'] : 1;
+        $pitch_id = ( isset($_POST['pitch_id']) ) ? $_POST['pitch_id'] : 1;
+        $reservation = $this->api_model->getReservationByTime($reservation_year,$reservation_month,$reservation_day,$reservation_time,$group_id,$pitch_id);
         echo json_encode($reservation);
     }
 
@@ -21,7 +23,9 @@ class Api_controller extends CI_Controller {
         $reservation_year = ( isset($_POST['year']) ) ? $_POST['year'] : date("Y", time());
         $reservation_month = ( isset($_POST['month']) ) ? $_POST['month'] : date("m", time());
         $reservation_day = ( isset($_POST['day']) ) ? $_POST['day'] : date("d", time());
-        $reservation = $this->api_model->getReservationByDay($reservation_year,$reservation_month,$reservation_day);
+        $group_id = ( isset($_POST['group_id']) ) ? $_POST['group_id'] : 1;
+        $pitch_id = ( isset($_POST['pitch_id']) ) ? $_POST['pitch_id'] : 1;
+        $reservation = $this->api_model->getReservationByDay($reservation_year,$reservation_month,$reservation_day,$group_id,$pitch_id);
         echo json_encode($reservation);
     }
 
