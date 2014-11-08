@@ -27,7 +27,6 @@ myApp.controller("reservationController", function ($scope, $rootScope){
 	}
 
 	$scope.loadPitchsPagination = function (){
-		console.log( $scope.getGroupFromUrl() + ' -- ' + $('#pitch').val());
 		$.ajax({
 
 			type: 'POST',
@@ -72,6 +71,7 @@ myApp.controller("reservationController", function ($scope, $rootScope){
 	}
 
 	$scope.getGroupFromUrl = function(){
+		var group = null;
 		$.ajax({
 
 			type: 'POST',
@@ -83,9 +83,10 @@ myApp.controller("reservationController", function ($scope, $rootScope){
 			async : false,
 
 			success : function(response){
-				return jQuery.parseJSON(response)[0].id;
+				group = jQuery.parseJSON(response)[0].id;
 			}
 		});
+		return group;
 	}
 
 	$scope.getPitchFromUrl = function(){
