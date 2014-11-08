@@ -5,7 +5,6 @@ myApp.controller("reservationController", function ($scope, $rootScope){
    $scope.timesForReservations = ['08-09','09-10','10-11','11-12','12-13','13-14','14-15','15-16','16-17','17-18','18-19','19-20','20-21','21-22','23-24'];
    $scope.times = ['08:00 a.m.','09:00 a.m.','10:00 a.m.','11:00 a.m.','12:00 m.d','01:00 p.m.','02:00 p.m.','03:00 p.m.','04:00 p.m.','05:00 p.m.','06:00 p.m.','07:00 p.m.','08:00 p.m.','09:00 p.m.','10:00 p.m.'];
 	//var path = ( window.location.pathname.replace('/','').replace(/\/$/, '').split('/').length <= 2 ) ? './' : '../';
- 	$scope.pitchArray = ['escazu','desamparados'];
 
    $scope.loadReservations = function (day){
 		$.ajax({
@@ -14,7 +13,7 @@ myApp.controller("reservationController", function ($scope, $rootScope){
 
 			url : base_url + "getReservationByDay",
 
-			data: { year: $('#year').val(), month: $('#month').val() , day: (day) ? day : $('.today').text(), group_id : '1', pitch_id : '1'},
+			data: { year: $('#year').val(), month: $('#month').val() , day: (day) ? day : $('.today').text(), group_id : $scope.getGroupFromUrl(), pitch_id : $scope.getPitchFromUrl()},
 
 			async : true,
 
@@ -34,7 +33,7 @@ myApp.controller("reservationController", function ($scope, $rootScope){
 
 			url : base_url + "getPitchByGroup",
 
-			data: { group: $scope.pitchArray.indexOf($('#pitch').val()) + 1 },
+			data: { group: $scope.getGroupFromUrl()/*$scope.pitchArray.indexOf($('#pitch').val()) + 1*/ },
 
 			async : true,
 
@@ -69,6 +68,27 @@ myApp.controller("reservationController", function ($scope, $rootScope){
 			}
 		}
 		return reservations;
+	}
+
+	$scope.getGroupFromUrl = function(){
+		$.ajax({
+
+			type: 'POST',
+
+			url : base_url + "getGroup",
+
+			data: { group_name: window.location.pathname.replace('/','').replace(/\/$/, '').split('/')[1] },
+
+			async : false,
+
+			success : function(response){
+				return jQuery.parseJSON(response)[0].id;
+			}
+		});
+	}
+
+	$scope.getPitchFromUrl = function(){
+		return window.location.pathname.replace('/','').replace(/\/$/, '').split('/')[2];
 	}
 
 	$scope.loadReservations($('.today').text());

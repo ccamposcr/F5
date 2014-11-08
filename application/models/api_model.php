@@ -17,8 +17,8 @@ class Api_model extends CI_MODEL
     }
 
     function getGroup($group_name){
-        $query = $this->db->query("SELECT * FROM t_groups WHERE group_name = '$group_name'");
-        return $query->result_array();
+        $query = $this->db->query("SELECT id FROM t_groups WHERE group_name = '$group_name'");
+        return $query->result();
     }
 }
 //end model

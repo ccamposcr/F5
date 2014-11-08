@@ -34,4 +34,10 @@ class Api_controller extends CI_Controller {
         $pitchs = $this->api_model->getPitchByGroup($group);
         echo json_encode($pitchs);
     }
+
+    public function getGroup(){
+        $group_name = ( isset($_POST['group_name']) ) ? $_POST['group_name'] : 'escazu';
+        $id_group = $this->api_model->getGroup($group_name);
+        echo json_encode($id_group);
+    }
 }
