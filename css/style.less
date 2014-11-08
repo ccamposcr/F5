@@ -106,6 +106,7 @@ textarea {
 @blueFacebook: #3B5A99;
 @blueLightTwitter: #009FD1;
 @gray:#968E8E;
+@orangeLight:#F4753D;
 
 /* Variables */
 @font-content:'eurostileregular';
@@ -131,8 +132,9 @@ textarea {
 
 #dailyResevations{
     display: none;
-    width: 50%;
+    width: 698px;
     margin: 0 auto;
+    color: @white;
 
     ul{
         list-style-type: none;
@@ -140,24 +142,33 @@ textarea {
         li.row > span{
             display: block;
             float: left;
-            border: 1px solid @black;
             width: 40%;
             height: 37px;
             text-align: center;
+            &.blocked{
+                background-color: @orange;
+                border:solid 1px @orangeLight;
+                margin:1px;
+            }
 
             &.reservation-time{
                 border: none;
-                width: 70px;
-                color: @black;
+                width: 100px;
+                color:@white ;
+                font-family: @font-content;
+                text-align: center;
+                line-height: 40px;
             }
-
             &.completa{
-                width: 80%;
+                width: 552px;
                 color: @white;
+                border:2px solid @orangeLight
             }
-
             &.available{
                 cursor: pointer;
+                background-color: @orangeLight;
+                border:solid 1px @orange;
+                margin:1px;
             }
         }
     }
@@ -167,8 +178,9 @@ textarea {
 }
 
 #calendar {
-    margin: 0 auto;
-    width: 100px;
+    display: inline;
+    font-family: @font-content;
+    width: 50px;
     color: @white;
     .day{
         cursor: pointer;
@@ -181,6 +193,7 @@ textarea {
     margin: 0 auto;
     position: relative;
 }
+
 
 
 /* ==========================================================================
