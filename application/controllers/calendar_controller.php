@@ -18,7 +18,7 @@ class Calendar_controller extends CI_Controller {
         $prefs['template'] = '
         {table_open}<table>{/table_open}
 
-        {heading_row_start}<tr>{/heading_row_start}
+        {heading_row_start}<tr class="header">{/heading_row_start}
 
         {heading_previous_cell}<th><a class="prev" href="{previous_url}"><<</a></th>{/heading_previous_cell}
 
@@ -28,7 +28,7 @@ class Calendar_controller extends CI_Controller {
 
         {heading_row_end}</tr>{/heading_row_end}
 
-        {week_row_start}<tr>{/week_row_start}
+        {week_row_start}<tr class="row">{/week_row_start}
         {week_day_cell}<td class="head">{week_day}</td>{/week_day_cell}
         {week_row_end}</tr>{/week_row_end}
 
