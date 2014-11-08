@@ -27,6 +27,7 @@ myApp.controller("reservationController", function ($scope, $rootScope){
 	}
 
 	$scope.loadPitchsPagination = function (){
+		console.log( $scope.getGroupFromUrl() + ' -- ' + $('#pitch').val());
 		$.ajax({
 
 			type: 'POST',

@@ -1,5 +1,5 @@
     <div id="divContentReservations" ng-controller="reservationController">
-
+        <h1>Reservaciones</h1>
         <div id="pitchs">
             <ul class="clearfix">
                 <li class="clearfix" ng-repeat="data in pitchs">
@@ -11,8 +11,6 @@
             ?>
             <input type="hidden" value="<?=$pitch?>" id="pitch" />
         </div>
-
-        <h1>Reservaciones</h1>
         <div id="calendar">
         	<?=$calendar?>
         	<?php
