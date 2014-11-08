@@ -14,7 +14,7 @@ myApp.controller("reservationController", function ($scope, $rootScope){
 
 			url : base_url + "getReservationByDay",
 
-			data: { year: $('#year').val(), month: $('#month').val() , day: ( day) ? day : $('.today').text()},
+			data: { year: $('#year').val(), month: $('#month').val() , day: (day) ? day : $('.today').text(), group_id : '1', pitch_id : '1'},
 
 			async : true,
 
