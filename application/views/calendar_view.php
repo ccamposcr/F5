@@ -1,4 +1,4 @@
-    <div id="divContentReservations" ng-controller="reservationController">
+    <div id="divContentReservations" class="clearfix" ng-controller="reservationController">
         <h1>Reservaciones</h1>
         <div id="pitchs">
             <ul class="clearfix">
@@ -19,7 +19,6 @@
 	        	if ($year == ''){
 					$year  = date("Y", time());
 				}
-
 				if ($month == ''){
 					$month = date("m", time());
 				}
@@ -28,7 +27,12 @@
 			<input type="hidden" value="<?=$month?>" id="month" />
         </div>
         <div id="dailyResevations">
-            <ul>
+            <ul id="timeAndTeamInfo" class="clearfix">
+                <li>Hora</li>
+                <li>Equipo 1</li>
+                <li>Equipo 2</li>
+            </ul>
+            <ul id="reservations">
                 <li class="row clearfix" ng-repeat="data in reservations">
                     <span class="reservation-time">{{times[$index]}}</span>
                     <span class="{{reservation.id ? 'blocked' : 'available'}} {{reservation.type_reservation == 1 ? 'completa' : ''}}" data-team="{{$index+1}}" ng-repeat="reservation in data">
