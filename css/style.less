@@ -136,19 +136,41 @@ textarea {
     margin: 0 auto;
     color: @white;
 
-    ul{
+    #timeAndTeamInfo{
+        display: block;
+
+
+        li{
+            float: left;
+            list-style: none;
+            font-family: @font-content;
+            font-size: 20px;
+            &:nth-child(1){
+                width: 84px;
+                text-align: center;
+                 }
+            &:nth-child(2), &:nth-child(3){
+                width: 286px;
+                text-align: center;
+    
+            }
+        }
+    }
+
+    #reservations{
         list-style-type: none;
 
         li.row > span{
             display: block;
             float: left;
-            width: 40%;
+            width: 285px;
             height: 37px;
             text-align: center;
             &.blocked{
-                background-color: @orange;
-                border:solid 1px @orangeLight;
+                background-color: @red;
+                border:solid 1px @gray;
                 margin:1px;
+                line-height: 30px;
             }
 
             &.reservation-time{
@@ -160,9 +182,10 @@ textarea {
                 line-height: 40px;
             }
             &.completa{
-                width: 552px;
+                width: 572px;
                 color: @white;
-                border:2px solid @orangeLight
+                border:1px solid @gray;
+                line-height: 30px;
             }
             &.available{
                 cursor: pointer;
@@ -177,15 +200,19 @@ textarea {
         font-weight: bold;
     }
 }
-#pitchs a{
+#pitchs{
+    float: right;
+    a{
     background-color: @red;
     font-family: @font-content;
     font-size: 17px;
     text-align: center;
     line-height: 20px;
     padding: 9px;
-    text-decoration: none;
+    text-decoration: none;   
 }
+}
+    
 
 #calendar {
     display: inline;
@@ -203,9 +230,9 @@ textarea {
     margin: 0 auto;
     position: relative;
 }
-
-
-
+.next, .prev{
+    color: @orange;
+}
 /* ==========================================================================
    HEADER
    ========================================================================== */
