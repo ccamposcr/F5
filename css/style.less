@@ -132,9 +132,10 @@ textarea {
 
 #dailyResevations{
     display: none;
-    width: 698px;
-    margin: 0 auto;
+    width: 100%;
+    // margin: 0 auto;
     color: @white;
+    // padding: 0;
 
     #timeAndTeamInfo{
         display: block;
@@ -150,7 +151,7 @@ textarea {
                 text-align: center;
                  }
             &:nth-child(2), &:nth-child(3){
-                width: 286px;
+                width: 360px;
                 text-align: center;
     
             }
@@ -163,7 +164,7 @@ textarea {
         li.row > span{
             display: block;
             float: left;
-            width: 285px;
+            width: 360px;
             height: 37px;
             text-align: center;
             &.blocked{
@@ -182,7 +183,7 @@ textarea {
                 line-height: 40px;
             }
             &.completa{
-                width: 572px;
+                width: 722px;
                 color: @white;
                 border:1px solid @gray;
                 line-height: 30px;
@@ -208,9 +209,12 @@ textarea {
     font-size: 17px;
     text-align: center;
     line-height: 20px;
-    padding: 9px;
-    text-decoration: none;   
+    padding: 5px 25px;
+    text-decoration: none; 
 }
+    a:hover{
+        background-color: @gray;
+    }
 }
     
 
