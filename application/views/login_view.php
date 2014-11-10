@@ -1,4 +1,5 @@
-   <h1>Login</h1>
+<div id="divContent">
+   <h1 id="loginTitle">Login</h1>
    <?php echo validation_errors(); ?>
    <?php echo form_open($this->uri->segment(1) . '/verifyLogin'); 
    echo form_label("Username: ");
@@ -8,3 +9,4 @@
    echo form_submit("","Login");
    echo form_close();
    ?>
+</div>
