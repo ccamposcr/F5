@@ -148,7 +148,8 @@ myApp.directive('loadDay', ['$document', function($document) {
     return function(scope, element, attr) {
       element.on('click', function(event) {
         event.preventDefault();
-        scope.loadReservations($(this).text());
+        $('#dailyResevations').hide();
+        scope.loadReservations($(this).text().trim());
       });
 
     };
