@@ -24,6 +24,10 @@ myApp.controller("reservationController", function ($scope, $rootScope){
 				});
 			}
 		});
+
+		if( !$('.day div.active').length ){
+			$('.day div').first().addClass('active');
+		}
 	}
 
 	$scope.loadPitchsPagination = function (){
@@ -148,6 +152,8 @@ myApp.directive('loadDay', ['$document', function($document) {
     return function(scope, element, attr) {
       element.on('click', function(event) {
         event.preventDefault();
+        $('.day div').removeClass('active');
+        $(element).addClass('active')
         $('#dailyResevations').hide();
         scope.loadReservations($(this).text().trim());
       });
@@ -161,6 +167,7 @@ myApp.directive('available', ['$document', function($document) {
       element.on('click', function(event) {
         event.preventDefault();
         //console.log('Reservando ...');
+        $('#formReservationModal').modal();
       });
 
     }
