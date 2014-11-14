@@ -11,7 +11,7 @@
             ?>
             <input type="hidden" value="<?=$pitch?>" id="pitch" />
         </div>
-        <div id="calendar">
+        <div id="calendar" class="clearfix">
         	<?=$calendar?>
         	<?php
 	        	$year = $this->uri->segment(4);

@@ -42,7 +42,7 @@
 	    rootpath: ":/a.com/"
 	  };
 	</script>
-	<script src="<?php echo base_url(); ?>js/vendor/less.js" type="text/javascript"></script>
+	<script src="<?php echo base_url(); ?>js/vendor/less.js"></script>
     <script src="<?php echo base_url(); ?>js/vendor/jquery-1.10.2.min.js"></script>
     <script src="<?php echo base_url(); ?>js/vendor/bootstrap.min.js"></script>
     <script src="<?php echo base_url(); ?>js/vendor/angular.min.js"></script>

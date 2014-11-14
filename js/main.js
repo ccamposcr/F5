@@ -1,5 +1,10 @@
 
 var myApp = angular.module("F5App", ["ng"]);
+
+/* ==========================================================================
+   ANGULARJS CONTROLLERS
+========================================================================== */
+
 myApp.controller("reservationController", function ($scope, $rootScope){
    var base_url = '/F5-git/';
    $scope.timesForReservations = ['08-09','09-10','10-11','11-12','12-13','13-14','14-15','15-16','16-17','17-18','18-19','19-20','20-21','21-22','23-24'];
@@ -28,6 +33,8 @@ myApp.controller("reservationController", function ($scope, $rootScope){
 		if( !$('.day div.active').length ){
 			$('.day div').first().addClass('active');
 		}
+		//Set day with active day
+		$('#day').html($('.day div.active').text());
 	}
 
 	$scope.loadPitchsPagination = function (){
@@ -121,11 +128,6 @@ myApp.controller("galleryController", function ($scope, $rootScope){
 	    slideshow: false,
 	    sync: "#carousel"
 	  });
-	  
-	   /*$('.flexslider').flexslider({
-		    animation: "slide",
-		    controlNav: "thumbnails"
-	  	});*/
    };
 
 });
@@ -145,8 +147,13 @@ myApp.controller("headerController", function ($scope, $rootScope){
    };
 
 });
+/* ==========================================================================
+   END ANGULARJS CONTROLLERS
+========================================================================== */
 
-/* Directives */
+/* ==========================================================================
+   ANGULARJS DIRECTIVES
+========================================================================== */
 
 myApp.directive('loadDay', ['$document', function($document) {
     return function(scope, element, attr) {
@@ -176,3 +183,27 @@ myApp.directive('available', ['$document', function($document) {
     	link:link
 	}
   }]);
+
+/* ==========================================================================
+   END ANGULARJS DIRECTIVES
+========================================================================== */
+
+/* ==========================================================================
+   APP
+========================================================================== */
+
+$(document).ready(function(){
+	$('#currentDate').on('mouseenter', function(){
+		$('.days_head, .days_row').show();
+	});
+
+	$('#calendar').on('mouseleave', function(){
+		setTimeout(function(){
+			$('.days_head, .days_row').hide();
+		},500);
+	});
+});
+
+/* ==========================================================================
+   END APP
+========================================================================== */

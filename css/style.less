@@ -118,9 +118,10 @@ textarea {
 #divContentReservations{
     padding: 40px;
     width: 960px;
-    margin: 0 auto;
     background-color: rgba(2, 2, 2, 0.29);
     margin: 20px auto;
+    position: relative;
+
     h1{
         color:white;
         text-align: center;
@@ -136,6 +137,7 @@ textarea {
     // margin: 0 auto;
     color: @white;
     // padding: 0;
+    float: left;
 
     #timeAndTeamInfo{
         display: block;
@@ -218,19 +220,6 @@ textarea {
     }
 }
     
-
-#calendar {
-    display: inline;
-    font-family: @font-content;
-    width: 50px;
-    color: @white;
-    .day{
-        cursor: pointer;
-        .active{
-            background: @red;
-        }
-    }
-}
 
 #mainWrapper{
     width: 100%;
@@ -412,9 +401,29 @@ textarea {
     float: right;  
 }
 
-.modal-dialog{
-    margin-top: 20%;
+/* ==========================================================================
+   CALENDAR
+========================================================================== */
+
+.days_head, .days_row{
+    display: none;
+    background: #000;
 }
+
+#calendar {
+    display: block;
+    font-family: @font-content;
+    color: @white;
+    position: absolute;
+    
+    .day{
+        cursor: pointer;
+        .active{
+            background: @red;
+        }
+    }
+}
+
 /* ==========================================================================
    LOGIN
 ========================================================================== */
@@ -608,8 +617,6 @@ a.fa-youtube{
         }
     }
 }
-
-
 
 #divContentInfoFooter span, #contentSocialIcons span, #infoContact > span{
     color: @white;
