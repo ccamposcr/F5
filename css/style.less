@@ -107,6 +107,7 @@ textarea {
 @blueLightTwitter: #009FD1;
 @gray:#968E8E;
 @orangeLight:#F4753D;
+@darkGray:#3A3333;
 
 /* Variables */
 @font-content:'eurostileregular';
@@ -133,12 +134,13 @@ textarea {
 #dailyResevations{
     display: none;
     width: 100%;
-    // margin: 0 auto;
+    margin: 0 auto;
     color: @white;
     // padding: 0;
 
     #timeAndTeamInfo{
         display: block;
+        padding: 0;
 
 
         li{
@@ -147,11 +149,10 @@ textarea {
             font-family: @font-content;
             font-size: 20px;
             &:nth-child(1){
-                width: 84px;
-                text-align: center;
+                width: 100px;
                  }
             &:nth-child(2), &:nth-child(3){
-                width: 360px;
+                width: 387px;
                 text-align: center;
     
             }
@@ -161,17 +162,18 @@ textarea {
     #reservations{
         list-style-type: none;
         padding: 0;
+        margin-left: 15px;
 
         li.row > span{
             display: block;
             float: left;
-            width: 360px;
+            width: 387px;
             height: 37px;
             text-align: center;
             &.blocked{
                 background-color: @red;
-                border:solid 1px @gray;
-                margin:1px;
+                border:solid 1px @darkGray;
+                margin:2px;
                 line-height: 30px;
             }
 
@@ -180,20 +182,21 @@ textarea {
                 width: 100px;
                 color:@white ;
                 font-family: @font-content;
-                text-align: center;
+                text-align: left;
                 line-height: 40px;
+                // margin-left: 10px;
             }
             &.completa{
-                width: 722px;
+                width: 777px;
                 color: @white;
-                border:1px solid @gray;
+                border:1px solid @darkGray;
                 line-height: 30px;
             }
             &.available{
                 cursor: pointer;
                 background-color: @orangeLight;
-                border:solid 1px @orange;
-                margin:1px;
+                border:solid 1px @darkGray;
+                margin:2px;
 
             }
         }
