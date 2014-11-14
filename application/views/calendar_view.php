@@ -53,20 +53,21 @@
             <h4 class="modal-title" id="exampleModalLabel">Reservaciones</h4>
           </div>
           <div class="modal-body">
-            <form role="form">
-              <div class="form-group">
-                <label for="recipient-name" class="control-label">Recipient:</label>
-                <input type="text" class="form-control" id="recipient-name">
-              </div>
-              <div class="form-group">
-                <label for="message-text" class="control-label">Message:</label>
-                <textarea class="form-control" id="message-text"></textarea>
-              </div>
-            </form>
+            <p><input type="radio" name="reservation" value="bookingByCall"><label>Reservar por llamada</label></p>
+            <p><input type="radio" name="reservation" value="bookingOnLine"><label>Reservar en linea</label></p>
+
+            <div id="bookingByCall">
+                <h3>Reservar por llamada</h3>
+            </div>
+            <div id="bookingOnLine">
+                <h3>Reservar en linea</h3>
+            </div>
+
+
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Send message</button>
+            <!--<button type="button" class="btn btn-primary">Send message</button>-->
           </div>
         </div>
       </div>
