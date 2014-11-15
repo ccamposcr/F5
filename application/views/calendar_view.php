@@ -34,7 +34,7 @@
             </ul>
             <ul id="reservations">
                 <li class="row clearfix" ng-repeat="data in reservations">
-                    <span class="reservation-time">{{times[$index]}}</span>
+                    <span class="reservation-time" data-time="{{timesForReservations[$index]}}">{{times[$index]}}</span>
                     <!--<span class="{{reservation.id ? 'blocked' : 'available'}} {{reservation.type_reservation == 1 ? 'completa' : ''}}" data-team="{{$index+1}}" ng-repeat="reservation in data">-->
                     <span ng-if="!!reservation.id" class="blocked {{reservation.type_reservation == 1 ? 'completa' : ''}}" data-team="{{$index+1}}" ng-repeat="reservation in data">
                         {{reservation.name}} {{reservation.lastname}}
@@ -77,21 +77,26 @@
             </div>
             <div id="bookingOnLine" ng-show="bookingType == 'bookingOnLine'">
                 <h3>Reservaci&oacute;n en l&iacute;nea</h3>
-                <form>
-                    <dl>
-                        <dt>Informaci&oacute;n Personal</dt>
-                            <dd><label>Nombre</label><input type="text" ng-model="nombre"/></dd>
-                            <dd><label>Apellido</label><input type="text" ng-model="apellido"/></dd>
-                            <dd><label>Email:</label><input type="email" ng-model="email"/></dd>
-                            <dd><label>Telefono:</label><input type="tel" ng-model="telefono"/></dd>
-                        <dt>Tipo de Reservaci&oacute;n</dt>
-                            <dd><input type="radio" name="typeReservation" value="completa" ng-model="typeReservation"><label>Completa</label></dd>
-                            <dd><input type="radio" name="typeReservation" value="reto" ng-model="typeReservation"><label>Reto</label></dd>
-                        <dt>Opciones Adicionales</dt>
-                            <dd><input id="setPitchAllWeek" name="setPitchAllWeek" type="checkbox" ng-model="setPitchAllWeek"><label for="setPitchAllWeek">Reservar esta cancha este mismo día todas las semanas</label></dd>
-                            <dd><input id="setReferee" name="setReferee" type="checkbox" ng-model="setReferee"><label for="setReferee">Pagar &Aacute;rbitro</label></dd>
-                    </dl>
-                </form>
+                <div>
+                    <h3>Confirmaci&oacute;n</h3>
+                </div>
+                <div>
+                    <form>
+                        <dl>
+                            <dt>Informaci&oacute;n Personal</dt>
+                                <dd><label>Nombre</label><input type="text" ng-model="nombre"/></dd>
+                                <dd><label>Apellido</label><input type="text" ng-model="apellido"/></dd>
+                                <dd><label>Email:</label><input type="email" ng-model="email"/></dd>
+                                <dd><label>Telefono:</label><input type="tel" ng-model="telefono"/></dd>
+                            <dt>Tipo de Reservaci&oacute;n</dt>
+                                <dd><input type="radio" name="typeReservation" value="completa" ng-model="typeReservation"><label>Completa</label></dd>
+                                <dd><input type="radio" name="typeReservation" value="reto" ng-model="typeReservation"><label>Reto</label></dd>
+                            <dt>Opciones Adicionales</dt>
+                                <dd><input id="setPitchAllWeek" name="setPitchAllWeek" type="checkbox" ng-model="setPitchAllWeek"><label for="setPitchAllWeek">Reservar esta cancha este mismo día todas las semanas</label></dd>
+                                <dd><input id="setReferee" name="setReferee" type="checkbox" ng-model="setReferee"><label for="setReferee">Pagar &Aacute;rbitro</label></dd>
+                        </dl>
+                    </form>
+                </div>
             </div>
           </div>
           <div class="modal-footer">
