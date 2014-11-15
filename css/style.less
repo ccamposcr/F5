@@ -156,11 +156,9 @@ textarea {
             &:nth-child(2), &:nth-child(3){
                 width: 387px;
                 text-align: center;
-    
             }
         }
     }
-
     #reservations{
         list-style-type: none;
         padding: 0;
@@ -178,7 +176,6 @@ textarea {
                 margin:2px;
                 line-height: 30px;
             }
-
             &.reservation-time{
                 border: none;
                 width: 100px;
@@ -199,7 +196,6 @@ textarea {
                 background-color: @orangeLight;
                 border:solid 1px @darkGray;
                 margin:2px;
-
             }
         }
     }
@@ -222,8 +218,6 @@ textarea {
         background-color: @gray;
     }
 }
-    
-
 #mainWrapper{
     width: 100%;
     background: url('../img/main-background.jpg') top center no-repeat;
@@ -232,6 +226,10 @@ textarea {
 }
 .next, .prev{
     color: @orange;
+}
+#calendar table{
+    margin-top: 15px;
+    font-size: 18px;
 }
 
 /* ==========================================================================
@@ -433,7 +431,31 @@ textarea {
 #divContent #loginTitle{
     font-family: @font-content;
 }
+#contentLogin
+{
+    width: 450px;
+    margin: 20px auto;
+        p{
+        color:@orange;
+        font-size: 17px;
+        font-family: @font-content;
+    }
+    #btnLogin
+{
+    
+    margin-top: 10px;
+}
+}
+#divContent label{
+    font-family: @font-content;
+    color:@white;
+    font-size: 20px;
+    font-weight: normal;
 
+}
+#userStatus span{
+    color:@orange;
+}
 /* ==========================================================================
    GALLERY
 ========================================================================== */
