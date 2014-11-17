@@ -45,7 +45,7 @@
         </div>
     </div>
     <div id="modals" ng-controller="modalController">
-        <div class="modal fade" id="formReservationModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal fade" id="formReservationModal" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
@@ -59,7 +59,7 @@
                         <li>
                             <dl>
                                 <dt>Reservaci&oacute;n en l&iacute;nea: le permite reservar y pagar la cancha usando su tarjeta de cr&eacute;dito o d&eacute;bito</dt>
-                                    <dd><input id="bookingOnLine" type="radio" name="bookingOnLine" value="bookingOnLine" ng-model="bookingType"><label for="bookingOnLine">Reservar en l&iacute;nea</label></dd>
+                                    <dd><input id="bookingOnLine" type="radio" name="bookingOnLine" value="bookingOnLine" ng-model="bookingType" ng-click="setReservationState()"><label for="bookingOnLine">Reservar en l&iacute;nea</label></dd>
                             <dl/>
                         </li>
                         <li>
@@ -101,8 +101,9 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal" ng-hide="bookingType == 'bookingOnLine'">Cerrar</button>
-                <button id="cancelReservationButton" type="button" class="btn btn-danger" data-dismiss="modal" ng-show="bookingType == 'bookingOnLine'">Cancelar</button>
-                <button id="reserveButton" type="button" class="btn btn-primary" ng-show="bookingType == 'bookingOnLine'">Reservar</button>
+                <button id="cancelReservationButton" type="button" class="btn btn-danger" data-toggle="confirmation" ng-if="bookingType == 'bookingOnLine'">Cancelar</button>
+                <a class="btn btn-large btn-danger" data-toggle="confirmation" data-original-title="" title="">Click to toggle confirmation</a>
+                <button id="reserveButton" type="button" class="btn btn-primary" ng-if="bookingType == 'bookingOnLine'">Reservar</button>
                 <!--<button type="button" class="btn btn-primary">Send message</button>-->
               </div>
             </div>

@@ -154,6 +154,11 @@ F5App.controller("modalController", function ($scope, $rootScope){
 			$scope.bookingType = '';
 		});
 	});
+
+	$scope.setReservationState = function (){
+
+	}
+
 });
 /* ==========================================================================
    END ANGULARJS CONTROLLERS
@@ -212,6 +217,7 @@ $(document).ready(function(){
 	$('#calendar').on('mouseleave', function(){
 		$('.days_head, .days_row').hide();
 	});
+	$('[data-toggle="confirmation"]').confirmation();
 });
 
 /* ==========================================================================
