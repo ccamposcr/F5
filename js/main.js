@@ -1,11 +1,11 @@
 
-var myApp = angular.module("F5App", ["ng"]);
+var F5App = angular.module("F5App", ["ng"]);
 
 /* ==========================================================================
    ANGULARJS CONTROLLERS
 ========================================================================== */
 
-myApp.controller("reservationController", function ($scope, $rootScope){
+F5App.controller("reservationController", function ($scope, $rootScope){
    var base_url = '/F5-git/';
    $scope.timesForReservations = ['08-09','09-10','10-11','11-12','12-13','13-14','14-15','15-16','16-17','17-18','18-19','19-20','20-21','21-22','23-24'];
    $scope.times = ['08:00 a.m.','09:00 a.m.','10:00 a.m.','11:00 a.m.','12:00 m.d','01:00 p.m.','02:00 p.m.','03:00 p.m.','04:00 p.m.','05:00 p.m.','06:00 p.m.','07:00 p.m.','08:00 p.m.','09:00 p.m.','10:00 p.m.'];
@@ -108,7 +108,7 @@ myApp.controller("reservationController", function ($scope, $rootScope){
 	$scope.loadPitchsPagination();
 });
 
-myApp.controller("galleryController", function ($scope, $rootScope){
+F5App.controller("galleryController", function ($scope, $rootScope){
 
    $scope.loadGallery = function (){
 	   	$('#carousel').flexslider({
@@ -132,7 +132,7 @@ myApp.controller("galleryController", function ($scope, $rootScope){
 
 });
 
-myApp.controller("headerController", function ($scope, $rootScope){
+F5App.controller("headerController", function ($scope, $rootScope){
 
    $scope.setActive = function (){
    		if( !!window.location.href.match('reservaciones') || !!window.location.href.match('admin')){
@@ -147,6 +147,14 @@ myApp.controller("headerController", function ($scope, $rootScope){
    };
 
 });
+
+F5App.controller("modalController", function ($scope, $rootScope){
+	$('#formReservationModal').on('hidden.bs.modal', function(){
+		$scope.$apply(function(){
+			$scope.bookingType = '';
+		});
+	});
+});
 /* ==========================================================================
    END ANGULARJS CONTROLLERS
 ========================================================================== */
@@ -155,7 +163,7 @@ myApp.controller("headerController", function ($scope, $rootScope){
    ANGULARJS DIRECTIVES
 ========================================================================== */
 
-myApp.directive('loadDay', ['$document', function($document) {
+F5App.directive('loadDay', ['$document', function($document) {
     return function(scope, element, attr) {
       element.on('click', function(event) {
         event.preventDefault();
@@ -169,7 +177,7 @@ myApp.directive('loadDay', ['$document', function($document) {
   }]);
 
 
-myApp.directive('available', ['$document', function($document) {
+F5App.directive('available', ['$document', function($document) {
     function link(scope, element, attr) {
       element.on('click', function(event) {
         event.preventDefault();
@@ -193,14 +201,16 @@ myApp.directive('available', ['$document', function($document) {
 ========================================================================== */
 
 $(document).ready(function(){
-	$('#currentDate').on('mouseenter', function(){
+	$('#calendar .header').on('mouseenter', function(){
+		$('.days_head, .days_row').show();
+	});
+
+	$('#currentDate').on('click', function(){
 		$('.days_head, .days_row').show();
 	});
 
 	$('#calendar').on('mouseleave', function(){
-		setTimeout(function(){
-			$('.days_head, .days_row').hide();
-		},500);
+		$('.days_head, .days_row').hide();
 	});
 });
 

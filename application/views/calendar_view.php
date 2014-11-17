@@ -44,67 +44,68 @@
             </ul>
         </div>
     </div>
-
-    <div class="modal fade" id="formReservationModal" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" ng-click="bookingType =''" ng-hide="bookingType == 'bookingOnLine'"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-            <h4 class="modal-title" id="exampleModalLabel">Reservaciones</h4>
-          </div>
-          <div class="modal-body">
-            <div ng-hide="bookingType == 'bookingByCall' || bookingType == 'bookingOnLine'">
-                <h3>Elija el modo de reservaci&oacute;n</h3>
-                <ol>
-                    <li>
-                        <dl>
-                            <dt>Reservaci&oacute;n en l&iacute;nea: le permite reservar y pagar la cancha usando su tarjeta de cr&eacute;dito o d&eacute;bito</dt>
-                                <dd><input id="bookingOnLine" type="radio" name="bookingOnLine" value="bookingOnLine" ng-model="bookingType"><label for="bookingOnLine">Reservar en l&iacute;nea</label></dd>
-                        <dl/>
-                    </li>
-                    <li>
-                        <dl>
-                            <dt>También puede Reservar su cancha mediante una llamada telef&oacute;nica.</dt>
-                                <dd><input id="bookingByCall" type="radio" name="bookingByCall" value="bookingByCall" ng-model="bookingType"><label for="bookingByCall">Reservar por tel&eacute;fono</label></dd>
-                        </dl>
-                    </li>
-                </ol>
-            </div>
-
-            <div id="bookingByCall" ng-show="bookingType == 'bookingByCall'">
-                <h3>Reservaci&oacute;n por tel&eacute;fono</h3>
-                <p>Para reservar llame al siguiente n&uacute;mero: <a href="tel:(506)8888-8888">(506)8888-8888</a></p>
-            </div>
-            <div id="bookingOnLine" ng-show="bookingType == 'bookingOnLine'">
-                <h3>Reservaci&oacute;n en l&iacute;nea</h3>
-                <div>
-                    <h3>Confirmaci&oacute;n</h3>
+    <div id="modals" ng-controller="modalController">
+        <div class="modal fade" id="formReservationModal" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" ng-hide="bookingType == 'bookingOnLine'"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Reservaciones</h4>
+              </div>
+              <div class="modal-body">
+                <div ng-hide="bookingType == 'bookingByCall' || bookingType == 'bookingOnLine'">
+                    <h3>Elija el modo de reservaci&oacute;n</h3>
+                    <ol>
+                        <li>
+                            <dl>
+                                <dt>Reservaci&oacute;n en l&iacute;nea: le permite reservar y pagar la cancha usando su tarjeta de cr&eacute;dito o d&eacute;bito</dt>
+                                    <dd><input id="bookingOnLine" type="radio" name="bookingOnLine" value="bookingOnLine" ng-model="bookingType"><label for="bookingOnLine">Reservar en l&iacute;nea</label></dd>
+                            <dl/>
+                        </li>
+                        <li>
+                            <dl>
+                                <dt>También puede Reservar su cancha mediante una llamada telef&oacute;nica.</dt>
+                                    <dd><input id="bookingByCall" type="radio" name="bookingByCall" value="bookingByCall" ng-model="bookingType"><label for="bookingByCall">Reservar por tel&eacute;fono</label></dd>
+                            </dl>
+                        </li>
+                    </ol>
                 </div>
-                <div>
-                    <form>
-                        <dl>
-                            <dt>Informaci&oacute;n Personal</dt>
-                                <dd><label>Nombre</label><input type="text" ng-model="nombre"/></dd>
-                                <dd><label>Apellido</label><input type="text" ng-model="apellido"/></dd>
-                                <dd><label>Email:</label><input type="email" ng-model="email"/></dd>
-                                <dd><label>Telefono:</label><input type="tel" ng-model="telefono"/></dd>
-                            <dt>Tipo de Reservaci&oacute;n</dt>
-                                <dd><input type="radio" name="typeReservation" value="completa" ng-model="typeReservation"><label>Completa</label></dd>
-                                <dd><input type="radio" name="typeReservation" value="reto" ng-model="typeReservation"><label>Reto</label></dd>
-                            <dt>Opciones Adicionales</dt>
-                                <dd><input id="setPitchAllWeek" name="setPitchAllWeek" type="checkbox" ng-model="setPitchAllWeek"><label for="setPitchAllWeek">Reservar esta cancha este mismo día todas las semanas</label></dd>
-                                <dd><input id="setReferee" name="setReferee" type="checkbox" ng-model="setReferee"><label for="setReferee">Pagar &Aacute;rbitro</label></dd>
-                        </dl>
-                    </form>
+
+                <div id="bookingByCall" ng-show="bookingType == 'bookingByCall'">
+                    <h3>Reservaci&oacute;n por tel&eacute;fono</h3>
+                    <p>Para reservar llame al siguiente n&uacute;mero: <a href="tel:(506)8888-8888">(506)8888-8888</a></p>
                 </div>
+                <div id="bookingOnLine" ng-show="bookingType == 'bookingOnLine'">
+                    <h3>Reservaci&oacute;n en l&iacute;nea</h3>
+                    <div>
+                        <h3>Confirmaci&oacute;n</h3>
+                    </div>
+                    <div>
+                        <form>
+                            <dl>
+                                <dt>Informaci&oacute;n Personal</dt>
+                                    <dd><label>Nombre</label><input type="text" ng-model="nombre"/></dd>
+                                    <dd><label>Apellido</label><input type="text" ng-model="apellido"/></dd>
+                                    <dd><label>Email:</label><input type="email" ng-model="email"/></dd>
+                                    <dd><label>Telefono:</label><input type="tel" ng-model="telefono"/></dd>
+                                <dt>Tipo de Reservaci&oacute;n</dt>
+                                    <dd><input type="radio" name="typeReservation" value="completa" ng-model="typeReservation"><label>Completa</label></dd>
+                                    <dd><input type="radio" name="typeReservation" value="reto" ng-model="typeReservation"><label>Reto</label></dd>
+                                <dt>Opciones Adicionales</dt>
+                                    <dd><input id="setPitchAllWeek" name="setPitchAllWeek" type="checkbox" ng-model="setPitchAllWeek"><label for="setPitchAllWeek">Reservar esta cancha este mismo día todas las semanas</label></dd>
+                                    <dd><input id="setReferee" name="setReferee" type="checkbox" ng-model="setReferee"><label for="setReferee">Pagar &Aacute;rbitro</label></dd>
+                            </dl>
+                        </form>
+                    </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-hide="bookingType == 'bookingOnLine'">Cerrar</button>
+                <button id="cancelReservationButton" type="button" class="btn btn-danger" data-dismiss="modal" ng-show="bookingType == 'bookingOnLine'">Cancelar</button>
+                <button id="reserveButton" type="button" class="btn btn-primary" ng-show="bookingType == 'bookingOnLine'">Reservar</button>
+                <!--<button type="button" class="btn btn-primary">Send message</button>-->
+              </div>
             </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="bookingType =''" ng-hide="bookingType == 'bookingOnLine'">Cerrar</button>
-            <button id="cancelReservationButton" type="button" class="btn btn-danger" data-dismiss="modal" ng-click="bookingType =''" ng-show="bookingType == 'bookingOnLine'">Cancelar</button>
-            <button id="reserveButton" type="button" class="btn btn-primary" ng-click="bookingType =''" ng-show="bookingType == 'bookingOnLine'">Reservar</button>
-            <!--<button type="button" class="btn btn-primary">Send message</button>-->
           </div>
         </div>
-      </div>
     </div>
