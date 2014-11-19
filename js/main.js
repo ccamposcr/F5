@@ -159,6 +159,8 @@ F5App.controller("modalController", function ($scope, $rootScope){
 
 	}
 
+	$('[data-toggle="confirmation"]').confirmation();
+
 });
 /* ==========================================================================
    END ANGULARJS CONTROLLERS
@@ -217,7 +219,6 @@ $(document).ready(function(){
 	$('#calendar').on('mouseleave', function(){
 		$('.days_head, .days_row').hide();
 	});
-	$('[data-toggle="confirmation"]').confirmation();
 });
 
 /* ==========================================================================

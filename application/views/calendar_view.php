@@ -101,9 +101,10 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal" ng-hide="bookingType == 'bookingOnLine'">Cerrar</button>
-                <button id="cancelReservationButton" type="button" class="btn btn-danger" data-toggle="confirmation" ng-if="bookingType == 'bookingOnLine'">Cancelar</button>
-                <a class="btn btn-large btn-danger" data-toggle="confirmation" data-original-title="" title="">Click to toggle confirmation</a>
-                <button id="reserveButton" type="button" class="btn btn-primary" ng-if="bookingType == 'bookingOnLine'">Reservar</button>
+                <button id="cancelReservationBtn" type="button" class="btn btn-danger" data-toggle="confirmation" ng-show="bookingType == 'bookingOnLine'" data-btn-ok-label="Seguir" 
+                data-btn-ok-icon="glyphicon glyphicon-share-alt" data-btn-ok-class="btn-success" data-btn-cancel-label="Salir" data-btn-cancel-icon="glyphicon glyphicon-ban-circle" 
+                data-btn-cancel-class="btn-danger" data-title="Abandonar la reservaci&oacute;n?">Cancelar</button>
+                <button id="reserveBtn" type="button" class="btn btn-primary" ng-if="bookingType == 'bookingOnLine'">Reservar</button>
                 <!--<button type="button" class="btn btn-primary">Send message</button>-->
               </div>
             </div>
