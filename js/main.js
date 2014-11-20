@@ -155,11 +155,17 @@ F5App.controller("modalController", function ($scope, $rootScope){
 		});
 	});
 
-	$scope.setReservationState = function (){
-
+	var onCancel = function(){
+		$('#formReservationModal').modal('hide')
 	}
 
-	$('[data-toggle="confirmation"]').confirmation();
+	var onContinue = function(){
+	}
+
+	$('#cancelReservationBtn').confirmation({
+		onConfirm : onContinue,
+		onCancel : onCancel
+	});
 
 });
 /* ==========================================================================
