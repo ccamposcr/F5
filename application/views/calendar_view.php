@@ -81,13 +81,16 @@
                         <h3>Confirmaci&oacute;n</h3>
                     </div>
                     <div>
-                        <form>
+                        <form name="bookingForm">
                             <dl>
                                 <dt>Informaci&oacute;n Personal</dt>
-                                    <dd><label>Nombre</label><input type="text" ng-model="nombre"/></dd>
-                                    <dd><label>Apellido</label><input type="text" ng-model="apellido"/></dd>
-                                    <dd><label>Email:</label><input type="email" ng-model="email"/></dd>
-                                    <dd><label>Telefono:</label><input type="tel" ng-model="telefono"/></dd>
+                                    <dd>
+                                        <label>Nombre</label><input type="text" ng-model="name" required/>
+                                        <span ng-show="myForm.name.$error.required">Ingrese su nombre</span>
+                                    </dd>
+                                    <dd><label>Apellido</label><input type="text" ng-model="lastname" required/></dd>
+                                    <dd><label>Email:</label><input type="email" ng-model="email" required/></dd>
+                                    <dd><label>Telefono:</label><input type="tel" ng-model="phone"/></dd>
                                 <dt>Tipo de Reservaci&oacute;n</dt>
                                     <dd><input type="radio" name="typeReservation" value="completa" ng-model="typeReservation"><label>Completa</label></dd>
                                     <dd><input type="radio" name="typeReservation" value="reto" ng-model="typeReservation"><label>Reto</label></dd>
@@ -104,7 +107,7 @@
                 <button id="cancelReservationBtn" type="button" class="btn btn-danger" data-toggle="confirmation" ng-show="bookingType == 'bookingOnLine'" data-btn-ok-label="Seguir" 
                 data-btn-ok-icon="glyphicon glyphicon-share-alt" data-btn-ok-class="btn-success" data-btn-cancel-label="Salir" data-btn-cancel-icon="glyphicon glyphicon-ban-circle" 
                 data-btn-cancel-class="btn-danger" data-title="Continuar la reservaci&oacute;n?">Cancelar</button>
-                <button id="reserveBtn" type="button" class="btn btn-primary" ng-if="bookingType == 'bookingOnLine'">Reservar</button>
+                <input id="reserveBtn" type="submit" class="btn btn-primary" ng-if="bookingType == 'bookingOnLine'" value="Reservar"/>
                 <!--<button type="button" class="btn btn-primary">Send message</button>-->
               </div>
             </div>
