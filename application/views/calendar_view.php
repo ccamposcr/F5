@@ -58,14 +58,14 @@
                     <ol>
                         <li>
                             <dl>
-                                <dt>Reservaci&oacute;n en l&iacute;nea: le permite reservar y pagar la cancha usando su tarjeta de cr&eacute;dito o d&eacute;bito</dt>
-                                    <dd><input id="bookingOnLine" type="radio" name="bookingOnLine" value="bookingOnLine" ng-model="bookingType" ng-click="setReservationState()"><label for="bookingOnLine">Reservar en l&iacute;nea</label></dd>
+                                <dt>Reservaci&oacute;n en l&iacute;nea: le permite reservar y pagar la cancha usando su tarjeta de cr&eacute;dito o d&eacute;bito.</dt>
+                                    <dd class="radio"><input id="bookingOnLine" type="radio" name="bookingOnLine" value="bookingOnLine" ng-model="bookingType" ng-click="setReservationState()"><label for="bookingOnLine">Reservar en l&iacute;nea</label></dd>
                             <dl/>
                         </li>
                         <li>
                             <dl>
-                                <dt>También puede Reservar su cancha mediante una llamada telef&oacute;nica.</dt>
-                                    <dd><input id="bookingByCall" type="radio" name="bookingByCall" value="bookingByCall" ng-model="bookingType"><label for="bookingByCall">Reservar por tel&eacute;fono</label></dd>
+                                <dt>También puede reservar su cancha mediante una llamada telef&oacute;nica.</dt>
+                                    <dd class="radio"><input id="bookingByCall" type="radio" name="bookingByCall" value="bookingByCall" ng-model="bookingType"><label for="bookingByCall">Reservar por tel&eacute;fono</label></dd>
                             </dl>
                         </li>
                     </ol>
@@ -78,25 +78,25 @@
                 <div id="bookingOnLine" ng-show="bookingType == 'bookingOnLine'">
                     <h3>Reservaci&oacute;n en l&iacute;nea</h3>
                     <div>
-                        <h3>Confirmaci&oacute;n</h3>
+                        <h4>Confirmaci&oacute;n</h4>
                     </div>
                     <div>
                         <form name="bookingForm">
                             <dl>
                                 <dt>Informaci&oacute;n Personal</dt>
                                     <dd>
-                                        <label>Nombre</label><input type="text" ng-model="name" required/>
+                                        <label>Nombre</label><input type="text" class="form-control" ng-model="name" required/>
                                         <span ng-show="myForm.name.$error.required">Ingrese su nombre</span>
                                     </dd>
-                                    <dd><label>Apellido</label><input type="text" ng-model="lastname" required/></dd>
-                                    <dd><label>Email:</label><input type="email" ng-model="email" required/></dd>
-                                    <dd><label>Telefono:</label><input type="tel" ng-model="phone"/></dd>
+                                    <dd><label>Apellido</label><input type="text" class="form-control" ng-model="lastname" required/></dd>
+                                    <dd><label>Email:</label><input type="email"  class="form-control" ng-model="email" required/></dd>
+                                    <dd><label>Telefono:</label><input type="tel" class="form-control" ng-model="phone"/></dd>
                                 <dt>Tipo de Reservaci&oacute;n</dt>
-                                    <dd><input type="radio" name="typeReservation" value="completa" ng-model="typeReservation"><label>Completa</label></dd>
-                                    <dd><input type="radio" name="typeReservation" value="reto" ng-model="typeReservation"><label>Reto</label></dd>
+                                    <dd class="radio"><input type="radio" name="typeReservation" value="completa" ng-model="typeReservation"><label>Completa</label></dd>
+                                    <dd class="radio"><input type="radio" name="typeReservation" value="reto" ng-model="typeReservation"><label>Reto</label></dd>
                                 <dt>Opciones Adicionales</dt>
-                                    <dd><input id="setPitchAllWeek" name="setPitchAllWeek" type="checkbox" ng-model="setPitchAllWeek"><label for="setPitchAllWeek">Reservar esta cancha este mismo día todas las semanas</label></dd>
-                                    <dd><input id="setReferee" name="setReferee" type="checkbox" ng-model="setReferee"><label for="setReferee">Pagar &Aacute;rbitro</label></dd>
+                                    <dd class="checkbox"><input id="setPitchAllWeek" name="setPitchAllWeek" type="checkbox" ng-model="setPitchAllWeek"><label for="setPitchAllWeek">Reservar esta cancha este mismo día todas las semanas</label></dd>
+                                    <dd class="checkbox"><input id="setReferee" name="setReferee" type="checkbox" ng-model="setReferee"><label for="setReferee">Pagar &Aacute;rbitro</label></dd>
                             </dl>
                         </form>
                     </div>
