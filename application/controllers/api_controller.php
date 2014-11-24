@@ -40,4 +40,12 @@ class Api_controller extends CI_Controller {
         $id_group = $this->api_model->getGroup($group_name);
         echo json_encode($id_group);
     }
+
+    public function getTemporaryReservationState(){
+    
+    }
+
+    public function setTemporaryReservationState(){
+
+    }
 }

@@ -1,4 +1,5 @@
 
+var base_url = '/F5-git/';
 var F5App = angular.module("F5App", ["ng"]);
 
 /* ==========================================================================
@@ -6,19 +7,25 @@ var F5App = angular.module("F5App", ["ng"]);
 ========================================================================== */
 
 F5App.controller("reservationController", function ($scope, $rootScope){
-   var base_url = '/F5-git/';
    $scope.timesForReservations = ['08-09','09-10','10-11','11-12','12-13','13-14','14-15','15-16','16-17','17-18','18-19','19-20','20-21','21-22','23-24'];
    $scope.times = ['08:00 a.m.','09:00 a.m.','10:00 a.m.','11:00 a.m.','12:00 m.d','01:00 p.m.','02:00 p.m.','03:00 p.m.','04:00 p.m.','05:00 p.m.','06:00 p.m.','07:00 p.m.','08:00 p.m.','09:00 p.m.','10:00 p.m.'];
 	//var path = ( window.location.pathname.replace('/','').replace(/\/$/, '').split('/').length <= 2 ) ? './' : '../';
 
-   $scope.loadReservations = function (day){
+   $scope.loadReservations = function (){
+
+	   	if( !$('.day div.active').length ){
+			$('.day div').first().addClass('active');
+		}
+		//Set day as active day
+		$('#day').html($('.day div.active').text());
+
 		$.ajax({
 
 			type: 'POST',
 
 			url : base_url + "getReservationByDay",
 
-			data: { year: $('#year').val(), month: $('#month').val() , day: (day) ? day : $('.today').text(), group_id : $scope.getGroupFromUrl(), pitch_id : $scope.getPitchFromUrl()},
+			data: { year : $('#year').val(), month : $('#month').val() , day :  ($('#day').text()) ? $('#day').text() : $('.day div.active').text(), group_id : $scope.getGroupFromUrl(), pitch_id : $scope.getPitchFromUrl()},
 
 			async : true,
 
@@ -30,11 +37,7 @@ F5App.controller("reservationController", function ($scope, $rootScope){
 			}
 		});
 
-		if( !$('.day div.active').length ){
-			$('.day div').first().addClass('active');
-		}
-		//Set day with active day
-		$('#day').html($('.day div.active').text());
+		
 	}
 
 	$scope.loadPitchsPagination = function (){
@@ -44,7 +47,7 @@ F5App.controller("reservationController", function ($scope, $rootScope){
 
 			url : base_url + "getPitchByGroup",
 
-			data: { group: $scope.getGroupFromUrl()/*$scope.pitchArray.indexOf($('#pitch').val()) + 1*/ },
+			data: { group: $scope.getGroupFromUrl() },
 
 			async : true,
 
@@ -104,7 +107,7 @@ F5App.controller("reservationController", function ($scope, $rootScope){
 		return window.location.pathname.replace('/','').replace(/\/$/, '').split('/')[2];
 	}
 
-	$scope.loadReservations($('.today').text());
+	$scope.loadReservations();
 	$scope.loadPitchsPagination();
 });
 
@@ -160,6 +163,7 @@ F5App.controller("modalController", function ($scope, $rootScope){
 	}
 
 	var onContinue = function(){
+		//Continue
 	}
 
 	$('#cancelReservationBtn').confirmation({
@@ -183,7 +187,7 @@ F5App.directive('loadDay', ['$document', function($document) {
         $('.day div').removeClass('active');
         $(element).addClass('active')
         $('#dailyResevations').hide();
-        scope.loadReservations($(this).text().trim());
+        scope.loadReservations();
       });
 
     };
@@ -195,7 +199,23 @@ F5App.directive('available', ['$document', function($document) {
       element.on('click', function(event) {
         event.preventDefault();
         //console.log('Reservando ...');
-        $('#formReservationModal').modal();
+        //$('#formReservationModal').modal();
+        $.ajax({
+
+			type: 'POST',
+
+			url : base_url + "getTemporaryReservationState",
+
+			data: { team_id : attr.team, reservation_time : $(element).siblings('.reservation-time').attr('data-time'), 
+			reservation_year: $('#year').val(), reservation_month : $('#month').val(), reservation_day : ($('#day').text()) ? $('#day').text() : $('.day div.active').text(), 
+			group_id : $scope.getGroupFromUrl(), pitch_id : $scope.getPitchFromUrl() },
+
+			async : true,
+
+			success : function(response){
+				var response   = jQuery.parseJSON(response);
+			}
+		});
       });
 
     }

@@ -52,7 +52,7 @@ class Calendar_controller extends CI_Controller {
         <div load-day class="today active">{day}</div>
         {/cal_cell_no_content_today}
 
-        {cal_cell_blank}&nbsp;{/cal_cell_blank}
+        {cal_cell_blank}<span class="noContent">&nbsp;</span>{/cal_cell_blank}
         {cal_cell_end}</td>{/cal_cell_end}
         {cal_row_end}</tr>{/cal_row_end}
 

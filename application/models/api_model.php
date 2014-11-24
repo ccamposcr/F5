@@ -20,5 +20,13 @@ class Api_model extends CI_MODEL
         $query = $this->db->query("SELECT id FROM t_groups WHERE group_name = '$group_name'");
         return $query->result();
     }
+
+    function getTemporaryReservationState(){
+
+    }
+
+    function setTemporaryReservationState(){
+
+    }
 }
 //end model
