@@ -25,7 +25,7 @@ F5App.controller("reservationController", function ($scope, $rootScope){
 
 			url : base_url + "getReservationByDay",
 
-			data: { year : $('#year').val(), month : $('#month').val() , day :  ($('#day').text()) ? $('#day').text() : $('.day div.active').text(), group_id : $scope.getGroupFromUrl(), pitch_id : $scope.getPitchFromUrl()},
+			data: { reservation_year : $('#year').val(), reservation_month : $('#month').val() , reservation_day :  ($('#day').text()) ? $('#day').text() : $('.day div.active').text(), group_id : $scope.getGroupFromUrl(), pitch_id : $scope.getPitchFromUrl()},
 
 			async : true,
 
@@ -206,14 +206,13 @@ F5App.directive('available', ['$document', function($document) {
 
 			url : base_url + "getTemporaryReservationState",
 
-			data: { team_id : attr.team, reservation_time : $(element).siblings('.reservation-time').attr('data-time'), 
-			reservation_year: $('#year').val(), reservation_month : $('#month').val(), reservation_day : ($('#day').text()) ? $('#day').text() : $('.day div.active').text(), 
-			group_id : $scope.getGroupFromUrl(), pitch_id : $scope.getPitchFromUrl() },
+			data: { team_id : attr.team, reservation_time : $(element).siblings('.reservation-time').attr('data-time'), reservation_year: $('#year').val(), reservation_month : $('#month').val(), reservation_day : ($('#day').text()) ? $('#day').text() : $('.day div.active').text(), group_id : scope.getGroupFromUrl(), pitch_id : scope.getPitchFromUrl() },
 
 			async : true,
 
 			success : function(response){
 				var response   = jQuery.parseJSON(response);
+				console.log(response);
 			}
 		});
       });
