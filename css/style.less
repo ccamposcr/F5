@@ -145,7 +145,6 @@ textarea {
         display: block;
         padding: 0;
 
-
         li{
             float: left;
             list-style: none;
@@ -536,6 +535,24 @@ textarea {
         height: 521px;
         margin: 0 auto;
         border: 5px solid #282626;
+    }
+    .flex-direction-nav{
+
+       .flex-prev{
+        background: url(../img/img-previous.png) no-repeat;
+            &:before{
+               content:'';
+               text-indent: -99999px; 
+            }
+    }
+       .flex-next{
+        background: url(../img/img-next.png) no-repeat 0 0;
+            &:before{
+               content:''; 
+               text-indent: -99999px;
+            }
+        
+       }
     }
     .slides {
         img{
