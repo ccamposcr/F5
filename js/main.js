@@ -159,7 +159,7 @@ F5App.controller("modalController", function ($scope, $rootScope){
 	});
 
 	var onCancel = function(){
-		$('#formReservationModal').modal('hide')
+		$('#formReservationModal').modal('hide');
 	}
 
 	var onContinue = function(){
@@ -211,8 +211,33 @@ F5App.directive('available', ['$document', function($document) {
 			async : true,
 
 			success : function(response){
-				var response   = jQuery.parseJSON(response);
-				console.log(response);
+				var response = jQuery.parseJSON(response);
+				var state = 0;
+				/*
+					States 
+					1: Other user is viewing the same cell
+					2. Other user is booking the same cell
+					3. The BD didn't return anything data or it is Expired, so you can book you reservation now
+				*/
+
+				if(response.length > 0){
+					state = response[0].state;
+				}
+				else if( response.length == 0){
+					state = 3;
+				}
+
+				switch(state){
+					case '1':
+						$('#reservation-watching-by-other-user-modal').modal('show');
+					break;
+					case '2':
+						$('#reservation-in-use-by-other-user-modal').modal('show');
+					break
+					default:
+						$('#formReservationModal').modal('show');
+					break;
+				}
 			}
 		});
       });
