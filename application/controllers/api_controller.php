@@ -54,6 +54,14 @@ class Api_controller extends CI_Controller {
     }
 
     public function setTemporaryReservationState(){
-
+        $team_id = ( isset($_POST['team_id']) ) ? $_POST['team_id'] : '1';
+        $reservation_time = ( isset($_POST['reservation_time']) ) ? $_POST['reservation_time'] : '08-09';
+        $reservation_year = ( isset($_POST['reservation_year']) ) ? $_POST['reservation_year'] : date("Y", time());
+        $reservation_month = ( isset($_POST['reservation_month']) ) ? $_POST['reservation_month'] : date("m", time());
+        $reservation_day = ( isset($_POST['reservation_day']) ) ? $_POST['reservation_day'] : date("d", time());
+        $group_id = ( isset($_POST['group_id']) ) ? $_POST['group_id'] : 1;
+        $pitch_id = ( isset($_POST['pitch_id']) ) ? $_POST['pitch_id'] : 1;
+        $state = ( isset($_POST['state']) ) ? $_POST['state'] : 3;
+        $this->api_model->setTemporaryReservationState($team_id,$reservation_time,$reservation_year,$reservation_month,$reservation_day,$group_id,$pitch_id,$state);
     }
 }

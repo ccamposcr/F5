@@ -27,8 +27,9 @@ class Api_model extends CI_MODEL
 
     }
 
-    function setTemporaryReservationState(){
-
+    function setTemporaryReservationState($team_id,$reservation_time,$reservation_year,$reservation_month,$reservation_day,$group_id,$pitch_id,$state){
+        $query = $this->db->query("SELECT `state` FROM `t_temporary_schedule` WHERE team_id='$team_id' AND reservation_time='$reservation_time' AND reservation_year='$reservation_year' AND reservation_month='$reservation_month' AND reservation_day='$reservation_day' AND group_id='$group_id' AND pitch_id='$pitch_id'");
+        //return $query->result();
     }
 }
 //end model

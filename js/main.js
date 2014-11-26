@@ -222,21 +222,19 @@ F5App.directive('available', ['$document', function($document) {
 
 				if(response.length > 0){
 					state = response[0].state;
+					switch(state){
+						case '1':
+							$('#reservation-watching-by-other-user-modal').modal('show');
+						break;
+						case '2':
+							$('#reservation-in-use-by-other-user-modal').modal('show');
+						break;
+						default:
+							$('#formReservationModal').modal('show');
+					}
 				}
-				else if( response.length == 0){
-					state = 3;
-				}
-
-				switch(state){
-					case '1':
-						$('#reservation-watching-by-other-user-modal').modal('show');
-					break;
-					case '2':
-						$('#reservation-in-use-by-other-user-modal').modal('show');
-					break
-					default:
-						$('#formReservationModal').modal('show');
-					break;
+				else{
+					$('#formReservationModal').modal('show');
 				}
 			}
 		});
