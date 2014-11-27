@@ -31,7 +31,7 @@ class Api_model extends CI_MODEL
         $query = $this->db->query("SELECT `state` FROM `t_temporary_schedule` WHERE team_id='$team_id' AND reservation_time='$reservation_time' AND reservation_year='$reservation_year' AND reservation_month='$reservation_month' AND reservation_day='$reservation_day' AND group_id='$group_id' AND pitch_id='$pitch_id'");
         if ($query->num_rows() > 0){
             //Update
-            $this->db->query("UPDATE `t_temporary_schedule` SET `state`=$state WHERE team_id='$team_id' AND reservation_time='$reservation_time' AND reservation_year='$reservation_year' AND reservation_month='$reservation_month' AND reservation_day='$reservation_day' AND group_id='$group_id' AND pitch_id='$pitch_id'");
+            $this->db->query("UPDATE `t_temporary_schedule` SET `state`='$state',`temporary_date_made`=CURRENT_TIMESTAMP WHERE team_id='$team_id' AND reservation_time='$reservation_time' AND reservation_year='$reservation_year' AND reservation_month='$reservation_month' AND reservation_day='$reservation_day' AND group_id='$group_id' AND pitch_id='$pitch_id'");
         }
         else{
             //Insert
@@ -40,3 +40,4 @@ class Api_model extends CI_MODEL
     }
 }
 //end model
+

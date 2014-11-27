@@ -106,7 +106,7 @@ F5App.controller("reservationController", function ($scope, $rootScope){
 		return $('#pitch').val() || window.location.pathname.replace('/','').replace(/\/$/, '').split('/')[2];
 	}
 
-	$scope.getDataForTemporaryReservation = function(){
+	$rootScope.getDataForTemporaryReservation = function(){
 		return { 	reservation_year : $('#year').val(), 
 					reservation_month : $('#month').val(), 
 					reservation_day : $('#day').val(), 
@@ -172,6 +172,18 @@ F5App.controller("modalController", function ($scope, $rootScope){
 		});
 		//$('#team_id').val('');
         //$('#reservation_time').val('');
+        var data = $rootScope.getDataForTemporaryReservation();
+		data.state = '3'; 
+		$.ajax({
+
+			type: 'POST',
+
+			url : base_url + "setTemporaryReservationState",
+
+			data: data,
+
+			async : true
+		});
 	});
 
 	var onCancel = function(){
@@ -260,7 +272,7 @@ F5App.directive('available', ['$document', function($document) {
 
 							data: data,
 
-							async : false
+							async : true
 						});
 
 						$('#formReservationModal').modal('show');
