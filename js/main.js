@@ -235,24 +235,36 @@ F5App.directive('available', ['$document', function($document) {
 					States 
 					1: Other user is viewing the same cell
 					2. Other user is booking the same cell
-					3. The BD didn't return anything data or it is Expired, so you can book you reservation now
+					3. Register is Expired, so you can book you reservation now
+					4. The BD didn't return anything data, so you can book you reservation now
 				*/
 
-				if(response.length > 0){
-					state = response[0].state;
-					switch(state){
-						case '1':
-							$('#reservation-watching-by-other-user-modal').modal('show');
-						break;
-						case '2':
-							$('#reservation-in-use-by-other-user-modal').modal('show');
-						break;
-						default:
-							$('#formReservationModal').modal('show');
-					}
-				}
-				else{
-					$('#formReservationModal').modal('show');
+				state = ( response.length == 0 ) ? '4' : response[0].state;
+
+				switch(state){
+					case '1':
+						$('#reservation-watching-by-other-user-modal').modal('show');
+					break;
+					case '2':
+						$('#reservation-in-use-by-other-user-modal').modal('show');
+					break;
+					case '3':
+					case '4':
+						var data = scope.getDataForTemporaryReservation();
+						data.state = '1'; 
+						$.ajax({
+
+							type: 'POST',
+
+							url : base_url + "setTemporaryReservationState",
+
+							data: data,
+
+							async : false
+						});
+
+						$('#formReservationModal').modal('show');
+					break;
 				}
 			}
 		});
