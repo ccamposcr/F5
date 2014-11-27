@@ -7,9 +7,11 @@
                 </li>
             </ul>
             <?php
-                $pitch = $this->uri->segment(1);
+                $pitch = $this->uri->segment(2);
+                $group = $this->uri->segment(1);
             ?>
             <input type="hidden" value="<?=$pitch?>" id="pitch" />
+            <input type="hidden" value="<?=$group?>" id="group" />
         </div>
         <div id="calendar" class="clearfix">
         	<?=$calendar?>
@@ -25,6 +27,9 @@
 			?>
         	<input type="hidden" value="<?=$year?>" id="year" />
 			<input type="hidden" value="<?=$month?>" id="month" />
+            <input type="hidden" value="" id="day" />
+            <input type="hidden" value="" id="team_id" />
+            <input type="hidden" value="" id="reservation_time" />
         </div>
         <div id="dailyResevations">
             <ul id="timeAndTeamInfo" class="clearfix">

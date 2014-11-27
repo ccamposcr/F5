@@ -22,7 +22,7 @@ class Calendar_controller extends CI_Controller {
 
         {heading_previous_cell}<th><a class="prev" href="{previous_url}"><<</a></th>{/heading_previous_cell}
 
-        {heading_title_cell}<th id="currentDate" colspan="{colspan}"><span id="day"></span> {heading}</th>{/heading_title_cell}
+        {heading_title_cell}<th id="currentDate" colspan="{colspan}"><span id="currentDay"></span> {heading}</th>{/heading_title_cell}
 
         {heading_next_cell}<th><a class="next" href="{next_url}">>></a></th>{/heading_next_cell}
 
