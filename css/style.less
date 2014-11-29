@@ -114,119 +114,6 @@ textarea {
 @font-content:'eurostileregular';
 @font-Titles:'nakamuraregular';
 
-/* ==========================================================================
-   RESERVACIONES
-========================================================================== */
-#divContentReservations{
-    padding: 40px;
-    width: 960px;
-    background-color: rgba(2, 2, 2, 0.29);
-    margin: 20px auto;
-    position: relative;
-
-    h1{
-        color:white;
-        text-align: center;
-        margin-top: 5px;
-        font-family: @font-Titles;
-        font-size: 31px;
-    }
-}
-
-#dailyResevations{
-    display: none;
-    width: 100%;
-    margin: 0 auto;
-    color: @white;
-    // padding: 0;
-    float: left;
-
-    #timeAndTeamInfo{
-        display: block;
-        padding: 0;
-
-        li{
-            float: left;
-            list-style: none;
-            font-family: @font-content;
-            font-size: 20px;
-            &:nth-child(1){
-                width: 100px;
-                 }
-            &:nth-child(2), &:nth-child(3){
-                width: 387px;
-                text-align: center;
-            }
-        }
-    }
-    #reservations{
-        list-style-type: none;
-        padding: 0;
-        margin-left: 15px;
-
-        li.row > span{
-            display: block;
-            float: left;
-            width: 387px;
-            height: 37px;
-            text-align: center;
-            &.blocked{
-                background-color: @red;
-                border:solid 1px @darkGray;
-                margin:2px;
-                line-height: 30px;
-            }
-            &.reservation-time{
-                border: none;
-                width: 100px;
-                color:@white ;
-                font-family: @font-content;
-                text-align: left;
-                line-height: 40px;
-                // margin-left: 10px;
-            }
-            &.completa{
-                width: 777px;
-                color: @white;
-                border:1px solid @darkGray;
-                line-height: 30px;
-            }
-            &.available{
-                cursor: pointer;
-                background-color: @lightOrange;
-                border:solid 1px @darkGray;
-                margin:2px;
-            }
-        }
-    }
-    .active{
-        font-weight: bold;
-    }
-}
-#pitchs{
-    float: right;
-    a{
-    background-color: @red;
-    font-family: @font-content;
-    font-size: 17px;
-    text-align: center;
-    line-height: 20px;
-    padding: 5px 25px;
-    text-decoration: none; 
-}
-    a:hover{
-        background-color: @gray;
-    }
-}
-#mainWrapper{
-    width: 100%;
-    background: url('../img/main-background.jpg') top center no-repeat;
-    margin: 0 auto;
-    position: relative;
-}
-.next, .prev{
-    color: @orange;
-}
 
 
 /* ==========================================================================
@@ -323,7 +210,7 @@ textarea {
         position: absolute;
         margin: -6px 0 0 70px;
         text-transform: capitalize;
-        font-size: 16px;
+        font-size: 14px;
         font-family: @font-content;
     }
 }
@@ -389,21 +276,21 @@ textarea {
     }
 }
 
-#pitchs{
-    display: none;
-    ul{
-        list-style-type: none;
+// #pitchs{
+//     display: none;
+//     ul{
+//         list-style-type: none;
 
-        li{
-            float: left;
-            margin-left: 10px;
-            a{
-                color: @white;
-                display: block;
-            }
-        }
-    }
-}
+//         li{
+//             float: left;
+//             margin-left: 10px;
+//             a{
+//                 color: @white;
+//                 display: block;
+//             }
+//         }
+//     }
+// }
 
 /* ==========================================================================
    HOME CONTENT
@@ -484,12 +371,6 @@ textarea {
 /* ==========================================================================
    CALENDAR
 ========================================================================== */
-
-.days_head, .days_row{
-    display: none;
-    background: #000;
-}
-
 #calendar {
     display: block;
     font-family: @font-content;
@@ -497,10 +378,26 @@ textarea {
     position: absolute;
 
     table{
-        margin-top: 15px;
-        font-size: 18px;
+        margin-top: 37px;
+        font-size: 16px;
+            
+            .days_row{
+            display: none;
+            background:@white;
+            color:@darkGray;
+            padding: 3px;
+            .day{
+                padding: 5px;
+            }
+        }
+        .days_head{
+            display: none;
+            color:@red;
+            background:@white;
+            text-align: center;
+        }
+
     }
-    
     .day{
         cursor: pointer;
         &:hover{
@@ -510,6 +407,121 @@ textarea {
             background: @red;
         }
     }
+}
+// buttons to choose the pitch
+#pitchs{
+    float: right;
+    display: none;
+    ul{
+        list-style-type: none;
+
+        li{
+        float: left;
+        margin-left: 10px;
+            a{
+            color: @white;
+            display: block;
+            background-color: @red;
+            font-family: @font-content;
+            font-size: 14px;
+            text-align: center;
+            line-height: 20px;
+            padding: 5px 25px;
+            text-decoration: none;
+            margin-top: 20px;
+            }
+                a:hover{
+                background-color: @gray;
+            }
+        }
+    }
+}
+
+/* ==========================================================================
+   RESERVACIONES
+========================================================================== */
+
+#dailyResevations{
+    display: none;
+    width: 100%;
+    margin: 0 auto;
+    color: @white;
+    // padding: 0;
+    float: left;
+
+    #timeAndTeamInfo{
+        display: block;
+        padding: 0;
+
+        li{
+            float: left;
+            list-style: none;
+            font-family: @font-content;
+            font-size: 18px;
+            &:nth-child(1){
+                width: 100px;
+                 }
+            &:nth-child(2), &:nth-child(3){
+                width: 387px;
+                text-align: center;
+            }
+        }
+    }
+    #reservations{
+        list-style-type: none;
+        padding: 0;
+        margin-left: 15px;
+
+        li.row > span{
+            display: block;
+            float: left;
+            width: 387px;
+            height: 33px;
+            text-align: center;
+            &.blocked{
+                background-color: @red;
+                border:solid 1px @darkGray;
+                margin:2px;
+                line-height: 30px;
+            }
+            &.reservation-time{
+                border: none;
+                width: 100px;
+                color:@white ;
+                font-family: @font-content;
+                text-align: left;
+                line-height: 40px;
+                font-size: 16px;
+                border-bottom: 1px solid rgba(210, 207, 207, 0.11);
+                border-top: 1px solid rgba(210, 207, 207, 0.11);
+            }
+            &.completa{
+                width: 777px;
+                color: @white;
+                border:1px solid @darkGray;
+                line-height: 30px;
+            }
+            &.available{
+                cursor: pointer;
+                background-color: @lightOrange;
+                border:solid 1px @darkGray;
+                margin:2px;
+            }
+        }
+    }
+    .active{
+        font-weight: bold;
+    }
+}
+
+#mainWrapper{
+    width: 100%;
+    background: url('../img/main-background.jpg') top center no-repeat;
+    margin: 0 auto;
+    position: relative;
+}
+.next, .prev{
+    color: @orange;
 }
 
 /* ==========================================================================
