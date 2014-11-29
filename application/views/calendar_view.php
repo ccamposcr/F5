@@ -87,16 +87,25 @@
                         <h4>Confirmaci&oacute;n</h4>
                     </div>
                     <div>
-                        <form name="bookingForm">
+                        <form name="bookingForm" novalidate>
                             <dl>
                                 <dt>Informaci&oacute;n Personal</dt>
                                     <dd>
-                                        <label>Nombre</label><input type="text" class="form-control" ng-model="name" required/>
-                                        <span ng-show="myForm.name.$error.required">Ingrese su nombre</span>
+                                        <label>Nombre</label><input type="text" class="form-control" ng-model="name" name="name" required/>
+                                        <span class="error" ng-show="bookingForm.name.$error.required && bookingForm.name.$dirty">Por favor ingrese su Nombre</span>
                                     </dd>
-                                    <dd><label>Apellido</label><input type="text" class="form-control" ng-model="lastname" required/></dd>
-                                    <dd><label>Email:</label><input type="email"  class="form-control" ng-model="email" required/></dd>
-                                    <dd><label>Telefono:</label><input type="tel" class="form-control" ng-model="phone"/></dd>
+                                    <dd>
+                                        <label>Apellido</label><input type="text" class="form-control" ng-model="lastname" name="lastname" required/>
+                                        <span class="error" ng-show="bookingForm.lastname.$error.required && bookingForm.lastname.$dirty">Por favor ingrese su Apellido</span>
+                                    </dd>
+                                    <dd>
+                                        <label>Email:</label><input type="email"  class="form-control" ng-model="email" name="email" required/>
+                                        <div ng-messages="bookingForm.email.$error">
+                                            <span class="error" ng-message="required">Por favor ingrese su correo el&eacute;ctronico</span>
+                                            <span class="error" ng-message="email">Por favor ingrese un correo el&eacute;ctronico v&aacute;lido</span>
+                                        </div>
+                                    </dd>
+                                    <dd><label>Telefono:</label><input type="tel" class="form-control" ng-model="phone" name="phone"/></dd>
                                 <dt>Tipo de Reservaci&oacute;n</dt>
                                     <dd class="radio"><input type="radio" name="typeReservation" value="completa" ng-model="typeReservation"><label>Completa</label></dd>
                                     <dd class="radio"><input type="radio" name="typeReservation" value="reto" ng-model="typeReservation"><label>Reto</label></dd>
@@ -113,7 +122,7 @@
                 <button id="cancelReservationBtn" type="button" class="btn btn-danger" data-toggle="confirmation" ng-show="bookingType == 'bookingOnLine'" data-btn-ok-label="Seguir" 
                 data-btn-ok-icon="glyphicon glyphicon-share-alt" data-btn-ok-class="btn-success" data-btn-cancel-label="Salir" data-btn-cancel-icon="glyphicon glyphicon-ban-circle" 
                 data-btn-cancel-class="btn-danger" data-title="Continuar la reservaci&oacute;n?">Cancelar</button>
-                <input id="reserveBtn" type="submit" class="btn btn-primary" ng-if="bookingType == 'bookingOnLine'" value="Reservar"/>
+                <input for="bookingForm" id="reserveBtn" type="submit" class="btn btn-primary" ng-if="bookingType == 'bookingOnLine'" value="Reservar"/>
                 <!--<button type="button" class="btn btn-primary">Send message</button>-->
               </div>
             </div>
