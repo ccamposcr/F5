@@ -116,6 +116,31 @@ F5App.controller("reservationController", function ($scope, $rootScope){
 					reservation_time : $('#reservation_time').val()
 				};
 	}
+	$rootScope.setStateTemporaryReservation = function(data){
+		$.ajax({
+
+			type: 'POST',
+
+			url : base_url + "setTemporaryReservationState",
+
+			data: data,
+
+			async : true
+		});
+
+		data.team_id = ( data.team_id == '1' ) ? '2' : '1';
+
+		$.ajax({
+
+			type: 'POST',
+
+			url : base_url + "setTemporaryReservationState",
+
+			data: data,
+
+			async : true
+		});
+	}
 
 	$scope.getDataForReservation = function(){
 		
@@ -174,16 +199,7 @@ F5App.controller("modalController", function ($scope, $rootScope){
         //$('#reservation_time').val('');
         var data = $rootScope.getDataForTemporaryReservation();
 		data.state = '3'; 
-		$.ajax({
-
-			type: 'POST',
-
-			url : base_url + "setTemporaryReservationState",
-
-			data: data,
-
-			async : true
-		});
+		$scope.setStateTemporaryReservation(data);
 	});
 
 	var onCancel = function(){
@@ -264,16 +280,7 @@ F5App.directive('available', ['$document', function($document) {
 					case '4':
 						var data = scope.getDataForTemporaryReservation();
 						data.state = '1'; 
-						$.ajax({
-
-							type: 'POST',
-
-							url : base_url + "setTemporaryReservationState",
-
-							data: data,
-
-							async : true
-						});
+						scope.setStateTemporaryReservation(data);
 
 						$('#formReservationModal').modal('show');
 					break;
