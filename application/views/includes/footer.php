@@ -5,7 +5,7 @@
 		            <a href="" class="fa fa-twitter"></a>
 		            <a href="" class="fa fa-youtube"></a>       
 		        </div>
-		        <p id="copy-right">© 2014Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil consequuntur,esse rem ducimus itaque quis.</p>
+		        <p id="copy-right">© 2014Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil consequuntur,esse rem ducimus itaque quis  dolor sit amet.</p>
 		    </div>
 		</div>
 	</div>

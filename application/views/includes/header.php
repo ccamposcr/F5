@@ -27,7 +27,7 @@
             <div id="divWrapperHeader" class="clearfix" ng-controller="headerController">
                 <div id="divContentHeader" class="clearfix">
                     <a id="logo" class="clearfix" href="<?php echo base_url(); ?>">
-                        <img id="mainLogo" src="<?php echo base_url(); ?>img/logo.png" alt="F5" height="93" width="242">
+                        <img id="mainLogo" src="<?php echo base_url(); ?>img/logo.png" alt="F5" height="62" width="170">
                         <span><?php echo $this->uri->segment(1)?></span>
                     </a>
                     <ul id="navPrincipal" class="clearfix" ng-init="setActive()">
