@@ -296,6 +296,42 @@ F5App.directive('available', ['$document', function($document) {
 	}
   }]);
 
+F5App.directive('bookingOnLine', ['$document', function($document) {
+    function link(scope, element, attr) {
+      element.on('click', function(event) {
+        event.preventDefault();
+        var data = scope.getDataForTemporaryReservation();
+		data.state = '2'; 
+		scope.setStateTemporaryReservation(data);
+		var minutes = 09,
+			seconds = 60;
+
+		var interval = setInterval(function(){
+			seconds--;
+			scope.$apply(function(){
+				scope.time = '00:'+minutes+':'+seconds;
+			});
+			
+			if(seconds == 00){
+				seconds = 59;
+				minutes--;
+			}
+
+			if( minutes == 0 ){
+				clearInterval(interval);
+				location.reload();
+			}
+		},1000);
+
+      });
+      scope.time = '00:00:00';
+    }
+    return {
+    	restrict : 'C',
+    	link:link
+	}
+  }]);
+
 /* ==========================================================================
    END ANGULARJS DIRECTIVES
 ========================================================================== */
