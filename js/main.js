@@ -148,6 +148,12 @@ F5App.controller("reservationController", function ($scope, $rootScope){
 
 	$scope.loadReservations();
 	$scope.loadPitchsPagination();
+	$(window).bind("beforeunload", function() { 
+	    var data = $rootScope.getDataForTemporaryReservation();
+		data.state = '3'; 
+		$scope.setStateTemporaryReservation(data);
+		return confirm("Realmente desea abandonar la reservacion?");
+	});
 });
 
 F5App.controller("galleryController", function ($scope, $rootScope){

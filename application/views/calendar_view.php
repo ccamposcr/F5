@@ -100,12 +100,14 @@
                                     </dd>
                                     <dd>
                                         <label>Email:</label><input type="email"  class="form-control" ng-model="email" name="email" required/>
-                                        <div ng-messages="bookingForm.email.$error">
-                                            <div class="error" ng-message="required">Por favor ingrese su correo el&eacute;ctronico</div>
-
-                                        </div>
+                                        <span class="error" ng-show="bookingForm.email.$error.required && bookingForm.email.$dirty">Por favor ingrese su correo el&eacute;ctronico</span>
+                                        <span class="error" ng-show="bookingForm.email.$dirty && bookingForm.email.$invalid && !bookingForm.email.$error.required">Por favor ingrese un correo el&eacute;ctronico v&aacute;lido</span>
                                     </dd>
-                                    <dd><label>Telefono:</label><input type="tel" class="form-control" ng-model="phone" name="phone"/></dd>
+                                    <dd>
+                                        <label>Telefono:</label><input type="tel" class="form-control" ng-model="phone" name="phone" ng-minlength="8" ng-maxlength="8" ng-pattern="/^\d+$/"/>
+                                        <span class="error" ng-show="bookingForm.phone.$dirty && (bookingForm.phone.$error.minlength || bookingForm.phone.$error.maxlength)">Por favor ingrese un t&eacute;lefono de 8 n&uacute;meros</span>
+                                        <span class="error" ng-show="bookingForm.phone.$dirty && bookingForm.phone.$invalid && !(bookingForm.phone.$error.minlength || bookingForm.phone.$error.maxlength)">Por favor ingrese un t&eacute;lefono v&aacute;lido</span>
+                                    </dd>
                                 <dt>Tipo de Reservaci&oacute;n</dt>
                                     <dd class="radio"><input type="radio" name="typeReservation" value="completa" ng-model="typeReservation"><label>Completa</label></dd>
                                     <dd class="radio"><input type="radio" name="typeReservation" value="reto" ng-model="typeReservation"><label>Reto</label></dd>
