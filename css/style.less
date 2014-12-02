@@ -128,7 +128,7 @@ textarea {
         color: @red;
     }
 
-      }
+}
     h4{
         font-family: @font-content;
         color: @white;
@@ -492,8 +492,6 @@ textarea {
                 text-align: left;
                 line-height: 40px;
                 font-size: 16px;
-                border-bottom: 1px solid rgba(210, 207, 207, 0.11);
-                border-top: 1px solid rgba(210, 207, 207, 0.11);
             }
             &.completa{
                 width: 777px;
@@ -626,7 +624,6 @@ textarea {
    ========================================================================== */
 #divWrapperFooter{
     width: 100%;
-    height: 175px;
     background: url(../img/footer-background.jpg) center center repeat;
 }
 
@@ -634,13 +631,14 @@ textarea {
     width: 960px;
     margin: 0 auto;
     padding: 10px 40px;
+    border-top: 1px solid rgba(11, 11, 11, 0.3);
 }
 #divSocialsIcons{
     width: 210px;
     margin: 0px auto;
 }
 
-/*************ICONS FOOTER******************/
+//social icons
 #divSocialsIcons{
     a.fa-facebook, a.fa-twitter, a.fa-youtube{
         height: 40px;
@@ -650,7 +648,7 @@ textarea {
         margin:20px 10px;
         text-decoration: none;
         display: block;
-        font-size: 26px;
+        font-size: 25px;
         color: @white;
         text-align: center;
         line-height: 39px;
@@ -660,7 +658,6 @@ textarea {
         }
     }
 }
-
 a.fa-facebook{
     background-color: @blueFacebook;
 
@@ -668,7 +665,6 @@ a.fa-facebook{
         background-color: @gray;
     }
 }
-
 a.fa-twitter{
     background-color: @blueLightTwitter;
 
@@ -676,7 +672,6 @@ a.fa-twitter{
         background-color: @gray;
     }
 }
-
 a.fa-youtube{
     background-color: @red;
 
@@ -684,7 +679,6 @@ a.fa-youtube{
         background-color: @gray;
     }
 }
-
 #copy-right{
     color: @white;
     float: left;
@@ -695,27 +689,40 @@ a.fa-youtube{
 /* ==========================================================================
   INTERNAL FOOTER
    ========================================================================== */
+#divContentInfoFooter span, #contentSocialIcons span, #infoContact > span{
+    color: @white;
+    font-family: @font-content;
+    font-size: 18px;
+    text-transform: capitalize;
+    height: 160px;
+}
+#divContentInfoFooter, #contentSocialIcons, #infoContact{
+    height: 160px;
+    width: 293px;
+}
+
 #divContentInfoFooter{
-    width: 242px;
     margin: 0;
     float: left;
     p{
         color: @white;
         font-family: @font-content;
-        font-size: 18px;
-        line-height: 18px;
+        font-size: 16px;
     }
 }
 
 #contentSocialIcons{
-    width: 200px;
-    margin-left: 95px;
     float: left;
+
+    span{
+        margin-left: 83px;
+    }
 
     #socialIcons{
         width: 200px;
-        margin-left: -11px;
+        margin:0 auto;
     }
+
     a.fa-facebook, a.fa-twitter, a.fa-youtube{
         height: 40px;
         width: 40px;
@@ -737,40 +744,38 @@ a.fa-youtube{
 
 #infoContact{
     float: right;
-    width: 280px;
-    margin: 0;
+    
+    span{
+        margin-left: 40px;
+    }
 
     ul{
         padding: 0; 
         margin-top: 5px;
 
         li{
+            
+            
             a{
                 list-style: none;
                 color: @white;
                 font-family: @font-content;
-                font-size: 18px;
+                font-size: 16px;
                 padding: 0;
                 text-decoration: none;
+                margin-left: 20px;
             }
             
             span{
-                font-size: 20px;
+                font-size: 18px;
                 color: @orange;
                 padding: 7px 3px 0 0;
-                margin:0 10px;
+                margin-left: 40px;
             }
         }
     }
 }
 
-#divContentInfoFooter span, #contentSocialIcons span, #infoContact > span{
-    color: @white;
-    font-family: @font-content;
-    font-size: 22px;
-    line-height: 17px;
-    text-transform: capitalize;
-}
 /* ==========================================================================
    Helper classes
    ========================================================================== */

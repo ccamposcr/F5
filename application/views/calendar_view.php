@@ -87,7 +87,7 @@
                         <h4>Confirmaci&oacute;n</h4>
                     </div>
                     <div>
-                        <form name="bookingForm" novalidate>
+                        <form name="bookingForm">
                             <dl>
                                 <dt>Informaci&oacute;n Personal</dt>
                                     <dd>
@@ -101,8 +101,8 @@
                                     <dd>
                                         <label>Email:</label><input type="email"  class="form-control" ng-model="email" name="email" required/>
                                         <div ng-messages="bookingForm.email.$error">
-                                            <span class="error" ng-message="required">Por favor ingrese su correo el&eacute;ctronico</span>
-                                            <span class="error" ng-message="email">Por favor ingrese un correo el&eacute;ctronico v&aacute;lido</span>
+                                            <div class="error" ng-message="required">Por favor ingrese su correo el&eacute;ctronico</div>
+
                                         </div>
                                     </dd>
                                     <dd><label>Telefono:</label><input type="tel" class="form-control" ng-model="phone" name="phone"/></dd>
