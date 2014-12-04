@@ -140,7 +140,7 @@ F5App.controller("reservationController", function ($scope, $rootScope){
 			async : true
 		});
 
-		data.team_id = ( data.team_id == '1' ) ? '2' : '1';
+		/*data.team_id = ( data.team_id == '1' ) ? '2' : '1';
 
 		$.ajax({
 
@@ -151,7 +151,7 @@ F5App.controller("reservationController", function ($scope, $rootScope){
 			data: data,
 
 			async : true
-		});
+		});*/
 	}
 
 
