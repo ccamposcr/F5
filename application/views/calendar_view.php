@@ -112,8 +112,8 @@
                                     <dd class="radio"><input type="radio" name="typeReservation" value="completa" ng-model="typeReservation"><label>Completa</label></dd>
                                     <dd class="radio"><input type="radio" name="typeReservation" value="reto" ng-model="typeReservation"><label>Reto</label></dd>
                                 <dt>Opciones Adicionales</dt>
-                                    <dd class="checkbox"><input id="setPitchAllWeek" name="setPitchAllWeek" type="checkbox" ng-model="setPitchAllWeek"><label for="setPitchAllWeek">Reservar esta cancha este mismo día todas las semanas</label></dd>
-                                    <dd class="checkbox"><input id="setReferee" name="setReferee" type="checkbox" ng-model="setReferee"><label for="setReferee">Pagar &Aacute;rbitro</label></dd>
+                                    <dd class="checkbox"><input name="setPitchAllWeeks" type="checkbox" ng-model="setPitchAllWeeks"><label for="setPitchAllWeeks">Reservar esta cancha este mismo día todas las semanas</label></dd>
+                                    <dd class="checkbox"><input name="setReferee" type="checkbox" ng-model="setReferee"><label for="setReferee">Pagar &Aacute;rbitro</label></dd>
                             </dl>
                         </form>
                     </div>

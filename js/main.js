@@ -119,7 +119,13 @@ F5App.controller("reservationController", function ($scope, $rootScope){
 
 	$rootScope.getDataForReservation = function(){
 		var data = $scope.getDataForTemporaryReservation();
-		data.
+		data.name = $scope.name;
+		data.lastname = $scope.lastname;
+		data.phone = $scope.phone;
+		data.email = $scope.email;
+		data.type_reservation = '';
+		data.referee_required = '' ;
+
 	}
 
 	$rootScope.setStateTemporaryReservation = function(data){
