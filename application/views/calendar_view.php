@@ -91,29 +91,28 @@
                             <dl>
                                 <dt>Informaci&oacute;n Personal</dt>
                                     <dd>
-                                        <label>Nombre</label><input type="text" class="form-control" ng-model="name" name="name" required/>
+                                        <label>Nombre</label><input type="text" class="form-control" ng-model="fields.name" name="name" required/>
                                         <span class="error" ng-show="bookingForm.name.$error.required && bookingForm.name.$dirty">Por favor ingrese su Nombre</span>
                                     </dd>
                                     <dd>
-                                        <label>Apellido</label><input type="text" class="form-control" ng-model="lastname" name="lastname" required/>
+                                        <label>Apellido</label><input type="text" class="form-control" ng-model="fields.lastname" name="lastname" required/>
                                         <span class="error" ng-show="bookingForm.lastname.$error.required && bookingForm.lastname.$dirty">Por favor ingrese su Apellido</span>
                                     </dd>
                                     <dd>
-                                        <label>Email:</label><input type="email"  class="form-control" ng-model="email" name="email" required/>
-                                        <span class="error" ng-show="bookingForm.email.$error.required && bookingForm.email.$dirty">Por favor ingrese su correo el&eacute;ctronico</span>
-                                        <span class="error" ng-show="bookingForm.email.$dirty && bookingForm.email.$invalid && !bookingForm.email.$error.required">Por favor ingrese un correo el&eacute;ctronico v&aacute;lido</span>
+                                        <label>Email:</label><input type="email"  class="form-control" ng-model="fields.email" name="email"/>
+                                        <!--<span class="error" ng-show="bookingForm.email.$error.required && bookingForm.email.$dirty">Por favor ingrese su correo el&eacute;ctronico</span>-->
+                                        <span class="error" ng-show="bookingForm.email.$dirty && bookingForm.email.$invalid">Por favor ingrese un correo el&eacute;ctronico v&aacute;lido</span>
                                     </dd>
                                     <dd>
-                                        <label>Telefono:</label><input type="tel" class="form-control" ng-model="phone" name="phone" ng-minlength="8" ng-maxlength="8" ng-pattern="/^\d+$/"/>
-                                        <span class="error" ng-show="bookingForm.phone.$dirty && (bookingForm.phone.$error.minlength || bookingForm.phone.$error.maxlength)">Por favor ingrese un t&eacute;lefono de 8 n&uacute;meros</span>
-                                        <span class="error" ng-show="bookingForm.phone.$dirty && bookingForm.phone.$invalid && !(bookingForm.phone.$error.minlength || bookingForm.phone.$error.maxlength)">Por favor ingrese un t&eacute;lefono v&aacute;lido</span>
+                                        <label>Telefono:</label><input type="tel" class="form-control" ng-model="fields.phone" name="phone" ng-minlength="8" ng-maxlength="8" ng-pattern="/^\d+$/"/>
+                                        <span class="error" ng-show="bookingForm.phone.$dirty && (bookingForm.phone.$error.minlength || bookingForm.phone.$error.maxlength) || bookingForm.phone.$dirty && bookingForm.phone.$invalid">Por favor ingrese un t&eacute;lefono de 8 n&uacute;meros</span>
                                     </dd>
                                 <dt>Tipo de Reservaci&oacute;n</dt>
-                                    <dd class="radio"><input type="radio" name="typeReservation" value="completa" ng-model="typeReservation"><label>Completa</label></dd>
-                                    <dd class="radio"><input type="radio" name="typeReservation" value="reto" ng-model="typeReservation"><label>Reto</label></dd>
+                                    <dd class="radio"><input type="radio" name="typeReservation" value="1" ng-model="fields.typeReservation"><label>Completa</label></dd>
+                                    <dd class="radio"><input type="radio" name="typeReservation" value="2" ng-model="fields.typeReservation"><label>Reto</label></dd>
                                 <dt>Opciones Adicionales</dt>
-                                    <dd class="checkbox"><input name="setPitchAllWeeks" type="checkbox" ng-model="setPitchAllWeeks"><label for="setPitchAllWeeks">Reservar esta cancha este mismo día todas las semanas</label></dd>
-                                    <dd class="checkbox"><input name="setReferee" type="checkbox" ng-model="setReferee"><label for="setReferee">Pagar &Aacute;rbitro</label></dd>
+                                    <dd class="checkbox"><input name="setPitchAllWeeks" type="checkbox" ng-model="fields.setPitchAllWeeks"><label for="setPitchAllWeeks">Reservar esta cancha este mismo día todas las semanas</label></dd>
+                                    <dd class="checkbox"><input name="setReferee" type="checkbox" ng-model="fields.setReferee"><label for="setReferee">Pagar &Aacute;rbitro</label></dd>
                             </dl>
                         </form>
                     </div>
@@ -124,7 +123,8 @@
                 <button id="cancelReservationBtn" type="button" class="btn btn-danger" data-toggle="confirmation" ng-show="bookingType == 'bookingOnLine'" data-btn-ok-label="Seguir" 
                 data-btn-ok-icon="glyphicon glyphicon-share-alt" data-btn-ok-class="btn-success" data-btn-cancel-label="Salir" data-btn-cancel-icon="glyphicon glyphicon-ban-circle" 
                 data-btn-cancel-class="btn-danger" data-title="Continuar la reservaci&oacute;n?">Cancelar</button>
-                <input for="bookingForm" id="reserveBtn" type="submit" class="btn btn-primary" ng-if="bookingType == 'bookingOnLine'" value="Reservar"/>
+                <input for="bookingForm" type="submit" class="btn btn-primary reserveBtn" ng-if="bookingType == 'bookingOnLine'" value="Reservar" ng-disabled="bookingForm.name.$dirty && bookingForm.name.$error.required || 
+                bookingForm.lastname.$dirty && bookingForm.lastname.$error.required"/>
                 <!--<button type="button" class="btn btn-primary">Send message</button>-->
               </div>
             </div>

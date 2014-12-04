@@ -42,6 +42,11 @@ class Api_model extends CI_MODEL
         $query = $this->db->query("SELECT `id` FROM `t_reservations` WHERE team_id='$team_id' AND reservation_time='$reservation_time' AND reservation_year='$reservation_year' AND reservation_month='$reservation_month' AND reservation_day='$reservation_day' AND group_id='$group_id' AND pitch_id='$pitch_id'");
         return $query->result();
     }
+
+    function createReservation($team_id,$reservation_time,$reservation_year,$reservation_month,$reservation_day,$group_id,$pitch_id,$name,$lastname,$phone,$email,$type_reservation,$referee_required,$reservation_price){
+        $this->db->query("INSERT INTO `t_reservations`(`name`, `lastname`, `phone`, `email`, `team_id`, `type_reservation`, `referee_required`, `reservation_time`, `reservation_year`, `reservation_month`, `reservation_day`, `reservation_price`, `pitch_id`, `group_id`, `active`) 
+            VALUES ('$name','$lastname','$phone','$email','$team_id','$type_reservation','$referee_required','$reservation_time','$reservation_year','$reservation_month','$reservation_day','$reservation_price','$pitch_id','$group_id','1')");
+    }
 }
 //end model
 

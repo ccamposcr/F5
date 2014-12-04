@@ -76,7 +76,7 @@ $route['getGroup'] = 'api_controller/getGroup';
 $route['getTemporaryReservationState'] = 'api_controller/getTemporaryReservationState';
 $route['setTemporaryReservationState'] = 'api_controller/setTemporaryReservationState';
 $route['checkIfReservationExist'] = 'api_controller/checkIfReservationExist';
-
+$route['createReservation'] = 'api_controller/createReservation';
 //$route['(:any)/getReservationByDay'] = 'calendar_controller/getReservationByDay';
 
 //Login - Logout Routes

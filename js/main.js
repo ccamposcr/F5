@@ -119,13 +119,13 @@ F5App.controller("reservationController", function ($scope, $rootScope){
 
 	$rootScope.getDataForReservation = function(){
 		var data = $scope.getDataForTemporaryReservation();
-		data.name = $scope.name;
-		data.lastname = $scope.lastname;
-		data.phone = $scope.phone;
-		data.email = $scope.email;
-		data.type_reservation = '';
-		data.referee_required = '' ;
-
+		data.name = $rootScope.fields.name;
+		data.lastname = $rootScope.fields.lastname;
+		data.phone = $rootScope.fields.phone;
+		data.email = $rootScope.fields.email;
+		data.type_reservation = $rootScope.fields.typeReservation;
+		data.referee_required = !!$rootScope.fields.setReferee;
+		return data;
 	}
 
 	$rootScope.setStateTemporaryReservation = function(data){
@@ -163,6 +163,14 @@ F5App.controller("reservationController", function ($scope, $rootScope){
 		$scope.setStateTemporaryReservation(data);
 		return confirm("Realmente desea abandonar la reservacion?");
 	});*/
+	$rootScope.fields = {
+		name : '',
+		lastname : '',
+		phone : '',
+		email : '',
+		type_reservation : '',
+		referee_required : ''
+	}
 });
 
 F5App.controller("galleryController", function ($scope, $rootScope){
@@ -370,6 +378,45 @@ F5App.directive('bookingOnLine', ['$document', function($document) {
 
       });
       scope.time = '00:00:00';
+    }
+    return {
+    	restrict : 'C',
+    	link:link
+	}
+  }]);
+
+F5App.directive('reserveBtn', ['$document', function($document) {
+    function link(scope, element, attr) {
+      element.on('click', function(event) {
+        event.preventDefault();
+        if( scope.bookingForm.$valid ){
+        	//console.log('valido');
+
+       		var data = scope.getDataForReservation();
+        	 $.ajax({
+
+				type: 'POST',
+
+				url : base_url + "createReservation",
+
+				data: data,
+
+				async : true,
+
+				success : function(response){
+					var data = scope.getDataForTemporaryReservation();
+					data.state = '5'; 
+					scope.setStateTemporaryReservation(data);
+					alert("Su reservacion ha sido creada Satisfactoriamente");
+					location.reload();
+				}
+			});
+        }
+        else{
+        	//console.log('invalido');
+        }
+        
+      });
     }
     return {
     	restrict : 'C',
