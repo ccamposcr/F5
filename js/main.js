@@ -116,6 +116,12 @@ F5App.controller("reservationController", function ($scope, $rootScope){
 					reservation_time : $('#reservation_time').val()
 				};
 	}
+
+	$rootScope.getDataForReservation = function(){
+		var data = $scope.getDataForTemporaryReservation();
+		data.
+	}
+
 	$rootScope.setStateTemporaryReservation = function(data){
 		$.ajax({
 
@@ -142,18 +148,15 @@ F5App.controller("reservationController", function ($scope, $rootScope){
 		});
 	}
 
-	$scope.getDataForReservation = function(){
-		
-	}
 
 	$scope.loadReservations();
 	$scope.loadPitchsPagination();
-	$(window).bind("beforeunload", function() { 
+	/*$(window).bind("beforeunload", function() { 
 	    var data = $rootScope.getDataForTemporaryReservation();
 		data.state = '3'; 
 		$scope.setStateTemporaryReservation(data);
 		return confirm("Realmente desea abandonar la reservacion?");
-	});
+	});*/
 });
 
 F5App.controller("galleryController", function ($scope, $rootScope){
@@ -270,7 +273,8 @@ F5App.directive('available', ['$document', function($document) {
 					1: Other user is viewing the same cell
 					2. Other user is booking the same cell
 					3. Register is Expired, so you can book you reservation now
-					4. The BD didn't return anything data, so you can book you reservation now
+					4. The BD didn't return anything data, so you can book you reservation now.
+					5. The reservation already exists
 				*/
 
 				state = ( response.length == 0 ) ? '4' : response[0].state;
@@ -290,6 +294,10 @@ F5App.directive('available', ['$document', function($document) {
 
 						$('#formReservationModal').modal('show');
 					break;
+					case '5':
+						alert('Esta casilla ya fue reservada. Por favor escoja otra casilla para reservar');
+						location.reload();
+					break;
 				}
 			}
 		});
@@ -307,12 +315,37 @@ F5App.directive('bookingOnLine', ['$document', function($document) {
       element.on('click', function(event) {
         event.preventDefault();
         var data = scope.getDataForTemporaryReservation();
-		data.state = '2'; 
-		scope.setStateTemporaryReservation(data);
+
+        //data.reservation_day = "29";
+        $.ajax({
+
+			type: 'POST',
+
+			url : base_url + "checkIfReservationExist",
+
+			data: data,
+
+			async : true,
+
+			success : function(response){
+				if(jQuery.parseJSON(response).length > 0){
+					data.state = '5';// Reservada
+					scope.setStateTemporaryReservation(data);
+					alert('Esta casilla ya fue reservada. Por favor escoja otra casilla para reservar');
+					location.reload();
+				}
+				else{
+					data.state = '2'; 
+					scope.setStateTemporaryReservation(data);
+				}
+			}
+		});
+
+
 		var minutes = 09,
 			seconds = 60;
 
-		var interval = setInterval(function(){
+		scope.timeInterval = setInterval(function(){
 			seconds--;
 			scope.$apply(function(){
 				scope.time = '00:'+minutes+':'+seconds;
@@ -324,7 +357,7 @@ F5App.directive('bookingOnLine', ['$document', function($document) {
 			}
 
 			if( minutes == 0 ){
-				clearInterval(interval);
+				clearInterval(scope.timeInterval);
 				location.reload();
 			}
 		},1000);

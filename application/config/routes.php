@@ -75,6 +75,7 @@ $route['getPitchByGroup'] = 'api_controller/getPitchByGroup';
 $route['getGroup'] = 'api_controller/getGroup';
 $route['getTemporaryReservationState'] = 'api_controller/getTemporaryReservationState';
 $route['setTemporaryReservationState'] = 'api_controller/setTemporaryReservationState';
+$route['checkIfReservationExist'] = 'api_controller/checkIfReservationExist';
 
 //$route['(:any)/getReservationByDay'] = 'calendar_controller/getReservationByDay';
 

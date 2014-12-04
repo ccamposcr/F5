@@ -64,4 +64,16 @@ class Api_controller extends CI_Controller {
         $state = ( isset($_POST['state']) ) ? strip_tags($_POST['state']) : 3;
         $this->api_model->setTemporaryReservationState($team_id,$reservation_time,$reservation_year,$reservation_month,$reservation_day,$group_id,$pitch_id,$state);
     }
+
+    public function checkIfReservationExist(){
+        $team_id = ( isset($_POST['team_id']) ) ? strip_tags($_POST['team_id']) : '1';
+        $reservation_time = ( isset($_POST['reservation_time']) ) ? strip_tags($_POST['reservation_time']) : '08-09';
+        $reservation_year = ( isset($_POST['reservation_year']) ) ? strip_tags($_POST['reservation_year']) : date("Y", time());
+        $reservation_month = ( isset($_POST['reservation_month']) ) ? strip_tags($_POST['reservation_month']) : date("m", time());
+        $reservation_day = ( isset($_POST['reservation_day']) ) ? strip_tags($_POST['reservation_day']) : date("d", time());
+        $group_id = ( isset($_POST['group_id']) ) ? strip_tags($_POST['group_id']) : 1;
+        $pitch_id = ( isset($_POST['pitch_id']) ) ? strip_tags($_POST['pitch_id']) : 1;
+        $result = $this->api_model->checkIfReservationExist($team_id,$reservation_time,$reservation_year,$reservation_month,$reservation_day,$group_id,$pitch_id);
+        echo json_encode($result);
+    }
 }
