@@ -1,5 +1,5 @@
-<div id="divMainContentGallery" ng-controller="galleryController" ng-init="loadGallery()">
-	<h1>Galeria</h1>
+<div id="divContent" class="divMainContentGallery" ng-controller="galleryController" ng-init="loadGallery()">
+	<h1>Galer&iacute;a</h1>
 		<div id="slider" class="flexslider">
 		 	<ul class="slides">
 			    <li><img src="<?php echo base_url(); ?>img/gallery/picture_1.jpg"/></li>
