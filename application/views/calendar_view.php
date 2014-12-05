@@ -41,11 +41,11 @@
                 <li class="row clearfix" ng-repeat="data in reservations">
                     <span class="reservation-time" data-time="{{timesForReservations[$index]}}">{{times[$index]}}</span>
                     <!--<span class="{{reservation.id ? 'blocked' : 'available'}} {{reservation.type_reservation == 1 ? 'completa' : ''}}" data-team="{{$index+1}}" ng-repeat="reservation in data">-->
-                    <span ng-if="!!reservation.id" class="blocked {{reservation.type_reservation == 1 ? 'completa' : ''}}" data-team="{{$index+1}} - {{reservation.team_id}}" ng-repeat="reservation in data">
+                    <span ng-if="!!reservation.id && $index+1 == reservation.team_id" class="blocked {{reservation.type_reservation == 1 ? 'completa' : ''}}" data-team="{{$index+1}} - {{reservation.team_id}}" ng-repeat="reservation in data">
                         {{reservation.name}} {{reservation.lastname}}
                     </span>
-                    <span ng-if="!reservation.id && $index+1 == 1 || $index+1 == 2 && !!data[$index - 1].id" class="available" data-toggle="tooltip" data-delay='{ show: 10, hide: 50 }' data-placement="left" title="Haga click aquí para Reservar en Línea" data-team="{{$index+1}}" ng-repeat="reservation in data">{{($index+1 == 2 && !!data[$index - 1].id) ? 'Equipo 1 Busca Reto' : ''}}</span>
-                    <span ng-if="!reservation.id && $index+1 == 2 && !data[$index - 1].id" class="locked" data-team="{{$index+1}}" ng-repeat="reservation in data"></span>
+                    <span ng-if="$index+1 == reservation.team_id && !reservation.id && $index+1 == 1 || $index+1 == 2 && !!data[$index - 1].id" class="available" data-toggle="tooltip" data-delay='{ show: 10, hide: 50 }' data-placement="left" title="Haga click aquí para Reservar en Línea" data-team="{{$index+1}}" ng-repeat="reservation in data">{{($index+1 == 2 && !!data[$index - 1].id) ? 'Equipo 1 Busca Reto' : ''}}</span>
+                    <span ng-if="$index+1 == reservation.team_id && !reservation.id && $index+1 == 2 && !data[$index - 1].id" class="locked" data-team="{{$index+1}}" ng-repeat="reservation in data"></span>
                 </li>
             </ul>
         </div>

@@ -72,8 +72,12 @@ F5App.controller("reservationController", function ($scope, $rootScope){
 					reservations[i].push(data[j]);
 				}
 			}
-			if( reservations[i].length == 1 && reservations[i][0].type_reservation != 1){
+			if( reservations[i].length == 1 && reservations[i][0].type_reservation != 1 && reservations[i][0].team_id == 1 ){
 				reservations[i][1] = {};
+			}
+			else if( reservations[i].length == 1 && reservations[i][0].type_reservation != 1 && reservations[i][0].team_id == 2 ){
+				reservations[i][1] = reservations[i][0];
+				reservations[i][0] = {};
 			}
 			else if( reservations[i].length == 0 ){
 				reservations[i][0] = {};
