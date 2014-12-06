@@ -10,7 +10,7 @@ F5App.controller("reservationController", function ($scope, $rootScope){
    $scope.times = ['08:00 a.m.','09:00 a.m.','10:00 a.m.','11:00 a.m.','12:00 m.d','01:00 p.m.','02:00 p.m.','03:00 p.m.','04:00 p.m.','05:00 p.m.','06:00 p.m.','07:00 p.m.','08:00 p.m.','09:00 p.m.','10:00 p.m.'];
 	//var path = ( window.location.pathname.replace('/','').replace(/\/$/, '').split('/').length <= 2 ) ? './' : '../';
 
-   $scope.loadReservations = function (){
+   $rootScope.loadReservations = function (){
 
 	   	if( !$('.day div.active').length ){
 			$('.day div').first().addClass('active');
@@ -224,9 +224,9 @@ F5App.controller("modalController", function ($scope, $rootScope){
 		});
 		//$('#team_id').val('');
         //$('#reservation_time').val('');
-        var data = $rootScope.getDataForTemporaryReservation();
-		data.state = '3'; 
-		$scope.setStateTemporaryReservation(data);
+       // var data = $rootScope.getDataForTemporaryReservation();
+		//data.state = '3'; 
+		//$scope.setStateTemporaryReservation(data);
 	});
 
 	var onCancel = function(){
@@ -314,7 +314,9 @@ F5App.directive('available', ['$document', function($document) {
 					break;
 					case '5':
 						alert('Esta casilla ya fue reservada. Por favor escoja otra casilla para reservar');
-						location.reload();
+						//location.reload();
+						$('#formReservationModal').modal('hide');
+						scope.loadReservations();
 					break;
 				}
 			}
@@ -350,7 +352,9 @@ F5App.directive('bookingOnLine', ['$document', function($document) {
 					data.state = '5';// Reservada
 					scope.setStateTemporaryReservation(data);
 					alert('Esta casilla ya fue reservada. Por favor escoja otra casilla para reservar');
-					location.reload();
+					//location.reload();
+					$('#formReservationModal').modal('hide');
+					scope.loadReservations();
 				}
 				else{
 					data.state = '2'; 
@@ -412,7 +416,9 @@ F5App.directive('reserveBtn', ['$document', function($document) {
 					data.state = '5'; 
 					scope.setStateTemporaryReservation(data);
 					alert("Su reservacion ha sido creada Satisfactoriamente");
-					location.reload();
+					//location.reload();
+					$('#formReservationModal').modal('hide');
+					scope.loadReservations();
 				}
 			});
         }
