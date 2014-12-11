@@ -87,7 +87,7 @@
                 <div id="bookingOnLine" ng-show="bookingType == 'bookingOnLine'">
                     <h3>Reservaci&oacute;n en l&iacute;nea</h3>
                     <div>
-                        <h4>Confirmaci&oacute;n</h4>
+                        <h4>Fecha a Reservar: <span id="reservationInfo"></span></h4>
                     </div>
                     <div>
                         <form name="bookingForm">
