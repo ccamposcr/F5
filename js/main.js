@@ -228,6 +228,7 @@ F5App.controller("modalController", function ($scope, $rootScope){
 		$scope.$apply(function(){
 			$scope.bookingType = '';
 		});
+		$scope.loadReservations();
 
 	});
 
@@ -423,7 +424,7 @@ F5App.directive('reserveBtn', ['$document', function($document) {
 					scope.setStateTemporaryReservation(data);
 					alert("Su reservacion ha sido creada Satisfactoriamente");
 					//location.reload();
-					scope.successReservation = true;
+					scope.$parent.successReservation = true;
 					$('#formReservationModal').modal('hide');
 					scope.loadReservations();
 				}
@@ -437,6 +438,7 @@ F5App.directive('reserveBtn', ['$document', function($document) {
     }
     return {
     	restrict : 'C',
+    	scope : false,
     	link:link
 	}
   }]);
