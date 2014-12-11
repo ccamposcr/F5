@@ -234,6 +234,9 @@ F5App.controller("modalController", function ($scope, $rootScope){
 
 	$('#formReservationModal').on('show.bs.modal', function(){
 		$scope.successReservation = false;
+		if( $scope.fields.typeReservationSelected == 'reto' ){
+			$scope.fields.typeReservation = 2;
+		}
 	});
 
 	var onCancel = function(){
