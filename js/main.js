@@ -219,14 +219,20 @@ F5App.controller("headerController", function ($scope, $rootScope){
 
 F5App.controller("modalController", function ($scope, $rootScope){
 	$('#formReservationModal').on('hidden.bs.modal', function(){
+		
+		if( !$scope.successReservation ){
+			var data = $rootScope.getDataForTemporaryReservation();
+			data.state = '3'; 
+			$scope.setStateTemporaryReservation(data);
+		}
 		$scope.$apply(function(){
 			$scope.bookingType = '';
 		});
-		//$('#team_id').val('');
-        //$('#reservation_time').val('');
-       // var data = $rootScope.getDataForTemporaryReservation();
-		//data.state = '3'; 
-		//$scope.setStateTemporaryReservation(data);
+
+	});
+
+	$('#formReservationModal').on('show.bs.modal', function(){
+		$scope.successReservation = false;
 	});
 
 	var onCancel = function(){
@@ -417,6 +423,7 @@ F5App.directive('reserveBtn', ['$document', function($document) {
 					scope.setStateTemporaryReservation(data);
 					alert("Su reservacion ha sido creada Satisfactoriamente");
 					//location.reload();
+					scope.successReservation = true;
 					$('#formReservationModal').modal('hide');
 					scope.loadReservations();
 				}
