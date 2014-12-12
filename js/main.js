@@ -57,6 +57,7 @@ F5App.controller("reservationController", function ($scope, $rootScope){
 				});
 			}
 		});
+		$scope.pitchValue = $('#pitch').val();
 	}
 
 	$scope.sortReservations = function (data){

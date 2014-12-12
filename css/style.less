@@ -410,19 +410,19 @@ textarea {
         float: left;
         margin-left: 10px;
             a{
-            color: @white;
-            display: block;
-            background-color: @red;
-            font-family: @font-content;
-            font-size: 14px;
-            text-align: center;
-            line-height: 20px;
-            padding: 5px 25px;
-            text-decoration: none;
-            margin-top: 20px;
-            }
-                a:hover{
-                background-color: @gray;
+                color: @white;
+                display: block;
+                background-color: @red;
+                font-family: @font-content;
+                font-size: 14px;
+                text-align: center;
+                line-height: 20px;
+                padding: 5px 25px;
+                text-decoration: none;
+                margin-top: 20px;
+                &:hover, &.active{
+                    background-color: @gray;
+                }
             }
         }
     }
@@ -522,31 +522,38 @@ textarea {
 /* ==========================================================================
    LOGIN
 ========================================================================== */
-#divContent #loginTitle{
-    font-family: @font-content;
+#divContent{
+
+    #loginTitle{
+        font-family: @font-content;
+    }
+    label{
+        font-family: @font-content;
+        color:@white;
+        font-size: 20px;
+        font-weight: normal;
+
+    }
+
+    &.home{
+        min-height: 696px;
+    }
 }
+
 #contentLogin
 {
     width: 450px;
     margin: 20px auto;
-        p{
+    p{
         color:@orange;
         font-size: 17px;
         font-family: @font-content;
     }
-    #btnLogin
-{
-    
-    margin-top: 10px;
+    #btnLogin{
+        margin-top: 10px;
+    }
 }
-}
-#divContent label{
-    font-family: @font-content;
-    color:@white;
-    font-size: 20px;
-    font-weight: normal;
 
-}
 #userStatus span{
     color:@orange;
 }
