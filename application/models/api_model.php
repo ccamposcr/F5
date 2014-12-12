@@ -39,7 +39,7 @@ class Api_model extends CI_MODEL
     }
 
     function checkIfReservationExist($team_id,$reservation_time,$reservation_year,$reservation_month,$reservation_day,$group_id,$pitch_id){
-        $query = $this->db->query("SELECT `id` FROM `t_reservations` WHERE team_id='$team_id' AND reservation_time='$reservation_time' AND reservation_year='$reservation_year' AND reservation_month='$reservation_month' AND reservation_day='$reservation_day' AND group_id='$group_id' AND pitch_id='$pitch_id'");
+        $query = $this->db->query("SELECT `id` FROM `t_reservations` WHERE team_id='$team_id' AND reservation_time='$reservation_time' AND reservation_year='$reservation_year' AND reservation_month='$reservation_month' AND reservation_day='$reservation_day' AND group_id='$group_id' AND pitch_id='$pitch_id' AND active ='1'");
         return $query->result();
     }
 
