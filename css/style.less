@@ -373,7 +373,17 @@ textarea {
             color:@darkGray;
             padding: 3px;
             .day{
-                padding: 5px;
+                div{
+                    padding: 5px;
+                }
+                cursor: pointer;
+                &:hover{
+                    background:@gray;
+                }
+                .active{
+                    background: @red;
+                }
+               
             }
         }
         .days_head{
@@ -383,15 +393,6 @@ textarea {
             text-align: center;
         }
 
-    }
-    .day{
-        cursor: pointer;
-        &:hover{
-            background:@gray;
-        }
-        .active{
-            background: @red;
-        }
     }
 }
 
