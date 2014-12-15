@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= '/F5-git/';
+$config['base_url']	= '/';
 /*
 |--------------------------------------------------------------------------
 | Index File
