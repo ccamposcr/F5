@@ -11,7 +11,8 @@ F5App.controller("reservationController", function ($scope, $rootScope){
 	//var path = ( window.location.pathname.replace('/','').replace(/\/$/, '').split('/').length <= 2 ) ? './' : '../';
 
    $rootScope.loadReservations = function (){
-
+   		$('#loader').show();
+   		
 	   	if( !$('.day div.active').length ){
 			$('.day div').first().addClass('active');
 		}
@@ -19,7 +20,7 @@ F5App.controller("reservationController", function ($scope, $rootScope){
 		var day = $('.day div.active').text();
 		$('#day').val(day);
 		$('#currentDay').html(day);
-
+		
 		$.ajax({
 
 			type: 'POST',
@@ -35,6 +36,7 @@ F5App.controller("reservationController", function ($scope, $rootScope){
 					$scope.reservations = $scope.sortReservations(jQuery.parseJSON(response));
 					$('#dailyResevations').show();
 				});
+				$('#loader').hide();
 			}
 		});
 	}
@@ -481,7 +483,9 @@ F5App.directive('reserveBtn', ['$document', function($document) {
 						scope.loadReservations();
 					}
 					else{
+						$('#loader').show();
 						scope.reserveAllWeeksSameDay(data);
+						$('#loader').hide();
 					}
 				}
 			});

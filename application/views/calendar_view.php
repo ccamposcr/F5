@@ -179,5 +179,5 @@
     </div>
 
     <div id="loader">
-        <img >
+        <img src="<?php echo base_url(); ?>img/ajax_loader_red_128.gif" width="127" height="128">
     </div>
