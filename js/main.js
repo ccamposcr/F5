@@ -159,6 +159,14 @@ F5App.controller("reservationController", function ($scope, $rootScope){
 		});*/
 	}
 
+	$rootScope.isDateForBookingValid = function(){
+		return new Date($('#year').val(),$('#month').val() - 1,$('#day').val(),'23','59','59') > new Date();
+	}
+
+	$rootScope.isAdminUser = function(){
+		return ( !!$('#isAdminUser').val() && /admin/.test(location.href) );
+	}
+
 
 	$scope.loadReservations();
 	$scope.loadPitchsPagination();

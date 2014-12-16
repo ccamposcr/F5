@@ -18,18 +18,19 @@
         	<?php
 	        	$year = $this->uri->segment(4);
 	        	$month = $this->uri->segment(5);
-	        	if ($year == ''){
-					$year  = date("Y", time());
-				}
-				if ($month == ''){
-					$month = date("m", time());
-				}
+        
+                $year = ($year == '') ? date("Y", time()) : $year;
+                $month = ($month == '') ? date("m", time()) : $month; 
+
+                $isAdminUser = (!!$this->session->userdata('logged_in')) ? '1' : '0';
+
 			?>
         	<input type="hidden" value="<?=$year?>" id="year" />
 			<input type="hidden" value="<?=$month?>" id="month" />
             <input type="hidden" value="" id="day" />
             <input type="hidden" value="" id="team_id" />
             <input type="hidden" value="" id="reservation_time" />
+            <input type="hidden" value="<?=$isAdminUser?>" id="isAdminUser"/>
         </div>
         <div id="dailyResevations">
             <ul id="timeAndTeamInfo" class="clearfix">
@@ -37,7 +38,7 @@
                 <li>Equipo 1</li>
                 <li>Equipo 2</li>
             </ul>
-            <ul id="reservations">
+            <ul id="reservations" ng-if="isDateForBookingValid() || !isDateForBookingValid() && isAdminUser()">
                 <li class="row clearfix" ng-repeat="data in reservations">
                     <span class="reservation-time" data-time="{{timesForReservations[$index]}}">{{times[$index]}}</span>
                     <span ng-if="!!reservation.id && $index+1 == reservation.team_id && $index+1 == 1" class="blocked {{reservation.type_reservation == 1 ? 'completa' : ''}}" data-team="{{$index+1}}" ng-repeat="reservation in data">
@@ -46,6 +47,14 @@
                     <span ng-if="!reservation.id && $index+1 == 1 || $index+1 == 2 && !!data[$index - 1].id && !data[$index].id" class="available" data-toggle="tooltip" data-delay='{ show: 10, hide: 50 }' data-placement="left" title="Haga click aquí para Reservar en Línea" data-team="{{$index+1}}" ng-repeat="reservation in data" ng-click="($index+1 == 2 && !!data[$index - 1].id) ? fields.typeReservationSelected = 'reto' : fields.typeReservationSelected = 'normal'">{{($index+1 == 2 && !!data[$index - 1].id) ? 'Equipo 1 Busca Reto' : ''}}</span>
                     <span ng-if="!reservation.id && $index+1 == 2 && !data[$index - 1].id" class="locked" data-team="{{$index+1}}" ng-repeat="reservation in data"></span>
                     <span ng-if="!!reservation.id && $index+1 == reservation.team_id && $index+1 == 2" class="blocked {{reservation.type_reservation == 1 ? 'completa' : ''}}" data-team="{{$index+1}}" ng-repeat="reservation in data">
+                        {{reservation.name}} {{reservation.lastname}}
+                    </span>
+                </li>
+            </ul>
+            <ul id="reservations" ng-if="!isDateForBookingValid() && !isAdminUser()">
+                <li class="row clearfix" ng-repeat="data in reservations">
+                    <span class="reservation-time" data-time="{{timesForReservations[$index]}}">{{times[$index]}}</span>
+                    <span class="blocked {{reservation.type_reservation == 1 ? 'completa' : ''}}" data-team="{{$index+1}}" ng-repeat="reservation in data">
                         {{reservation.name}} {{reservation.lastname}}
                     </span>
                 </li>
