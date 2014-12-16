@@ -177,3 +177,7 @@
           </div>
         </div>
     </div>
+
+    <div id="loader">
+        <img >
+    </div>

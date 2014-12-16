@@ -130,6 +130,7 @@ F5App.controller("reservationController", function ($scope, $rootScope){
 		data.email = $rootScope.fields.email;
 		data.type_reservation = $rootScope.fields.typeReservation;
 		data.referee_required = !!$rootScope.fields.setReferee;
+		data.setPitchAllWeeks = !!$rootScope.fields.setPitchAllWeeks;
 		return data;
 	}
 
@@ -165,6 +166,42 @@ F5App.controller("reservationController", function ($scope, $rootScope){
 
 	$rootScope.isAdminUser = function(){
 		return ( !!$('#isAdminUser').val() && /admin/.test(location.href) );
+	}
+
+	$rootScope.reserveAllWeeksSameDay = function(data){
+		var range = 1, daysPerWeek = 7, daysPerYear = 365;
+		for(var i = range; i<= daysPerYear ; i++){
+			var from = new Date($('#year').val(),$('#month').val() - 1,$('#day').val());
+			var to = new Date($('#year').val(),$('#month').val() - 1,$('#day').val());
+			to.setDate(from.getDate() + i);
+			if( i % daysPerWeek  == 0 ){
+				data.reservation_day = to.getDate().toString();
+				data.reservation_month = (to.getMonth() + 1).toString();
+				data.reservation_year = to.getFullYear().toString();
+				//console.log(to.toString());
+
+				//loading
+				$.ajax({
+
+					type: 'POST',
+
+					url : base_url + "createReservation",
+
+					data: data,
+
+					async : true,
+
+					success : function(response){
+						var dataTmp = $scope.getDataForTemporaryReservation();
+						dataTmp.state = '5';
+						dataTmp.reservation_day = to.getDate().toString();
+						dataTmp.reservation_month = (to.getMonth() + 1).toString();
+						dataTmp.reservation_year = to.getFullYear().toString();
+						$scope.setStateTemporaryReservation(dataTmp);
+					}
+				});	
+			}
+		}
 	}
 
 
@@ -431,19 +468,27 @@ F5App.directive('reserveBtn', ['$document', function($document) {
 				async : true,
 
 				success : function(response){
-					var data = scope.getDataForTemporaryReservation();
-					data.state = '5'; 
-					scope.setStateTemporaryReservation(data);
-					alert("Su reservacion ha sido creada Satisfactoriamente");
+					var dataTmp = scope.getDataForTemporaryReservation();
+					dataTmp.state = '5'; 
+					scope.setStateTemporaryReservation(dataTmp);
+
 					//location.reload();
 					scope.$parent.successReservation = true;
 					$('#formReservationModal').modal('hide');
-					scope.loadReservations();
+
+					if(!data.setPitchAllWeeks){
+						alert("Su reservacion ha sido creada Satisfactoriamente");
+						scope.loadReservations();
+					}
+					else{
+						scope.reserveAllWeeksSameDay(data);
+					}
 				}
 			});
         }
         else{
         	//console.log('invalido');
+        	alert("Por favor ingrese correctamente los datos erróneos en el formulario");
         }
         
       });
