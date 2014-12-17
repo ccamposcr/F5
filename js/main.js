@@ -12,6 +12,7 @@ F5App.controller("reservationController", function ($scope, $rootScope){
 
    $rootScope.loadReservations = function (){
    		$('#loading-modal').modal('show');
+   		$('#dailyResevations').hide();
    		
 	   	if( !$('.day div.active').length ){
 			$('.day div').first().addClass('active');
@@ -34,10 +35,10 @@ F5App.controller("reservationController", function ($scope, $rootScope){
 			success : function(response){
 				$scope.$apply(function(){
 					$scope.reservations = $scope.sortReservations(jQuery.parseJSON(response));
-					$('#dailyResevations').show();
 				});
 				setTimeout(function(){
 					$('#loading-modal').modal('hide');
+					$('#dailyResevations').show();
 				},500);
 			}
 		});
