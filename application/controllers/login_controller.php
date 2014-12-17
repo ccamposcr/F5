@@ -55,7 +55,7 @@ class Login_controller extends CI_Controller {
 
      function checkUser($password) {
         $user = $this->input->post('username');
-        $userInfo = $this->login_model->login($user, $password);
+        $userInfo = $this->login_model->login(strip_tags($user), strip_tags($password));
         $result = false;
         if( $userInfo ) {
             $sess_array = array('id' => $userInfo[0]->id, 'user' => $userInfo[0]->user);
