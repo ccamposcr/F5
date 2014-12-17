@@ -9,7 +9,7 @@ class Login_model extends CI_MODEL {
     function login($user, $password) {
         //create query to connect user login database
         $password =  MD5($password);
-        $query = $this->db->query("SELECT * FROM t_admin WHERE user = '$user' AND password = '$password'");
+        $query = $this->db->query("SELECT * FROM t_admin WHERE user = ".$this->db->escape($user)." AND password = ".$this->db->escape($password));
         $result = false;
 
         if($query->num_rows() == 1) { 
