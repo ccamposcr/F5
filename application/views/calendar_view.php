@@ -176,8 +176,33 @@
             </div>
           </div>
         </div>
-    </div>
 
-    <div id="loader">
-        <img src="<?php echo base_url(); ?>img/ajax_loader_red_128.gif" width="127" height="128">
+        <div class="modal fade loading" id="set-pitch-all-weeks-modal">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">F5 Reservaciones</h4>
+              </div>
+              <div class="modal-body">
+                <p>Por favor no cierre el navegador. El sistema está reservando el d&iacute;a elegido todas las semanas por un per&iacute;odo de 1 a&ntilde;o</p>
+                <img src="<?php echo base_url(); ?>img/loading.gif" width="127" height="128"/>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade loading" id="loading-modal">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">F5 Reservaciones</h4>
+              </div>
+              <div class="modal-body">
+                <p>Cargando ...</p>
+                <img src="<?php echo base_url(); ?>img/loading.gif" width="127" height="128"/>
+              </div>
+            </div>
+          </div>
+        </div>
+
     </div>

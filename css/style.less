@@ -117,14 +117,16 @@ textarea {
 /* ==========================================================================
    LOADER
 ========================================================================== */
-#loader{
-    display: none;
-    img{
-        position: absolute;
-        top: 25%;
-        left: 50%;
-        right: 50%;
-        display: block;
+.loading{
+    .modal-body{
+        img{
+            margin: 0 auto;
+            display: block;
+        }
+        
+        p{
+            text-align: center;
+        }
     }
 }
 /* ==========================================================================
@@ -134,12 +136,10 @@ textarea {
     background-color: @darkGray;
 
     button{
-    
-    span{
-        color: @red;
+        span{
+            color: @red;
+        }
     }
-
-}
     h4{
         font-family: @font-content;
         color: @white;
@@ -384,17 +384,23 @@ textarea {
             color:@darkGray;
             padding: 3px;
             .day{
+                cursor: pointer;
+
                 div{
                     padding: 5px;
                 }
-                cursor: pointer;
+
                 &:hover{
                     background:@gray;
                 }
+
                 .active{
                     background: @red;
                 }
-               
+
+                .today{
+                    background: @orange;
+                }
             }
         }
         .days_head{
