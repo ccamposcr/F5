@@ -1,0 +1,828 @@
+/*! HTML5 Boilerplate v4.3.0 | MIT License | http://h5bp.com/ */
+/*
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+html,
+button,
+input,
+select,
+textarea {
+  color: #222;
+}
+html {
+  font-size: 1em;
+  line-height: 1.4;
+}
+/*
+ * Remove text-shadow in selection highlight: h5bp.com/i
+ * These selection rule sets have to be separate.
+ * Customize the background color to match your design.
+ */
+::-moz-selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+::selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+/*
+ * A better looking default horizontal rule
+ */
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
+/*
+ * Remove the gap between images, videos, audio and canvas and the bottom of
+ * their containers: h5bp.com/i/440
+ */
+audio,
+canvas,
+img,
+video {
+  vertical-align: middle;
+}
+/*
+ * Remove default fieldset styles.
+ */
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+/*
+ * Allow only vertical resizing of textareas.
+ */
+textarea {
+  resize: vertical;
+}
+/* ==========================================================================
+   Browse Happy prompt
+   ========================================================================== */
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000000;
+  padding: 0.2em 0;
+}
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+/* Color Variables */
+/* Fonts Variables */
+/* ==========================================================================
+   LOADER
+========================================================================== */
+.loading .modal-body img {
+  margin: 0 auto;
+  display: block;
+}
+.loading .modal-body p {
+  text-align: center;
+}
+/* ==========================================================================
+   MODAL
+========================================================================== */
+.modal-header {
+  background-color: #3a3333;
+}
+.modal-header button span {
+  color: #c4302c;
+}
+.modal-header h4 {
+  font-family: 'eurostileregular';
+  color: #ffffff;
+  font-size: 20px;
+}
+.modal-body {
+  font-family: 'eurostileregular';
+}
+.modal-body h3 {
+  font-weight: bold;
+}
+.modal-body ol {
+  font-size: 17px;
+  font-weight: normal;
+}
+.modal-body ol dt {
+  font-weight: normal;
+}
+#bookingOnLine h3 {
+  text-align: center;
+  font-size: 20px;
+  margin: 0;
+  color: #c4302c;
+  font-weight: normal;
+}
+#bookingOnLine h4 {
+  font-size: 20px;
+  margin: 0;
+}
+#bookingOnLine .error {
+  color: #c4302c;
+}
+.modal-footer {
+  background-color: #3a3333;
+}
+.modal-footer button {
+  background-color: #c4302c;
+  color: #ffffff;
+}
+#formReservationModal .modal-header h4 {
+  float: left;
+}
+#formReservationModal .modal-header h4 > span {
+  font-size: 14px;
+}
+#formReservationModal .modal-header p {
+  float: right;
+  color: #ffffff;
+  margin: 0;
+}
+/* ==========================================================================
+   HEADER
+   ========================================================================== */
+#divWrapperHeader {
+  width: 100%;
+  height: 84px;
+  background-color: rgba(19, 18, 18, 0.76);
+  margin-top: 20px;
+}
+#divContentHeader {
+  width: 960px;
+  margin: 0 auto;
+}
+#divContentHeader span {
+  text-decoration: none;
+  color: #ffffff;
+  float: left;
+  position: absolute;
+  margin: -6px 0 0 70px;
+  text-transform: capitalize;
+  font-size: 14px;
+  font-family: 'eurostileregular';
+}
+#navPrincipal {
+  display: block;
+  float: right;
+  padding: 0;
+  margin: 0;
+}
+#navPrincipal li {
+  width: 150px;
+  height: 84px;
+  list-style: none;
+  float: left;
+  text-align: center;
+  font-family: 'eurostileregular';
+  font-size: 16px;
+  line-height: 84px;
+}
+#navPrincipal li a {
+  text-decoration: none;
+  color: white;
+  display: block;
+}
+#navPrincipal li a:hover {
+  background-color: #c4302c;
+}
+#navPrincipal li a.active {
+  background-color: #c4302c;
+}
+#navPrincipal li.active {
+  background-color: #c4302c;
+}
+#logo {
+  float: left;
+  margin: 6px 0 0 14px;
+}
+#logo a {
+  display: block;
+}
+#userStatus {
+  position: absolute;
+  right: 0;
+  left: 0;
+  margin: 0 auto;
+  width: 960px;
+  text-align: right;
+  top: 0;
+}
+#userStatus a {
+  color: #ffffff;
+}
+#userStatus a:hover {
+  color: #c4302c;
+}
+/* ==========================================================================
+   HOME CONTENT
+   ========================================================================== */
+#divContent {
+  width: 960px;
+  padding: 40px;
+  background-color: rgba(2, 2, 2, 0.29);
+  margin: 18px auto;
+}
+#divContent h1,
+#divContent h2 {
+  color: white;
+  text-align: center;
+  font-family: 'nakamuraregular';
+  font-size: 25px;
+  margin: 0;
+}
+#divContent h2 {
+  color: #c4302c;
+  font-size: 19px;
+  text-align: center;
+  text-shadow: 1px 0 0 #240404;
+  margin-bottom: 40px;
+}
+#divContent h2 span {
+  font-family: arial;
+  font-size: 25px;
+  font-weight: 800;
+}
+#divContent p {
+  color: white;
+  font-family: 'eurostileregular';
+  font-size: 19px;
+  margin: 40px 0;
+  line-height: 24px;
+}
+#divContentButtons {
+  margin-bottom: 6px;
+}
+#divButton1,
+#divButton2 {
+  width: 260px;
+  height: 100px;
+  border-radius: 5px;
+  background-color: #ff5500;
+  padding: 10px;
+}
+#divButton1 a,
+#divButton2 a {
+  display: block;
+  margin: 0 auto;
+}
+#divButton1 img,
+#divButton2 img {
+  display: block;
+  margin: 0 auto;
+}
+#divButton1:hover,
+#divButton2:hover {
+  background-color: #ffffff;
+}
+#divButton1 {
+  float: left;
+  margin-left: 90px;
+}
+#divButton2 {
+  float: right;
+  margin-right: 90px;
+}
+/* ==========================================================================
+   CALENDAR
+========================================================================== */
+#calendar {
+  display: block;
+  font-family: 'eurostileregular';
+  color: #ffffff;
+  position: absolute;
+}
+#calendar table {
+  margin-top: 37px;
+  font-size: 16px;
+  width: 200px;
+}
+#calendar table .days_row {
+  display: none;
+  background: #ffffff;
+  color: #3a3333;
+  padding: 3px;
+}
+#calendar table .days_row .day {
+  cursor: pointer;
+}
+#calendar table .days_row .day div {
+  padding: 5px;
+}
+#calendar table .days_row .day:hover {
+  background: #968e8e;
+}
+#calendar table .days_row .day .active {
+  background: #c4302c;
+}
+#calendar table .days_row .day .today {
+  background: #ff5500;
+}
+#calendar table .days_head {
+  display: none;
+  color: #c4302c;
+  background: #ffffff;
+  text-align: center;
+}
+#currentDate {
+  text-align: center;
+}
+#pitchs {
+  float: right;
+  display: none;
+}
+#pitchs ul {
+  list-style-type: none;
+}
+#pitchs ul li {
+  float: left;
+  margin-left: 10px;
+}
+#pitchs ul li a {
+  color: #ffffff;
+  display: block;
+  background-color: #c4302c;
+  font-family: 'eurostileregular';
+  font-size: 14px;
+  text-align: center;
+  line-height: 20px;
+  padding: 5px 25px;
+  text-decoration: none;
+  margin-top: 20px;
+}
+#pitchs ul li a:hover,
+#pitchs ul li a.active {
+  background-color: #968e8e;
+}
+/* ==========================================================================
+   RESERVACIONES
+========================================================================== */
+#dailyResevations {
+  display: none;
+  width: 100%;
+  margin: 0 auto;
+  color: #ffffff;
+  float: left;
+}
+#dailyResevations #timeAndTeamInfo {
+  display: block;
+  padding: 0;
+}
+#dailyResevations #timeAndTeamInfo li {
+  float: left;
+  list-style: none;
+  font-family: 'eurostileregular';
+  font-size: 18px;
+}
+#dailyResevations #timeAndTeamInfo li:nth-child(1) {
+  width: 100px;
+}
+#dailyResevations #timeAndTeamInfo li:nth-child(2),
+#dailyResevations #timeAndTeamInfo li:nth-child(3) {
+  width: 387px;
+  text-align: center;
+}
+#dailyResevations #reservations {
+  list-style-type: none;
+  padding: 0;
+  margin-left: 15px;
+}
+#dailyResevations #reservations li.row > span {
+  display: block;
+  float: left;
+  width: 387px;
+  height: 33px;
+  text-align: center;
+}
+#dailyResevations #reservations li.row > span.blocked {
+  background-color: #c4302c;
+  border: solid 1px #3a3333;
+  margin: 2px;
+  line-height: 30px;
+}
+#dailyResevations #reservations li.row > span.reservation-time {
+  border: none;
+  width: 100px;
+  color: #ffffff;
+  font-family: 'eurostileregular';
+  text-align: left;
+  line-height: 40px;
+  font-size: 16px;
+}
+#dailyResevations #reservations li.row > span.completa {
+  width: 777px;
+  color: #ffffff;
+  border: 1px solid #3a3333;
+  line-height: 30px;
+}
+#dailyResevations #reservations li.row > span.available {
+  cursor: pointer;
+  background-color: #f4753d;
+  border: solid 1px #3a3333;
+  margin: 2px;
+  line-height: 30px;
+}
+#dailyResevations #reservations li.row > span.locked {
+  background-color: #968e8e;
+  border: solid 1px #3a3333;
+  margin: 2px;
+  line-height: 30px;
+}
+#dailyResevations #reservations li.row > span.delete.active {
+  background-color: #000000;
+  border: solid 1px #c4302c;
+  margin: 2px;
+  line-height: 30px;
+}
+#dailyResevations .active {
+  font-weight: bold;
+}
+#mainWrapper {
+  width: 100%;
+  background: url('../img/main-background.jpg') top center no-repeat;
+  margin: 0 auto;
+  position: relative;
+}
+.next,
+.prev {
+  color: #ff5500;
+}
+/* ==========================================================================
+   LOGIN
+========================================================================== */
+#divContent #loginTitle {
+  font-family: 'eurostileregular';
+}
+#divContent label {
+  font-family: 'eurostileregular';
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: normal;
+}
+#divContent.home {
+  min-height: 696px;
+}
+#contentLogin {
+  width: 450px;
+  margin: 20px auto;
+}
+#contentLogin p {
+  color: #ff5500;
+  font-size: 17px;
+  font-family: 'eurostileregular';
+}
+#contentLogin #btnLogin {
+  margin-top: 10px;
+}
+#userStatus span {
+  color: #ff5500;
+}
+/* ==========================================================================
+   GALLERY
+========================================================================== */
+.divMainContentGallery #slider {
+  width: 650px;
+  height: 450px;
+  margin: 20px  auto 0;
+  border: 5px solid #282626;
+}
+.divMainContentGallery .flex-direction-nav .flex-prev {
+  background: url(../img/img-previous.png) no-repeat;
+}
+.divMainContentGallery .flex-direction-nav .flex-prev:before {
+  display: block;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.divMainContentGallery .flex-direction-nav .flex-next {
+  background: url(../img/img-next.png) no-repeat 0 0;
+}
+.divMainContentGallery .flex-direction-nav .flex-next:before {
+  display: block;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.divMainContentGallery .slides img {
+  width: 650px;
+  height: 440px;
+}
+#carousel {
+  width: 650px;
+  height: 85px;
+  margin: 0 auto;
+  margin-top: 10px;
+  background-color: rgba(0, 0, 0, 0.25);
+  border: none;
+}
+#carousel .slides img {
+  width: 120px;
+  height: 85px;
+}
+/* ==========================================================================
+   FOOTER 
+   ========================================================================== */
+#divWrapperFooter {
+  width: 100%;
+  background: url(../img/footer-background.jpg) center center repeat;
+}
+#divContentFooter {
+  width: 960px;
+  margin: 0 auto;
+  padding: 10px 40px;
+  border-top: 1px solid rgba(11, 11, 11, 0.3);
+}
+#divSocialsIcons {
+  width: 210px;
+  margin: 0px auto;
+}
+#divSocialsIcons a.fa-facebook,
+#divSocialsIcons a.fa-twitter,
+#divSocialsIcons a.fa-youtube {
+  height: 40px;
+  width: 40px;
+  border-radius: 100px;
+  float: left;
+  margin: 20px 10px;
+  text-decoration: none;
+  display: block;
+  font-size: 25px;
+  color: #ffffff;
+  text-align: center;
+  line-height: 39px;
+}
+#divSocialsIcons a.fa-facebook:hover,
+#divSocialsIcons a.fa-twitter:hover,
+#divSocialsIcons a.fa-youtube:hover {
+  text-decoration: none;
+}
+a.fa-facebook {
+  background-color: #3b5a99;
+}
+a.fa-facebook:hover {
+  background-color: #968e8e;
+}
+a.fa-twitter {
+  background-color: #009fd1;
+}
+a.fa-twitter:hover {
+  background-color: #968e8e;
+}
+a.fa-youtube {
+  background-color: #c4302c;
+}
+a.fa-youtube:hover {
+  background-color: #968e8e;
+}
+#copy-right {
+  color: #ffffff;
+  float: left;
+  font-family: 'eurostileregular';
+  font-size: 16px;
+  margin: 0 auto 30px;
+}
+/* ==========================================================================
+  INTERNAL FOOTER
+   ========================================================================== */
+#divContentInfoFooter span,
+#contentSocialIcons span,
+#infoContact > span {
+  color: #ffffff;
+  font-family: 'eurostileregular';
+  font-size: 18px;
+  text-transform: capitalize;
+  height: 160px;
+}
+#divContentInfoFooter,
+#contentSocialIcons,
+#infoContact {
+  height: 160px;
+  width: 293px;
+}
+#divContentInfoFooter {
+  margin: 0;
+  float: left;
+}
+#divContentInfoFooter p {
+  color: #ffffff;
+  font-family: 'eurostileregular';
+  font-size: 16px;
+}
+#contentSocialIcons {
+  float: left;
+}
+#contentSocialIcons span {
+  margin-left: 83px;
+}
+#contentSocialIcons #socialIcons {
+  width: 200px;
+  margin: 0 auto;
+}
+#contentSocialIcons a.fa-facebook,
+#contentSocialIcons a.fa-twitter,
+#contentSocialIcons a.fa-youtube {
+  height: 40px;
+  width: 40px;
+  border-radius: 100px;
+  float: left;
+  margin: 13px 9px;
+  text-decoration: none;
+  display: block;
+  font-size: 25px;
+  color: #ffffff;
+  text-align: center;
+  line-height: 40px;
+}
+#contentSocialIcons a.fa-facebook:hover,
+#contentSocialIcons a.fa-twitter:hover,
+#contentSocialIcons a.fa-youtube:hover {
+  text-decoration: none;
+}
+#infoContact {
+  float: right;
+}
+#infoContact span {
+  margin-left: 40px;
+}
+#infoContact ul {
+  padding: 0;
+  margin-top: 5px;
+}
+#infoContact ul li a {
+  list-style: none;
+  color: #ffffff;
+  font-family: 'eurostileregular';
+  font-size: 16px;
+  padding: 0;
+  text-decoration: none;
+  margin-left: 20px;
+}
+#infoContact ul li span {
+  font-size: 18px;
+  color: #ff5500;
+  padding: 7px 3px 0 0;
+  margin-left: 40px;
+  width: 20px;
+}
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+/*
+ * Image replacement
+ */
+.ir {
+  background-color: transparent;
+  border: 0;
+  overflow: hidden;
+  /* IE 6/7 fallback */
+
+  *text-indent: -9999px;
+}
+.ir:before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 150%;
+}
+/*
+ * Hide from both screenreaders and browsers: h5bp.com/u
+ */
+.hidden {
+  display: none !important;
+  visibility: hidden;
+}
+/*
+ * Hide only visually, but have it available for screenreaders: h5bp.com/v
+ */
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+/*
+ * Extends the .visuallyhidden class to allow the element to be focusable
+ * when navigated to via the keyboard: h5bp.com/p
+ */
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+}
+/*
+ * Hide visually and from screenreaders, but maintain layout
+ */
+.invisible {
+  visibility: hidden;
+}
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  /* 1 */
+
+  display: table;
+  /* 2 */
+
+}
+.clearfix:after {
+  clear: both;
+}
+/*
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+.clearfix {
+  *zoom: 1;
+}
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid required HTTP connection: h5bp.com/r
+   ========================================================================== */
+@media print {
+  * {
+    background: transparent !important;
+    color: #000000 !important;
+    /* Black prints faster: h5bp.com/s */
+  
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+  /*
+       * Don't show links for images, or javascript/internal links
+       */
+  .ir a:after,
+  a[href^="javascript:"]:after,
+  a[href^="#"]:after {
+    content: "";
+  }
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+  thead {
+    display: table-header-group;
+    /* h5bp.com/t */
+  
+  }
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+  img {
+    max-width: 100% !important;
+  }
+  @page  {
+    margin: 0.5cm;
+  }
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+}
