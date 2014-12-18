@@ -117,8 +117,9 @@
                                         <span class="error" ng-show="bookingForm.phone.$dirty && (bookingForm.phone.$error.minlength || bookingForm.phone.$error.maxlength) || bookingForm.phone.$dirty && bookingForm.phone.$invalid">Por favor ingrese un t&eacute;lefono de 8 n&uacute;meros</span>
                                     </dd>
                                 <dt>Tipo de Reservaci&oacute;n</dt>
-                                    <dd ng-if="fields.typeReservationSelected == 'normal'" class="radio"><input type="radio" name="typeReservation" value="1" ng-model="fields.typeReservation"><label>Completa</label></dd>
-                                    <dd class="radio"><input type="radio" name="typeReservation" value="2" ng-model="fields.typeReservation"><label>Reto</label></dd>
+                                    <dd ng-if="fields.typeReservationSelected == 'normal'" class="radio"><input type="radio" name="typeReservation" value="1" ng-model="fields.typeReservation" ng-required="!fields.typeReservation"><label>Completa</label></dd>
+                                    <dd class="radio"><input type="radio" name="typeReservation" value="2" ng-model="fields.typeReservation" ng-required="!fields.typeReservation"><label>Reto</label></dd>
+                                    <span class="error" ng-show="fields.typeReservation.$dirty && fields.typeReservation.$error.required">Por favor seleccion una opci&oacute;n</span>
                                 <dt>Opciones Adicionales</dt>
                                     <dd class="checkbox"><input name="setPitchAllWeeks" type="checkbox" ng-model="fields.setPitchAllWeeks"><label for="setPitchAllWeeks">Reservar esta cancha este mismo día todas las semanas</label></dd>
                                     <dd class="checkbox"><input name="setReferee" type="checkbox" ng-model="fields.setReferee"><label for="setReferee">Pagar &Aacute;rbitro</label></dd>
@@ -132,8 +133,7 @@
                 <button id="cancelReservationBtn" type="button" class="btn btn-danger" data-toggle="confirmation" ng-show="bookingType == 'bookingOnLine'" data-btn-ok-label="Seguir" 
                 data-btn-ok-icon="glyphicon glyphicon-share-alt" data-btn-ok-class="btn-success" data-btn-cancel-label="Salir" data-btn-cancel-icon="glyphicon glyphicon-ban-circle" 
                 data-btn-cancel-class="btn-danger" data-title="Continuar la reservaci&oacute;n?">Cancelar</button>
-                <input for="bookingForm" type="submit" class="btn btn-primary reserveBtn" ng-if="bookingType == 'bookingOnLine'" value="Reservar" ng-disabled="bookingForm.name.$dirty && bookingForm.name.$error.required || 
-                bookingForm.lastname.$dirty && bookingForm.lastname.$error.required"/>
+                <input for="bookingForm" type="submit" class="btn btn-primary reserveBtn" ng-if="bookingType == 'bookingOnLine'" value="Reservar" ng-disabled="bookingForm.name.$error.required || bookingForm.lastname.$error.required || fields.typeReservation.$error.required"/>
                 <!--<button type="button" class="btn btn-primary">Send message</button>-->
               </div>
             </div>
