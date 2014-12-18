@@ -58,6 +58,7 @@ F5App.app.directive('available', ['$document', function($document) {
 						scope.setStateTemporaryReservation(data);
 
 						$('#formReservationModal').modal('show');
+						$('#reservationInfo').html($('#day').val()+'/'+$('#month').val()+'/'+$('#year').val());
 					break;
 					case '5':
 						alert('Esta casilla ya fue reservada. Por favor escoja otra casilla para reservar');
@@ -134,7 +135,7 @@ F5App.app.directive('bookingOnLine', ['$document', function($document) {
 		},1000);
 
       });
-      scope.time = '00:00:00';
+      scope.time = '00:10:00';
     }
     return {
     	restrict : 'C',

@@ -9,8 +9,8 @@ F5App.app.controller("modalController", function ($scope, $rootScope){
 		$scope.$apply(function(){
 			$scope.bookingType = '';
 		});
+		$scope.clearReservationForm();
 		$scope.loadReservations();
-
 	});
 
 	$('#formReservationModal').on('show.bs.modal', function(){
@@ -32,5 +32,17 @@ F5App.app.controller("modalController", function ($scope, $rootScope){
 		onConfirm : onContinue,
 		onCancel : onCancel
 	});
+
+	$scope.clearReservationForm = function(){
+		$scope.fields.email = '';
+		$scope.fields.lastname = '';
+		$scope.fields.name = '';
+		$scope.fields.phone = '';
+		$scope.fields.referee_required = '';
+		$scope.fields.typeReservationSelected = 'normal';
+		$scope.fields.type_reservation = '';
+		clearInterval($scope.timeInterval);
+		$scope.time = '00:10:00';
+	}
 
 });

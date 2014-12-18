@@ -67,7 +67,7 @@
             <div class="modal-content">
               <div class="modal-header clearfix">
                 <button type="button" class="close" data-dismiss="modal" ng-hide="bookingType == 'bookingOnLine'"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Reservaciones</h4>
+                <h4 class="modal-title">Reservaciones<br/><span>Fecha a Reservar: <span id="reservationInfo"></span></span></h4>
                 <p ng-if="bookingType == 'bookingOnLine'">Tiempo Restante: <span>{{time}}</span></p>
               </div>
               <div class="modal-body">
@@ -95,9 +95,6 @@
                 </div>
                 <div id="bookingOnLine" ng-show="bookingType == 'bookingOnLine'">
                     <h3>Reservaci&oacute;n en l&iacute;nea</h3>
-                    <div>
-                        <h4>Fecha a Reservar: <span id="reservationInfo"></span></h4>
-                    </div>
                     <div>
                         <form name="bookingForm">
                             <dl>
