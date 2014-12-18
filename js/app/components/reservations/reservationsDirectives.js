@@ -225,7 +225,7 @@ F5App.app.directive('delete', ['$document', function($document) {
 				async : true,
 
 				success : function(response){
-					alert('Registro Eliminado');
+					//alert('Registro Eliminado');
 					scope.loadReservations();
 				}
 			});
