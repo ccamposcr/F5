@@ -47,6 +47,10 @@ class Api_model extends CI_MODEL
         $this->db->query("INSERT INTO t_reservations(name, lastname, phone, email, team_id, type_reservation, referee_required, reservation_time, reservation_year, reservation_month, reservation_day, reservation_price, pitch_id, group_id, active) 
             VALUES (".$this->db->escape($name).",".$this->db->escape($lastname).",".$this->db->escape($phone).",".$this->db->escape($email).",".$this->db->escape($team_id).",".$this->db->escape($type_reservation).",".$this->db->escape($referee_required).",".$this->db->escape($reservation_time).",".$this->db->escape($reservation_year).",".$this->db->escape($reservation_month).",".$this->db->escape($reservation_day).",".$this->db->escape($reservation_price).",".$this->db->escape($pitch_id).",".$this->db->escape($group_id).",'1')");
     }
+
+    function setInactiveReservation($team_id,$reservation_time,$reservation_year,$reservation_month,$reservation_day,$group_id,$pitch_id){
+        $this->db->query("UPDATE t_reservations SET active = '0' WHERE team_id = ".$this->db->escape($team_id)." AND reservation_time = ".$this->db->escape($reservation_time)." AND reservation_year = ".$this->db->escape($reservation_year)." AND reservation_month = ".$this->db->escape($reservation_month)." AND reservation_day = ".$this->db->escape($reservation_day)." AND group_id = ".$this->db->escape($group_id)." AND pitch_id = ".$this->db->escape($pitch_id));
+    }
 }
 //end model
 

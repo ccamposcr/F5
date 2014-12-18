@@ -92,7 +92,17 @@ class Api_controller extends CI_Controller {
         $type_reservation = ( isset($_POST['type_reservation']) ) ? strip_tags($_POST['type_reservation']) : 1;
         $referee_required = ( isset($_POST['referee_required']) ) ? strip_tags($_POST['referee_required']) : 1;
         $reservation_price = ( isset($_POST['reservation_price']) ) ? strip_tags($_POST['reservation_price']) : 1;
-
         $this->api_model->createReservation($team_id,$reservation_time,$reservation_year,$reservation_month,$reservation_day,$group_id,$pitch_id,$name,$lastname,$phone,$email,$type_reservation,$referee_required,$reservation_price);
+    }
+
+    public function setInactiveReservation(){
+        $team_id = ( isset($_POST['team_id']) ) ? strip_tags($_POST['team_id']) : '1';
+        $reservation_time = ( isset($_POST['reservation_time']) ) ? strip_tags($_POST['reservation_time']) : '08-09';
+        $reservation_year = ( isset($_POST['reservation_year']) ) ? strip_tags($_POST['reservation_year']) : date("Y", time());
+        $reservation_month = ( isset($_POST['reservation_month']) ) ? strip_tags($_POST['reservation_month']) : date("m", time());
+        $reservation_day = ( isset($_POST['reservation_day']) ) ? strip_tags($_POST['reservation_day']) : date("d", time());
+        $group_id = ( isset($_POST['group_id']) ) ? strip_tags($_POST['group_id']) : 1;
+        $pitch_id = ( isset($_POST['pitch_id']) ) ? strip_tags($_POST['pitch_id']) : 1;
+        $this->api_model->setInactiveReservation($team_id,$reservation_time,$reservation_year,$reservation_month,$reservation_day,$group_id,$pitch_id);
     }
 }

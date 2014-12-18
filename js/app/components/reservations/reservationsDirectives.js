@@ -199,3 +199,42 @@ F5App.app.directive('reserveBtn', ['$document', function($document) {
     	link:link
 	}
   }]);
+
+F5App.app.directive('delete', ['$document', function($document) {
+    function link(scope, element, attr) {
+      element.on('click', function(event) {
+        event.preventDefault();
+
+        $('#team_id').val(attr.team);
+        $('#reservation_time').val($(element).siblings('.reservation-time').attr('data-time'));
+
+        $(element).addClass('active');
+        if(confirm("Realmemente desea eliminar este registro?")){
+        	var data = scope.getDataForTemporaryReservation();
+			data.state = '3'; 
+			scope.setStateTemporaryReservation(data);
+
+        	 $.ajax({
+
+				type: 'POST',
+
+				url : F5App.base_url + "setInactiveReservation",
+
+				data: data,
+
+				async : true,
+
+				success : function(response){
+					alert('Registro Eliminado');
+					scope.loadReservations();
+				}
+			});
+        }
+        $(element).removeClass('active');
+      });
+    }
+    return {
+    	restrict : 'C',
+    	link:link
+	}
+  }]);
