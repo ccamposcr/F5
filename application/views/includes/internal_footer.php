@@ -42,12 +42,22 @@
 	    rootpath: ":/a.com/"
 	  };
 	</script>
+
 	<script src="<?php echo base_url(); ?>js/vendor/less.js"></script>
-    <script src="<?php echo base_url(); ?>js/vendor/jquery-1.10.2.min.js"></script>
-    <script src="<?php echo base_url(); ?>js/vendor/bootstrap.min.js"></script>
+	<script src="<?php echo base_url(); ?>js/vendor/jquery-1.10.2.min.js"></script>
+	<script src="<?php echo base_url(); ?>js/vendor/bootstrap.min.js"></script>
     <script src="<?php echo base_url(); ?>js/vendor/bootstrap-confirmation.min.js"></script>
-    <script src="<?php echo base_url(); ?>js/vendor/angular.min.js"></script>
     <script src="<?php echo base_url(); ?>js/vendor/jquery.flexslider-min.js"></script>
-    <script src="<?php echo base_url(); ?>js/main.js"></script>
+
+
+	<script src="<?php echo base_url(); ?>js/vendor/angular.min.js"></script>
+    <script src="<?php echo base_url(); ?>js/app/shared/app.js"></script>
+    <script src="<?php echo base_url(); ?>js/app/shared/header/headerController.js"></script>
+    <script src="<?php echo base_url(); ?>js/app/shared/modals/modalsController.js"></script>
+
+    <script src="<?php echo base_url(); ?>js/app/components/gallery/galleryController.js"></script>
+    <script src="<?php echo base_url(); ?>js/app/components/reservations/reservationsController.js"></script>
+	<script src="<?php echo base_url(); ?>js/app/components/reservations/reservationsDirectives.js"></script>
+    
     </body>
 </html>
