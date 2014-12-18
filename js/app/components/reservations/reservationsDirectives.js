@@ -63,6 +63,7 @@ F5App.app.directive('available', ['$document', function($document) {
 						alert('Esta casilla ya fue reservada. Por favor escoja otra casilla para reservar');
 						//location.reload();
 						$('#formReservationModal').modal('hide');
+						//$('#already-reserved-modal').modal('show');
 						scope.loadReservations();
 					break;
 				}
@@ -101,6 +102,7 @@ F5App.app.directive('bookingOnLine', ['$document', function($document) {
 					alert('Esta casilla ya fue reservada. Por favor escoja otra casilla para reservar');
 					//location.reload();
 					$('#formReservationModal').modal('hide');
+					//$('#already-reserved-modal').modal('show');
 					scope.loadReservations();
 				}
 				else{
@@ -168,7 +170,8 @@ F5App.app.directive('reserveBtn', ['$document', function($document) {
 					$('#formReservationModal').modal('hide');
 
 					if(!data.setPitchAllWeeks){
-						alert("Su reservacion ha sido creada Satisfactoriamente");
+						alert("Su reservacion ha sido creada satisfactoriamente");
+						//$('#successful-reserved-modal').modal('show');
 						scope.loadReservations();
 					}
 					else{
@@ -184,7 +187,7 @@ F5App.app.directive('reserveBtn', ['$document', function($document) {
         }
         else{
         	//console.log('invalido');
-        	alert("Por favor ingrese correctamente los datos erróneos en el formulario");
+        	//alert("Por favor ingrese correctamente los datos erróneos en el formulario");
         }
         
       });

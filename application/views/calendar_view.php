@@ -148,7 +148,7 @@
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title">Reservaciones</h4>
+                <h4 class="modal-title">F5 Reservaciones</h4>
               </div>
               <div class="modal-body">
                 <p>En este momento esta casilla está siendo vista por otro usuario.<br/>Por favor intente m&aacute;s tarde.</p>
@@ -165,7 +165,7 @@
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title">Reservaciones</h4>
+                <h4 class="modal-title">F5 Reservaciones</h4>
               </div>
               <div class="modal-body">
                 <p>En este momento esta casilla está siendo reservada por otro usuario.<br/>Por favor intente con otra casilla.</p>
@@ -200,6 +200,40 @@
               <div class="modal-body">
                 <p>Cargando ...</p>
                 <img src="<?php echo base_url(); ?>img/loading.gif" width="127" height="128"/>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" id="already-reserved-modal">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">F5 Reservaciones</h4>
+              </div>
+              <div class="modal-body">
+                <p>Esta casilla ya fue reservada. Por favor escoja otra casilla para reservar</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" id="successful-reserved-modal">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">F5 Reservaciones</h4>
+              </div>
+              <div class="modal-body">
+                <p>Su reservacion ha sido creada satisfactoriamente</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
               </div>
             </div>
           </div>
