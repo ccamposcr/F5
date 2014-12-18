@@ -187,7 +187,7 @@ F5App.app.controller("reservationController", function ($scope, $rootScope){
 
 					data: data,
 
-					async : true,
+					async : false,
 
 					success : function(response){
 						var dataTmp = $scope.getDataForTemporaryReservation();
@@ -200,6 +200,8 @@ F5App.app.controller("reservationController", function ($scope, $rootScope){
 				});	
 			}
 		}
+		$('#formReservationModal').modal('hide');
+		$('#set-pitch-all-weeks-modal').modal('hide');
 	}
 
 

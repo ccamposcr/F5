@@ -65,7 +65,7 @@ F5App.app.directive('available', ['$document', function($document) {
 						//location.reload();
 						$('#formReservationModal').modal('hide');
 						//$('#already-reserved-modal').modal('show');
-						scope.loadReservations();
+						//scope.loadReservations();
 					break;
 				}
 			}
@@ -104,7 +104,7 @@ F5App.app.directive('bookingOnLine', ['$document', function($document) {
 					//location.reload();
 					$('#formReservationModal').modal('hide');
 					//$('#already-reserved-modal').modal('show');
-					scope.loadReservations();
+					//scope.loadReservations();
 				}
 				else{
 					data.state = '2'; 
@@ -168,20 +168,20 @@ F5App.app.directive('reserveBtn', ['$document', function($document) {
 
 					//location.reload();
 					scope.$parent.successReservation = true;
-					$('#formReservationModal').modal('hide');
+					
 
 					if(!data.setPitchAllWeeks){
 						alert("Su reservacion ha sido creada satisfactoriamente");
+						$('#formReservationModal').modal('hide');
 						//$('#successful-reserved-modal').modal('show');
-						scope.loadReservations();
+						//scope.loadReservations();
 					}
 					else{
-						$('#set-pitch-all-weeks-modal').modal('show');
-						scope.reserveAllWeeksSameDay(data);
-						setTimeout(function(){
-							$('#set-pitch-all-weeks-modal').modal('hide');
-						},500);
 						
+						$('#set-pitch-all-weeks-modal').modal('show');
+						setTimeout(function(){
+							scope.reserveAllWeeksSameDay(data);
+						},500);
 					}
 				}
 			});
