@@ -202,9 +202,6 @@ F5App.app.controller("reservationController", function ($scope, $rootScope){
 		$('#set-pitch-all-weeks-modal').modal('hide');
 	}
 
-
-	$scope.loadReservations();
-	$scope.loadPitchsPagination();
 	/*$(window).bind("beforeunload", function() { 
 	    var data = $rootScope.getDataForTemporaryReservation();
 		data.state = '3'; 
@@ -219,6 +216,10 @@ F5App.app.controller("reservationController", function ($scope, $rootScope){
 		type_reservation : '',
 		referee_required : ''
 	}
+
+	//$('#loading-modal').modal('show');
+	$scope.loadReservations();
+	$scope.loadPitchsPagination();
 });
 
 $(document).ready(function(){
