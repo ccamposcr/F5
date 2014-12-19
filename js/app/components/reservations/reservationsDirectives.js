@@ -16,7 +16,7 @@ F5App.app.directive('available', ['$document', function($document) {
     function link(scope, element, attr) {
       element.on('click', function(event) {
         event.preventDefault();
-
+        $('#loading-modal').modal('show');
         $('#team_id').val(attr.team);
         $('#reservation_time').val($(element).siblings('.reservation-time').attr('data-time'));
 
@@ -31,6 +31,7 @@ F5App.app.directive('available', ['$document', function($document) {
 			async : true,
 
 			success : function(response){
+				$('#loading-modal').modal('hide');
 				var response = jQuery.parseJSON(response);
 				var state = 0;
 				/*
@@ -61,11 +62,12 @@ F5App.app.directive('available', ['$document', function($document) {
 						$('#reservationInfo').html($('#day').val()+'/'+$('#month').val()+'/'+$('#year').val());
 					break;
 					case '5':
-						alert('Esta casilla ya fue reservada. Por favor escoja otra casilla para reservar');
+						
 						//location.reload();
 						$('#formReservationModal').modal('hide');
 						//$('#already-reserved-modal').modal('show');
-						//scope.loadReservations();
+						scope.loadReservations();
+						alert('Esta casilla ya fue reservada. Por favor escoja otra casilla para reservar');
 					break;
 				}
 			}
@@ -83,6 +85,7 @@ F5App.app.directive('bookingOnLine', ['$document', function($document) {
     function link(scope, element, attr) {
       element.on('click', function(event) {
         event.preventDefault();
+        $('#loading-modal').modal('show');
         var data = scope.getDataForTemporaryReservation();
 
         //data.reservation_day = "29";
@@ -97,14 +100,16 @@ F5App.app.directive('bookingOnLine', ['$document', function($document) {
 			async : true,
 
 			success : function(response){
+				$('#loading-modal').modal('hide');
 				if(jQuery.parseJSON(response).length > 0){
 					data.state = '5';// Reservada
 					scope.setStateTemporaryReservation(data);
-					alert('Esta casilla ya fue reservada. Por favor escoja otra casilla para reservar');
+					
 					//location.reload();
 					$('#formReservationModal').modal('hide');
 					//$('#already-reserved-modal').modal('show');
-					//scope.loadReservations();
+					scope.loadReservations();
+					alert('Esta casilla ya fue reservada. Por favor escoja otra casilla para reservar');
 				}
 				else{
 					data.state = '2'; 
@@ -147,6 +152,7 @@ F5App.app.directive('reserveBtn', ['$document', function($document) {
     function link(scope, element, attr) {
       element.on('click', function(event) {
         event.preventDefault();
+        $('#loading-modal').modal('show');
         if( scope.bookingForm.$valid ){
         	//console.log('valido');
 
@@ -162,6 +168,7 @@ F5App.app.directive('reserveBtn', ['$document', function($document) {
 				async : true,
 
 				success : function(response){
+					$('#loading-modal').modal('hide');
 					var dataTmp = scope.getDataForTemporaryReservation();
 					dataTmp.state = '5'; 
 					scope.setStateTemporaryReservation(dataTmp);
@@ -171,10 +178,11 @@ F5App.app.directive('reserveBtn', ['$document', function($document) {
 					
 
 					if(!data.setPitchAllWeeks){
-						alert("Su reservacion ha sido creada satisfactoriamente");
+						
 						$('#formReservationModal').modal('hide');
 						//$('#successful-reserved-modal').modal('show');
-						//scope.loadReservations();
+						scope.loadReservations();
+						alert("Su reservacion ha sido creada satisfactoriamente");
 					}
 					else{
 						
@@ -204,6 +212,7 @@ F5App.app.directive('delete', ['$document', function($document) {
     function link(scope, element, attr) {
       element.on('click', function(event) {
         event.preventDefault();
+        $('#loading-modal').modal('show');
 
         $('#team_id').val(attr.team);
         $('#reservation_time').val($(element).siblings('.reservation-time').attr('data-time'));
@@ -226,6 +235,7 @@ F5App.app.directive('delete', ['$document', function($document) {
 
 				success : function(response){
 					//alert('Registro Eliminado');
+					$('#loading-modal').modal('hide');
 					scope.loadReservations();
 				}
 			});

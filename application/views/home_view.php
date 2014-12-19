@@ -1,5 +1,5 @@
     <div id="divContent" class="home">
-        <h1>Canchas de f&oacute;tbol 5</h1>
+        <h1>Canchas de f&uacute;tbol 5</h1>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil conseq tuuntur, nesciunt dicta, esse rem ducimus itaque quis. Adipisci ullam nam qui illum debitis sit ad in lectus. 
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil consequuntur, nesciunt dicta.
         </p>

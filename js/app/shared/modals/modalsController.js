@@ -10,7 +10,7 @@ F5App.app.controller("modalController", function ($scope, $rootScope){
 			$scope.bookingType = '';
 		});
 		$scope.clearReservationForm();
-		$scope.loadReservations();
+		//$scope.loadReservations();
 	});
 
 	$('#formReservationModal').on('show.bs.modal', function(){

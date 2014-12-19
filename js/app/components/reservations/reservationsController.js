@@ -29,10 +29,8 @@ F5App.app.controller("reservationController", function ($scope, $rootScope){
 				$scope.$apply(function(){
 					$scope.reservations = $scope.sortReservations(jQuery.parseJSON(response));
 				});
-				setTimeout(function(){
-					$('#loading-modal').modal('hide');
-					$('#dailyResevations').show();
-				},500);
+				$('#loading-modal').modal('hide');
+				$('#dailyResevations').show();
 			}
 		});
 	}
