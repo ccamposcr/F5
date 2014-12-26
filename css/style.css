@@ -444,6 +444,9 @@ textarea {
   margin: 2px;
   line-height: 30px;
 }
+#dailyResevations #reservations li.row > span.showInfo {
+  cursor: pointer;
+}
 #dailyResevations .active {
   font-weight: bold;
 }

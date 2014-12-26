@@ -9,13 +9,14 @@ class Api_controller extends CI_Controller {
     }
 
     public function getReservationByTime(){
+        $team_id = ( isset($_POST['team_id']) ) ? strip_tags($_POST['team_id']) : '1';
         $reservation_year = ( isset($_POST['reservation_year']) ) ? strip_tags($_POST['reservation_year']) : date("Y", time());
         $reservation_month = ( isset($_POST['reservation_month']) ) ? strip_tags($_POST['reservation_month']) : date("m", time());
         $reservation_day = ( isset($_POST['reservation_day']) ) ? strip_tags($_POST['reservation_day']) : date("d", time());
         $reservation_time = ( isset($_POST['reservation_time']) ) ? strip_tags($_POST['reservation_time']) : '08-09';
         $group_id = ( isset($_POST['group_id']) ) ? strip_tags($_POST['group_id']) : 1;
         $pitch_id = ( isset($_POST['pitch_id']) ) ? strip_tags($_POST['pitch_id']) : 1;
-        $reservation = $this->api_model->getReservationByTime($reservation_year,$reservation_month,$reservation_day,$reservation_time,$group_id,$pitch_id);
+        $reservation = $this->api_model->getReservationByTime($team_id,$reservation_year,$reservation_month,$reservation_day,$reservation_time,$group_id,$pitch_id);
         echo json_encode($reservation);
     }
 

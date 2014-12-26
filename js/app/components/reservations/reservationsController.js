@@ -49,8 +49,8 @@ F5App.app.controller("reservationController", function ($scope, $rootScope){
 			success : function(response){
 				$scope.$apply(function(){
 					$scope.pitchs = jQuery.parseJSON(response);
-					$('#pitchs').show();
 				});
+				$('#pitchs').show();
 			}
 		});
 		$scope.pitchValue = $('#pitch').val();

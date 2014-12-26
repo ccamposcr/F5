@@ -1,9 +1,9 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class Api_model extends CI_MODEL
 {
-    function getReservationByTime($reservation_year,$reservation_month,$reservation_day,$reservation_time,$group_id,$pitch_id){
+    function getReservationByTime($team_id,$reservation_year,$reservation_month,$reservation_day,$reservation_time,$group_id,$pitch_id){
         $query = $this->db->query("SELECT * FROM t_reservations WHERE reservation_year = ".$this->db->escape($reservation_year)." AND reservation_month = ".$this->db->escape($reservation_month)." AND reservation_day = ".$this->db->escape($reservation_day)." AND reservation_time = ".$this->db->escape($reservation_time)." AND group_id = ".$this->db->escape($group_id)." AND pitch_id = ".$this->db->escape($pitch_id)." AND active ='1'");
-        return $query->result_array();
+        return $query->result();
     }
 
     function getReservationByDay($reservation_year,$reservation_month,$reservation_day,$group_id,$pitch_id){

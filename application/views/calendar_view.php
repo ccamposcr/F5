@@ -44,7 +44,7 @@
                     <span ng-if="!!reservation.id && $index+1 == reservation.team_id && $index+1 == 1 && !isAdminUser()" class="blocked {{reservation.type_reservation == 1 ? 'completa' : ''}}" data-team="{{$index+1}}" ng-repeat="reservation in data">
                         {{reservation.name}} {{reservation.lastname}}
                     </span>
-                    <span ng-if="!!reservation.id && $index+1 == reservation.team_id && $index+1 == 1 && isAdminUser()" class="blocked {{reservation.type_reservation == 1 ? 'completa' : ''}} delete" data-team="{{$index+1}}" ng-repeat="reservation in data">
+                    <span ng-if="!!reservation.id && $index+1 == reservation.team_id && $index+1 == 1 && isAdminUser()" class="blocked {{reservation.type_reservation == 1 ? 'completa' : ''}} showInfo" data-team="{{$index+1}}" ng-repeat="reservation in data">
                         {{reservation.name}} {{reservation.lastname}}
                     </span>
                     <span ng-if="!reservation.id && $index+1 == 1 || $index+1 == 2 && !!data[$index - 1].id && !data[$index].id" class="available" data-toggle="tooltip" data-delay='{ show: 10, hide: 50 }' data-placement="left" title="Haga click aquí para Reservar en Línea" data-team="{{$index+1}}" ng-repeat="reservation in data" ng-click="($index+1 == 2 && !!data[$index - 1].id) ? fields.typeReservationSelected = 'reto' : fields.typeReservationSelected = 'normal'">{{($index+1 == 2 && !!data[$index - 1].id) ? 'Equipo 1 Busca Reto' : ''}}</span>
@@ -52,7 +52,7 @@
                     <span ng-if="!!reservation.id && $index+1 == reservation.team_id && $index+1 == 2 && !isAdminUser()" class="blocked {{reservation.type_reservation == 1 ? 'completa' : ''}}" data-team="{{$index+1}}" ng-repeat="reservation in data">
                         {{reservation.name}} {{reservation.lastname}}
                     </span>
-                    <span ng-if="!!reservation.id && $index+1 == reservation.team_id && $index+1 == 2 && isAdminUser()" class="blocked {{reservation.type_reservation == 1 ? 'completa' : ''}} delete" data-team="{{$index+1}}" ng-repeat="reservation in data">
+                    <span ng-if="!!reservation.id && $index+1 == reservation.team_id && $index+1 == 2 && isAdminUser()" class="blocked {{reservation.type_reservation == 1 ? 'completa' : ''}} showInfo" data-team="{{$index+1}}" ng-repeat="reservation in data">
                         {{reservation.name}} {{reservation.lastname}}
                     </span>
                 </li>
@@ -66,6 +66,13 @@
                 </li>
             </ul>
         </div>
+        <?php 
+          if( $isAdminUser ){
+        ?>
+            <a href="#" class="btn btn-default">Buscar</a>
+        <?php
+          } 
+        ?>
     </div>
     <div id="modals" ng-controller="modalController">
         <div class="modal fade" id="formReservationModal" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
@@ -241,5 +248,28 @@
             </div>
           </div>
         </div>
+
+        <?php 
+          if( $isAdminUser ){
+        ?>
+            <div class="modal fade" id="show-info-modal">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title">F5 Reservaciones</h4>
+                  </div>
+                  <div class="modal-body">
+                    <p>{{completeInfo[0].id}}</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+        <?php
+          } 
+        ?>
 
     </div>
