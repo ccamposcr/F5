@@ -243,6 +243,9 @@ F5App.app.directive('delete', ['$document', function($document) {
 				}
 			});
         }
+        else{
+        	$('#loading-modal').modal('hide');
+        }
         $(element).removeClass('active');
       });
     }
