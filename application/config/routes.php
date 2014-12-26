@@ -78,7 +78,7 @@ $route['setTemporaryReservationState'] = 'api_controller/setTemporaryReservation
 $route['checkIfReservationExist'] = 'api_controller/checkIfReservationExist';
 $route['createReservation'] = 'api_controller/createReservation';
 $route['setInactiveReservation'] = 'api_controller/setInactiveReservation';
-$route['checkExpiredReservations'] = 'checkExpiredReservations_controller/checkExpiredReservations';
+$route['checkExpiredReservations'] = 'check_expired_reservations_controller/checkExpiredReservations';
 
 //$route['(:any)/getReservationByDay'] = 'calendar_controller/getReservationByDay';
 
