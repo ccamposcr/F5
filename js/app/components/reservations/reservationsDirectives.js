@@ -172,7 +172,7 @@ F5App.app.directive('reserveBtn', ['$document', function($document) {
 				async : true,
 
 				success : function(response){
-					$('#loading-modal').modal('hide');
+					
 					var dataTmp = scope.getDataForTemporaryReservation();
 					dataTmp.state = '5'; 
 					scope.setStateTemporaryReservation(dataTmp);
@@ -183,14 +183,34 @@ F5App.app.directive('reserveBtn', ['$document', function($document) {
 
 					if(!data.setPitchAllWeeks){
 						
-						$('#formReservationModal').modal('hide');
-						//$('#successful-reserved-modal').modal('show');
-						alert("Su reservación ha sido creada satisfactoriamente");
-						scope.loadReservations();
 						
+						//$('#successful-reserved-modal').modal('show');
+						//alert("Su reservación ha sido creada satisfactoriamente");
+						$('#formReservationModal').modal('hide');
+
+						$.ajax({
+
+							type: 'POST',
+
+							url : F5App.base_url + "sendEmail",
+
+							data: {
+								'email' : data.email,
+								'data_reservation' : 'Su reservación ha sido creada satisfactoriamente' + data.reservation_day +'/'+ data.reservation_month +'/'+ data.reservation_year
+							},
+
+							async : true,
+
+							success : function(response){
+								$('#loading-modal').modal('hide');
+								scope.loadReservations();
+							}
+						});
+
+
 					}
 					else{
-						
+						$('#loading-modal').modal('hide');
 						$('#set-pitch-all-weeks-modal').modal('show');
 						setTimeout(function(){
 							scope.reserveAllWeeksSameDay(data);

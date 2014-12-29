@@ -69,7 +69,7 @@
         <?php 
           if( $isAdminUser ){
         ?>
-            <a href="#" class="btn btn-primary">Buscar</a>
+          <button type="button" class="btn btn-primary searchBtn">Buscar</button>
         <?php
           } 
         ?>
