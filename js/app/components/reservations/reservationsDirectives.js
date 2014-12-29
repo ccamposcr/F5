@@ -222,8 +222,42 @@ F5App.app.directive('showInfo', ['$document', function($document) {
         $('#team_id').val(attr.team);
         $('#reservation_time').val($(element).siblings('.reservation-time').attr('data-time'));
 
-        //$(element).addClass('active');
-        /*if(confirm("Realmemente desea eliminar este registro?")){
+        
+        $.ajax({
+
+			type: 'POST',
+
+			url : F5App.base_url + "getReservationByTime",
+
+			data: scope.getDataForTemporaryReservation(),
+
+			async : true,
+
+			success : function(response){
+				$('#loading-modal').modal('hide');
+				scope.$apply(function(){
+					scope.$parent.$parent.$parent.$parent.$parent.completeInfo = jQuery.parseJSON(response);
+				});
+				$('#show-info-modal').modal('show');
+			}
+		});
+      });
+    }
+    return {
+    	restrict : 'C',
+    	scope : false,
+    	link:link
+	}
+  }]);
+
+F5App.app.directive('delete', ['$document', function($document) {
+    function link(scope, element, attr) {
+      element.on('click', function(event) {
+        event.preventDefault();
+        $('#loading-modal').modal('show');
+
+        $(element).addClass('active');
+        if(confirm("Realmemente desea eliminar este registro?")){
         	var data = scope.getDataForTemporaryReservation();
 			data.state = '3'; 
 			scope.setStateTemporaryReservation(data);
@@ -247,29 +281,9 @@ F5App.app.directive('showInfo', ['$document', function($document) {
         }
         else{
         	$('#loading-modal').modal('hide');
-        }*/
-        //$(element).removeClass('active');
+        }
+        $(element).removeClass('active');
 
-        
-        
-        $.ajax({
-
-			type: 'POST',
-
-			url : F5App.base_url + "getReservationByTime",
-
-			data: scope.getDataForTemporaryReservation(),
-
-			async : true,
-
-			success : function(response){
-				$('#loading-modal').modal('hide');
-				scope.$apply(function(){
-					scope.$parent.$parent.$parent.$parent.$parent.completeInfo = jQuery.parseJSON(response);
-				});
-				$('#show-info-modal').modal('show');
-			}
-		});
       });
     }
     return {

@@ -69,7 +69,7 @@
         <?php 
           if( $isAdminUser ){
         ?>
-            <a href="#" class="btn btn-default">Buscar</a>
+            <a href="#" class="btn btn-primary">Buscar</a>
         <?php
           } 
         ?>
@@ -260,7 +260,16 @@
                     <h4 class="modal-title">F5 Reservaciones</h4>
                   </div>
                   <div class="modal-body">
-                    <p>{{completeInfo[0].id}}</p>
+                    <p>
+                      <label>Nombre:</label>{{completeInfo[0].name}}<br/>
+                      <label>Apellido:</label>{{completeInfo[0].lastname}}<br/>
+                      <label>Telef&oacute;no:</label>{{completeInfo[0].phone}}<br/>
+                      <label>Email:</label>{{completeInfo[0].email}}<br/>
+                      <label>Requiere Referee:</label>{{(completeInfo[0].referee_required == 1) ? 'S&iacute;' : 'No'}}<br/>
+                      <label>Fecha de Reservaci&oacute;n</label>{{completeInfo[0].reservation_day}}/{{completeInfo[0].reservation_month}}/{{completeInfo[0].reservation_year}} {{completeInfo[0].reservation_time}}<br/>
+                      <label>Total Cobrado:</label>{{completeInfo[0].reservation_price}}
+                    </p>
+                    <button type="button" class="btn btn-warning delete" data-dismiss="modal">Eliminar Reservaci&oacute;n</button>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
