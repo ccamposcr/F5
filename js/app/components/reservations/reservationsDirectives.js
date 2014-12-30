@@ -196,7 +196,9 @@ F5App.app.directive('reserveBtn', ['$document', function($document) {
 
 							data: {
 								'email' : data.email,
-								'data_reservation' : 'Su reservación ha sido creada satisfactoriamente' + data.reservation_day +'/'+ data.reservation_month +'/'+ data.reservation_year
+								'data_reservation' : 'Su reservación ha sido creada satisfactoriamente \nFecha: '
+								 + data.reservation_day +'/'+ data.reservation_month +'/'+ data.reservation_year + '\nNombre: '+
+								 data.name + ' '+ data.lastname
 							},
 
 							async : true,
