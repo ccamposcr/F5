@@ -1,4 +1,4 @@
-F5App.app.controller("reservationController", function ($scope, $rootScope){
+F5App.app.controller("reservationController", function ($scope, $rootScope,$timeout){
    $scope.timesForReservations = ['08-09','09-10','10-11','11-12','12-13','13-14','14-15','15-16','16-17','17-18','18-19','19-20','20-21','21-22','23-24'];
    $scope.times = ['08:00 a.m.','09:00 a.m.','10:00 a.m.','11:00 a.m.','12:00 m.d','01:00 p.m.','02:00 p.m.','03:00 p.m.','04:00 p.m.','05:00 p.m.','06:00 p.m.','07:00 p.m.','08:00 p.m.','09:00 p.m.','10:00 p.m.'];
 	//var path = ( window.location.pathname.replace('/','').replace(/\/$/, '').split('/').length <= 2 ) ? './' : '../';
@@ -26,7 +26,7 @@ F5App.app.controller("reservationController", function ($scope, $rootScope){
 			async : true,
 
 			success : function(response){
-				$scope.$apply(function(){
+				$timeout(function(){
 					$scope.reservations = $scope.sortReservations(jQuery.parseJSON(response));
 				});
 				$('#loading-modal').modal('hide');
@@ -47,7 +47,7 @@ F5App.app.controller("reservationController", function ($scope, $rootScope){
 			async : true,
 
 			success : function(response){
-				$scope.$apply(function(){
+				$timeout(function(){
 					$scope.pitchs = jQuery.parseJSON(response);
 				});
 				$('#pitchs').show();

@@ -235,7 +235,7 @@ F5App.app.directive('reserveBtn', ['$document', function($document) {
 	}
   }]);
 
-F5App.app.directive('showInfo', ['$document', function($document) {
+F5App.app.directive('showInfo', ['$document','$timeout', function($document,$timeout) {
     function link(scope, element, attr) {
       element.on('click', function(event) {
         event.preventDefault();
@@ -257,7 +257,7 @@ F5App.app.directive('showInfo', ['$document', function($document) {
 
 			success : function(response){
 				$('#loading-modal').modal('hide');
-				scope.$apply(function(){
+				$timeout(function(){
 					scope.$parent.$parent.$parent.$parent.$parent.completeInfo = jQuery.parseJSON(response);
 				});
 				$('#show-info-modal').modal('show');
