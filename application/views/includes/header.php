@@ -8,7 +8,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>F5</title>
         <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
 
         <link rel="stylesheet" href="<?php echo base_url(); ?>css/fonts.css"/>
         <link rel="stylesheet" href="<?php echo base_url(); ?>css/bootstrap.min.css"/>

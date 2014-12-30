@@ -15,7 +15,7 @@ class Email_controller extends CI_Controller {
 		$this->email->to($email); 
 		$this->email->cc($email); 
 		$this->email->bcc($email); 
-		$this->email->subject('Su Reservación');
+		$this->email->subject('Su Reservación se ha efectuado correctamente');
 		$this->email->message($data_reservation);	
 		$this->email->send();
     }

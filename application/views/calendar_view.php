@@ -130,12 +130,12 @@
                                         <span class="error" ng-show="bookingForm.phone.$dirty && (bookingForm.phone.$error.minlength || bookingForm.phone.$error.maxlength) || bookingForm.phone.$dirty && bookingForm.phone.$invalid">Por favor ingrese un t&eacute;lefono de 8 n&uacute;meros</span>
                                     </dd>
                                 <dt>Tipo de Reservaci&oacute;n</dt>
-                                    <dd ng-if="fields.typeReservationSelected == 'normal'" class="radio"><input type="radio" name="typeReservation" value="1" ng-model="fields.typeReservation" required><label>Completa (Marque esta opci&oacute;n si ya arm&oacute; Equipo 1 y Equipo 2)</label></dd>
-                                    <dd class="radio"><input type="radio" name="typeReservation" value="2" ng-model="fields.typeReservation" required><label>Reto (Marque esta opci&oacute;n si necesita Equipo 2 para el Reto o si desea retar al Equipo 1)</label></dd>
+                                    <dd ng-if="fields.typeReservationSelected == 'normal'" class="radio"><input type="radio" name="typeReservation" value="1" ng-model="fields.typeReservation" required><label>Completa (Marque esta opci&oacute;n si ya tiene formado Equipo 1 y Equipo 2)</label></dd>
+                                    <dd class="radio"><input type="radio" name="typeReservation" value="2" ng-model="fields.typeReservation" required><label>Reto <span ng-if="fields.typeReservationSelected == 'normal'">(Marque esta opci&oacute;n si necesita Equipo 2 para Reto)</span></label></dd>
                                     <!--<span class="error" ng-show="!fields.typeReservation">Por favor seleccione una opci&oacute;n</span>-->
                                 <dt>Opciones Adicionales</dt>
                                     <dd class="checkbox"><input name="setReferee" type="checkbox" ng-model="fields.setReferee"><label for="setReferee">Pagar &Aacute;rbitro (Marque esta opci&oacute;n &uacute;nicamente si necesita &aacute;rbitro)</label></dd>
-                                    <dd class="checkbox"><input name="setPitchAllWeeks" type="checkbox" ng-model="fields.setPitchAllWeeks"><label for="setPitchAllWeeks">Reservar esta cancha este mismo día todas las semanas durante 1 a&ntilde;o</label></dd>
+                                    <dd class="checkbox"><input name="setPitchAllWeeks" type="checkbox" ng-model="fields.setPitchAllWeeks"><label for="setPitchAllWeeks">Reservar esta cancha este mismo día todas las semanas durante 1 a&ntilde;o<br/>*Se cobra por adelantado ....!@##$</label></dd>
                             </dl>
                         </form>
                     </div>
