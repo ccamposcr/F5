@@ -290,7 +290,7 @@
                     <table id="searchResults">
                       <tr><th>Nombre</th><th>Tel&eacute;fono</th><th>Email</th></tr>
                       <tr ng-repeat="client in clients | filter:searchText">
-                        <td>{{client.name}} {{client.lastname}}</td>
+                        <td>{{$index+1}}. {{client.name}} {{client.lastname}}</td>
                         <td>{{client.phone}}</td>
                         <td>{{client.email}}</td>
                       </tr>
