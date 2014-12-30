@@ -314,3 +314,17 @@ F5App.app.directive('delete', ['$document', function($document) {
     	link:link
 	}
   }]);
+
+  F5App.app.directive('searchBtn', ['$document', function($document) {
+    function link(scope, element, attr) {
+      element.on('click', function(event) {
+        event.preventDefault();
+        $('#search-modal').modal('show');
+      });
+    }
+    return {
+    	restrict : 'C',
+    	scope : false,
+    	link:link
+	}
+  }]);
