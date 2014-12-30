@@ -106,4 +106,9 @@ class Api_controller extends CI_Controller {
         $pitch_id = ( isset($_POST['pitch_id']) ) ? strip_tags($_POST['pitch_id']) : 1;
         $this->api_model->setInactiveReservation($team_id,$reservation_time,$reservation_year,$reservation_month,$reservation_day,$group_id,$pitch_id);
     }
+
+    public function getClientsData(){
+        $result = $this->api_model->getClientsData();
+        echo json_encode($result);
+    }
 }

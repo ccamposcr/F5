@@ -315,11 +315,27 @@ F5App.app.directive('delete', ['$document', function($document) {
 	}
   }]);
 
-  F5App.app.directive('searchBtn', ['$document', function($document) {
+  F5App.app.directive('searchBtn', ['$document','$timeout', function($document,$timeout) {
     function link(scope, element, attr) {
       element.on('click', function(event) {
         event.preventDefault();
-        $('#search-modal').modal('show');
+        $('#loading-modal').modal('show');
+        $.ajax({
+
+			type: 'POST',
+
+			url : F5App.base_url + "getClientsData",
+
+			async : true,
+
+			success : function(response){
+				$('#loading-modal').modal('hide');
+				 $timeout(function(){
+					scope.$parent.clients = jQuery.parseJSON(response);
+				});
+				$('#search-modal').modal('show');
+			}
+		});
       });
     }
     return {

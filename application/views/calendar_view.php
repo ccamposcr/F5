@@ -286,8 +286,15 @@
                     <h4 class="modal-title">F5 Reservaciones</h4>
                   </div>
                   <div class="modal-body">
-                    
-                    
+                    <label>Buscar:</label> <input ng-model="searchText">
+                    <table id="searchResults">
+                      <tr><th>Nombre</th><th>Tel&eacute;fono</th><th>Email</th></tr>
+                      <tr ng-repeat="client in clients | filter:searchText">
+                        <td>{{client.name}} {{client.lastname}}</td>
+                        <td>{{client.phone}}</td>
+                        <td>{{client.email}}</td>
+                      </tr>
+                    </table>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

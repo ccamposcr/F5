@@ -81,6 +81,7 @@ $route['createReservation'] = 'api_controller/createReservation';
 $route['setInactiveReservation'] = 'api_controller/setInactiveReservation';
 $route['checkExpiredReservations'] = 'check_expired_reservations_controller/checkExpiredReservations';
 $route['sendEmail'] = 'email_controller/sendEmail';
+$route['getClientsData'] = 'api_controller/getClientsData';
 //$route['(:any)/getReservationByDay'] = 'calendar_controller/getReservationByDay';
 
 //Login - Logout Routes
