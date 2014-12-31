@@ -1,5 +1,5 @@
 		<div id="divWrapperFooter" class="clearfix">
-		    <div id="divContentFooter">
+		    <div id="divContentFooter" class="clearfix">
 		        <div id="divSocialsIcons">
 		            <a href="" class="fa fa-facebook"></a>
 		            <a href="" class="fa fa-twitter"></a>
