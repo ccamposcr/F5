@@ -302,6 +302,30 @@
                 </div>
               </div>
             </div>
+
+            <div class="modal fade" id="change-password-modal">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title">F5 Reservaciones</h4>
+                  </div>
+                  <div class="modal-body">
+                    <form name="changePassForm">
+                      <label>Nueva contrase&ntilde;a</label><input type="password" ng-model="fields.password" name="password" ng-minlength="5" required/>
+                      <label>Confirmaci&oacute;n contrase&ntilde;a</label><input type="password" ng-model="fields.confirmation" name="confirmation" ng-minlength="5" required/>
+                      <span class="error" ng-show="changePassForm.password.$error.required && changePassForm.password.$dirty || changePassForm.confirmation.$error.required && changePassForm.confirmation.$dirty">Ambos campos son requeridos</span>
+                      <span class="error" ng-show="fields.password != fields.confirmation && changePassForm.password.$dirty && changePassForm.confirmation.$dirty">Las contrase&ntilde;as deben ser iguales</span>
+                      <span class="error" ng-show="changePassForm.password.$error.minlength && changePassForm.password.$dirty || changePassForm.confirmation.$error.minlength && changePassForm.confirmation.$dirty">La contrase&ntilde;a debe tener un m&iacute;nimo de 5 caracteres</span>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary changePasswordBtn" ng-disabled="changePassForm.password.$error.required || changePassForm.confirmation.$error.required || fields.password != fields.confirmation || changePassForm.password.$error.minlength || changePassForm.confirmation.$error.minlength">Cambiar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
         <?php
           } 
         ?>

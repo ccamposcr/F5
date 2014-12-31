@@ -344,3 +344,17 @@ F5App.app.directive('delete', ['$document', function($document) {
     	link:link
 	}
   }]);
+
+  F5App.app.directive('changePasswordBtn', ['$document', function($document) {
+    function link(scope, element, attr) {
+      element.on('click', function(event) {
+        event.preventDefault();
+       
+      });
+    }
+    return {
+    	restrict : 'C',
+    	scope : false,
+    	link:link
+	}
+  }]);

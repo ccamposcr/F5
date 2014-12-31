@@ -215,7 +215,9 @@ F5App.app.controller("reservationController", function ($scope, $rootScope,$time
 		phone : '',
 		email : '',
 		type_reservation : '',
-		referee_required : ''
+		referee_required : '',
+		password : '',
+		confirmation : ''
 	}
 
 	//$('#loading-modal').modal('show');
