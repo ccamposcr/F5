@@ -18,6 +18,11 @@ class Login_model extends CI_MODEL {
 
         return $result;
     }
+
+    function changePassword($user,$password){
+        $password =  MD5($password);
+        $this->db->query("UPDATE t_admin SET password=".$this->db->escape($password)."WHERE user = ".$this->db->escape($user));
+    }
 }
   
 /* End of file login_model.php */

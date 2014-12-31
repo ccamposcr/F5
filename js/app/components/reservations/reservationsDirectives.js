@@ -349,8 +349,27 @@ F5App.app.directive('delete', ['$document', function($document) {
     function link(scope, element, attr) {
       element.on('click', function(event) {
         event.preventDefault();
-       
-      });
+        $('#loading-modal').modal('show');
+        var data = {
+        	'user' : $('#user').val(),
+        	'password' : $scope.fields.password
+        }
+       	$.ajax({
+
+				type: 'POST',
+
+				url : F5App.base_url + "changePassword",
+
+				data: data,
+
+				async : true,
+
+				success : function(response){
+					$('#loading-modal').modal('hide');
+					alert("El password se ha cambiado satisfactoriamente");
+				}
+			});
+      	});
     }
     return {
     	restrict : 'C',

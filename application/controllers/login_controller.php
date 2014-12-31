@@ -69,6 +69,12 @@ class Login_controller extends CI_Controller {
 
         return $result;
       }
+
+      function changePassword(){
+        $user = ( isset($_POST['user']) ) ? strip_tags($_POST['user']) : '';
+        $password = ( isset($_POST['password']) ) ? strip_tags($_POST['password']) : '';
+        $this->login_model->changePassword($user,$password);
+      }
 }
 /* End of file login_view.php */
 /* Location: ./application/controllers/login_view.php */
