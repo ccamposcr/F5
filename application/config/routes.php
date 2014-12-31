@@ -88,14 +88,10 @@ $route['changePassword'] = 'login_controller/changePassword';
 //Login - Logout Routes
 //Escazu
 $route['escazu/login'] = 'login_controller';
-
-$route['escazu/verifyLogin'] = 'login_controller/verify';
 $route['escazu/verifyLogin'] = 'login_controller/verify';
 
 //Desamparados
 $route['desamparados/login'] = 'login_controller';
-
-$route['desamparados/verifyLogin'] = 'login_controller/verify';
 $route['desamparados/verifyLogin'] = 'login_controller/verify';
 
 /* ------------------------------------------------------------------- */
