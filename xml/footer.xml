@@ -4,7 +4,7 @@
 		<detail>Escazu: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil consequuntur, nesciunt dicta</detail>
 		<mapUrl>https://www.google.co.cr/maps/place/Parque+Central+de+Escaz%C3%BA/@9.918851,-84.1455156,16z/data=!4m2!3m1!1s0x0000000000000000:0xde34c064f2506db8?hl=es-419</mapUrl>
 		<phone>(506)8888-8888</phone>
-		<email>info_f5escazu@test.com</email>
+		<email>info_f5@test.com</email>
 		<skype>f5Escazu</skype>
 	</escazu>
 
@@ -12,7 +12,7 @@
 		<detail>Desamparados: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil consequuntur, nesciunt dicta</detail>
 		<mapUrl>https://www.google.co.cr/maps/place/Parque+el+Bosque/@9.8956572,-84.0609129,15z/data=!4m2!3m1!1s0x0000000000000000:0x3282645e6f917d0b?hl=es-419</mapUrl>
 		<phone>(506)8888-8888</phone>
-		<email>info_f5desamparados@test.com</email>
+		<email>info_f5@test.com</email>
 		<skype>f5Desamparados</skype>
 	</desamparados>
 </footer>
