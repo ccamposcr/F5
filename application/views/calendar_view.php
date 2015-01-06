@@ -107,7 +107,7 @@
                     <p>Para reservar llame al siguiente n&uacute;mero: <a href="tel:(506)8888-8888">(506)8888-8888</a></p>
                 </div>
                 <div id="bookingOnLine" ng-show="bookingType == 'bookingOnLine'">
-                    <h3>Reservaci&oacute;n en l&iacute;nea</h3>
+                    <!-- <h3>Reservaci&oacute;n en l&iacute;nea</h3> -->
                     <div>
                         <form name="bookingForm">
                             <dl>
