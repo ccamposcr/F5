@@ -246,8 +246,8 @@ F5App.app.controller("reservationController", function ($scope, $rootScope,$time
 		lastname : '',
 		phone : '',
 		email : '',
-		type_reservation : '',
-		referee_required : '',
+		typeReservation : '',
+		setReferee : '',
 		password : '',
 		confirmation : ''
 	}
