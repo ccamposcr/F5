@@ -121,12 +121,16 @@ textarea {
 .modal-body ol dt {
   font-weight: normal;
 }
-#bookingOnLine dl {
+#bookingOnLine dl .contentInfoForm {
   margin: 0;
 }
-#bookingOnLine dl input {
+#bookingOnLine dl .contentInfoForm label {
+  width: 60px;
+}
+#bookingOnLine dl .contentInfoForm input {
   display: inline-block;
-  width: 450px;
+  width: 500px;
+  margin-bottom: 8px;
 }
 #bookingOnLine h4 {
   font-size: 20px;
