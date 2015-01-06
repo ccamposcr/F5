@@ -176,9 +176,6 @@ F5App.app.controller("reservationController", function ($scope, $rootScope,$time
 				data.reservation_month = (to.getMonth() + 1).toString();
 				data.reservation_year = to.getFullYear().toString();
 				data['dates'].push([data.reservation_day,data.reservation_month,data.reservation_year]);
-				//console.log(to.toString());
-
-				//loading
 				/*$.ajax({
 
 					type: 'POST',
@@ -212,19 +209,31 @@ F5App.app.controller("reservationController", function ($scope, $rootScope,$time
 			async : true,
 
 			success : function(response){
-				/*var dataTmp = $scope.getDataForTemporaryReservation();
-				dataTmp.state = '5';
-				dataTmp.reservation_day = to.getDate().toString();
-				dataTmp.reservation_month = (to.getMonth() + 1).toString();
-				dataTmp.reservation_year = to.getFullYear().toString();
-				$scope.setStateTemporaryReservation(dataTmp);*/
+				$('#formReservationModal').modal('hide');
+				$('#set-pitch-all-weeks-modal').modal('hide');
+				$scope.loadReservations();
 			}
 		});
-
-		$('#formReservationModal').modal('hide');
-		$('#set-pitch-all-weeks-modal').modal('hide');
-		$scope.loadReservations();
 	}
+
+	$rootScope.sendEmail = function(data){
+		$.ajax({
+
+			type: 'POST',
+
+			url : F5App.base_url + "sendEmail",
+
+			data: data,
+
+			async : true,
+
+			success : function(response){
+				$('#loading-modal').modal('hide');
+				$scope.loadReservations();
+			}
+		});
+	}
+
 
 	/*$(window).bind("beforeunload", function() { 
 	    var data = $rootScope.getDataForTemporaryReservation();
