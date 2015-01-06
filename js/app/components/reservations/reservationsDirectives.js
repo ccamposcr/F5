@@ -208,12 +208,30 @@ F5App.app.directive('reserveBtn', ['$document', function($document) {
 								scope.loadReservations();
 							}
 						});
-
-
 					}
 					else{
 						$('#loading-modal').modal('hide');
 						$('#set-pitch-all-weeks-modal').modal('show');
+						$.ajax({
+
+							type: 'POST',
+
+							url : F5App.base_url + "sendEmail",
+
+							data: {
+								'email' : data.email,
+								'data_reservation' : 'Su reservación ha sido creada satisfactoriamente \nFecha: '
+								 + data.reservation_day +'/'+ data.reservation_month +'/'+ data.reservation_year + '\nNombre: '+
+								 data.name + ' '+ data.lastname +'\nTambién se ha reservado este mismo día todas las semanas durante 1 año'
+							},
+
+							async : true,
+
+							success : function(response){
+								$('#loading-modal').modal('hide');
+								scope.loadReservations();
+							}
+						});
 						setTimeout(function(){
 							scope.reserveAllWeeksSameDay(data);
 						},500);

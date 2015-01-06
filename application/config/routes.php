@@ -83,6 +83,7 @@ $route['checkExpiredReservations'] = 'check_expired_reservations_controller/chec
 $route['sendEmail'] = 'email_controller/sendEmail';
 $route['getClientsData'] = 'api_controller/getClientsData';
 $route['changePassword'] = 'login_controller/changePassword';
+$route['reserveAllWeeksSameDay'] = 'api_controller/reserveAllWeeksSameDay';
 //$route['(:any)/getReservationByDay'] = 'calendar_controller/getReservationByDay';
 
 //Login - Logout Routes

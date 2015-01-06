@@ -166,6 +166,7 @@ F5App.app.controller("reservationController", function ($scope, $rootScope,$time
 
 	$rootScope.reserveAllWeeksSameDay = function(data){
 		var range = 1, daysPerWeek = 7, daysPerYear = 365;
+		data['dates'] = new Array();
 		for(var i = range; i<= daysPerYear ; i++){
 			var from = new Date($('#year').val(),$('#month').val() - 1,$('#day').val());
 			var to = new Date($('#year').val(),$('#month').val() - 1,$('#day').val());
@@ -174,10 +175,11 @@ F5App.app.controller("reservationController", function ($scope, $rootScope,$time
 				data.reservation_day = to.getDate().toString();
 				data.reservation_month = (to.getMonth() + 1).toString();
 				data.reservation_year = to.getFullYear().toString();
+				data['dates'].push([data.reservation_day,data.reservation_month,data.reservation_year]);
 				//console.log(to.toString());
 
 				//loading
-				$.ajax({
+				/*$.ajax({
 
 					type: 'POST',
 
@@ -194,10 +196,31 @@ F5App.app.controller("reservationController", function ($scope, $rootScope,$time
 						dataTmp.reservation_month = (to.getMonth() + 1).toString();
 						dataTmp.reservation_year = to.getFullYear().toString();
 						$scope.setStateTemporaryReservation(dataTmp);*/
-					}
-				});	
+					//}
+				//});	
 			}
 		}
+
+		$.ajax({
+
+			type: 'POST',
+
+			url : F5App.base_url + "reserveAllWeeksSameDay",
+
+			data: data,
+
+			async : true,
+
+			success : function(response){
+				/*var dataTmp = $scope.getDataForTemporaryReservation();
+				dataTmp.state = '5';
+				dataTmp.reservation_day = to.getDate().toString();
+				dataTmp.reservation_month = (to.getMonth() + 1).toString();
+				dataTmp.reservation_year = to.getFullYear().toString();
+				$scope.setStateTemporaryReservation(dataTmp);*/
+			}
+		});
+
 		$('#formReservationModal').modal('hide');
 		$('#set-pitch-all-weeks-modal').modal('hide');
 		$scope.loadReservations();

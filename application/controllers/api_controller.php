@@ -111,4 +111,27 @@ class Api_controller extends CI_Controller {
         $result = $this->api_model->getClientsData();
         echo json_encode($result);
     }
+
+    public function reserveAllWeeksSameDay(){
+        $team_id = ( isset($_POST['team_id']) ) ? strip_tags($_POST['team_id']) : '1';
+        $reservation_time = ( isset($_POST['reservation_time']) ) ? strip_tags($_POST['reservation_time']) : '08-09';
+        $reservation_year = ( isset($_POST['reservation_year']) ) ? strip_tags($_POST['reservation_year']) : date("Y", time());
+        $reservation_month = ( isset($_POST['reservation_month']) ) ? strip_tags($_POST['reservation_month']) : date("m", time());
+        $reservation_day = ( isset($_POST['reservation_day']) ) ? strip_tags($_POST['reservation_day']) : date("d", time());
+        $group_id = ( isset($_POST['group_id']) ) ? strip_tags($_POST['group_id']) : 1;
+        $pitch_id = ( isset($_POST['pitch_id']) ) ? strip_tags($_POST['pitch_id']) : 1;
+        $name = ( isset($_POST['name']) ) ? strip_tags($_POST['name']) : 1;
+        $lastname = ( isset($_POST['lastname']) ) ? strip_tags($_POST['lastname']) : 1;
+        $phone = ( isset($_POST['phone']) ) ? strip_tags($_POST['phone']) : 1;
+        $email = ( isset($_POST['email']) ) ? strip_tags($_POST['email']) : 1;
+        $type_reservation = ( isset($_POST['type_reservation']) ) ? strip_tags($_POST['type_reservation']) : 1;
+        $referee_required = ( isset($_POST['referee_required']) ) ? strip_tags($_POST['referee_required']) : 1;
+        $reservation_price = ( isset($_POST['reservation_price']) ) ? strip_tags($_POST['reservation_price']) : 1;
+        $dates = ( isset($_POST['dates']) ) ? $_POST['dates'] : '0';
+        foreach ($dates as $value) {
+            if( !$this->api_model->checkIfReservationExist($team_id,$reservation_time,$value[2],$value[1],$value[0],$group_id,$pitch_id) ){
+                $this->api_model->createReservation($team_id,$reservation_time,$value[2],$value[1],$value[0],$group_id,$pitch_id,$name,$lastname,$phone,$email,$type_reservation,$referee_required,$reservation_price);
+            }
+        }
+    }
 }

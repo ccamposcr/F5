@@ -56,7 +56,6 @@ class Api_model extends CI_MODEL
         $query = $this->db->query("SELECT name,lastname,phone,email FROM t_reservations");
         return $query->result();
     }
-    
 }
 //end model
 
