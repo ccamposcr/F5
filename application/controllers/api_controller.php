@@ -131,6 +131,7 @@ class Api_controller extends CI_Controller {
         foreach ($dates as $value) {
             if( !$this->api_model->checkIfReservationExist($team_id,$reservation_time,$value[2],$value[1],$value[0],$group_id,$pitch_id) ){
                 $this->api_model->createReservation($team_id,$reservation_time,$value[2],$value[1],$value[0],$group_id,$pitch_id,$name,$lastname,$phone,$email,$type_reservation,$referee_required,$reservation_price);
+                $this->api_model->setTemporaryReservationState($team_id,$reservation_time,$value[2],$value[1],$value[0],$group_id,$pitch_id,'5');
             }
         }
     }
