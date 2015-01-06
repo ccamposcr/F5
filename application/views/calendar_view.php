@@ -112,20 +112,20 @@
                         <form name="bookingForm">
                             <dl>
                                 <dt>Informaci&oacute;n Personal</dt>
-                                    <dd>
+                                    <dd class="contentInfoForm">
                                         <label>Nombre</label><input type="text" class="form-control" ng-model="fields.name" name="name" required/>
                                         <span class="error" ng-show="bookingForm.name.$error.required && bookingForm.name.$dirty">Por favor ingrese su Nombre</span>
                                     </dd>
-                                    <dd>
+                                    <dd class="contentInfoForm">
                                         <label>Apellido</label><input type="text" class="form-control" ng-model="fields.lastname" name="lastname" required/>
                                         <span class="error" ng-show="bookingForm.lastname.$error.required && bookingForm.lastname.$dirty">Por favor ingrese su Apellido</span>
                                     </dd>
-                                    <dd>
+                                    <dd class="contentInfoForm">
                                         <label>Email:</label><input type="email"  class="form-control" ng-model="fields.email" name="email"/>
                                         <!--<span class="error" ng-show="bookingForm.email.$error.required && bookingForm.email.$dirty">Por favor ingrese su correo el&eacute;ctronico</span>-->
                                         <span class="error" ng-show="bookingForm.email.$dirty && bookingForm.email.$invalid">Por favor ingrese un correo el&eacute;ctronico v&aacute;lido</span>
                                     </dd>
-                                    <dd>
+                                    <dd class="contentInfoForm">
                                         <label>Telefono:</label><input type="tel" class="form-control" ng-model="fields.phone" name="phone" ng-minlength="8" ng-maxlength="8" ng-pattern="/^\d+$/"/>
                                         <span class="error" ng-show="bookingForm.phone.$dirty && (bookingForm.phone.$error.minlength || bookingForm.phone.$error.maxlength) || bookingForm.phone.$dirty && bookingForm.phone.$invalid">Por favor ingrese un t&eacute;lefono de 8 n&uacute;meros</span>
                                     </dd>
