@@ -30,7 +30,7 @@
 			<type>reservaciones</type>
 		</button>
 		<button>
-			<text>Galeria</text>
+			<text>Galer&amp;iacute;a</text>
 			<url>/galeria</url>
 			<type>galeria</type>
 		</button>
