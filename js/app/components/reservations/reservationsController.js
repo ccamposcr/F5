@@ -214,6 +214,8 @@ F5App.app.controller("reservationController", function ($scope, $rootScope,$time
 				$scope.loadReservations();
 			}
 		});
+		
+		return data['dates'];
 	}
 
 	$rootScope.sendEmail = function(data){
