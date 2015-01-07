@@ -197,6 +197,7 @@ textarea {
     .error{
         color: @red;
         margin-left: 75px;
+        display: inline-block;
     }
 }
 
@@ -213,6 +214,9 @@ textarea {
 
 #formReservationModal{
     .modal-header{
+        span{
+            color:@white;
+        }
         h4{
             float: left;
             > span{
@@ -227,16 +231,15 @@ textarea {
     }
 }
 
-#search-modal{
-    .modal-body{
-        height: 360px;
-        overflow: auto;
-    }
-}
-
 //change-password
 
 #change-password-modal{
+    .modal-header{
+        span{
+        color:@white;
+        }
+    }
+
     form{
         label{
             width: 180px;
@@ -247,13 +250,29 @@ textarea {
             display: inline-block;
             margin-top: 5px;
         }
+        span{
+            color:@red;
+            display: inline-block;
+        }
     }
-    .changePasswordBtn{
+    
+    .changePasswordBtn[disabled]{
         background-color: @lightGray;
     }
 }
 
+// search-modal
+
 #search-modal{
+    .modal-header{
+        span{
+        color:@white;
+        }
+    }
+    .modal-body{
+        height: 360px;
+        overflow: auto;
+    }
      input{
         border-radius: 5px;
         padding: 6px;
@@ -268,10 +287,29 @@ textarea {
                 color: @red;
             }
         }
-
     }
     .info_personas{
         padding: 3px;
+    }
+
+}
+
+//show-info-modal
+#show-info-modal{
+    .modal-header{
+        span{
+            color:@white;
+        }
+    }
+    .modal-body{
+        label{
+            width: 150px;
+            font-size: 15px;
+        }
+        button{
+            margin-top: 20px;
+        }
+        
     }
 
 }
@@ -878,6 +916,26 @@ a.fa-youtube{
     }
 }
 
+//ERROR PAGE
+
+#divContentErrorPage{
+    padding: 110px 0;
+    p{
+        font-family: @font-content;
+        font-size: 30px;
+        color: @white;
+        text-align: center;
+        margin: 0;
+    }
+    span{
+        font-family: @font-content;
+        font-size: 20px;
+        color: @white;
+        text-align: center;
+        display: block;
+    }
+
+}
 /* ==========================================================================
    Helper classes
    ========================================================================== */
