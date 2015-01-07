@@ -384,23 +384,7 @@ textarea {
 
 }
 
-#userStatus{
-    position: absolute;
-    right: 0;
-    left: 0;
-    margin: 0 auto;
-    width: 960px;
-    text-align: right;
-    top: 0;
 
-    a{
-        color: @white;
-
-        &:hover{
-            color: @red;
-        }
-    }
-}
 
 
 /* ==========================================================================
@@ -700,9 +684,30 @@ textarea {
         margin-top: 10px;
     }
 }
+#userStatus{
+    position: absolute;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    width: 960px;
+    text-align: right;
+    top: 0;
+    font-size: 16px;
+    font-family: @font-content;
 
-#userStatus span{
+    a{
+        color: @white;
+        text-decoration: none;
+        margin: 0 5px;
+
+        &:hover{
+            color: @red;
+        }
+    }
+    span{
     color:@orange;
+    margin: 0 5px;
+    }
 }
 /* ==========================================================================
    GALLERY
