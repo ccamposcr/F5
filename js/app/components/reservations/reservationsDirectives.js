@@ -222,6 +222,7 @@ F5App.app.directive('reserveBtn', ['$document', function($document) {
         else{
         	//console.log('invalido');
         	alert("Por favor ingrese correctamente los datos erróneos en el formulario");
+        	$('#loading-modal').modal('hide');
         }
         
       });
