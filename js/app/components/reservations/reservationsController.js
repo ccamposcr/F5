@@ -57,7 +57,8 @@ F5App.app.controller("reservationController", function ($scope, $rootScope,$time
 	}
 
 	$scope.sortReservations = function (data){
-		var reservations = [];
+		var reservations = [],
+			tmp = [];
 
 		for(var i=0; i < $scope.timesForReservations.length ; i++){
 			reservations[i] = new Array();
@@ -79,6 +80,11 @@ F5App.app.controller("reservationController", function ($scope, $rootScope,$time
 			else if( reservations[i].length == 0 ){
 				reservations[i][0] = {};
 				reservations[i][1] = {};
+			}
+			else if(reservations[i].length == 2 && reservations[i][0].type_reservation != 1 && reservations[i][0].team_id == 2 && reservations[i][1].team_id == 1){
+				tmp = reservations[i][0];
+				reservations[i][0] = reservations[i][1];
+				reservations[i][1] = tmp;
 			}
 		}
 		return reservations;

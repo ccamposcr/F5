@@ -183,7 +183,8 @@ textarea {
 }
 #change-password-modal form span {
   color: #c4302c;
-  display: inline-block;
+  display: block;
+  margin-left: 180px;
 }
 #change-password-modal .changePasswordBtn[disabled] {
   background-color: #d2cfcf;
@@ -281,21 +282,6 @@ textarea {
 }
 #logo a {
   display: block;
-}
-#userStatus {
-  position: absolute;
-  right: 0;
-  left: 0;
-  margin: 0 auto;
-  width: 960px;
-  text-align: right;
-  top: 0;
-}
-#userStatus a {
-  color: #ffffff;
-}
-#userStatus a:hover {
-  color: #c4302c;
 }
 /* ==========================================================================
    HOME CONTENT
@@ -564,8 +550,28 @@ textarea {
 #contentLogin #btnLogin {
   margin-top: 10px;
 }
+#userStatus {
+  position: absolute;
+  right: 0;
+  left: 0;
+  margin: 0 auto;
+  width: 960px;
+  text-align: right;
+  top: 0;
+  font-size: 16px;
+  font-family: 'eurostileregular';
+}
+#userStatus a {
+  color: #ffffff;
+  text-decoration: none;
+  margin: 0 5px;
+}
+#userStatus a:hover {
+  color: #c4302c;
+}
 #userStatus span {
   color: #ff5500;
+  margin: 0 5px;
 }
 /* ==========================================================================
    GALLERY
