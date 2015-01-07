@@ -172,22 +172,25 @@ textarea {
 
 #bookingOnLine{
     dl{
-        
-        .contentInfoForm{
-            margin:0;
-            label{
-                width: 60px;
-                margin-left: 15px;
+        margin-top: 0;
+        dt{
+            margin-bottom: 5px;
 
-               } 
-            input{
-                display: inline-block;
-                width: 470px;
-                margin-bottom: 8px;
-               }
+            .contentInfoForm{
+                margin:0;
+                label{
+                    width: 60px;
+                    margin-left: 15px;
 
-        }
-               
+                   } 
+                input{
+                    display: inline-block;
+                    width: 470px;
+                    margin-bottom: 8px;
+                   }
+
+            }
+        }  
     }
     // h3{
     //     text-align: center;
@@ -213,6 +216,9 @@ textarea {
         background-color: @red;
         color: @white;
     }
+    .reserveBtn[disabled]{
+  background-color: @lightGray;
+}
 }
 
 #formReservationModal{
