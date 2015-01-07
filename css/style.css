@@ -122,14 +122,20 @@ textarea {
 .modal-body ol dt {
   font-weight: normal;
 }
-#bookingOnLine dl .contentInfoForm {
+#bookingOnLine dl {
+  margin-top: 0;
+}
+#bookingOnLine dl dt {
+  margin-bottom: 5px;
+}
+#bookingOnLine dl dt .contentInfoForm {
   margin: 0;
 }
-#bookingOnLine dl .contentInfoForm label {
+#bookingOnLine dl dt .contentInfoForm label {
   width: 60px;
   margin-left: 15px;
 }
-#bookingOnLine dl .contentInfoForm input {
+#bookingOnLine dl dt .contentInfoForm input {
   display: inline-block;
   width: 470px;
   margin-bottom: 8px;
@@ -148,6 +154,9 @@ textarea {
 .modal-footer button {
   background-color: #c4302c;
   color: #ffffff;
+}
+.modal-footer .reserveBtn[disabled] {
+  background-color: #d2cfcf;
 }
 #formReservationModal .modal-header h4 {
   float: left;
