@@ -339,7 +339,7 @@ F5App.app.directive('delete', ['$document', function($document) {
         $('#loading-modal').modal('show');
         var data = {
         	'user' : $('#user').val(),
-        	'password' : $scope.fields.password
+        	'password' : scope.fields.password
         }
        	$.ajax({
 
@@ -353,6 +353,7 @@ F5App.app.directive('delete', ['$document', function($document) {
 
 				success : function(response){
 					$('#loading-modal').modal('hide');
+					$('#change-password-modal').modal('hide');
 					alert("El password se ha cambiado satisfactoriamente");
 				}
 			});
