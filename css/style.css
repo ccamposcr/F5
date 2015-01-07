@@ -128,21 +128,17 @@ textarea {
 #bookingOnLine dl dt {
   margin-bottom: 5px;
 }
-#bookingOnLine dl dt .contentInfoForm {
+#bookingOnLine dl dd.contentInfoForm {
   margin: 0;
 }
-#bookingOnLine dl dt .contentInfoForm label {
+#bookingOnLine dl dd.contentInfoForm label {
   width: 60px;
   margin-left: 15px;
 }
-#bookingOnLine dl dt .contentInfoForm input {
+#bookingOnLine dl dd.contentInfoForm input {
   display: inline-block;
   width: 470px;
   margin-bottom: 8px;
-}
-#bookingOnLine h4 {
-  font-size: 20px;
-  margin: 0;
 }
 #bookingOnLine .error {
   color: #c4302c;
