@@ -109,6 +109,7 @@ textarea {
   font-size: 20px;
 }
 .modal-body {
+  margin-top: 0;
   font-family: 'eurostileregular';
 }
 .modal-body h3 {
@@ -126,10 +127,11 @@ textarea {
 }
 #bookingOnLine dl .contentInfoForm label {
   width: 60px;
+  margin-left: 15px;
 }
 #bookingOnLine dl .contentInfoForm input {
   display: inline-block;
-  width: 500px;
+  width: 470px;
   margin-bottom: 8px;
 }
 #bookingOnLine h4 {
@@ -138,6 +140,7 @@ textarea {
 }
 #bookingOnLine .error {
   color: #c4302c;
+  margin-left: 75px;
 }
 .modal-footer {
   background-color: #3a3333;
