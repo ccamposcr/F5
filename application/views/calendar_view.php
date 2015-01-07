@@ -258,16 +258,16 @@
                 <div class="modal-content">
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <h4 class="modal-title">Eliminar Reservaci&oacute;n</h4>
+                    <h4 class="modal-title">Informaci&oacute;n de la Reservaci&oacute;n</h4>
                   </div>
                   <div class="modal-body">
-                      <div id="divContentShowInfoModal"><label>Nombre:</label><span> {{completeInfo[0].name}}</span></div>
-                      <div id="divContentShowInfoModal"><label>Apellido:</label><span> {{completeInfo[0].lastname}}</span></div>
-                      <div id="divContentShowInfoModal"><label>Tel&eacute;fono:</label><span> {{completeInfo[0].phone}}</span></div>
-                      <div id="divContentShowInfoModal"><label>Email:</label><span> {{completeInfo[0].email}}</span></div>
-                      <div id="divContentShowInfoModal"><label>Requiere Arbitro:</label><span> {{(completeInfo[0].referee_required == 1) ? 'S&iacute;' : 'No'}}</span></div>
-                      <div id="divContentShowInfoModal"><label>Fecha de Reservaci&oacute;n:</label><span> {{completeInfo[0].reservation_day}}/{{completeInfo[0].reservation_month}}/{{completeInfo[0].reservation_year}} {{completeInfo[0].reservation_time}}</span></div>
-                      <div id="divContentShowInfoModal"><label>Total Cobrado:</label><span>{{completeInfo[0].reservation_price}}</span></div>
+                      <div class="divContentShowInfoModal"><label>Nombre:</label><span> {{completeInfo[0].name}}</span></div>
+                      <div class="divContentShowInfoModal"><label>Apellido:</label><span> {{completeInfo[0].lastname}}</span></div>
+                      <div class="divContentShowInfoModal"><label>Tel&eacute;fono:</label><span> {{completeInfo[0].phone}}</span></div>
+                      <div class="divContentShowInfoModal"><label>Email:</label><span> {{completeInfo[0].email}}</span></div>
+                      <div class="divContentShowInfoModal"><label>Requiere Arbitro:</label><span> {{(completeInfo[0].referee_required == 1) ? 'S&iacute;' : 'No'}}</span></div>
+                      <div class="divContentShowInfoModal"><label>Fecha de Reservaci&oacute;n:</label><span> {{completeInfo[0].reservation_day}}/{{completeInfo[0].reservation_month}}/{{completeInfo[0].reservation_year}} {{completeInfo[0].reservation_time}}</span></div>
+                      <div class="divContentShowInfoModal"><label>Total Cobrado:</label><span>{{completeInfo[0].reservation_price}}</span></div>
                       <button type="button" class="btn btn-warning delete" data-dismiss="modal">Eliminar Reservaci&oacute;n</button>
                   </div>
                   <div class="modal-footer">
@@ -313,9 +313,9 @@
                     <form name="changePassForm">
                       <label>Nueva contrase&ntilde;a</label><input type="password" ng-model="fields.password" class="form-control" name="password" ng-minlength="5" required/>
                       <label>Confirmaci&oacute;n contrase&ntilde;a</label><input type="password" ng-model="fields.confirmation" class="form-control" name="confirmation" ng-minlength="5" required/>
-                      <span class="error" ng-show="changePassForm.password.$error.required && changePassForm.password.$dirty || changePassForm.confirmation.$error.required && changePassForm.confirmation.$dirty">Ambos campos son requeridos</span><br>
-                      <span class="error" ng-show="fields.password != fields.confirmation && changePassForm.password.$dirty && changePassForm.confirmation.$dirty">Las contrase&ntilde;as deben ser iguales</span><br>
-                      <span class="error" ng-show="changePassForm.password.$error.minlength && changePassForm.password.$dirty || changePassForm.confirmation.$error.minlength && changePassForm.confirmation.$dirty">La contrase&ntilde;a debe tener un m&iacute;nimo de 5 caracteres</span><br>
+                      <span class="error" ng-show="changePassForm.password.$error.required && changePassForm.password.$dirty || changePassForm.confirmation.$error.required && changePassForm.confirmation.$dirty">Ambos campos son requeridos</span>
+                      <span class="error" ng-show="fields.password != fields.confirmation && changePassForm.password.$dirty && changePassForm.confirmation.$dirty">Las contrase&ntilde;as deben ser iguales</span>
+                      <span class="error" ng-show="changePassForm.password.$error.minlength && changePassForm.password.$dirty || changePassForm.confirmation.$error.minlength && changePassForm.confirmation.$dirty">La contrase&ntilde;a debe tener un m&iacute;nimo de 5 caracteres</span>
                     </form>
                   </div>
                   <div class="modal-footer">
