@@ -281,16 +281,16 @@
                 <div class="modal-content">
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <h4 class="modal-title">F5 Reservaciones</h4>
+                    <h4 class="modal-title">Base de datos</h4>
                   </div>
                   <div class="modal-body">
                     <label>Buscar:</label> <input ng-model="searchText">
                     <table id="searchResults">
                       <tr><th>Nombre</th><th>Tel&eacute;fono</th><th>Email</th></tr>
                       <tr ng-repeat="client in clients | filter:searchText">
-                        <td>{{$index+1}}. {{client.name}} {{client.lastname}}</td>
-                        <td>{{client.phone}}</td>
-                        <td>{{client.email}}</td>
+                        <td class="info_personas">{{$index+1}}. {{client.name}} {{client.lastname}}</td>
+                        <td class="info_personas">{{client.phone}}</td>
+                        <td class="info_personas">{{client.email}}</td>
                       </tr>
                     </table>
                   </div>
