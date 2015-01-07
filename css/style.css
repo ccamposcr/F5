@@ -170,10 +170,10 @@ textarea {
   overflow: auto;
 }
 #change-password-modal form label {
-  width: 125px;
+  width: 160px;
 }
 #change-password-modal form input {
-  width: 200px;
+  width: 300px;
   display: inline-block;
 }
 /* ==========================================================================

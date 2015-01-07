@@ -196,12 +196,16 @@ F5App.app.directive('reserveBtn', ['$document', function($document) {
 					else{
 						$('#loading-modal').modal('hide');
 						$('#set-pitch-all-weeks-modal').modal('show');
-						dates = scope.reserveAllWeeksSameDay(data);
+						var dates = scope.reserveAllWeeksSameDay(data);
+						var dates_str = '\n';
+						for(var i = 0; i < dates.length ; i++){
+							dates_str += dates[i][0] +'/'+dates[i][1]+'/'+dates[i][2]+'\n';
+						}
 						//console.log(dates);
 						scope.sendEmail({	'email' : data.email,
 											'data_reservation' : 'Su reservación ha sido creada satisfactoriamente \nFecha: '
 											 + data.reservation_day +'/'+ data.reservation_month +'/'+ data.reservation_year + '\nNombre: '+
-											 data.name + ' '+ data.lastname +'\nTambién se han reservado los siguientes días de todas las semanas durante 1 año'
+											 data.name + ' '+ data.lastname +'\nTambién se han reservado los siguientes días de todas las semanas durante 1 año' + dates_str
 										});
 						//scope.loadReservations();
 					}
