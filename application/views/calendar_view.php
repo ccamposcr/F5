@@ -146,7 +146,7 @@
                 <button id="cancelReservationBtn" type="button" class="btn btn-danger" data-toggle="confirmation" ng-show="bookingType == 'bookingOnLine'" data-btn-ok-label="Seguir" 
                 data-btn-ok-icon="glyphicon glyphicon-share-alt" data-btn-ok-class="btn-success" data-btn-cancel-label="Salir" data-btn-cancel-icon="glyphicon glyphicon-ban-circle" 
                 data-btn-cancel-class="btn-danger" data-title="Continuar la reservaci&oacute;n?">Cancelar</button>
-                <input for="bookingForm" type="submit" class="btn btn-primary reserveBtn" ng-if="bookingType == 'bookingOnLine'" value="Reservar" ng-disabled="bookingForm.name.$error.required || bookingForm.lastname.$error.required || !fields.typeReservation"/>
+                <input for="bookingForm" type="submit" class="btn btn-primary reserveBtn" ng-if="bookingType == 'bookingOnLine'" value="Reservar" ng-disabled="bookingForm.name.$error.required || bookingForm.lastname.$error.required || !fields.typeReservation || bookingForm.email.$invalid || bookingForm.phone.$error.minlength || bookingForm.phone.$error.maxlength || bookingForm.phone.$invalid"/>
                 <!--<button type="button" class="btn btn-primary">Send message</button>-->
               </div>
             </div>
