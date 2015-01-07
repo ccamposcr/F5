@@ -236,6 +236,10 @@ F5App.app.controller("reservationController", function ($scope, $rootScope,$time
 		});
 	}
 
+	$rootScope.getCorrectTimeReservation = function(time){
+		return $scope.times[$scope.timesForReservations.indexOf(time)];
+	}
+
 
 	/*$(window).bind("beforeunload", function() { 
 	    var data = $rootScope.getDataForTemporaryReservation();

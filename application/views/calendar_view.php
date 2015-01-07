@@ -265,8 +265,9 @@
                       <div class="divContentShowInfoModal"><label>Apellido:</label><span> {{completeInfo[0].lastname}}</span></div>
                       <div class="divContentShowInfoModal"><label>Tel&eacute;fono:</label><span> {{completeInfo[0].phone}}</span></div>
                       <div class="divContentShowInfoModal"><label>Email:</label><span> {{completeInfo[0].email}}</span></div>
-                      <div class="divContentShowInfoModal"><label>Requiere Arbitro:</label><span> {{(completeInfo[0].referee_required == 1) ? 'S&iacute;' : 'No'}}</span></div>
-                      <div class="divContentShowInfoModal"><label>Fecha de Reservaci&oacute;n:</label><span> {{completeInfo[0].reservation_day}}/{{completeInfo[0].reservation_month}}/{{completeInfo[0].reservation_year}} {{completeInfo[0].reservation_time}}</span></div>
+                      <div class="divContentShowInfoModal"><label>Requiere &Aacute;rbitro:</label><span> {{(completeInfo[0].referee_required == 1) ? 'S&iacute;' : 'No'}}</span></div>
+                      <div class="divContentShowInfoModal"><label>Fecha de Reservaci&oacute;n:</label><span> {{completeInfo[0].reservation_day}}/{{completeInfo[0].reservation_month}}/{{completeInfo[0].reservation_year}}</span></div>
+                      <div class="divContentShowInfoModal"><label>Hora de Reservaci&oacute;n:</label><span> {{getCorrectTimeReservation(completeInfo[0].reservation_time)}}</span></div>
                       <div class="divContentShowInfoModal"><label>Total Cobrado:</label><span>{{completeInfo[0].reservation_price}}</span></div>
                       <button type="button" class="btn btn-warning delete" data-dismiss="modal">Eliminar Reservaci&oacute;n</button>
                   </div>
