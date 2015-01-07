@@ -170,11 +170,33 @@ textarea {
   overflow: auto;
 }
 #change-password-modal form label {
-  width: 160px;
+  width: 180px;
+  font-size: 16px;
 }
 #change-password-modal form input {
   width: 300px;
   display: inline-block;
+  margin-top: 5px;
+}
+#change-password-modal .changePasswordBtn {
+  background-color: #d2cfcf;
+}
+#search-modal input {
+  border-radius: 5px;
+  padding: 6px;
+  margin-bottom: 15px;
+  width: 300px;
+}
+#search-modal table tr {
+  border-bottom: 1px solid #d2cfcf;
+}
+#search-modal table tr th {
+  width: 180px;
+  font-size: 16px;
+  color: #c4302c;
+}
+#search-modal .info_personas {
+  padding: 3px;
 }
 /* ==========================================================================
    HEADER
@@ -495,6 +517,7 @@ textarea {
 ========================================================================== */
 #divContent #loginTitle {
   font-family: 'eurostileregular';
+  font-size: 30px;
 }
 #divContent label {
   font-family: 'eurostileregular';
@@ -507,9 +530,12 @@ textarea {
   margin: 20px auto;
 }
 #contentLogin p {
-  color: #ff5500;
-  font-size: 17px;
+  color: #c4302c;
+  font-size: 23px;
   font-family: 'eurostileregular';
+  font-weight: bold;
+  text-align: center;
+  margin: 5px;
 }
 #contentLogin #btnLogin {
   margin-top: 10px;
