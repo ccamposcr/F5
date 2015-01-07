@@ -306,12 +306,12 @@
                 <div class="modal-content">
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <h4 class="modal-title">F5 Reservaciones</h4>
+                    <h4 class="modal-title">Cambiar Contrase&ntilde;a</h4>
                   </div>
                   <div class="modal-body">
                     <form name="changePassForm">
-                      <label>Nueva contrase&ntilde;a</label><input type="password" ng-model="fields.password" name="password" ng-minlength="5" required/>
-                      <label>Confirmaci&oacute;n contrase&ntilde;a</label><input type="password" ng-model="fields.confirmation" name="confirmation" ng-minlength="5" required/>
+                      <label>Nueva contrase&ntilde;a</label><input type="password" ng-model="fields.password" class="form-control" name="password" ng-minlength="5" required/>
+                      <label>Confirmaci&oacute;n contrase&ntilde;a</label><input type="password" ng-model="fields.confirmation" class="form-control" name="confirmation" ng-minlength="5" required/>
                       <span class="error" ng-show="changePassForm.password.$error.required && changePassForm.password.$dirty || changePassForm.confirmation.$error.required && changePassForm.confirmation.$dirty">Ambos campos son requeridos</span>
                       <span class="error" ng-show="fields.password != fields.confirmation && changePassForm.password.$dirty && changePassForm.confirmation.$dirty">Las contrase&ntilde;as deben ser iguales</span>
                       <span class="error" ng-show="changePassForm.password.$error.minlength && changePassForm.password.$dirty || changePassForm.confirmation.$error.minlength && changePassForm.confirmation.$dirty">La contrase&ntilde;a debe tener un m&iacute;nimo de 5 caracteres</span>
