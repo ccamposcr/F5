@@ -355,7 +355,8 @@ F5App.app.directive('delete', ['$document', function($document) {
         	'user' : $('#user').val(),
         	'password' : scope.fields.password
         }
-       	$.ajax({
+        if( scope.changePassForm.$valid ){
+       		$.ajax({
 
 				type: 'POST',
 
@@ -371,7 +372,11 @@ F5App.app.directive('delete', ['$document', function($document) {
 					alert("El password se ha cambiado satisfactoriamente");
 				}
 			});
-      	});
+       	}
+       	else{
+       		alert("Por favor ingrese correctamente los datos erróneos");
+       	}
+      });
     }
     return {
     	restrict : 'C',

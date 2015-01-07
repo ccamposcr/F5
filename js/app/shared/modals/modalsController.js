@@ -13,6 +13,11 @@ F5App.app.controller("modalController", function ($scope, $rootScope){
 		//$scope.loadReservations();
 	});
 
+	$('#change-password-modal').on('hidden.bs.modal', function(){
+		$scope.fields.password = '';
+		$scope.fields.confirmation = '';
+	});
+
 	$('#formReservationModal').on('show.bs.modal', function(){
 		$scope.successReservation = false;
 		if( $scope.fields.typeReservationSelected == 'reto' ){
