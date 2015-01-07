@@ -260,15 +260,13 @@
                     <h4 class="modal-title">F5 Reservaciones</h4>
                   </div>
                   <div class="modal-body">
-                    <p>
-                      <label>Nombre:</label>{{completeInfo[0].name}}<br/>
-                      <label>Apellido:</label>{{completeInfo[0].lastname}}<br/>
-                      <label>Telef&oacute;no:</label>{{completeInfo[0].phone}}<br/>
-                      <label>Email:</label>{{completeInfo[0].email}}<br/>
-                      <label>Requiere Referee:</label>{{(completeInfo[0].referee_required == 1) ? 'S&iacute;' : 'No'}}<br/>
-                      <label>Fecha de Reservaci&oacute;n</label>{{completeInfo[0].reservation_day}}/{{completeInfo[0].reservation_month}}/{{completeInfo[0].reservation_year}} {{completeInfo[0].reservation_time}}<br/>
-                      <label>Total Cobrado:</label>{{completeInfo[0].reservation_price}}
-                    </p>
+                      <label>Nombre:</label><span> {{completeInfo[0].name}}</span>
+                      <label>Apellido:</label><span> {{completeInfo[0].lastname}}</span>
+                      <label>Telef&oacute;no:</label><span> {{completeInfo[0].phone}}</span>
+                      <label>Email:</label><span> {{completeInfo[0].email}}</span>
+                      <label>Requiere Referee:</label><span> {{(completeInfo[0].referee_required == 1) ? 'S&iacute;' : 'No'}}</span>
+                      <label>Fecha de Reservaci&oacute;n</label><span> {{completeInfo[0].reservation_day}}/{{completeInfo[0].reservation_month}}/{{completeInfo[0].reservation_year}} {{completeInfo[0].reservation_time}}</span>
+                      <label>Total Cobrado:</label><span>{{completeInfo[0].reservation_price}}</span>
                     <button type="button" class="btn btn-warning delete" data-dismiss="modal">Eliminar Reservaci&oacute;n</button>
                   </div>
                   <div class="modal-footer">
