@@ -42,18 +42,18 @@
                 <li class="row clearfix" ng-repeat="data in reservations">
                     <span class="reservation-time" data-time="{{timesForReservations[$index]}}">{{times[$index]}}</span>
                     <span ng-if="!!reservation.id && $index+1 == reservation.team_id && $index+1 == 1 && !isAdminUser()" class="blocked {{reservation.type_reservation == 1 ? 'completa' : ''}}" data-team="{{$index+1}}" ng-repeat="reservation in data">
-                        {{reservation.name}} {{reservation.lastname}}
+                        <span>Reservado por:</span> {{reservation.name}} {{reservation.lastname}}
                     </span>
                     <span ng-if="!!reservation.id && $index+1 == reservation.team_id && $index+1 == 1 && isAdminUser()" class="blocked {{reservation.type_reservation == 1 ? 'completa' : ''}} showInfo" data-team="{{$index+1}}" ng-repeat="reservation in data">
-                        {{reservation.name}} {{reservation.lastname}}
+                        <span>Reservado por:</span>  {{reservation.name}} {{reservation.lastname}}
                     </span>
                     <span ng-if="!reservation.id && $index+1 == 1 || $index+1 == 2 && !!data[$index - 1].id && !data[$index].id" class="available" data-toggle="tooltip" data-delay='{ show: 10, hide: 50 }' data-placement="left" title="Haga click aquí para Reservar en Línea" data-team="{{$index+1}}" ng-repeat="reservation in data" ng-click="($index+1 == 2 && !!data[$index - 1].id) ? fields.typeReservationSelected = 'reto' : fields.typeReservationSelected = 'normal'">{{($index+1 == 2 && !!data[$index - 1].id) ? 'Equipo 1 Busca Reto' : ''}}</span>
                     <span ng-if="!reservation.id && $index+1 == 2 && !data[$index - 1].id" class="locked" data-team="{{$index+1}}" ng-repeat="reservation in data"></span>
                     <span ng-if="!!reservation.id && $index+1 == reservation.team_id && $index+1 == 2 && !isAdminUser()" class="blocked {{reservation.type_reservation == 1 ? 'completa' : ''}}" data-team="{{$index+1}}" ng-repeat="reservation in data">
-                        {{reservation.name}} {{reservation.lastname}}
+                        <span>Reservado por:</span>  {{reservation.name}} {{reservation.lastname}}
                     </span>
                     <span ng-if="!!reservation.id && $index+1 == reservation.team_id && $index+1 == 2 && isAdminUser()" class="blocked {{reservation.type_reservation == 1 ? 'completa' : ''}} showInfo" data-team="{{$index+1}}" ng-repeat="reservation in data">
-                        {{reservation.name}} {{reservation.lastname}}
+                        <span>Reservado por:</span>  {{reservation.name}} {{reservation.lastname}}
                     </span>
                 </li>
             </ul>
@@ -61,7 +61,7 @@
                 <li class="row clearfix" ng-repeat="data in reservations">
                     <span class="reservation-time" data-time="{{timesForReservations[$index]}}">{{times[$index]}}</span>
                     <span class="blocked {{reservation.type_reservation == 1 ? 'completa' : ''}}" data-team="{{$index+1}}" ng-repeat="reservation in data">
-                        {{reservation.name}} {{reservation.lastname}}
+                        <span ng-if="!!reservation.name && !! reservation.lastname">Reservado por:</span>  {{reservation.name}} {{reservation.lastname}}
                     </span>
                 </li>
             </ul>
@@ -116,8 +116,12 @@
                                         <span class="error" ng-show="bookingForm.name.$error.required && bookingForm.name.$dirty">Por favor ingrese su Nombre</span>
                                     </dd>
                                     <dd class="contentInfoForm">
-                                        <label>Apellido</label><input type="text" class="form-control" ng-model="fields.lastname" name="lastname" required/>
-                                        <span class="error" ng-show="bookingForm.lastname.$error.required && bookingForm.lastname.$dirty">Por favor ingrese su Apellido</span>
+                                        <label>1<sub>er</sub> Apellido</label><input type="text" class="form-control" ng-model="fields.lastname1" name="lastname1" required/>
+                                        <span class="error" ng-show="bookingForm.lastname1.$error.required && bookingForm.lastname1.$dirty">Por favor ingrese su 1<sub>er</sub>Apellido</span>
+                                    </dd>
+                                    <dd class="contentInfoForm">
+                                        <label>2<sub>do</sub> Apellido</label><input type="text" class="form-control" ng-model="fields.lastname2" name="lastname2" required/>
+                                        <span class="error" ng-show="bookingForm.lastname2.$error.required && bookingForm.lastname2.$dirty">Por favor ingrese su 2<sub>do</sub>Apellido</span>
                                     </dd>
                                     <dd class="contentInfoForm">
                                         <label>Email:</label><input type="email"  class="form-control" ng-model="fields.email" name="email"/>
@@ -125,16 +129,17 @@
                                         <span class="error" ng-show="bookingForm.email.$dirty && bookingForm.email.$invalid">Por favor ingrese un correo el&eacute;ctronico v&aacute;lido</span>
                                     </dd>
                                     <dd class="contentInfoForm">
-                                        <label>Telefono:</label><input type="tel" class="form-control" ng-model="fields.phone" name="phone" ng-minlength="8" ng-maxlength="8" ng-pattern="/^\d+$/"/>
+                                        <label>Celular:</label><input type="tel" class="form-control" ng-model="fields.phone" name="phone" ng-minlength="8" ng-maxlength="8" ng-pattern="/^\d+$/" required/>
                                         <span class="error" ng-show="bookingForm.phone.$dirty && (bookingForm.phone.$error.minlength || bookingForm.phone.$error.maxlength) || bookingForm.phone.$dirty && bookingForm.phone.$invalid">Por favor ingrese un t&eacute;lefono de 8 n&uacute;meros</span>
+                                        <span class="error" ng-show="bookingForm.phone.$error.required && bookingForm.phone.$dirty">Por favor ingrese su celular</span>
                                     </dd>
                                 <dt>Tipo de Reservaci&oacute;n</dt>
                                     <dd ng-if="fields.typeReservationSelected == 'normal'" class="radio"><input id="complete" type="radio" name="typeReservation" value="1" ng-model="fields.typeReservation" required><label for="complete">Completa (Marque esta opci&oacute;n si ya tiene formado Equipo 1 y Equipo 2)</label></dd>
-                                    <dd class="radio"><input id="challenge" type="radio" name="typeReservation" value="2" ng-model="fields.typeReservation" required><label for="challenge">Reto <span ng-if="fields.typeReservationSelected == 'normal'">(Marque esta opci&oacute;n si necesita Equipo 2 para Reto)</span></label></dd>
+                                    <dd class="radio"><input id="challenge" type="radio" name="typeReservation" value="2" ng-model="fields.typeReservation" ng-click="fields.setReferee = true" required><label for="challenge">Reto <span ng-if="fields.typeReservationSelected == 'normal'">(Marque esta opci&oacute;n si necesita Equipo 2 para Reto)</span></label></dd>
                                     <!--<span class="error" ng-show="!fields.typeReservation">Por favor seleccione una opci&oacute;n</span>-->
                                 <dt>Opciones Adicionales</dt>
-                                    <dd class="checkbox"><input id="setReferee" name="setReferee" type="checkbox" ng-model="fields.setReferee"><label for="setReferee">Pagar &Aacute;rbitro (Marque esta opci&oacute;n &uacute;nicamente si necesita &aacute;rbitro)</label></dd>
-                                    <dd ng-if="fields.typeReservationSelected == 'normal'" class="checkbox"><input id="setPitchAllWeeks" name="setPitchAllWeeks" type="checkbox" ng-model="fields.setPitchAllWeeks"><label for="setPitchAllWeeks">Reservar esta cancha este mismo día todas las semanas durante 1 a&ntilde;o<br/>*Se cobra d&eacute;posito</label></dd>
+                                    <dd class="checkbox"><input id="setReferee" name="setReferee" type="checkbox" ng-model="fields.setReferee" ng-disabled="fields.typeReservation==2" ng-checked="fields.typeReservationSelected == 'reto'"><label for="setReferee">Pagar &Aacute;rbitro (Marque esta opci&oacute;n &uacute;nicamente si necesita &aacute;rbitro)</label></dd>
+                                    <dd ng-if="fields.typeReservationSelected == 'normal'" class="checkbox"><input id="setPitchAllWeeks" name="setPitchAllWeeks" type="checkbox" ng-model="fields.setPitchAllWeeks"><label for="setPitchAllWeeks">Cancha Fija (Reservar esta cancha este mismo día todas las semanas)<br/>*Se cobra d&eacute;posito</label></dd>
                             </dl>
                         </form>
                     </div>
@@ -145,7 +150,7 @@
                 <button id="cancelReservationBtn" type="button" class="btn btn-danger" data-toggle="confirmation" ng-show="bookingType == 'bookingOnLine'" data-btn-ok-label="Seguir" 
                 data-btn-ok-icon="glyphicon glyphicon-share-alt" data-btn-ok-class="btn-success" data-btn-cancel-label="Salir" data-btn-cancel-icon="glyphicon glyphicon-ban-circle" 
                 data-btn-cancel-class="btn-danger" data-title="Continuar la reservaci&oacute;n?">Cancelar</button>
-                <input for="bookingForm" type="submit" class="btn btn-primary reserveBtn" ng-if="bookingType == 'bookingOnLine'" value="Reservar" ng-disabled="bookingForm.name.$error.required || bookingForm.lastname.$error.required || !fields.typeReservation || bookingForm.email.$invalid || bookingForm.phone.$error.minlength || bookingForm.phone.$error.maxlength || bookingForm.phone.$invalid"/>
+                <input for="bookingForm" type="submit" class="btn btn-primary reserveBtn" ng-if="bookingType == 'bookingOnLine'" value="Reservar" ng-disabled="bookingForm.name.$error.required || bookingForm.lastname1.$error.required || bookingForm.lastname2.$error.required || !fields.typeReservation || bookingForm.email.$invalid || bookingForm.phone.$error.minlength || bookingForm.phone.$error.maxlength || bookingForm.phone.$invalid || bookingForm.phone.$error.required"/>
                 <!--<button type="button" class="btn btn-primary">Send message</button>-->
               </div>
             </div>
@@ -193,7 +198,7 @@
                 <h4 class="modal-title">F5 Reservaciones</h4>
               </div>
               <div class="modal-body">
-                <p>Por favor no cierre el navegador. El sistema está reservando el d&iacute;a elegido todas las semanas por un per&iacute;odo de 1 a&ntilde;o</p>
+                <p>Por favor no cierre el navegador. El sistema está reservando la cancha fija el d&iacute;a elegido todas las semanas</p>
                 <img src="<?php echo base_url(); ?>img/loading.gif" width="127" height="128"/>
               </div>
             </div>
@@ -262,7 +267,7 @@
                   </div>
                   <div class="modal-body">
                       <div class="divContentShowInfoModal"><label>Nombre:</label><span> {{completeInfo[0].name}}</span></div>
-                      <div class="divContentShowInfoModal"><label>Apellido:</label><span> {{completeInfo[0].lastname}}</span></div>
+                      <div class="divContentShowInfoModal"><label>Apellidos:</label><span> {{completeInfo[0].lastname}}</span></div>
                       <div class="divContentShowInfoModal"><label>Tel&eacute;fono:</label><span> {{completeInfo[0].phone}}</span></div>
                       <div class="divContentShowInfoModal"><label>Email:</label><span> {{completeInfo[0].email}}</span></div>
                       <div class="divContentShowInfoModal"><label>Requiere &Aacute;rbitro:</label><span> {{(completeInfo[0].referee_required == 1) ? 'S&iacute;' : 'No'}}</span></div>

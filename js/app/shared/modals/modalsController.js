@@ -40,7 +40,8 @@ F5App.app.controller("modalController", function ($scope, $rootScope){
 
 	$scope.clearReservationForm = function(){
 		$scope.fields.email = '';
-		$scope.fields.lastname = '';
+		$scope.fields.lastname1 = '';
+		$scope.fields.lastname2 = '';
 		$scope.fields.name = '';
 		$scope.fields.phone = '';
 		$scope.fields.setReferee = '';

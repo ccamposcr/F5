@@ -214,7 +214,7 @@ F5App.app.directive('reserveBtn', ['$document', function($document) {
 											'data_reservation' : 'Su reservación ha sido creada satisfactoriamente \nFecha: '
 											 + tmp.reservation_day +'/'+ tmp.reservation_month +'/'+ tmp.reservation_year + 
 											 '\nHora: '+ scope.getCorrectTimeReservation(data.reservation_time) + '\nNombre: '+ 
-											 data.name + ' '+ data.lastname +'\nTambién se han reservado los siguientes días de todas las semanas durante 1 año' + dates_str
+											 data.name + ' '+ data.lastname +'\nTambién se han reservado la cancha fija los siguientes días de todas las semanas ' + dates_str
 										});
 						//scope.loadReservations();
 					}
