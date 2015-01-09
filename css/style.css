@@ -132,12 +132,12 @@ textarea {
   margin: 0;
 }
 #bookingOnLine dl dd.contentInfoForm label {
-  width: 60px;
+  width: 75px;
   margin-left: 15px;
 }
 #bookingOnLine dl dd.contentInfoForm input {
   display: inline-block;
-  width: 470px;
+  width: 450px;
   margin-bottom: 8px;
 }
 #bookingOnLine .error {
@@ -299,6 +299,7 @@ textarea {
   font-family: 'nakamuraregular';
   font-size: 25px;
   margin: 0;
+  letter-spacing: 3px;
 }
 #divContent h2 {
   color: #c4302c;
@@ -306,6 +307,7 @@ textarea {
   text-align: center;
   text-shadow: 1px 0 0 #240404;
   margin-bottom: 40px;
+  letter-spacing: 3px;
 }
 #divContent h2 span {
   font-family: arial;

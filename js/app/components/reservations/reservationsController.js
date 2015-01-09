@@ -9,11 +9,16 @@ F5App.app.controller("reservationController", function ($scope, $rootScope,$time
    		
 	   	if( !$('.day div.active').length ){
 			$('.day div').first().addClass('active');
+			$('.day div').first().parent().addClass('active');
+			$('.day div').first().parents('.days_row').addClass('active');
 		}
 		//Set day as active day
 		var day = $('.day div.active').text();
 		$('#day').val(day);
-		$('#currentDay').html(day);
+
+		var daySelected = $('#calendar .days_row.active .day').index($('#calendar .days_row.active .day.active'));
+						 
+		$('#currentDay').html( $('#calendar .days_head .head:eq('+daySelected+')').text() + ' ' +day);
 		
 		$.ajax({
 

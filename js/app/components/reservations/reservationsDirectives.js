@@ -3,7 +3,11 @@ F5App.app.directive('loadDay', ['$document', function($document) {
       element.on('click', function(event) {
         event.preventDefault();
         $('.day div').removeClass('active');
-        $(element).addClass('active')
+        $('.day').removeClass('active');
+        $('.days_row').removeClass('active');
+        $(element).addClass('active');
+        $(element).parent().addClass('active');
+        $(element).parents('.days_row').addClass('active');
         $('#dailyResevations').hide();
         scope.loadReservations();
       });
@@ -59,7 +63,8 @@ F5App.app.directive('available', ['$document', function($document) {
 						scope.setStateTemporaryReservation(data);
 
 						$('#formReservationModal').modal('show');
-						$('#reservationInfo').html($('#day').val()+'/'+$('#month').val()+'/'+$('#year').val());
+						var daySelected = $('#calendar .days_row.active .day').index($('#calendar .days_row.active .day.active'));
+						$('#reservationInfo').html($('#calendar .days_head .head:eq('+daySelected+')').text() + ' ' + $('#day').val()+'/'+$('#month').val()+'/'+$('#year').val());
 					break;
 					case '5':
 						
