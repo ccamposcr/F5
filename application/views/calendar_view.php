@@ -110,7 +110,15 @@
                     <div>
                         <form name="bookingForm">
                             <dl>
-                                <dt>Informaci&oacute;n Personal</dt>
+                                <dt>Informaci&oacute;n Personal 
+                                  <?php 
+                                  if( $isAdminUser ){
+                                  ?>
+                                    <button type="button" class="btn btn-primary selectUserBtn">Seleccionar Usuario</button>
+                                  <?php
+                                    } 
+                                  ?>
+                                </dt>
                                     <dd class="contentInfoForm">
                                         <label>Nombre</label><input type="text" class="form-control" ng-model="fields.name" name="name" required/>
                                         <span class="error" ng-show="bookingForm.name.$error.required && bookingForm.name.$dirty">Por favor ingrese su Nombre</span>
@@ -139,8 +147,9 @@
                                     <!--<span class="error" ng-show="!fields.typeReservation">Por favor seleccione una opci&oacute;n</span>-->
                                 <dt>Opciones Adicionales</dt>
                                     <dd class="checkbox"><input id="setReferee" name="setReferee" type="checkbox" ng-model="fields.setReferee" ng-disabled="fields.typeReservation==2" ng-checked="fields.typeReservationSelected == 'reto'"><label for="setReferee">Pagar &Aacute;rbitro (Marque esta opci&oacute;n &uacute;nicamente si necesita &aacute;rbitro)</label></dd>
-                                    <dd ng-if="fields.typeReservationSelected == 'normal'" class="checkbox"><input id="setPitchAllWeeks" name="setPitchAllWeeks" type="checkbox" ng-model="fields.setPitchAllWeeks"><label for="setPitchAllWeeks">Cancha Fija (Reservar esta cancha este mismo día todas las semanas)<br/>*Se cobra d&eacute;posito</label></dd>
+                                    <dd ng-if="fields.typeReservationSelected == 'normal'" class="checkbox"><input id="setPitchAllWeeks" name="setPitchAllWeeks" type="checkbox" ng-model="fields.setPitchAllWeeks"><label for="setPitchAllWeeks">Cancha Fija (Reservar esta cancha este mismo día todas las semanas)<br/>*Se cobra d&eacute;posito</label><button type="button" class="btn btn-primary checkAvailability">Comprobar Disponibilidad</button></dd>
                             </dl>
+                            
                         </form>
                     </div>
                 </div>

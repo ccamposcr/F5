@@ -12,6 +12,10 @@ F5App.app.controller("reservationController", function ($scope, $rootScope,$time
 			$('.day div').first().parent().addClass('active');
 			$('.day div').first().parents('.days_row').addClass('active');
 		}
+		else{
+			$('.day div.active').parent().addClass('active');
+			$('.day div.active').parents('.days_row').addClass('active');
+		}
 		//Set day as active day
 		var day = $('.day div.active').text();
 		$('#day').val(day);
