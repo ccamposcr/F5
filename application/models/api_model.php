@@ -53,7 +53,7 @@ class Api_model extends CI_MODEL
     }
 
     function getClientsData(){
-        $query = $this->db->query("SELECT name,lastname,phone,email FROM t_reservations");
+        $query = $this->db->query("SELECT name,lastname,phone,email FROM t_reservations GROUP BY phone,email");
         return $query->result();
     }
 }

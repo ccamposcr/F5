@@ -293,9 +293,10 @@
                   <div class="modal-body">
                     <label>Buscar:</label> <input ng-model="searchText">
                     <table id="searchResults">
-                      <tr><th>Nombre</th><th>Tel&eacute;fono</th><th>Email</th></tr>
+                      <tr><th>Nombre</th><th>Apellidos</th><th>Tel&eacute;fono</th><th>Email</th></tr>
                       <tr ng-repeat="client in clients | filter:searchText">
-                        <td class="info_personas">{{$index+1}}. {{client.name}} {{client.lastname}}</td>
+                        <td class="info_personas">{{$index+1}}. {{client.name}}</td>
+                        <td class="info_personas">{{client.lastname}}</td>
                         <td class="info_personas">{{client.phone}}</td>
                         <td class="info_personas">{{client.email}}</td>
                       </tr>
