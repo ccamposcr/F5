@@ -196,11 +196,16 @@ textarea {
   height: 360px;
   overflow: auto;
 }
-#search-modal input {
+#search-modal input.searchInput {
   border-radius: 5px;
   padding: 6px;
   margin-bottom: 15px;
   width: 300px;
+}
+#search-modal input.client {
+  text-align: center;
+  margin: 0 auto;
+  display: block;
 }
 #search-modal table tr {
   border-bottom: 1px solid #d2cfcf;

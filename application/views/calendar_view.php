@@ -300,11 +300,11 @@
                     <h4 class="modal-title">Clientes</h4>
                   </div>
                   <div class="modal-body">
-                    <label>Buscar:</label> <input ng-model="searchText">
+                    <label>Buscar:</label> <input class="searchInput" ng-model="searchText">
                     <table id="searchResults">
                       <tr><th ng-if="selectUserMode"></th><th>Nombre</th><th>Apellidos</th><th>Tel&eacute;fono</th><th>Email</th></tr>
                       <tr ng-repeat="client in clients | filter:searchText" class="rowClient">
-                        <td ng-if="selectUserMode" class="info_personas"><input type="radio" name="client" ng-model="fields.client" value="{{$index}}"/></td>
+                        <td ng-if="selectUserMode" class="info_personas"><input class="client" type="radio" name="client" ng-model="fields.client" value="{{$index}}"/></td>
                         <td class="info_personas">{{$index+1}}. {{client.name}}</td>
                         <td class="info_personas">{{client.lastname}}</td>
                         <td class="info_personas">{{client.phone}}</td>
