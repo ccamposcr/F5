@@ -25,6 +25,11 @@ F5App.app.controller("modalController", function ($scope, $rootScope){
 		}
 	});
 
+	$('#search-modal').on('hidden.bs.modal', function(){
+		$scope.fields.client = '';
+		$scope.searchText = '';
+	});
+
 	var onCancel = function(){
 		$('#formReservationModal').modal('hide');
 	}

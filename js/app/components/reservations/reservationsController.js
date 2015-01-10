@@ -274,7 +274,8 @@ F5App.app.controller("reservationController", function ($scope, $rootScope,$time
 		typeReservation : '',
 		setReferee : '',
 		password : '',
-		confirmation : ''
+		confirmation : '',
+		client : ''
 	}
 
 	//$('#loading-modal').modal('show');

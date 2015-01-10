@@ -421,3 +421,26 @@ F5App.app.directive('delete', ['$document', function($document) {
     	link:link
 	}
   }]);
+
+
+  F5App.app.directive('fillFormClientBtn', ['$document', function($document) {
+    function link(scope, element, attr) {
+      element.on('click', function(event) {
+        event.preventDefault();
+        $('#search-modal').modal('hide');
+        $('#loading-modal').modal('show');
+        var rowClient = $('input[name="client"]:checked').parents('.rowClient');
+        scope.fields.name = rowClient.find('.clientName').val();
+        scope.fields.lastname1 = rowClient.find('.clientLastName').val().split(' ')[0];
+        scope.fields.lastname2 = rowClient.find('.clientLastName').val().split(' ')[1];
+        scope.fields.email = rowClient.find('.clientEmail').val();
+        scope.fields.phone = rowClient.find('.clientPhone').val();
+        $('#loading-modal').modal('hide');
+       });
+    }
+    return {
+    	restrict : 'C',
+    	scope : false,
+    	link:link
+	}
+  }]);

@@ -177,7 +177,7 @@
                 <p>En este momento esta casilla está siendo vista por otro usuario.<br/>Por favor intente m&aacute;s tarde.</p>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
               </div>
             </div>
           </div>
@@ -194,7 +194,7 @@
                 <p>En este momento esta casilla está siendo reservada por otro usuario.<br/>Por favor intente con otra casilla.</p>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
               </div>
             </div>
           </div>
@@ -240,7 +240,7 @@
                 <p>Esta casilla ya fue reservada. Por favor escoja otra casilla para reservar</p>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
               </div>
             </div>
           </div>
@@ -257,7 +257,7 @@
                 <p>Su reservacion ha sido creada satisfactoriamente</p>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
               </div>
             </div>
           </div>
@@ -286,7 +286,7 @@
                       <button type="button" class="btn btn-warning delete" data-dismiss="modal">Eliminar Reservaci&oacute;n</button>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                   </div>
                 </div>
               </div>
@@ -303,17 +303,22 @@
                     <label>Buscar:</label> <input ng-model="searchText">
                     <table id="searchResults">
                       <tr><th ng-if="selectUserMode"></th><th>Nombre</th><th>Apellidos</th><th>Tel&eacute;fono</th><th>Email</th></tr>
-                      <tr ng-repeat="client in clients | filter:searchText">
-                        <td ng-if="selectUserMode" class="info_personas"><input type="radio" name="client" ng-model="fields.client"/></td>
+                      <tr ng-repeat="client in clients | filter:searchText" class="rowClient">
+                        <td ng-if="selectUserMode" class="info_personas"><input type="radio" name="client" ng-model="fields.client" value="{{$index}}"/></td>
                         <td class="info_personas">{{$index+1}}. {{client.name}}</td>
                         <td class="info_personas">{{client.lastname}}</td>
                         <td class="info_personas">{{client.phone}}</td>
                         <td class="info_personas">{{client.email}}</td>
+                        <input type="hidden" value="{{client.name}}" class="clientName" />
+                        <input type="hidden" value="{{client.lastname}}" class="clientLastName" />
+                        <input type="hidden" value="{{client.phone}}" class="clientPhone" />
+                        <input type="hidden" value="{{client.email}}" class="clientEmail" />
                       </tr>
                     </table>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button ng-if="selectUserMode" type="button" class="btn btn-primary fillFormClientBtn" ng-disabled="fields.client == ''">Aceptar</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                   </div>
                 </div>
               </div>
@@ -336,7 +341,7 @@
                     </form>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                     <button type="button" class="btn btn-primary changePasswordBtn" ng-disabled="changePassForm.password.$error.required || changePassForm.confirmation.$error.required || fields.password != fields.confirmation || changePassForm.password.$error.minlength || changePassForm.confirmation.$error.minlength">Cambiar</button>
                   </div>
                 </div>
