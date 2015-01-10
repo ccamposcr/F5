@@ -140,7 +140,7 @@ F5App.app.controller("reservationController", function ($scope, $rootScope,$time
 		data.phone = $rootScope.fields.phone;
 		data.email = $rootScope.fields.email;
 		data.type_reservation = $rootScope.fields.typeReservation;
-		data.referee_required = !!$rootScope.fields.setReferee;
+		data.referee_required = (!!$scope.fields.setReferee) ? '1' : '0';
 		data.setPitchAllWeeks = !!$rootScope.fields.setPitchAllWeeks;
 		return data;
 	}
