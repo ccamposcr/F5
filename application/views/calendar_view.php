@@ -297,13 +297,14 @@
                 <div class="modal-content">
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <h4 class="modal-title">Usuarios</h4>
+                    <h4 class="modal-title">Clientes</h4>
                   </div>
                   <div class="modal-body">
                     <label>Buscar:</label> <input ng-model="searchText">
                     <table id="searchResults">
-                      <tr><th>Nombre</th><th>Apellidos</th><th>Tel&eacute;fono</th><th>Email</th></tr>
+                      <tr><th ng-if="selectUserMode"></th><th>Nombre</th><th>Apellidos</th><th>Tel&eacute;fono</th><th>Email</th></tr>
                       <tr ng-repeat="client in clients | filter:searchText">
+                        <td ng-if="selectUserMode" class="info_personas"><input type="radio" name="client" ng-model="fields.client"/></td>
                         <td class="info_personas">{{$index+1}}. {{client.name}}</td>
                         <td class="info_personas">{{client.lastname}}</td>
                         <td class="info_personas">{{client.phone}}</td>

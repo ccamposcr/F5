@@ -340,6 +340,38 @@ F5App.app.directive('delete', ['$document', function($document) {
 					scope.$parent.clients = jQuery.parseJSON(response);
 				});
 				$('#search-modal').modal('show');
+				scope.$parent.selectUserMode = false;
+			}
+		});
+      });
+    }
+    return {
+    	restrict : 'C',
+    	scope : false,
+    	link:link
+	}
+  }]);
+
+  F5App.app.directive('selectUserBtn', ['$document','$timeout', function($document,$timeout) {
+    function link(scope, element, attr) {
+      element.on('click', function(event) {
+        event.preventDefault();
+        $('#loading-modal').modal('show');
+        $.ajax({
+
+			type: 'POST',
+
+			url : F5App.base_url + "getClientsData",
+
+			async : true,
+
+			success : function(response){
+				$('#loading-modal').modal('hide');
+				 $timeout(function(){
+					scope.$parent.clients = jQuery.parseJSON(response);
+				});
+				$('#search-modal').modal('show');
+				scope.$parent.selectUserMode = true;
 			}
 		});
       });

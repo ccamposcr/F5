@@ -256,12 +256,15 @@ F5App.app.controller("reservationController", function ($scope, $rootScope,$time
 	}
 
 
-	/*$(window).bind("beforeunload", function() { 
-	    var data = $rootScope.getDataForTemporaryReservation();
-		data.state = '3'; 
-		$scope.setStateTemporaryReservation(data);
-		return confirm("Realmente desea abandonar la reservacion?");
-	});*/
+	$(window).bind("beforeunload", function() { 
+		if( (/admin/.test(location.href) || /reservaciones/.test(location.href)) && !F5App.leaveSafelyPage ){
+		    var data = $rootScope.getDataForTemporaryReservation();
+			data.state = '3'; 
+			$scope.setStateTemporaryReservation(data);
+			return confirm();
+		}
+	});
+
 	$rootScope.fields = {
 		name : '',
 		lastname1 : '',
@@ -280,6 +283,10 @@ F5App.app.controller("reservationController", function ($scope, $rootScope,$time
 });
 
 $(document).ready(function(){
+	$('a').on('click', function(){
+		F5App.leaveSafelyPage = true;
+	});
+
 	$('#calendar .header').on('mouseenter', function(){
 		$('.days_head, .days_row').show();
 	});
