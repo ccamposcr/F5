@@ -212,9 +212,9 @@ F5App.app.directive('reserveBtn', ['$document', function($document) {
 						var dates = scope.reserveAllWeeksSameDay(data),
 							dates_str = '\n';
 						
-						for(var i = 0; i < dates.length ; i++){
+						/*for(var i = 0; i < dates.length ; i++){
 							dates_str += dates[i][0] +'/'+dates[i][1]+'/'+dates[i][2]+'\n';
-						}
+						}*/
 						//console.log(dates);
 						scope.sendEmail({	'email' : data.email,
 											'data_reservation' : 'Su reservación ha sido creada satisfactoriamente \nFecha: '

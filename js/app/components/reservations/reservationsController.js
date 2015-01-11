@@ -179,39 +179,33 @@ F5App.app.controller("reservationController", function ($scope, $rootScope,$time
 		return ( !!$('#isAdminUser').val() && /admin/.test(location.href) );
 	}
 
-	$rootScope.reserveAllWeeksSameDay = function(data){
+	$rootScope.calculateDayPerWeek = function(){
 		var range = 1, daysPerWeek = 7, daysPerYear = 365;
-		data['dates'] = new Array();
+		var data = new Array(),
+			reservation_day,
+			reservation_month,
+			reservation_year;
+
 		for(var i = range; i<= daysPerYear ; i++){
 			var from = new Date($('#year').val(),$('#month').val() - 1,$('#day').val());
 			var to = new Date($('#year').val(),$('#month').val() - 1,$('#day').val());
 			to.setDate(from.getDate() + i);
 			if( i % daysPerWeek  == 0 ){
-				data.reservation_day = to.getDate().toString();
-				data.reservation_month = (to.getMonth() + 1).toString();
-				data.reservation_year = to.getFullYear().toString();
-				data['dates'].push([data.reservation_day,data.reservation_month,data.reservation_year]);
-				/*$.ajax({
-
-					type: 'POST',
-
-					url : F5App.base_url + "createReservation",
-
-					data: data,
-
-					async : true,
-
-					success : function(response){
-						/*var dataTmp = $scope.getDataForTemporaryReservation();
-						dataTmp.state = '5';
-						dataTmp.reservation_day = to.getDate().toString();
-						dataTmp.reservation_month = (to.getMonth() + 1).toString();
-						dataTmp.reservation_year = to.getFullYear().toString();
-						$scope.setStateTemporaryReservation(dataTmp);*/
-					//}
-				//});	
+				reservation_day = to.getDate().toString();
+				reservation_month = (to.getMonth() + 1).toString();
+				reservation_year = to.getFullYear().toString();
+				data.push([reservation_day,reservation_month,reservation_year]);	
 			}
 		}
+		return data;
+	}
+
+	$rootScope.checkAvailability = function(data){
+		
+	}
+
+	$rootScope.reserveAllWeeksSameDay = function(data){
+		data['dates'] = $scope.calculateDayPerWeek();
 
 		$.ajax({
 
@@ -229,8 +223,6 @@ F5App.app.controller("reservationController", function ($scope, $rootScope,$time
 				$scope.loadReservations();
 			}
 		});
-		
-		return data['dates'];
 	}
 
 	$rootScope.sendEmail = function(data){
