@@ -135,15 +135,16 @@ F5App.app.directive('bookingOnLine', ['$document', function($document) {
 			scope.$apply(function(){
 				scope.time = '00:'+minutes+':'+seconds;
 			});
+
+			if( minutes == 0 && seconds == 0){
+				F5App.leaveSafelyPage = true;
+				clearInterval(scope.timeInterval);
+				location.reload();
+			}
 			
 			if(seconds == 00){
 				seconds = 59;
 				minutes--;
-			}
-
-			if( minutes == 0 ){
-				clearInterval(scope.timeInterval);
-				location.reload();
 			}
 		},1000);
 
