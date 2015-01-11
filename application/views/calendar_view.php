@@ -147,7 +147,7 @@
                                     <!--<span class="error" ng-show="!fields.typeReservation">Por favor seleccione una opci&oacute;n</span>-->
                                 <dt>Opciones Adicionales</dt>
                                     <dd class="checkbox"><input id="setReferee" name="setReferee" type="checkbox" ng-model="fields.setReferee" ng-disabled="fields.typeReservation==2" ng-checked="(fields.typeReservationSelected == 'reto') && (fields.setReferee = true)"><label for="setReferee">Pagar &Aacute;rbitro (Marque esta opci&oacute;n &uacute;nicamente si necesita &aacute;rbitro)</label></dd>
-                                    <dd ng-if="fields.typeReservationSelected == 'normal'" class="checkbox"><input id="setPitchAllWeeks" name="setPitchAllWeeks" type="checkbox" ng-model="fields.setPitchAllWeeks"><label for="setPitchAllWeeks">Cancha Fija (Reservar esta cancha este mismo día todas las semanas)<br/>*Se cobra d&eacute;posito</label><button ng-if="fields.setPitchAllWeeks" type="button" class="btn btn-primary checkAvailability">Comprobar Disponibilidad</button></dd>
+                                    <dd ng-if="fields.typeReservationSelected == 'normal'" class="checkbox"><input id="setPitchAllWeeks" name="setPitchAllWeeks" type="checkbox" ng-model="fields.setPitchAllWeeks"><label for="setPitchAllWeeks">Cancha Fija (Reservar esta cancha este mismo día todas las semanas)<br/>*Se cobra d&eacute;posito</label><button ng-if="fields.setPitchAllWeeks" type="button" class="btn btn-primary checkAvailabilityBtn">Comprobar Disponibilidad</button></dd>
                             </dl>
                             
                         </form>

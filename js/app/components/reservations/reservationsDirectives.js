@@ -447,7 +447,7 @@ F5App.app.directive('delete', ['$document', function($document) {
   }]);
 
 
-  F5App.app.directive('checkAvailability', ['$document', function($document) {
+  F5App.app.directive('checkAvailabilityBtn', ['$document', function($document) {
     function link(scope, element, attr) {
       element.on('click', function(event) {
         event.preventDefault();
