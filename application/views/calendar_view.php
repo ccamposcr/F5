@@ -262,6 +262,23 @@
             </div>
           </div>
         </div>
+        <!-- check-availability-modal -->
+            <div class="modal fade" id="check-availability-modal">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title">Comprobar Disponibilidad</h4>
+                  </div>
+                  <div class="modal-body">
+                    
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
 
         <?php 
           if( $isAdminUser ){
@@ -343,24 +360,6 @@
                   <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                     <button type="button" class="btn btn-primary changePasswordBtn" ng-disabled="changePassForm.password.$error.required || changePassForm.confirmation.$error.required || fields.password != fields.confirmation || changePassForm.password.$error.minlength || changePassForm.confirmation.$error.minlength">Cambiar</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-<!-- check-availability-modal -->
-            <div class="modal fade" id="check-availability-modal">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <h4 class="modal-title">Comprobar Disponibilidad</h4>
-                  </div>
-                  <div class="modal-body">
-                    
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                   </div>
                 </div>
               </div>
