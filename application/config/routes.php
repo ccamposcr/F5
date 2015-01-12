@@ -46,12 +46,10 @@ $route['404_override'] = 'pages_controller/page_404';
 //Desamparados
 $route['desamparados/(:num)/reservaciones'] = 'calendar_controller/calendar/';
 $route['desamparados/(:num)/reservaciones/(:num)/(:any)'] = 'calendar_controller/calendar/$2/$3';
-//$route['desamparados/(:num)/reservaciones/(:any)'] = 'calendar_controller/$1';
 
 //Escazu
 $route['escazu/(:num)/reservaciones'] = 'calendar_controller/calendar/';
 $route['escazu/(:num)/reservaciones/(:num)/(:any)'] = 'calendar_controller/calendar/$2/$3';
-//$route['escazu/(:num)/reservaciones/(:any)'] = 'calendar_controller/$1';
 
 /*  ------------------------------------------------------------------ */
 
@@ -60,12 +58,10 @@ $route['escazu/(:num)/reservaciones/(:num)/(:any)'] = 'calendar_controller/calen
 //Desamparados
 $route['desamparados/(:num)/admin'] = 'calendar_controller/admin/';
 $route['desamparados/(:num)/admin/(:num)/(:any)'] = 'calendar_controller/admin/$2/$3';
-//$route['desamparados/(:num)/admin/(:any)'] = 'calendar_controller/$1';
 
 //Escazu
 $route['escazu/(:num)/admin'] = 'calendar_controller/admin/';
 $route['escazu/(:num)/admin/(:num)/(:any)'] = 'calendar_controller/admin/$2/$3';
-//$route['escazu/(:num)/admin/(:any)'] = 'calendar_controller/$1';
 
 /* ------------------------------------------------------------------- */
 
@@ -84,7 +80,7 @@ $route['sendEmail'] = 'email_controller/sendEmail';
 $route['getClientsData'] = 'api_controller/getClientsData';
 $route['changePassword'] = 'login_controller/changePassword';
 $route['reserveAllWeeksSameDay'] = 'api_controller/reserveAllWeeksSameDay';
-//$route['(:any)/getReservationByDay'] = 'calendar_controller/getReservationByDay';
+$route['checkAvailability'] = 'api_controller/checkAvailability';
 
 //Login - Logout Routes
 //Escazu

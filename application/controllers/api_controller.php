@@ -135,4 +135,25 @@ class Api_controller extends CI_Controller {
             }
         }
     }
+
+    public function checkAvailability(){
+        $team_id = ( isset($_POST['team_id']) ) ? strip_tags($_POST['team_id']) : '1';
+        $reservation_time = ( isset($_POST['reservation_time']) ) ? strip_tags($_POST['reservation_time']) : '08-09';
+        $reservation_year = ( isset($_POST['reservation_year']) ) ? strip_tags($_POST['reservation_year']) : date("Y", time());
+        $reservation_month = ( isset($_POST['reservation_month']) ) ? strip_tags($_POST['reservation_month']) : date("m", time());
+        $reservation_day = ( isset($_POST['reservation_day']) ) ? strip_tags($_POST['reservation_day']) : date("d", time());
+        $group_id = ( isset($_POST['group_id']) ) ? strip_tags($_POST['group_id']) : 1;
+        $pitch_id = ( isset($_POST['pitch_id']) ) ? strip_tags($_POST['pitch_id']) : 1;
+        $dates = ( isset($_POST['dates']) ) ? $_POST['dates'] : '0';
+        $res;
+        foreach ($dates as $key => $value) {
+            if( !$this->api_model->checkIfReservationExist($team_id,$reservation_time,$value[2],$value[1],$value[0],$group_id,$pitch_id) ){
+                $res[$key] = true;
+            }
+            else{
+                $res[$key] = false;
+            }
+        }
+        echo json_encode($res);
+    }
 }

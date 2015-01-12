@@ -53,8 +53,19 @@ F5App.app.controller("modalController", function ($scope, $rootScope){
 		$scope.fields.typeReservationSelected = 'normal';
 		$scope.fields.typeReservation = '';
 		$scope.fields.setPitchAllWeeks = '';
-		//$scope.bookingForm.name.$dirty = false;
-		//$scope.bookingForm.lastname.$dirty = false;
+
+		$scope.bookingForm.email.$dirty = false;
+		$scope.bookingForm.lastname1.$dirty = false;
+		$scope.bookingForm.lastname2.$dirty = false;
+		$scope.bookingForm.name.$dirty = false;
+		$scope.bookingForm.phone.$dirty = false;
+
+		$scope.bookingForm.email.$pristine = true;
+		$scope.bookingForm.lastname1.$pristine = true;
+		$scope.bookingForm.lastname2.$pristine = true;
+		$scope.bookingForm.name.$pristine = true;
+		$scope.bookingForm.phone.$pristine = true;
+
 		clearInterval($scope.timeInterval);
 		$scope.time = '00:10:00';
 	}

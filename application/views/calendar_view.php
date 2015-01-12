@@ -271,7 +271,9 @@
                     <h4 class="modal-title">Comprobar Disponibilidad</h4>
                   </div>
                   <div class="modal-body">
-                    
+                    <div class="daysAvailables" ng-repeat="days in daysAvailables">
+                      <span>{{days[0]}}</span><span>{{days[1]}}</span>
+                    </div>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>

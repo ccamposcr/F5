@@ -209,18 +209,16 @@ F5App.app.directive('reserveBtn', ['$document', function($document) {
 							reservation_year : data.reservation_year
 						};
 
-						var dates = scope.reserveAllWeeksSameDay(data),
-							dates_str = '\n';
+						scope.reserveAllWeeksSameDay(data),
 						
 						/*for(var i = 0; i < dates.length ; i++){
 							dates_str += dates[i][0] +'/'+dates[i][1]+'/'+dates[i][2]+'\n';
 						}*/
-						//console.log(dates);
 						scope.sendEmail({	'email' : data.email,
 											'data_reservation' : 'Su reservación ha sido creada satisfactoriamente \nFecha: '
 											 + tmp.reservation_day +'/'+ tmp.reservation_month +'/'+ tmp.reservation_year + 
 											 '\nHora: '+ scope.getCorrectTimeReservation(data.reservation_time) + '\nNombre: '+ 
-											 data.name + ' '+ data.lastname +'\nTambién se han reservado la cancha fija los siguientes días de todas las semanas ' + dates_str
+											 data.name + ' '+ data.lastname +'\nTambién se han reservado la cancha fija los siguientes días de todas las semanas '
 										});
 						//scope.loadReservations();
 					}
@@ -452,7 +450,7 @@ F5App.app.directive('delete', ['$document', function($document) {
       element.on('click', function(event) {
         event.preventDefault();
         $('#check-availability-modal').modal('show');
-       
+       	scope.checkAvailability();
        });
     }
     return {
