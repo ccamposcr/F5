@@ -232,6 +232,10 @@ textarea {
 #search-modal .info_personas {
   padding: 3px;
 }
+#check-availability-modal .modal-body {
+  height: 360px;
+  overflow: auto;
+}
 #show-info-modal .modal-header span {
   color: #ffffff;
 }

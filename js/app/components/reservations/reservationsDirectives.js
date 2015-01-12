@@ -478,7 +478,7 @@ F5App.app.directive('delete', ['$document', function($document) {
 					result[i].push(daysAvailables[i]); 
 				}
 				$timeout(function(){
-					scope.$parent.daysAvailables = result;
+					scope.$parent.$parent.$parent.daysAvailables = result;
 				});
 				$('#loading-modal').modal('hide');
 				$('#check-availability-modal').modal('show');
