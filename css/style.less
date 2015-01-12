@@ -139,6 +139,8 @@ textarea {
 ========================================================================== */
 .modal-header{
     background-color: @darkGray;
+    padding: 10px 15px 5px;
+
 
     button{
         span{
@@ -155,6 +157,7 @@ textarea {
 
 .modal-body{
     margin-top: 0;
+    padding-top: 6px;padding-bottom: 0;
     h3{
         font-weight: bold;
     }
@@ -173,11 +176,13 @@ textarea {
 #bookingOnLine{
     dl{
         margin-top: 0;
+        margin-bottom: 0;
 
         dt{
             margin-bottom: 5px;
             .selectUserBtn{
-                margin-left: 259px;
+            margin-left: 259px;
+
             }
         }
 
@@ -202,10 +207,20 @@ textarea {
         margin-left: 95px;
         display: inline-block;
     }
+    .checkbox{
+        dl{
+            margin-bottom: 0;
+        }
+        button{
+            margin-left: -41px;
+
+        }
+    }
 }
 
 .modal-footer{
     background-color: @darkGray;
+    padding:10px; 
     button{
         background-color: @red;
         color: @white;
@@ -258,6 +273,7 @@ textarea {
             display:block;
             margin-left: 180px;
         }
+
     }
     
     .changePasswordBtn[disabled]{
@@ -276,6 +292,7 @@ textarea {
     .modal-body{
         height: 360px;
         overflow: auto;
+
     }
     input.searchInput{
         border-radius: 5px;
