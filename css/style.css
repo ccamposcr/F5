@@ -99,6 +99,7 @@ textarea {
 ========================================================================== */
 .modal-header {
   background-color: #3a3333;
+  padding: 10px 15px 5px;
 }
 .modal-header button span {
   color: #c4302c;
@@ -110,6 +111,8 @@ textarea {
 }
 .modal-body {
   margin-top: 0;
+  padding-top: 6px;
+  padding-bottom: 0;
   font-family: 'eurostileregular';
 }
 .modal-body h3 {
@@ -124,6 +127,7 @@ textarea {
 }
 #bookingOnLine dl {
   margin-top: 0;
+  margin-bottom: 0;
 }
 #bookingOnLine dl dt {
   margin-bottom: 5px;
@@ -148,8 +152,15 @@ textarea {
   margin-left: 95px;
   display: inline-block;
 }
+#bookingOnLine .checkbox dl {
+  margin-bottom: 0;
+}
+#bookingOnLine .checkbox button {
+  margin-left: -41px;
+}
 .modal-footer {
   background-color: #3a3333;
+  padding: 10px;
 }
 .modal-footer button {
   background-color: #c4302c;

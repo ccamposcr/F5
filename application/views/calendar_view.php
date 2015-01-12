@@ -272,7 +272,7 @@
                   </div>
                   <div class="modal-body">
                     <div class="daysAvailables" ng-repeat="days in daysAvailables">
-                      <span>{{days[0]}}</span><span>{{days[1]}}</span>
+                      <span>{{days[0]}}</span><span>{{(days[1]) ? 'Disponible' : 'Ocupado'}}</span>
                     </div>
                   </div>
                   <div class="modal-footer">

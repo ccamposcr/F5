@@ -445,12 +445,45 @@ F5App.app.directive('delete', ['$document', function($document) {
   }]);
 
 
-  F5App.app.directive('checkAvailabilityBtn', ['$document', function($document) {
+  F5App.app.directive('checkAvailabilityBtn', ['$document','$timeout', function($document,$timeout) {
     function link(scope, element, attr) {
       element.on('click', function(event) {
         event.preventDefault();
-        $('#check-availability-modal').modal('show');
-       	scope.checkAvailability();
+
+       	$('#loading-modal').modal('show');
+		var data = scope.getDataForTemporaryReservation();
+			data['dates'] = scope.calculateDayPerWeek();
+
+		var result = new Array();
+
+		for(var i = 0; i < data['dates'].length ; i++){
+			result[i] = new Array();
+		}
+
+		$.ajax({
+
+			type: 'POST',
+
+			url : F5App.base_url + "checkAvailability",
+
+			data: data,
+
+			async : true,
+
+			success : function(response){
+				var daysAvailables = jQuery.parseJSON(response);
+
+				for(i = 0; i < data['dates'].length; i++){
+					result[i].push(data['dates'][i][0] + '/'+data['dates'][i][1] + '/' +  data['dates'][i][2]);
+					result[i].push(daysAvailables[i]); 
+				}
+				$timeout(function(){
+					scope.$parent.daysAvailables = result;
+				});
+				$('#loading-modal').modal('hide');
+				$('#check-availability-modal').modal('show');
+			}
+		});
        });
     }
     return {

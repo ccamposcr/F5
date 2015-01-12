@@ -200,42 +200,6 @@ F5App.app.controller("reservationController", function ($scope, $rootScope,$time
 		return data;
 	}
 
-	$rootScope.checkAvailability = function(){
-		$('#loading-modal').modal('show');
-		var data = $scope.getDataForTemporaryReservation();
-			data['dates'] = $scope.calculateDayPerWeek();
-
-		var result = new Array();
-
-		for(var i = 0; i < data['dates'].length ; i++){
-			result[i] = new Array();
-		}
-
-		$.ajax({
-
-			type: 'POST',
-
-			url : F5App.base_url + "checkAvailability",
-
-			data: data,
-
-			async : true,
-
-			success : function(response){
-				var daysAvailables = jQuery.parseJSON(response);
-
-				for(i = 0; i < data['dates'].length; i++){
-					result[i].push(data['dates'][i][0] + '/'+data['dates'][i][1] + '/' +  data['dates'][i][2]);
-					result[i].push(daysAvailables[i]); 
-				}
-				$timeout(function(){
-					$scope.daysAvailables = result;
-				});
-				$('#loading-modal').modal('hide');
-			}
-		});
-	}
-
 	$rootScope.reserveAllWeeksSameDay = function(data){
 		data['dates'] = $scope.calculateDayPerWeek();
 
