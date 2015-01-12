@@ -186,6 +186,9 @@ textarea {
 #change-password-modal .modal-header span {
   color: #ffffff;
 }
+#change-password-modal .modal-body {
+  padding-bottom: 10px;
+}
 #change-password-modal form label {
   width: 180px;
   font-size: 16px;
