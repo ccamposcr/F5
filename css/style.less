@@ -140,11 +140,9 @@ textarea {
 .modal-header{
     background-color: @darkGray;
     padding: 10px 15px 5px;
-
-
     button{
         span{
-            color: @red;
+            color: @white;
         }
     }
     h4{
@@ -152,12 +150,11 @@ textarea {
         color: @white;
         font-size: 20px;
     }
-
 }
 
 .modal-body{
     margin-top: 0;
-    padding-top: 6px;padding-bottom: 0;
+    padding-top: 6px;
     h3{
         font-weight: bold;
     }
@@ -169,7 +166,6 @@ textarea {
         font-weight: normal;
 
        }
-    
     }
 }
 
@@ -232,9 +228,6 @@ textarea {
 
 #formReservationModal{
     .modal-header{
-        span{
-            color:@white;
-        }
         h4{
             float: left;
             > span{
@@ -247,16 +240,14 @@ textarea {
             margin: 0;
         }
     }
+    .modal-body {
+        padding-bottom: 0;
+    }
 }
 
 //change-password
 
 #change-password-modal{
-    .modal-header{
-        span{
-        color:@white;
-        }
-    }
     .modal-body{
         padding-bottom:10px; 
     }
@@ -287,11 +278,6 @@ textarea {
 // search-modal
 
 #search-modal{
-    .modal-header{
-        span{
-        color:@white;
-        }
-    }
     .modal-body{
         height: 360px;
         overflow: auto;
@@ -323,19 +309,22 @@ textarea {
 }
 
 #check-availability-modal{
+    text-align: left;
     .modal-body{
         height: 360px;
         overflow: auto;
+        .daysAvailables{
+            margin: 10px 0;
+            span{
+                margin-right: 20px;
+            }
+        }
+
     }
 }
 
 //show-info-modal
 #show-info-modal{
-    .modal-header{
-        span{
-            color:@white;
-        }
-    }
     .modal-body{
         label{
             width: 150px;

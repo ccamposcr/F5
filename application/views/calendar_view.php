@@ -262,7 +262,7 @@
             </div>
           </div>
         </div>
-        <!-- check-availability-modal -->
+  <!-- check-availability-modal -->
             <div class="modal fade" id="check-availability-modal">
               <div class="modal-dialog">
                 <div class="modal-content">
