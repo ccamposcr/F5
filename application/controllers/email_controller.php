@@ -6,10 +6,10 @@ class Email_controller extends CI_Controller {
     {
         parent::__construct();
         $this->load->library('email');
-        $config['protocol'] = 'smtp';
+        //$config['protocol'] = 'smtp';
         
         //$config['wordwrap'] = FALSE;
-        $config['smtp_host'] = 'ssl://smtpout.secureserver.net';
+        /*$config['smtp_host'] = 'ssl://smtpout.secureserver.net';
         $config['smtp_user'] = 'reserva@f5.cr';
         $config['smtp_pass'] = 'Reserva2014';
         $config['smtp_port'] = 465;
@@ -18,7 +18,7 @@ class Email_controller extends CI_Controller {
         //$config['validate'] = "TRUE";
         $config['charset'] = 'iso-8859-1';
         
-        $this->email->initialize($config);
+        $this->email->initialize($config);*/
     }
 
     public function sendEmail(){

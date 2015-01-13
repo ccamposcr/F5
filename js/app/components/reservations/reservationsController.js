@@ -200,27 +200,6 @@ F5App.app.controller("reservationController", function ($scope, $rootScope,$time
 		return data;
 	}
 
-	$rootScope.reserveAllWeeksSameDay = function(data){
-		data['dates'] = $scope.calculateDayPerWeek();
-
-		$.ajax({
-
-			type: 'POST',
-
-			url : F5App.base_url + "reserveAllWeeksSameDay",
-
-			data: data,
-
-			async : true,
-
-			success : function(response){
-				$('#formReservationModal').modal('hide');
-				$('#set-pitch-all-weeks-modal').modal('hide');
-				$scope.loadReservations();
-			}
-		});
-	}
-
 	$rootScope.sendEmail = function(data){
 		$.ajax({
 

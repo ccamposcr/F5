@@ -209,18 +209,50 @@ F5App.app.directive('reserveBtn', ['$document', function($document) {
 							reservation_year : data.reservation_year
 						};
 
-						scope.reserveAllWeeksSameDay(data),
-						
-						/*for(var i = 0; i < dates.length ; i++){
-							dates_str += dates[i][0] +'/'+dates[i][1]+'/'+dates[i][2]+'\n';
-						}*/
-						scope.sendEmail({	'email' : data.email,
+						data['dates'] = scope.calculateDayPerWeek();
+						var result = new Array();
+
+						for(var i = 0; i < data['dates'].length ; i++){
+							result[i] = new Array();
+						}
+
+						$.ajax({
+
+							type: 'POST',
+
+							url : F5App.base_url + "reserveAllWeeksSameDay",
+
+							data: data,
+
+							async : true,
+
+							success : function(response){
+								$('#formReservationModal').modal('hide');
+								$('#set-pitch-all-weeks-modal').modal('hide');
+								scope.loadReservations();
+
+								var daysAvailables = jQuery.parseJSON(response);
+
+								for(i = 0; i < data['dates'].length; i++){
+									result[i].push(data['dates'][i][0] + '/'+data['dates'][i][1] + '/' +  data['dates'][i][2]);
+									result[i].push(daysAvailables[i]); 
+								}
+
+								var dates_str = '\n';
+
+								for(var i = 0; i < result.length ; i++){
+									dates_str += result[i][0] +' -> ';
+									dates_str += (result[i][1]) ? 'Reservado correctamente' : 'NO Reservado (Ocupado)';
+									dates_str += '\n';
+								}
+								scope.sendEmail({	'email' : data.email,
 											'data_reservation' : 'Su reservación ha sido creada satisfactoriamente \nFecha: '
 											 + tmp.reservation_day +'/'+ tmp.reservation_month +'/'+ tmp.reservation_year + 
 											 '\nHora: '+ scope.getCorrectTimeReservation(data.reservation_time) + '\nNombre: '+ 
-											 data.name + ' '+ data.lastname +'\nTambién se han reservado la cancha fija los siguientes días de todas las semanas '
+											 data.name + ' '+ data.lastname +'\nTambién se han reservado la cancha fija los siguientes días de todas las semanas ' + dates_str
 										});
-						//scope.loadReservations();
+							}
+						});
 					}
 				}
 			});

@@ -128,12 +128,18 @@ class Api_controller extends CI_Controller {
         $referee_required = ( isset($_POST['referee_required']) ) ? strip_tags($_POST['referee_required']) : 1;
         $reservation_price = ( isset($_POST['reservation_price']) ) ? strip_tags($_POST['reservation_price']) : 1;
         $dates = ( isset($_POST['dates']) ) ? $_POST['dates'] : '0';
-        foreach ($dates as $value) {
+        $res;
+        foreach ($dates as $key => $value) {
             if( !$this->api_model->checkIfReservationExist($team_id,$reservation_time,$value[2],$value[1],$value[0],$group_id,$pitch_id) ){
                 $this->api_model->createReservation($team_id,$reservation_time,$value[2],$value[1],$value[0],$group_id,$pitch_id,$name,$lastname,$phone,$email,$type_reservation,$referee_required,$reservation_price);
                 $this->api_model->setTemporaryReservationState($team_id,$reservation_time,$value[2],$value[1],$value[0],$group_id,$pitch_id,'5');
+                $res[$key] = true;
+            }
+            else{
+                $res[$key] = false;
             }
         }
+        echo json_encode($res);
     }
 
     public function checkAvailability(){
