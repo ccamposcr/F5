@@ -102,7 +102,7 @@ textarea {
   padding: 10px 15px 5px;
 }
 .modal-header button span {
-  color: #c4302c;
+  color: #ffffff;
 }
 .modal-header h4 {
   font-family: 'eurostileregular';
@@ -112,7 +112,6 @@ textarea {
 .modal-body {
   margin-top: 0;
   padding-top: 6px;
-  padding-bottom: 0;
   font-family: 'eurostileregular';
 }
 .modal-body h3 {
@@ -169,9 +168,6 @@ textarea {
 .modal-footer .reserveBtn[disabled] {
   background-color: #d2cfcf;
 }
-#formReservationModal .modal-header span {
-  color: #ffffff;
-}
 #formReservationModal .modal-header h4 {
   float: left;
 }
@@ -183,8 +179,8 @@ textarea {
   color: #ffffff;
   margin: 0;
 }
-#change-password-modal .modal-header span {
-  color: #ffffff;
+#formReservationModal .modal-body {
+  padding-bottom: 0;
 }
 #change-password-modal .modal-body {
   padding-bottom: 10px;
@@ -205,9 +201,6 @@ textarea {
 }
 #change-password-modal .changePasswordBtn[disabled] {
   background-color: #d2cfcf;
-}
-#search-modal .modal-header span {
-  color: #ffffff;
 }
 #search-modal .modal-body {
   height: 360px;
@@ -235,12 +228,18 @@ textarea {
 #search-modal .info_personas {
   padding: 3px;
 }
+#check-availability-modal {
+  text-align: left;
+}
 #check-availability-modal .modal-body {
   height: 360px;
   overflow: auto;
 }
-#show-info-modal .modal-header span {
-  color: #ffffff;
+#check-availability-modal .modal-body .daysAvailables {
+  margin: 10px 0;
+}
+#check-availability-modal .modal-body .daysAvailables span {
+  margin-right: 20px;
 }
 #show-info-modal .modal-body label {
   width: 150px;
