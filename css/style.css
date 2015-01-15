@@ -235,11 +235,14 @@ textarea {
   height: 360px;
   overflow: auto;
 }
-#check-availability-modal .modal-body .daysAvailables {
-  margin: 10px 0;
+#check-availability-modal .modal-body span {
+  width: 136px;
+  display: -webkit-inline-box;
+  margin: 5px 0;
+  border-bottom: 1px solid #d2cfcf;
 }
-#check-availability-modal .modal-body .daysAvailables span {
-  margin-right: 20px;
+#check-availability-modal .busy {
+  color: #c4302c;
 }
 #show-info-modal .modal-body label {
   width: 150px;
