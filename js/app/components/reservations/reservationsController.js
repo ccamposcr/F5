@@ -244,7 +244,8 @@ F5App.app.controller("reservationController", function ($scope, $rootScope,$time
 		confirmation : '',
 		client : '',
 		typeReservationSelected : '',
-		setPitchAllWeeks : ''
+		setPitchAllWeeks : '',
+		stepReservation : 1
 	}
 
 	//$('#loading-modal').modal('show');

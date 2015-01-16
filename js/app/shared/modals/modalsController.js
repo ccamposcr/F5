@@ -53,6 +53,7 @@ F5App.app.controller("modalController", function ($scope, $rootScope){
 		$scope.fields.typeReservationSelected = 'normal';
 		$scope.fields.typeReservation = '';
 		$scope.fields.setPitchAllWeeks = '';
+		$scope.fields.stepReservation = 1;
 
 		$scope.bookingForm.email.$dirty = false;
 		$scope.bookingForm.lastname1.$dirty = false;

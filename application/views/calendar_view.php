@@ -107,7 +107,7 @@
                     <p>Para reservar llame al siguiente n&uacute;mero: <a href="tel:(506)8888-8888">(506)8888-8888</a></p>
                 </div>
                 <div id="bookingOnLine" ng-show="bookingType == 'bookingOnLine'">
-                    <div>
+                    <div id="bookingForm" ng-show="fields.stepReservation == 1">
                         <form name="bookingForm">
                             <dl>
                                 <dt>Informaci&oacute;n Personal 
@@ -152,6 +152,72 @@
                             
                         </form>
                     </div>
+                    <?php 
+                    if( !$isAdminUser ){
+                    ?>
+                    <div id="carDataForm" ng-show="fields.stepReservation == 2">
+                        <form name="carDataForm">
+                            <dl>
+                                <dd><label>Nombre:<label> {{fields.name}}<br/><label>Apellido:</label> {{fields.lastname1}}</dd>
+                                <dd class="contentInfoForm">
+                                    <label>Tarjeta</label>
+                                    <input type="text" class="form-control" ng-model="fields.number" name="number" required/>
+                                    <span class="error" ng-show="carDataForm.number.$error.required && carDataForm.number.$dirty">Por favor ingrese su Tarjeta</span>
+                                </dd>
+                                <dd class="contentInfoForm">
+                                    <label>Tipo</label>
+                                    <select ng-model="fields.type">
+                                        <option value="visa">Visa</option>
+                                        <option value="mastercard">Mastercard</option>
+                                        <option value="discover">Discover</option>
+                                        <option value="amex">Amex</option>
+                                    </select>
+                                </dd>
+                                <dd class="contentInfoForm">
+                                    <label>Mes Expiraci&oacute;n</label>
+                                    <select ng-model="fields.expire_month">
+                                        <option value="1">1 - Enero</option>
+                                        <option value="2">2 - Febrero</option>
+                                        <option value="3">3 - Marzo</option>
+                                        <option value="4">4 - Abril</option>
+                                        <option value="5">5 - Mayo</option>
+                                        <option value="6">6 - Junio</option>
+                                        <option value="7">7 - Julio</option>
+                                        <option value="8">8 - Agosto</option>
+                                        <option value="9">9 - Septiembre</option>
+                                        <option value="10">10 - Octubre</option>
+                                        <option value="11">11 - Noviembre</option>
+                                        <option value="12">12 - Diciembre</option>
+                                    </select>
+                                </dd>
+                                <dd class="contentInfoForm">
+                                    <label>A&ntilde;o Expiraci&oacute;n</label>
+                                    <select ng-model="fields.expire_year">
+                                        <option value="2014">2014</option>
+                                        <option value="2015">2015</option>
+                                        <option value="2016">2016</option>
+                                        <option value="2017">2017</option>
+                                        <option value="2018">2018</option>
+                                        <option value="2019">2019</option>
+                                        <option value="2020">2020</option>
+                                        <option value="2021">2021</option>
+                                        <option value="2022">2022</option>
+                                        <option value="2023">2023</option>
+                                        <option value="2024">2024</option>
+                                        <option value="2025">2025</option>
+                                    </select>
+                                </dd>
+                                <dd class="contentInfoForm">
+                                    <label>C&oacute;digo de Validaci&oacute;n (cvv)</label>
+                                    <input type="text" class="form-control" ng-model="fields.cvv2" name="cvv2" required/>
+                                    <span class="error" ng-show="carDataForm.cvv2.$error.required && carDataForm.cvv2.$dirty">Por favor ingrese su ccv</span>
+                                </dd>
+                            </dl>
+                        </form>
+                    </div>
+                    <?php
+                    }
+                    ?>
                 </div>
               </div>
               <div class="modal-footer">
@@ -159,7 +225,19 @@
                 <button id="cancelReservationBtn" type="button" class="btn btn-danger" data-toggle="confirmation" ng-show="bookingType == 'bookingOnLine'" data-btn-ok-label="Seguir" 
                 data-btn-ok-icon="glyphicon glyphicon-share-alt" data-btn-ok-class="btn-success" data-btn-cancel-label="Salir" data-btn-cancel-icon="glyphicon glyphicon-ban-circle" 
                 data-btn-cancel-class="btn-danger" data-title="Continuar la reservaci&oacute;n?">Cancelar</button>
+                <?php 
+                  if( $isAdminUser ){
+                  ?>
                 <input for="bookingForm" type="submit" class="btn btn-primary reserveBtn" ng-if="bookingType == 'bookingOnLine'" value="Reservar" ng-disabled="bookingForm.name.$error.required || bookingForm.lastname1.$error.required || bookingForm.lastname2.$error.required || !fields.typeReservation || bookingForm.email.$invalid || bookingForm.phone.$error.minlength || bookingForm.phone.$error.maxlength || bookingForm.phone.$invalid || bookingForm.phone.$error.required"/>
+                <?php
+                  } else{
+                ?>
+                <input for="bookingForm" type="submit" class="btn btn-primary insertCardData" ng-if="bookingType == 'bookingOnLine' && fields.stepReservation == 1" value="Continuar" ng-disabled="bookingForm.name.$error.required || bookingForm.lastname1.$error.required || bookingForm.lastname2.$error.required || !fields.typeReservation || bookingForm.email.$invalid || bookingForm.phone.$error.minlength || bookingForm.phone.$error.maxlength || bookingForm.phone.$invalid || bookingForm.phone.$error.required"/>
+                <input for="bookingForm" type="submit" class="btn btn-primary returnToFormReservation" ng-if="bookingType == 'bookingOnLine' && fields.stepReservation == 2" value="Regresar"/>
+                <input for="bookingForm" type="submit" class="btn btn-primary reserveAndPayBtn" ng-if="bookingType == 'bookingOnLine' && fields.stepReservation == 2" value="Reservar" ng-disabled=""/>
+                <?php
+                  }
+                ?>
                 <!--<button type="button" class="btn btn-primary">Send message</button>-->
               </div>
             </div>

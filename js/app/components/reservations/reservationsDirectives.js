@@ -524,3 +524,60 @@ F5App.app.directive('delete', ['$document', function($document) {
     	link:link
 	}
   }]);
+
+F5App.app.directive('insertCardData', ['$document', function($document) {
+    function link(scope, element, attr) {
+      element.on('click', function(event) {
+        event.preventDefault();
+        if( scope.bookingForm.$valid ){
+        	//$('#bookingForm').hide();
+        	//$('#carDataForm').show();
+        	$('#loading-modal').modal('show');
+        	scope.fields.stepReservation = 2;
+        	$('#loading-modal').modal('hide');
+        }
+        else{
+        	//console.log('invalido');
+        	alert("Por favor ingrese correctamente los datos erróneos en el formulario");
+        	$('#loading-modal').modal('hide');
+        }
+        
+      });
+    }
+    return {
+    	restrict : 'C',
+    	scope : false,
+    	link:link
+	}
+  }]);
+
+F5App.app.directive('returnToFormReservation', ['$document', function($document) {
+    function link(scope, element, attr) {
+      element.on('click', function(event) {
+        event.preventDefault();
+    	//$('#bookingForm').show();
+    	//$('#carDataForm').hide();
+    	$('#loading-modal').modal('show');
+    	scope.fields.stepReservation = 1;
+    	$('#loading-modal').modal('hide');
+      });
+    }
+    return {
+    	restrict : 'C',
+    	scope : false,
+    	link:link
+	}
+  }]);
+
+F5App.app.directive('reserveAndPayBtn', ['$document', function($document) {
+    function link(scope, element, attr) {
+      element.on('click', function(event) {
+        event.preventDefault();
+      });
+    }
+    return {
+    	restrict : 'C',
+    	scope : false,
+    	link:link
+	}
+  }]);
