@@ -238,11 +238,12 @@ textarea {
 #check-availability-modal .modal-body span {
   width: 136px;
   display: -webkit-inline-box;
-  margin: 5px 0;
+  margin: 5px 10px;
   border-bottom: 1px solid #d2cfcf;
 }
 #check-availability-modal .busy {
-  color: #c4302c;
+  background-color: #c4302c;
+  color: #ffffff;
 }
 #show-info-modal .modal-body label {
   width: 150px;
