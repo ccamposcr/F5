@@ -10,6 +10,8 @@ F5App.app.controller("modalController", function ($scope, $rootScope){
 			$scope.bookingType = '';
 		});
 		$scope.clearReservationForm();
+		$('#bookingForm').show();
+        $('#carDataForm').hide();
 		//$scope.loadReservations();
 	});
 
@@ -54,6 +56,12 @@ F5App.app.controller("modalController", function ($scope, $rootScope){
 		$scope.fields.typeReservation = '';
 		$scope.fields.setPitchAllWeeks = '';
 		$scope.fields.stepReservation = 1;
+		$scope.fields.number = '';
+		$scope.fields.type = '';
+		$scope.fields.expire_month = '';
+		$scope.fields.expire_year = '';
+		$scope.fields.cvv2 = '';
+
 
 		$scope.bookingForm.email.$dirty = false;
 		$scope.bookingForm.lastname1.$dirty = false;
@@ -66,6 +74,18 @@ F5App.app.controller("modalController", function ($scope, $rootScope){
 		$scope.bookingForm.lastname2.$pristine = true;
 		$scope.bookingForm.name.$pristine = true;
 		$scope.bookingForm.phone.$pristine = true;
+
+		$scope.carDataForm.number.$dirty = false;
+		$scope.carDataForm.type.$dirty = false;
+		$scope.carDataForm.expire_month.$dirty = false;
+		$scope.carDataForm.expire_year.$dirty = false;
+		$scope.carDataForm.cvv2.$dirty = false;
+
+		$scope.carDataForm.number.$pristine = true;
+		$scope.carDataForm.type.$pristine = true;
+		$scope.carDataForm.expire_month.$pristine = true;
+		$scope.carDataForm.expire_year.$pristine = true;
+		$scope.carDataForm.cvv2.$pristine = true;
 
 		clearInterval($scope.timeInterval);
 		$scope.time = '00:10:00';
