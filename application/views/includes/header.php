@@ -52,7 +52,7 @@
                     <a id="logo" class="clearfix" href="<?php echo base_url(); ?>">
                         <img id="mainLogo" src="<?php echo base_url(); ?>img/<?php echo $this->uri->segment(1) ?>logo.png" alt="F5"/>
                     </a>
-                    <ul id="navPrincipal" class="clearfix" ng-init="setActive()">
+                    <ul id="mainNav" class="clearfix" ng-init="setActive()">
                         <?php foreach ($button as $index => $row) {
                             if( $index == 0){
                                 echo '<li class="' . $row->type . '"><a href="' . base_url() . $row->url .'">'. $row->text .'</a></li>';

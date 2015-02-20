@@ -278,13 +278,13 @@ textarea {
   font-size: 14px;
   font-family: 'eurostileregular';
 }
-#navPrincipal {
+#mainNav {
   display: block;
   float: right;
   padding: 0;
   margin: 0;
 }
-#navPrincipal li {
+#mainNav li {
   width: 150px;
   height: 84px;
   list-style: none;
@@ -294,18 +294,18 @@ textarea {
   font-size: 16px;
   line-height: 84px;
 }
-#navPrincipal li a {
+#mainNav li a {
   text-decoration: none;
   color: white;
   display: block;
 }
-#navPrincipal li a:hover {
+#mainNav li a:hover {
   background-color: #c4302c;
 }
-#navPrincipal li a.active {
+#mainNav li a.active {
   background-color: #c4302c;
 }
-#navPrincipal li.active {
+#mainNav li.active {
   background-color: #c4302c;
 }
 #logo {
@@ -610,7 +610,7 @@ textarea {
 /* ==========================================================================
    GALLERY
 ========================================================================== */
-.divMainContentGallery #slider {
+.divMainContentGallery .slider {
   width: 650px;
   height: 450px;
   margin: 20px  auto 0;
@@ -638,7 +638,7 @@ textarea {
   width: 650px;
   height: 440px;
 }
-#carousel {
+.carousel {
   width: 650px;
   height: 85px;
   margin: 0 auto;
@@ -646,9 +646,15 @@ textarea {
   background-color: rgba(0, 0, 0, 0.25);
   border: none;
 }
-#carousel .slides img {
+.carousel .slides img {
   width: 120px;
   height: 85px;
+}
+.album-header {
+  color: #fff;
+}
+.album-header:hover {
+  color: #000;
 }
 /* ==========================================================================
    FOOTER 

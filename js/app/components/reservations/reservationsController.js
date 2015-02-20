@@ -254,7 +254,7 @@ F5App.app.controller("reservationController", function ($scope, $rootScope,$time
 });
 
 $(document).ready(function(){
-	$('a').on('click', function(){
+	$('body').delegate('a','click', function(){
 		F5App.leaveSafelyPage = true;
 	});
 

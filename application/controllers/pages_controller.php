@@ -30,10 +30,7 @@ class Pages_controller extends CI_Controller {
     }
 
     function page_404(){
-        $headerOptions = simplexml_load_file("xml/header.xml");
-        $this->load->view('includes/header',$headerOptions->external);
     	$this->load->view('404_view');
-        $this->load->view('includes/footer');
     }
 }
 /* End of file home_controller.php */
