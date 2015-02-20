@@ -81,6 +81,7 @@ $route['getClientsData'] = 'api_controller/getClientsData';
 $route['changePassword'] = 'login_controller/changePassword';
 $route['reserveAllWeeksSameDay'] = 'api_controller/reserveAllWeeksSameDay';
 $route['checkAvailability'] = 'api_controller/checkAvailability';
+$route['acceptCreditCardPayment'] = 'paypal_controller/acceptCreditCardPayment';
 
 //Login - Logout Routes
 //Escazu

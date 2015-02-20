@@ -158,7 +158,7 @@
                     <div id="carDataForm">
                         <form name="carDataForm">
                             <dl>
-                                <dd><label>Nombre:<label> {{fields.name}}<br/><label>Apellido:</label> {{fields.lastname1}}</dd>
+                                <dd class="contentInfoForm"><label>Nombre:</label> {{fields.name}}<br/><label>Apellido:</label> {{fields.lastname1}}</dd>
                                 <dd class="contentInfoForm">
                                     <label>Tarjeta</label>
                                     <input type="text" class="form-control" ng-model="fields.number" name="number" required ng-pattern="/^\d+$/"/>
@@ -213,9 +213,9 @@
                                 </dd>
                                 <dd class="contentInfoForm">
                                     <label>C&oacute;digo de Validaci&oacute;n (cvv)</label>
-                                    <input type="text" class="form-control" ng-model="fields.cvv2" name="cvv2" required ng-pattern="/^\d+$/"/>
-                                    <span class="error" ng-show="carDataForm.cvv2.$error.required && carDataForm.cvv2.$dirty">Por favor ingrese su ccv</span>
-                                    <span class="error" ng-show="carDataForm.cvv2.$invalid && carDataForm.cvv2.$dirty">Por favor ingrese &uacute;nicamente n&uacute;meros</span>
+                                    <input type="text" class="form-control" ng-model="fields.cvv" name="cvv" required ng-pattern="/^\d+$/"/>
+                                    <span class="error" ng-show="carDataForm.cvv.$error.required && carDataForm.cvv.$dirty">Por favor ingrese su ccv</span>
+                                    <span class="error" ng-show="carDataForm.cvv.$invalid && carDataForm.cvv.$dirty">Por favor ingrese &uacute;nicamente n&uacute;meros</span>
                                 </dd>
                             </dl>
                         </form>

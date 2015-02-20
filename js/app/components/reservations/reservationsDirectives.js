@@ -535,7 +535,6 @@ F5App.app.directive('insertCardData', ['$document', function($document) {
         	scope.fields.stepReservation = 2;
         }
         else{
-        	//console.log('invalido');
         	alert("Por favor ingrese correctamente los datos erróneos en el formulario");
         }
         
@@ -568,6 +567,37 @@ F5App.app.directive('reserveAndPayBtn', ['$document', function($document) {
     function link(scope, element, attr) {
       element.on('click', function(event) {
         event.preventDefault();
+        if( scope.carDataForm.$valid ){
+        	alert('valid');
+        	$.ajax({
+
+				type: 'POST',
+
+				url : F5App.base_url + "acceptCreditCardPayment",
+
+				data: {
+					number : scope.fields.number,
+					type : scope.fields.type, 
+        			expire_month : scope.fields.expire_month,
+        			expire_year : scope.fields.expire_year,
+        			cvv2 : scope.fields.ccv,
+        			first_name : scope.fields.name,
+        			last_name : scope.fields.lastname1,
+        			total : '1'
+				},
+
+				async : true,
+
+				success : function(response){
+					$('#loading-modal').modal('hide');
+
+				}
+			});
+
+        }
+        else{
+        	alert("Por favor ingrese correctamente los datos erróneos en el formulario");
+        }
       });
     }
     return {
