@@ -34,7 +34,7 @@ class Api_model extends CI_MODEL
         }
         else{
             //Insert
-            $this->db->query("INSERT INTO t_temporary_schedule(team_id, reservation_time, reservation_year, reservation_month, reservation_day, pitch_id, group_id, state) VALUES (".$this->db->escape($team_id).",".$this->db->escape($reservation_time).",".$this->db->escape($reservation_year).",".$this->db->escape($reservation_month).",".$this->db->escape($reservation_day).",".$this->db->escape($group_id).",".$this->db->escape($pitch_id).",".$this->db->escape($state).")");
+            $this->db->query("INSERT INTO t_temporary_schedule(team_id, reservation_time, reservation_year, reservation_month, reservation_day, group_id, pitch_id, state) VALUES (".$this->db->escape($team_id).",".$this->db->escape($reservation_time).",".$this->db->escape($reservation_year).",".$this->db->escape($reservation_month).",".$this->db->escape($reservation_day).",".$this->db->escape($group_id).",".$this->db->escape($pitch_id).",".$this->db->escape($state).")");
         }
     }
 
