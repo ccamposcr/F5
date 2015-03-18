@@ -5,11 +5,11 @@
         </p>
         <h2><span>¿</span>D&oacute;nde quiere jugar<span>?</span></h2>
         <div id="divContentButtons" class="clearfix">
-            <div id="divButton1">
-                <a href="<?php echo base_url(); ?>escazu/1/reservaciones"><img id="imgLogoBoton1" src="<?php echo base_url(); ?>img/f5-escazu-button.png" alt="F5" height="77" width="159"></a>
+            <div id="goEscazuSiteBtn">
+                <a href="<?php echo base_url(); ?>escazu/1/reservaciones"><img src="<?php echo base_url(); ?>img/f5-escazu-button.png" alt="F5" height="77" width="159"></a>
             </div>
-             <div id="divButton2">
-                <a href="<?php echo base_url(); ?>desamparados/1/reservaciones"><img id="imgLogoBoton2" src="<?php echo base_url(); ?>img/f5-desamparados-button.png" alt="F5" height="77" width="159"></a>
+             <div id="goDesamparadosSiteBtn">
+                <a href="<?php echo base_url(); ?>desamparados/1/reservaciones"><img src="<?php echo base_url(); ?>img/f5-desamparados-button.png" alt="F5" height="77" width="159"></a>
             </div>
 
         </div>

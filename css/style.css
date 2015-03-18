@@ -356,33 +356,33 @@ textarea {
 #divContentButtons {
   margin-bottom: 6px;
 }
-#divButton1,
-#divButton2 {
+#goEscazuSiteBtn,
+#goDesamparadosSiteBtn {
   width: 260px;
   height: 100px;
   border-radius: 5px;
   background-color: #ff5500;
   padding: 10px;
 }
-#divButton1 a,
-#divButton2 a {
+#goEscazuSiteBtn a,
+#goDesamparadosSiteBtn a {
   display: block;
   margin: 0 auto;
 }
-#divButton1 img,
-#divButton2 img {
+#goEscazuSiteBtn img,
+#goDesamparadosSiteBtn img {
   display: block;
   margin: 0 auto;
 }
-#divButton1:hover,
-#divButton2:hover {
+#goEscazuSiteBtn:hover,
+#goDesamparadosSiteBtn:hover {
   background-color: #ffffff;
 }
-#divButton1 {
+#goEscazuSiteBtn {
   float: left;
   margin-left: 90px;
 }
-#divButton2 {
+#goDesamparadosSiteBtn {
   float: right;
   margin-right: 90px;
 }
@@ -444,7 +444,7 @@ textarea {
 #pitchs ul li a {
   color: #ffffff;
   display: block;
-  background-color: #c4302c;
+  background-color: #968e8e;
   font-family: 'eurostileregular';
   font-size: 14px;
   text-align: center;
@@ -455,7 +455,7 @@ textarea {
 }
 #pitchs ul li a:hover,
 #pitchs ul li a.active {
-  background-color: #968e8e;
+  background-color: #c4302c;
 }
 /* ==========================================================================
    RESERVACIONES

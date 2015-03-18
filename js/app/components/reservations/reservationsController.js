@@ -223,12 +223,16 @@ F5App.app.controller("reservationController", function ($scope, $rootScope,$time
 	}
 
 
-	$(window).bind("beforeunload", function() { 
+	$(window).bind("beforeunload", function(e) { 
 		if( (/admin/.test(location.href) || /reservaciones/.test(location.href)) && !F5App.leaveSafelyPage ){
 		    var data = $rootScope.getDataForTemporaryReservation();
 			data.state = '3'; 
 			$scope.setStateTemporaryReservation(data);
-			return confirm();
+			//return confirm();
+			var confirmationMessage = " ";
+
+			  (e || window.event).returnValue = confirmationMessage; 
+			  return confirmationMessage;
 		}
 	});
 

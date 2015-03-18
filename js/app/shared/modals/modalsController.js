@@ -75,18 +75,20 @@ F5App.app.controller("modalController", function ($scope, $rootScope){
 		$scope.bookingForm.name.$pristine = true;
 		$scope.bookingForm.phone.$pristine = true;
 
-		$scope.carDataForm.number.$dirty = false;
-		$scope.carDataForm.type.$dirty = false;
-		$scope.carDataForm.expire_month.$dirty = false;
-		$scope.carDataForm.expire_year.$dirty = false;
-		$scope.carDataForm.cvv2.$dirty = false;
+		if( !$scope.isAdminUser() ){
+			$scope.carDataForm.number.$dirty = false;
+			$scope.carDataForm.type.$dirty = false;
+			$scope.carDataForm.expire_month.$dirty = false;
+			$scope.carDataForm.expire_year.$dirty = false;
+			$scope.carDataForm.cvv2.$dirty = false;
 
-		$scope.carDataForm.number.$pristine = true;
-		$scope.carDataForm.type.$pristine = true;
-		$scope.carDataForm.expire_month.$pristine = true;
-		$scope.carDataForm.expire_year.$pristine = true;
-		$scope.carDataForm.cvv2.$pristine = true;
-
+			$scope.carDataForm.number.$pristine = true;
+			$scope.carDataForm.type.$pristine = true;
+			$scope.carDataForm.expire_month.$pristine = true;
+			$scope.carDataForm.expire_year.$pristine = true;
+			$scope.carDataForm.cvv2.$pristine = true;
+		}
+		
 		clearInterval($scope.timeInterval);
 		$scope.time = '00:10:00';
 	}

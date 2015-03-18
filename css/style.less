@@ -140,11 +140,14 @@ textarea {
 .modal-header{
     background-color: @darkGray;
     padding: 10px 15px 5px;
+
     button{
+
         span{
             color: @white;
         }
     }
+
     h4{
         font-family: @font-content;
         color: @white;
@@ -155,17 +158,19 @@ textarea {
 .modal-body{
     margin-top: 0;
     padding-top: 6px;
+    font-family: @font-content;
+
     h3{
         font-weight: bold;
     }
-    font-family: @font-content;
+
     ol{
         font-size: 17px;
         font-weight: normal;
-       dt{
-        font-weight: normal;
 
-       }
+        dt{
+            font-weight: normal;
+        }
     }
 }
 
@@ -176,9 +181,9 @@ textarea {
 
         dt{
             margin-bottom: 5px;
-            .selectUserBtn{
-            margin-left: 259px;
 
+            .selectUserBtn{
+                margin-left: 259px;
             }
         }
 
@@ -203,43 +208,52 @@ textarea {
         margin-left: 95px;
         display: inline-block;
     }
+
     .checkbox{
         dl{
             margin-bottom: 0;
         }
+
         button{
             margin-left: -41px;
-
         }
     }
 }
 
 .modal-footer{
     background-color: @darkGray;
-    padding:10px; 
+    padding: 10px; 
+
     button{
         background-color: @red;
         color: @white;
     }
+
     .reserveBtn[disabled]{
-  background-color: @lightGray;
-}
+        background-color: @lightGray;
+    }
 }
 
 #formReservationModal{
+
     .modal-header{
+
         h4{
             float: left;
+
             > span{
                 font-size: 14px;
             }
+
         }
+
         p{
             float: right;
             color: @white;
             margin: 0;
         }
     }
+
     .modal-body {
         padding-bottom: 0;
     }
@@ -248,6 +262,7 @@ textarea {
 //change-password
 
 #change-password-modal{
+
     .modal-body{
         padding-bottom:10px; 
     }
@@ -257,17 +272,18 @@ textarea {
             width: 180px;
             font-size: 16px;
         }
+
         input{
             width: 300px;
             display: inline-block;
             margin-top: 5px;
         }
+
         span{
             color:@red;
             display:block;
             margin-left: 180px;
         }
-
     }
     
     .changePasswordBtn[disabled]{
@@ -278,23 +294,30 @@ textarea {
 // search-modal
 
 #search-modal{
+
     .modal-body{
         height: 360px;
         overflow: auto;
     }
+
     input.searchInput{
         border-radius: 5px;
         padding: 6px;
         margin-bottom: 15px;
         width: 300px;
     }
+
     input.client{
         text-align: center;
         margin: 0 auto;
         display: block;
     }
+
     table{
-        tr{border-bottom: 1px solid @lightGray;
+
+        tr{
+            border-bottom: 1px solid @lightGray;
+
             th{
                 width: 180px;
                 font-size: 16px;
@@ -302,17 +325,20 @@ textarea {
             }
         }
     }
+
     .info_personas{
         padding: 3px;
     }
-
 }
 
 #check-availability-modal{
+
     text-align: left;
+
     .modal-body{
         height: 360px;
         overflow: auto;
+
         span{
             width: 136px;
             display: -webkit-inline-box;
@@ -320,6 +346,7 @@ textarea {
             border-bottom: 1px solid @lightGray;
         }
     }
+
     .busy{
         background-color:@red;
         color:@white;
@@ -328,17 +355,17 @@ textarea {
 
 //show-info-modal
 #show-info-modal{
+
     .modal-body{
         label{
             width: 150px;
             font-size: 15px;
         }
+
         button{
             margin-top: 20px;
         }
-        
     }
-
 }
 
 #carDataForm{
@@ -370,7 +397,8 @@ textarea {
         font-family: @font-content;
     }
 }
-#mainNav {
+
+#mainNav{
     display: block;
     float: right;
     padding: 0;
@@ -378,7 +406,7 @@ textarea {
 }
 
 #mainNav li{ 
-    width:150px;
+    width: 150px;
     height: 84px;
     list-style: none;
     float: left;
@@ -400,6 +428,7 @@ textarea {
             background-color:@red;
         }
     }
+
     &.active{
        background-color: @red; 
     }
@@ -408,10 +437,10 @@ textarea {
 #logo{
     float: left;
     margin: 6px 0 0 14px;
+
     a{
         display: block;
     }
-
 }
 
 
@@ -443,6 +472,7 @@ textarea {
         text-shadow: 1px 0 0 #240404;
         margin-bottom: 40px;
         letter-spacing: 3px;
+
         span{
             font-family: arial;
             font-size: 25px;
@@ -461,10 +491,9 @@ textarea {
 
 #divContentButtons{
     margin-bottom: 6px;
-
 }
 
-#divButton1, #divButton2{
+#goEscazuSiteBtn, #goDesamparadosSiteBtn{
     width: 260px;
     height: 100px;
     border-radius: 5px;
@@ -475,6 +504,7 @@ textarea {
        display: block;
        margin: 0 auto; 
     }
+
     img{
         display: block;
         margin: 0 auto;
@@ -485,12 +515,12 @@ textarea {
     }
 }
 
-#divButton1{
+#goEscazuSiteBtn{
     float: left;
     margin-left: 90px;
 }
 
-#divButton2{
+#goDesamparadosSiteBtn{
     float: right;
     margin-right: 90px; 
 }
@@ -514,6 +544,7 @@ textarea {
             background:@white;
             color:@darkGray;
             padding: 3px;
+
             .day{
                 cursor: pointer;
 
@@ -534,13 +565,13 @@ textarea {
                 }
             }
         }
+
         .days_head{
             display: none;
             color:@red;
             background:@white;
             text-align: center;
         }
-
     }
 }
 
@@ -549,18 +580,20 @@ textarea {
 }
 // buttons to choose the pitch
 #pitchs{
+
     float: right;
     display: none;
+
     ul{
         list-style-type: none;
 
         li{
-        float: left;
-        margin-left: 10px;
+            float: left;
+            margin-left: 10px;
             a{
                 color: @white;
                 display: block;
-                background-color: @red;
+                background-color: @gray;
                 font-family: @font-content;
                 font-size: 14px;
                 text-align: center;
@@ -568,8 +601,9 @@ textarea {
                 padding: 5px 25px;
                 text-decoration: none;
                 margin-top: 20px;
+
                 &:hover, &.active{
-                    background-color: @gray;
+                    background-color: @red;
                 }
             }
         }
@@ -597,15 +631,18 @@ textarea {
             list-style: none;
             font-family: @font-content;
             font-size: 18px;
+
             &:nth-child(1){
                 width: 100px;
-                 }
+            }
+
             &:nth-child(2), &:nth-child(3){
                 width: 387px;
                 text-align: center;
             }
         }
     }
+
     #reservations{
         list-style-type: none;
         padding: 0;
@@ -617,12 +654,14 @@ textarea {
             width: 387px;
             height: 33px;
             text-align: center;
+
             &.blocked{
                 background-color: @red;
                 border:solid 1px @darkGray;
                 margin:2px;
                 line-height: 30px;
             }
+
             &.reservation-time{
                 border: none;
                 width: 100px;
@@ -632,12 +671,14 @@ textarea {
                 line-height: 40px;
                 font-size: 16px;
             }
+
             &.completa{
                 width: 777px;
                 color: @white;
                 border:1px solid @darkGray;
                 line-height: 30px;
             }
+
             &.available{
                 cursor: pointer;
                 background-color: @lightOrange;
@@ -645,23 +686,27 @@ textarea {
                 margin:2px;
                 line-height: 30px;
             }
+
             &.locked{
                 background-color: @gray;
                 border:solid 1px @darkGray;
                 margin:2px;
                 line-height: 30px;
             }
+
             &.delete.active{
                 background-color: @black;
                 border:solid 1px @red;
                 margin:2px;
                 line-height: 30px;
             }
+
             &.showInfo{
                 cursor: pointer;
             }
         }
     }
+
     .active{
         font-weight: bold;
     }
@@ -691,19 +736,19 @@ textarea {
         font-family: @font-content;
         font-size: 30px;
     }
+
     label{
         font-family: @font-content;
         color:@white;
         font-size: 20px;
         font-weight: normal;
-
     }
 }
 
-#contentLogin
-{
+#contentLogin{
     width: 450px;
     margin: 20px auto;
+
     p{
         color:@red;
         font-size: 23px;
@@ -712,10 +757,12 @@ textarea {
         text-align: center;
         margin: 5px;
     }
+
     #btnLogin{
         margin-top: 10px;
     }
 }
+
 #userStatus{
     position: absolute;
     right: 0;
@@ -736,9 +783,10 @@ textarea {
             color: @red;
         }
     }
+
     span{
-    color:@orange;
-    margin: 0 5px;
+        color:@orange;
+        margin: 0 5px;
     }
 }
 /* ==========================================================================
@@ -754,6 +802,7 @@ textarea {
     }
 
     .flex-direction-nav{
+
        .flex-prev{
             background: url(../img/img-previous.png) no-repeat;
             
@@ -764,18 +813,21 @@ textarea {
               overflow: hidden;
             }
         }
+
        .flex-next{
-        background: url(../img/img-next.png) no-repeat 0 0;
+            background: url(../img/img-next.png) no-repeat 0 0;
+
             &:before{
               display: block;
               text-indent: 100%;
               white-space: nowrap;
               overflow: hidden;
             }
-        
-       }
+        }
     }
+
     .slides {
+
         img{
             width:650px;
             height: 440px;
@@ -784,13 +836,16 @@ textarea {
 }
 
 .carousel{
+
     width: 650px;
     height: 85px;
     margin: 0 auto;
     margin-top: 10px;
     background-color: rgba(0, 0, 0, 0.25);
     border:none;
+
     .slides {
+
         img{
             width: 120px;
             height: 85px;
@@ -820,6 +875,7 @@ textarea {
     padding: 10px 40px;
     border-top: 1px solid rgba(11, 11, 11, 0.3);
 }
+
 #divSocialsIcons{
     width: 210px;
     margin: 0px auto;
@@ -827,6 +883,7 @@ textarea {
 
 //social icons
 #divSocialsIcons{
+
     a.fa-facebook, a.fa-twitter, a.fa-youtube{
         height: 40px;
         width: 40px;
@@ -845,6 +902,7 @@ textarea {
         }
     }
 }
+
 a.fa-facebook{
     background-color: @blueFacebook;
 
@@ -852,6 +910,7 @@ a.fa-facebook{
         background-color: @gray;
     }
 }
+
 a.fa-twitter{
     background-color: @blueLightTwitter;
 
@@ -859,6 +918,7 @@ a.fa-twitter{
         background-color: @gray;
     }
 }
+
 a.fa-youtube{
     background-color: @red;
 
@@ -866,6 +926,7 @@ a.fa-youtube{
         background-color: @gray;
     }
 }
+
 #copy-right{
     color: @white;
     float: left;
@@ -883,6 +944,7 @@ a.fa-youtube{
     text-transform: capitalize;
     height: 160px;
 }
+
 #divContentInfoFooter, #contentSocialIcons, #infoContact{
     height: 160px;
     width: 293px;
@@ -891,6 +953,7 @@ a.fa-youtube{
 #divContentInfoFooter{
     margin: 0;
     float: left;
+
     p{
         color: @white;
         font-family: @font-content;
@@ -942,7 +1005,6 @@ a.fa-youtube{
 
         li{
             
-            
             a{
                 list-style: none;
                 color: @white;
@@ -968,6 +1030,7 @@ a.fa-youtube{
 
 #divContentErrorPage{
     padding: 110px 0;
+
     p{
         font-family: @font-content;
         font-size: 30px;
@@ -975,6 +1038,7 @@ a.fa-youtube{
         text-align: center;
         margin: 0;
     }
+
     span{
         font-family: @font-content;
         font-size: 20px;
@@ -982,7 +1046,6 @@ a.fa-youtube{
         text-align: center;
         display: block;
     }
-
 }
 /* ==========================================================================
    Helper classes
