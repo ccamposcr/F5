@@ -872,17 +872,15 @@ textarea {
 #divContentFooter{
     width: 960px;
     margin: 0 auto;
-    padding: 10px 40px;
+    padding: 10px;
     border-top: 1px solid rgba(11, 11, 11, 0.3);
-}
-
-#divSocialsIcons{
-    width: 210px;
-    margin: 0px auto;
 }
 
 //social icons
 #divSocialsIcons{
+    width: 210px;
+    margin: 0px auto;
+    display:table;
 
     a.fa-facebook, a.fa-twitter, a.fa-youtube{
         height: 40px;
@@ -929,10 +927,17 @@ a.fa-youtube{
 
 #copy-right{
     color: @white;
-    float: left;
+    // float: left;
     font-family: @font-content;
     font-size: 16px; 
-    margin: 0 auto 30px;
+    margin: 0 auto;
+    display: table;
+}
+#siteseal{
+    img{
+        width:15%;
+    }
+    
 }
 /* ==========================================================================
   INTERNAL FOOTER
@@ -944,7 +949,6 @@ a.fa-youtube{
     text-transform: capitalize;
     height: 160px;
 }
-
 #divContentInfoFooter, #contentSocialIcons, #infoContact{
     height: 160px;
     width: 293px;
