@@ -666,12 +666,13 @@ textarea {
 #divContentFooter {
   width: 960px;
   margin: 0 auto;
-  padding: 10px 40px;
+  padding: 10px;
   border-top: 1px solid rgba(11, 11, 11, 0.3);
 }
 #divSocialsIcons {
   width: 210px;
   margin: 0px auto;
+  display: table;
 }
 #divSocialsIcons a.fa-facebook,
 #divSocialsIcons a.fa-twitter,
@@ -713,10 +714,13 @@ a.fa-youtube:hover {
 }
 #copy-right {
   color: #ffffff;
-  float: left;
   font-family: 'eurostileregular';
   font-size: 16px;
-  margin: 0 auto 30px;
+  margin: 0 auto;
+  display: table;
+}
+#siteseal img {
+  width: 15%;
 }
 /* ==========================================================================
   INTERNAL FOOTER
