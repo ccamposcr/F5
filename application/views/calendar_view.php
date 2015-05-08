@@ -26,7 +26,7 @@
 
 			     ?>
           <input type="hidden" value="<?=$year?>" id="year" />
-			    <input type="hidden" value="<?=$month?>" id="month" />
+		  <input type="hidden" value="<?=$month?>" id="month" />
           <input type="hidden" value="" id="day" />
           <input type="hidden" value="" id="team_id" />
           <input type="hidden" value="" id="reservation_time" />

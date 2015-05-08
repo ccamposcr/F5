@@ -1,9 +1,11 @@
 <div id="userStatus">
     <?php 
-    if( isset($user) ){
+    if( isset($session_data) ){
     ?>
-        <input type="hidden" value="<?=$user?>" id="user"/>
-        <span>Bienvenido <?php echo $user;?></span> | <a href="#" data-toggle="modal" data-target="#change-password-modal">Cambiar Contrase&ntilde;a</a> | <a href="<?php echo base_url(); ?>logout">Cerrar Sesi&oacute;n</a>
+        <input type="hidden" value="<?=$session_data['user']?>" id="user"/>
+        <input type="hidden" value="<?=$session_data['id']?>" id="id_user"/>
+        <input type="hidden" value="<?=$session_data['rol']?>" id="rol_user"/>
+        <span>Bienvenido <?php echo $session_data['user'];?></span> | <a href="#" data-toggle="modal" data-target="#change-password-modal">Cambiar Contrase&ntilde;a</a> | <a href="<?php echo base_url(); ?>logout">Cerrar Sesi&oacute;n</a>
     <?php
     }
     else/*( isset($adminBtn) )*/{

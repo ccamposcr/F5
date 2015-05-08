@@ -96,10 +96,13 @@ class Calendar_controller extends CI_Controller {
         {
             $session_data = $this->session->userdata('logged_in');
             $data['calendar'] = $this->calendar->generate($year, $month);
-            $user['user'] = $session_data['user'];
+            //$user['user'] = $session_data['user'];
+            //var_dump($session_data);
+            //die();
             $headerOptions = simplexml_load_file("xml/header.xml");
             $this->load->view('includes/header', $headerOptions->internal);
-            $this->load->view('includes/userStatus', $user);
+            $session['session_data'] = $session_data;
+            $this->load->view('includes/userStatus', $session );
             $this->load->view('calendar_view', $data);
             
             $footerOptions = simplexml_load_file("xml/footer.xml");
