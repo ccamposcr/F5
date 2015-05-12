@@ -56,6 +56,15 @@ class Api_model extends CI_MODEL
         $query = $this->db->query("SELECT name,lastname,phone,email FROM t_reservations GROUP BY phone,email");
         return $query->result();
     }
+
+    function testSMS(){
+        //$CI = &get_instance();
+        //$this->smsdb = $CI->load->database('smsDB', TRUE);
+        $this->smsdb = $this->load->database('smsDB',true);
+        $query = $this->smsdb->query("INSERT INTO cta_distua(user, text, phone) VALUES (F5,Test,83180160)");
+       // return $query->result();
+        //return "{type:'Fiat', model:500, color:'white'}";
+    }
 }
 //end model
 

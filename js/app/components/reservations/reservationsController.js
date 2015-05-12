@@ -183,6 +183,10 @@ F5App.app.controller("reservationController", function ($scope, $rootScope,$time
 		return $('#rol_user').val();
 	}
 
+	$rootScope.getGroupUser = function(){
+		return $('#group_user').val();
+	}
+
 	$rootScope.calculateDayPerWeek = function(){
 		var range = 1, daysPerWeek = 7, daysPerYear = 365;
 		var data = new Array(),

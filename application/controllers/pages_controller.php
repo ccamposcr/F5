@@ -7,7 +7,13 @@ class Pages_controller extends CI_Controller {
     function index() {
         $headerOptions = simplexml_load_file("xml/header.xml");
         $this->load->view('includes/header',$headerOptions->external);
-        $this->load->view('home_view');
+        if($this->session->userdata('logged_in'))
+        {
+            $session['session_data'] = $this->session->userdata('logged_in');
+            $this->load->view('home_view', $session);
+        }else{
+            $this->load->view('home_view');
+        }
         $this->load->view('includes/footer');
     }
 

@@ -162,4 +162,9 @@ class Api_controller extends CI_Controller {
         }
         echo json_encode($res);
     }
+
+    public function testSMS(){
+        $result = $this->api_model->testSMS();
+        //echo json_encode($result);
+    }
 }

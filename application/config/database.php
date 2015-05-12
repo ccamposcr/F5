@@ -64,6 +64,23 @@ $db['default']['swap_pre'] = '';
 $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
 
+$db['smsDB']['hostname'] = 'tec-sms.com';
+$db['smsDB']['username'] = 'cta_distua';
+$db['smsDB']['password'] = 'gv3Lae7Nqzzm';
+$db['smsDB']['database'] = 'tecvps_clientes';
+$db['smsDB']['dbdriver'] = 'mysql';
+$db['smsDB']['port'] = 3306;
+$db['smsDB']['dbprefix'] = '';
+$db['smsDB']['pconnect'] = FALSE;
+$db['smsDB']['db_debug'] = TRUE;
+$db['smsDB']['cache_on'] = FALSE;
+$db['smsDB']['cachedir'] = '';
+$db['smsDB']['char_set'] = 'utf8';
+$db['smsDB']['dbcollat'] = 'utf8_general_ci';
+$db['smsDB']['swap_pre'] = '';
+$db['smsDB']['autoinit'] = TRUE;
+$db['smsDB']['stricton'] = FALSE;
+
 
 /* End of file database.php */
 /* Location: ./application/config/database.php */
