@@ -4,25 +4,25 @@ F5App.app.controller("reservationController", function ($scope, $rootScope,$time
 	//var path = ( window.location.pathname.replace('/','').replace(/\/$/, '').split('/').length <= 2 ) ? './' : '../';
 
    $rootScope.loadReservations = function (){
-   		$('#loading-modal').modal('show');
-   		$('#dailyResevations').hide();
+   		angular.element('#loading-modal').modal('show');
+   		angular.element('#dailyResevations').hide();
    		
-	   	if( !$('.day div.active').length ){
-			$('.day div').first().addClass('active');
-			$('.day div').first().parent().addClass('active');
-			$('.day div').first().parents('.days_row').addClass('active');
+	   	if( !angular.element('.day div.active').length ){
+			angular.element('.day div').first().addClass('active');
+			angular.element('.day div').first().parent().addClass('active');
+			angular.element('.day div').first().parents('.days_row').addClass('active');
 		}
 		else{
-			$('.day div.active').parent().addClass('active');
-			$('.day div.active').parents('.days_row').addClass('active');
+			angular.element('.day div.active').parent().addClass('active');
+			angular.element('.day div.active').parents('.days_row').addClass('active');
 		}
 		//Set day as active day
-		var day = $('.day div.active').text();
-		$('#day').val(day);
+		var day = angular.element('.day div.active').text();
+		angular.element('#day').val(day);
 
-		var daySelected = $('#calendar .days_row.active .day').index($('#calendar .days_row.active .day.active'));
+		var daySelected = angular.element('#calendar .days_row.active .day').index(angular.element('#calendar .days_row.active .day.active'));
 						 
-		$('#currentDay').html( $('#calendar .days_head .head:eq('+daySelected+')').text() + ' ' +day);
+		angular.element('#currentDay').html( angular.element('#calendar .days_head .head:eq('+daySelected+')').text() + ' ' +day);
 		
 		$.ajax({
 
@@ -38,8 +38,8 @@ F5App.app.controller("reservationController", function ($scope, $rootScope,$time
 				$timeout(function(){
 					$scope.reservations = $scope.sortReservations(jQuery.parseJSON(response));
 				});
-				$('#loading-modal').modal('hide');
-				$('#dailyResevations').show();
+				angular.element('#loading-modal').modal('hide');
+				angular.element('#dailyResevations').show();
 			}
 		});
 	}
@@ -59,10 +59,10 @@ F5App.app.controller("reservationController", function ($scope, $rootScope,$time
 				$timeout(function(){
 					$scope.pitchs = jQuery.parseJSON(response);
 				});
-				$('#pitchs').show();
+				angular.element('#pitchs').show();
 			}
 		});
-		$scope.pitchValue = $('#pitch').val();
+		$scope.pitchValue = angular.element('#pitch').val();
 	}
 
 	$scope.sortReservations = function (data){
@@ -107,7 +107,7 @@ F5App.app.controller("reservationController", function ($scope, $rootScope,$time
 
 			url : F5App.base_url + "getGroup",
 
-			data: { group_name: $('#group').val() || window.location.pathname.replace('/','').replace(/\/$/, '').split('/')[1] },
+			data: { group_name: angular.element('#group').val() || window.location.pathname.replace('/','').replace(/\/$/, '').split('/')[1] },
 
 			async : false,
 
@@ -119,17 +119,17 @@ F5App.app.controller("reservationController", function ($scope, $rootScope,$time
 	}
 
 	$scope.getPitch = function(){
-		return $('#pitch').val() || window.location.pathname.replace('/','').replace(/\/$/, '').split('/')[2];
+		return angular.element('#pitch').val() || window.location.pathname.replace('/','').replace(/\/$/, '').split('/')[2];
 	}
 
 	$rootScope.getDataForTemporaryReservation = function(){
-		return { 	reservation_year : $('#year').val(), 
-					reservation_month : $('#month').val(), 
-					reservation_day : $('#day').val(), 
+		return { 	reservation_year : angular.element('#year').val(), 
+					reservation_month : angular.element('#month').val(), 
+					reservation_day : angular.element('#day').val(), 
 					group_id : $scope.getGroup(), 
 					pitch_id : $scope.getPitch(),
-					team_id : $('#team_id').val(),
-					reservation_time : $('#reservation_time').val()
+					team_id : angular.element('#team_id').val(),
+					reservation_time : angular.element('#reservation_time').val()
 				};
 	}
 
@@ -172,19 +172,19 @@ F5App.app.controller("reservationController", function ($scope, $rootScope,$time
 	}
 
 	$rootScope.isDateForBookingValid = function(){
-		return new Date($('#year').val(),$('#month').val() - 1,$('#day').val(),'23','59','59') > new Date();
+		return new Date(angular.element('#year').val(),angular.element('#month').val() - 1,angular.element('#day').val(),'23','59','59') > new Date();
 	}
 
 	$rootScope.isAdminUser = function(){
-		return ( !!$('#isAdminUser').val() && /admin/.test(location.href) );
+		return ( !!angular.element('#isAdminUser').val() && /admin/.test(location.href) );
 	}
 
 	$rootScope.getRol = function(){
-		return $('#rol_user').val();
+		return angular.element('#rol_user').val();
 	}
 
 	$rootScope.getGroupUser = function(){
-		return $('#group_user').val();
+		return angular.element('#group_user').val();
 	}
 
 	$rootScope.calculateDayPerWeek = function(){
@@ -195,8 +195,8 @@ F5App.app.controller("reservationController", function ($scope, $rootScope,$time
 			reservation_year;
 
 		for(var i = range; i<= daysPerYear ; i++){
-			var from = new Date($('#year').val(),$('#month').val() - 1,$('#day').val());
-			var to = new Date($('#year').val(),$('#month').val() - 1,$('#day').val());
+			var from = new Date(angular.element('#year').val(),angular.element('#month').val() - 1,angular.element('#day').val());
+			var to = new Date(angular.element('#year').val(),angular.element('#month').val() - 1,angular.element('#day').val());
 			to.setDate(from.getDate() + i);
 			if( i % daysPerWeek  == 0 ){
 				reservation_day = to.getDate().toString();
@@ -220,7 +220,7 @@ F5App.app.controller("reservationController", function ($scope, $rootScope,$time
 			async : true,
 
 			success : function(response){
-				$('#loading-modal').modal('hide');
+				angular.element('#loading-modal').modal('hide');
 				$scope.loadReservations();
 			}
 		});
@@ -231,7 +231,7 @@ F5App.app.controller("reservationController", function ($scope, $rootScope,$time
 	}
 
 
-	$(window).bind("beforeunload", function(e) { 
+	angular.element(window).bind("beforeunload", function(e) { 
 		if( (/admin/.test(location.href) || /reservaciones/.test(location.href)) && !F5App.leaveSafelyPage ){
 		    var data = $rootScope.getDataForTemporaryReservation();
 			data.state = '3'; 
@@ -260,25 +260,24 @@ F5App.app.controller("reservationController", function ($scope, $rootScope,$time
 		stepReservation : 1
 	}
 
-	//$('#loading-modal').modal('show');
 	$scope.loadReservations();
 	$scope.loadPitchsPagination();
 });
 
-$(document).ready(function(){
-	$('body').delegate('a','click', function(){
+angular.element(document).ready(function(){
+	angular.element('body').delegate('a','click', function(){
 		F5App.leaveSafelyPage = true;
 	});
 
-	$('#calendar .header').on('mouseenter', function(){
-		$('.days_head, .days_row').show();
+	angular.element('#calendar .header').on('mouseenter', function(){
+		angular.element('.days_head, .days_row').show();
 	});
 
-	$('#currentDate').on('click', function(){
-		$('.days_head, .days_row').show();
+	angular.element('#currentDate').on('click', function(){
+		angular.element('.days_head, .days_row').show();
 	});
 
-	$('#calendar').on('mouseleave', function(){
-		$('.days_head, .days_row').hide();
+	angular.element('#calendar').on('mouseleave', function(){
+		angular.element('.days_head, .days_row').hide();
 	});
 });

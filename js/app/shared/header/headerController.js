@@ -2,13 +2,13 @@ F5App.app.controller("headerController", function ($scope, $rootScope){
 
    $scope.setActive = function (){
    		if( !!window.location.href.match('reservaciones') || !!window.location.href.match('admin')){
-   			$('#mainNav .reservaciones').addClass('active');
+   			angular.element('#mainNav .reservaciones').addClass('active');
    		}
    		else if ( !!window.location.href.match('galeria') ){
-   			$('#mainNav .galeria').addClass('active');
+   			angular.element('#mainNav .galeria').addClass('active');
    		}
    		else{
-   			$('#mainNav .home').addClass('active');
+   			angular.element('#mainNav .home').addClass('active');
    		}
    };
 

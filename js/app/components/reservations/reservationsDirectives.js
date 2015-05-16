@@ -2,13 +2,13 @@ F5App.app.directive('loadDay', ['$document', function($document) {
     return function(scope, element, attr) {
       element.on('click', function(event) {
         event.preventDefault();
-        $('.day div').removeClass('active');
-        $('.day').removeClass('active');
-        $('.days_row').removeClass('active');
-        $(element).addClass('active');
-        $(element).parent().addClass('active');
-        $(element).parents('.days_row').addClass('active');
-        $('#dailyResevations').hide();
+        angular.element('.day div').removeClass('active');
+        angular.element('.day').removeClass('active');
+        angular.element('.days_row').removeClass('active');
+        angular.element(element).addClass('active');
+        angular.element(element).parent().addClass('active');
+        angular.element(element).parents('.days_row').addClass('active');
+        angular.element('#dailyResevations').hide();
         scope.loadReservations();
       });
 
@@ -20,9 +20,9 @@ F5App.app.directive('available', ['$document', function($document) {
     function link(scope, element, attr) {
       element.on('click', function(event) {
         event.preventDefault();
-        $('#loading-modal').modal('show');
-        $('#team_id').val(attr.team);
-        $('#reservation_time').val($(element).siblings('.reservation-time').attr('data-time'));
+        angular.element('#loading-modal').modal('show');
+        angular.element('#team_id').val(attr.team);
+        angular.element('#reservation_time').val(angular.element(element).siblings('.reservation-time').attr('data-time'));
 
         $.ajax({
 
@@ -35,7 +35,7 @@ F5App.app.directive('available', ['$document', function($document) {
 			async : true,
 
 			success : function(response){
-				$('#loading-modal').modal('hide');
+				angular.element('#loading-modal').modal('hide');
 				var response = jQuery.parseJSON(response);
 				var state = 0;
 				/*
@@ -51,10 +51,10 @@ F5App.app.directive('available', ['$document', function($document) {
 
 				switch(state){
 					case '1':
-						$('#reservation-watching-by-other-user-modal').modal('show');
+						angular.element('#reservation-watching-by-other-user-modal').modal('show');
 					break;
 					case '2':
-						$('#reservation-in-use-by-other-user-modal').modal('show');
+						angular.element('#reservation-in-use-by-other-user-modal').modal('show');
 					break;
 					case '3':
 					case '4':
@@ -63,8 +63,8 @@ F5App.app.directive('available', ['$document', function($document) {
 						scope.setStateTemporaryReservation(data);
 
 						angular.element('#formReservationModal').modal('show');
-						var daySelected = $('#calendar .days_row.active .day').index($('#calendar .days_row.active .day.active'));
-						$('#reservationInfo').html($('#calendar .days_head .head:eq('+daySelected+')').text() + ' ' + $('#day').val()+'/'+$('#month').val()+'/'+$('#year').val() + ' ' + angular.element(element).siblings('.reservation-time ').text());
+						var daySelected = angular.element('#calendar .days_row.active .day').index(angular.element('#calendar .days_row.active .day.active'));
+						angular.element('#reservationInfo').html(angular.element('#calendar .days_head .head:eq('+daySelected+')').text() + ' ' + angular.element('#day').val()+'/'+angular.element('#month').val()+'/'+angular.element('#year').val() + ' ' + angular.element(element).siblings('.reservation-time ').text());
 						if( scope.isAdminUser() ){
 							angular.element('#bookingOnLine').trigger('click');
 							scope.bookingType = 'bookingOnLine';
@@ -73,8 +73,8 @@ F5App.app.directive('available', ['$document', function($document) {
 					case '5':
 						
 						//location.reload();
-						$('#formReservationModal').modal('hide');
-						//$('#already-reserved-modal').modal('show');
+						angular.element('#formReservationModal').modal('hide');
+						//angular.element('#already-reserved-modal').modal('show');
 						alert('Esta casilla ya fue reservada. Por favor escoja otra casilla para reservar');
 						scope.loadReservations();
 						
@@ -96,7 +96,7 @@ F5App.app.directive('bookingOnLine', ['$document', function($document) {
     function link(scope, element, attr) {
       element.on('click', function(event) {
         event.preventDefault();
-        $('#loading-modal').modal('show');
+        angular.element('#loading-modal').modal('show');
         var data = scope.getDataForTemporaryReservation();
 
         //data.reservation_day = "29";
@@ -111,14 +111,14 @@ F5App.app.directive('bookingOnLine', ['$document', function($document) {
 			async : true,
 
 			success : function(response){
-				$('#loading-modal').modal('hide');
+				angular.element('#loading-modal').modal('hide');
 				if(jQuery.parseJSON(response).length > 0){
 					data.state = '5';// Reservada
 					scope.setStateTemporaryReservation(data);
 					
 					//location.reload();
-					$('#formReservationModal').modal('hide');
-					//$('#already-reserved-modal').modal('show');
+					angular.element('#formReservationModal').modal('hide');
+					//angular.element('#already-reserved-modal').modal('show');
 					alert('Esta casilla ya fue reservada. Por favor escoja otra casilla para reservar');
 					scope.loadReservations();
 					
@@ -166,7 +166,7 @@ F5App.app.directive('reserveBtn', ['$document', function($document) {
     function link(scope, element, attr) {
       element.on('click', function(event) {
         event.preventDefault();
-        $('#loading-modal').modal('show');
+        angular.element('#loading-modal').modal('show');
         if( scope.bookingForm.$valid ){
         	//console.log('valido');
 
@@ -192,10 +192,10 @@ F5App.app.directive('reserveBtn', ['$document', function($document) {
 					
 
 					if(!data.setPitchAllWeeks){
-						//$('#successful-reserved-modal').modal('show');
+						//angular.element('#successful-reserved-modal').modal('show');
 						//alert("Su reservación ha sido creada satisfactoriamente");
 						
-						$('#formReservationModal').modal('hide');
+						angular.element('#formReservationModal').modal('hide');
 						scope.sendEmail({	'email' : data.email,
 											'data_reservation' : 'Su reservación ha sido creada satisfactoriamente \nFecha: '
 											 + data.reservation_day +'/'+ data.reservation_month +'/'+ data.reservation_year + 
@@ -205,8 +205,8 @@ F5App.app.directive('reserveBtn', ['$document', function($document) {
 						//scope.loadReservations();					
 					}
 					else{
-						$('#loading-modal').modal('hide');
-						$('#set-pitch-all-weeks-modal').modal('show');
+						angular.element('#loading-modal').modal('hide');
+						angular.element('#set-pitch-all-weeks-modal').modal('show');
 						var tmp = {
 							reservation_day : data.reservation_day,
 							reservation_month : data.reservation_month,
@@ -231,8 +231,8 @@ F5App.app.directive('reserveBtn', ['$document', function($document) {
 							async : true,
 
 							success : function(response){
-								$('#formReservationModal').modal('hide');
-								$('#set-pitch-all-weeks-modal').modal('hide');
+								angular.element('#formReservationModal').modal('hide');
+								angular.element('#set-pitch-all-weeks-modal').modal('hide');
 								scope.loadReservations();
 
 								var daysAvailables = jQuery.parseJSON(response);
@@ -264,7 +264,7 @@ F5App.app.directive('reserveBtn', ['$document', function($document) {
         else{
         	//console.log('invalido');
         	alert("Por favor ingrese correctamente los datos erróneos en el formulario");
-        	$('#loading-modal').modal('hide');
+        	angular.element('#loading-modal').modal('hide');
         }
         
       });
@@ -280,10 +280,10 @@ F5App.app.directive('showInfo', ['$document','$timeout', function($document,$tim
     function link(scope, element, attr) {
       element.on('click', function(event) {
         event.preventDefault();
-        $('#loading-modal').modal('show');
+        angular.element('#loading-modal').modal('show');
 
-        $('#team_id').val(attr.team);
-        $('#reservation_time').val($(element).siblings('.reservation-time').attr('data-time'));
+        angular.element('#team_id').val(attr.team);
+        angular.element('#reservation_time').val(angular.element(element).siblings('.reservation-time').attr('data-time'));
 
         
         $.ajax({
@@ -297,11 +297,11 @@ F5App.app.directive('showInfo', ['$document','$timeout', function($document,$tim
 			async : true,
 
 			success : function(response){
-				$('#loading-modal').modal('hide');
+				angular.element('#loading-modal').modal('hide');
 				$timeout(function(){
 					scope.$parent.$parent.$parent.$parent.$parent.completeInfo = jQuery.parseJSON(response);
 				});
-				$('#show-info-modal').modal('show');
+				angular.element('#show-info-modal').modal('show');
 			}
 		});
       });
@@ -317,9 +317,9 @@ F5App.app.directive('delete', ['$document', function($document) {
     function link(scope, element, attr) {
       element.on('click', function(event) {
         event.preventDefault();
-        $('#loading-modal').modal('show');
+        angular.element('#loading-modal').modal('show');
 
-        $(element).addClass('active');
+        angular.element(element).addClass('active');
         if(confirm("Realmemente desea eliminar este registro?")){
         	var data = scope.getDataForTemporaryReservation();
 			data.state = '3'; 
@@ -337,15 +337,15 @@ F5App.app.directive('delete', ['$document', function($document) {
 
 				success : function(response){
 					//alert('Registro Eliminado');
-					$('#loading-modal').modal('hide');
+					angular.element('#loading-modal').modal('hide');
 					scope.loadReservations();
 				}
 			});
         }
         else{
-        	$('#loading-modal').modal('hide');
+        	angular.element('#loading-modal').modal('hide');
         }
-        $(element).removeClass('active');
+        angular.element(element).removeClass('active');
 
       });
     }
@@ -360,7 +360,7 @@ F5App.app.directive('delete', ['$document', function($document) {
     function link(scope, element, attr) {
       element.on('click', function(event) {
         event.preventDefault();
-        $('#loading-modal').modal('show');
+        angular.element('#loading-modal').modal('show');
         $.ajax({
 
 			type: 'POST',
@@ -370,11 +370,11 @@ F5App.app.directive('delete', ['$document', function($document) {
 			async : true,
 
 			success : function(response){
-				$('#loading-modal').modal('hide');
+				angular.element('#loading-modal').modal('hide');
 				 $timeout(function(){
 					scope.$parent.clients = jQuery.parseJSON(response);
 				});
-				$('#search-modal').modal('show');
+				angular.element('#search-modal').modal('show');
 				scope.$parent.selectUserMode = false;
 			}
 		});
@@ -391,7 +391,7 @@ F5App.app.directive('delete', ['$document', function($document) {
     function link(scope, element, attr) {
       element.on('click', function(event) {
         event.preventDefault();
-        $('#loading-modal').modal('show');
+        angular.element('#loading-modal').modal('show');
         $.ajax({
 
 			type: 'POST',
@@ -401,11 +401,11 @@ F5App.app.directive('delete', ['$document', function($document) {
 			async : true,
 
 			success : function(response){
-				$('#loading-modal').modal('hide');
+				angular.element('#loading-modal').modal('hide');
 				 $timeout(function(){
 					scope.$parent.clients = jQuery.parseJSON(response);
 				});
-				$('#search-modal').modal('show');
+				angular.element('#search-modal').modal('show');
 				scope.$parent.selectUserMode = true;
 			}
 		});
@@ -422,9 +422,9 @@ F5App.app.directive('delete', ['$document', function($document) {
     function link(scope, element, attr) {
       element.on('click', function(event) {
         event.preventDefault();
-        $('#loading-modal').modal('show');
+        angular.element('#loading-modal').modal('show');
         var data = {
-        	'user' : $('#user').val(),
+        	'user' : angular.element('#user').val(),
         	'password' : scope.fields.password
         }
         if( scope.changePassForm.$valid ){
@@ -439,8 +439,8 @@ F5App.app.directive('delete', ['$document', function($document) {
 				async : true,
 
 				success : function(response){
-					$('#loading-modal').modal('hide');
-					$('#change-password-modal').modal('hide');
+					angular.element('#loading-modal').modal('hide');
+					angular.element('#change-password-modal').modal('hide');
 					alert("El password se ha cambiado satisfactoriamente");
 				}
 			});
@@ -462,15 +462,15 @@ F5App.app.directive('delete', ['$document', function($document) {
     function link(scope, element, attr) {
       element.on('click', function(event) {
         event.preventDefault();
-        $('#search-modal').modal('hide');
-        $('#loading-modal').modal('show');
-        var rowClient = $('input[name="client"]:checked').parents('.rowClient');
+        angular.element('#search-modal').modal('hide');
+        angular.element('#loading-modal').modal('show');
+        var rowClient = angular.element('input[name="client"]:checked').parents('.rowClient');
         scope.fields.name = rowClient.find('.clientName').val();
         scope.fields.lastname1 = rowClient.find('.clientLastName').val().split(' ')[0];
         scope.fields.lastname2 = rowClient.find('.clientLastName').val().split(' ')[1];
         scope.fields.email = rowClient.find('.clientEmail').val();
         scope.fields.phone = rowClient.find('.clientPhone').val();
-        $('#loading-modal').modal('hide');
+        angular.element('#loading-modal').modal('hide');
        });
     }
     return {
@@ -486,7 +486,7 @@ F5App.app.directive('delete', ['$document', function($document) {
       element.on('click', function(event) {
         event.preventDefault();
 
-       	$('#loading-modal').modal('show');
+       	angular.element('#loading-modal').modal('show');
 		var data = scope.getDataForTemporaryReservation();
 			data['dates'] = scope.calculateDayPerWeek();
 
@@ -516,8 +516,8 @@ F5App.app.directive('delete', ['$document', function($document) {
 				$timeout(function(){
 					scope.$parent.$parent.$parent.daysAvailables = result;
 				});
-				$('#loading-modal').modal('hide');
-				$('#check-availability-modal').modal('show');
+				angular.element('#loading-modal').modal('hide');
+				angular.element('#check-availability-modal').modal('show');
 			}
 		});
        });
@@ -534,8 +534,8 @@ F5App.app.directive('insertCardData', ['$document', function($document) {
       element.on('click', function(event) {
         event.preventDefault();
         if( scope.bookingForm.$valid ){
-        	$('#bookingForm').hide();
-        	$('#carDataForm').show();
+        	angular.element('#bookingForm').hide();
+        	angular.element('#carDataForm').show();
         	scope.fields.stepReservation = 2;
         }
         else{
@@ -555,8 +555,8 @@ F5App.app.directive('returnToFormReservation', ['$document', function($document)
     function link(scope, element, attr) {
       element.on('click', function(event) {
         event.preventDefault();
-    	$('#bookingForm').show();
-    	$('#carDataForm').hide();
+    	angular.element('#bookingForm').show();
+    	angular.element('#carDataForm').hide();
     	scope.fields.stepReservation = 1;
       });
     }
@@ -593,7 +593,7 @@ F5App.app.directive('reserveAndPayBtn', ['$document', function($document) {
 				async : true,
 
 				success : function(response){
-					$('#loading-modal').modal('hide');
+					angular.element('#loading-modal').modal('hide');
 
 				}
 			});

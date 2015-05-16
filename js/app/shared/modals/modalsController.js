@@ -1,5 +1,5 @@
 F5App.app.controller("modalController", function ($scope, $rootScope){
-	$('#formReservationModal').on('hidden.bs.modal', function(){
+	angular.element('#formReservationModal').on('hidden.bs.modal', function(){
 		
 		if( !$scope.successReservation ){
 			var data = $rootScope.getDataForTemporaryReservation();
@@ -15,37 +15,37 @@ F5App.app.controller("modalController", function ($scope, $rootScope){
 			}
 		});
 		$scope.clearReservationForm();
-		$('#bookingForm').show();
-        $('#carDataForm').hide();
+		angular.element('#bookingForm').show();
+        angular.element('#carDataForm').hide();
 		//$scope.loadReservations();
 	});
 
-	$('#change-password-modal').on('hidden.bs.modal', function(){
+	angular.element('#change-password-modal').on('hidden.bs.modal', function(){
 		$scope.fields.password = '';
 		$scope.fields.confirmation = '';
 	});
 
-	$('#formReservationModal').on('show.bs.modal', function(){
+	angular.element('#formReservationModal').on('show.bs.modal', function(){
 		$scope.successReservation = false;
 		if( $scope.fields.typeReservationSelected == 'reto' ){
 			$scope.fields.typeReservation = 2;
 		}
 	});
 
-	$('#search-modal').on('hidden.bs.modal', function(){
+	angular.element('#search-modal').on('hidden.bs.modal', function(){
 		$scope.fields.client = '';
 		$scope.searchText = '';
 	});
 
 	var onCancel = function(){
-		$('#formReservationModal').modal('hide');
+		angular.element('#formReservationModal').modal('hide');
 	}
 
 	var onContinue = function(){
 		//Continue
 	}
 
-	$('#cancelReservationBtn').confirmation({
+	angular.element('#cancelReservationBtn').confirmation({
 		onConfirm : onContinue,
 		onCancel : onCancel
 	});
