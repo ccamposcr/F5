@@ -356,28 +356,26 @@ F5App.app.directive('delete', ['$document', function($document) {
 	}
   }]);
 
-  F5App.app.directive('searchBtn', ['$document','$timeout', function($document,$timeout) {
+  F5App.app.directive('searchBtn', ['$document','$timeout','$http', function($document,$timeout,$http) {
     function link(scope, element, attr) {
       element.on('click', function(event) {
         event.preventDefault();
         angular.element('#loading-modal').modal('show');
-        $.ajax({
 
-			type: 'POST',
+		$http.get(F5App.base_url + "getClientsData").
+		  success(function(data, status, headers, config) {
+		    angular.element('#loading-modal').modal('hide');
+		 	$timeout(function(){
+				scope.$parent.clients = angular.fromJson(data);
+			});
+			angular.element('#search-modal').modal('show');
+			scope.$parent.selectUserMode = false;
+		  }).
+		  error(function(data, status, headers, config) {
+		    // called asynchronously if an error occurs
+		    // or server returns response with an error status.
+		  });
 
-			url : F5App.base_url + "getClientsData",
-
-			async : true,
-
-			success : function(response){
-				angular.element('#loading-modal').modal('hide');
-				 $timeout(function(){
-					scope.$parent.clients = jQuery.parseJSON(response);
-				});
-				angular.element('#search-modal').modal('show');
-				scope.$parent.selectUserMode = false;
-			}
-		});
       });
     }
     return {
@@ -387,28 +385,24 @@ F5App.app.directive('delete', ['$document', function($document) {
 	}
   }]);
 
-  F5App.app.directive('selectUserBtn', ['$document','$timeout', function($document,$timeout) {
+  F5App.app.directive('selectUserBtn', ['$document','$timeout','$http', function($document,$timeout,$http) {
     function link(scope, element, attr) {
       element.on('click', function(event) {
         event.preventDefault();
         angular.element('#loading-modal').modal('show');
-        $.ajax({
-
-			type: 'POST',
-
-			url : F5App.base_url + "getClientsData",
-
-			async : true,
-
-			success : function(response){
-				angular.element('#loading-modal').modal('hide');
-				 $timeout(function(){
-					scope.$parent.clients = jQuery.parseJSON(response);
-				});
-				angular.element('#search-modal').modal('show');
-				scope.$parent.selectUserMode = true;
-			}
-		});
+        $http.get(F5App.base_url + "getClientsData").
+		  success(function(data, status, headers, config) {
+		    angular.element('#loading-modal').modal('hide');
+		 	$timeout(function(){
+				scope.$parent.clients = angular.fromJson(data);
+			});
+			angular.element('#search-modal').modal('show');
+			scope.$parent.selectUserMode = true;
+		  }).
+		  error(function(data, status, headers, config) {
+		    // called asynchronously if an error occurs
+		    // or server returns response with an error status.
+		  });
       });
     }
     return {
