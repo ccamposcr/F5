@@ -84,18 +84,14 @@ $route['checkAvailability'] = 'api_controller/checkAvailability';
 $route['acceptCreditCardPayment'] = 'paypal_controller/acceptCreditCardPayment';
 
 //Login - Logout Routes
-//Escazu
-$route['escazu/login'] = 'login_controller';
-$route['escazu/verifyLogin'] = 'login_controller/verify';
-
-//Desamparados
-$route['desamparados/login'] = 'login_controller';
-$route['desamparados/verifyLogin'] = 'login_controller/verify';
+$route['(:any)/login'] = 'login_controller';
+$route['(:any)/verifyLogin'] = 'login_controller/verify';
 
 /* ------------------------------------------------------------------- */
 //Pages Routes
 $route['escazu/galeria'] = 'pages_controller/escazu_gallery';
 $route['desamparados/galeria'] = 'pages_controller/desamparados_gallery';
+$route['(:any)/accessDenied'] = 'pages_controller/access_denied';
 $route['logout'] = 'admin_controller/logout';
 
 

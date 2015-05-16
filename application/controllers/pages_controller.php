@@ -38,6 +38,10 @@ class Pages_controller extends CI_Controller {
     function page_404(){
     	$this->load->view('404_view');
     }
+
+    function access_denied(){
+        $this->load->view('access_denied_view');
+    }
 }
 /* End of file home_controller.php */
 /* Location: ./application/controllers/home_controller.php */

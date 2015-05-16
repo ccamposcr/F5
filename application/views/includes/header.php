@@ -13,11 +13,10 @@
         <link rel="stylesheet" href="<?php echo base_url(); ?>css/fonts.css"/>
         <link rel="stylesheet" href="<?php echo base_url(); ?>css/bootstrap.min.css"/>
         <link rel="stylesheet" href="<?php echo base_url(); ?>css/normalize.css">
-        <!--<link rel="stylesheet" href="<?php echo base_url(); ?>css/style.css"/>-->
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/flexslider.css" />
         <script src="<?php echo base_url(); ?>js/vendor/modernizr-2.6.2.min.js"></script>
 
-        <?php if( $this->config->item('development') == 1){?>
+        <?php if( $this->config->item('development') ){?>
         <link rel="stylesheet/less" type="text/css" href="<?php echo base_url(); ?>css/style.less" />
         <script>
           less = {
@@ -54,12 +53,8 @@
                     </a>
                     <ul id="mainNav" class="clearfix" ng-init="setActive()">
                         <?php foreach ($button as $index => $row) {
-                            if( $index == 0){
-                                echo '<li class="' . $row->type . '"><a href="' . base_url() . $row->url .'">'. $row->text .'</a></li>';
-                            }
-                            else{
-                                echo '<li class="' . $row->type . '"><a href="' . base_url() . $this->uri->segment(1) . $row->url .'">'. $row->text .'</a></li>';
-                            }
+                            $url_segment = ($index == 0) ? '' : $this->uri->segment(1);
+                            echo '<li class="' . $row->type . '"><a href="' . base_url() . $url_segment . $row->url .'">'. $row->text .'</a></li>';
                         }?>
                     </ul>
                 </div>

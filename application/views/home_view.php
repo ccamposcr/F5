@@ -5,7 +5,7 @@
             <input type="hidden" value="<?=$session_data['user']?>" id="user"/>
             <input type="hidden" value="<?=$session_data['id']?>" id="id_user"/>
             <input type="hidden" value="<?=$session_data['rol']?>" id="rol_user"/>
-            <input type="hidden" value="<?=$session_data['groupUser']?>" id="group_user"/>
+            <input type="hidden" value="<?=$session_data['groupManager']?>" id="group_manager"/>
         <?php 
         }
         ?>

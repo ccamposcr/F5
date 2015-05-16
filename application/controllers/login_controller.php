@@ -58,7 +58,7 @@ class Login_controller extends CI_Controller {
         $userInfo = $this->login_model->login(strip_tags($user), strip_tags($password));
         $result = false;
         if( $userInfo ) {
-            $sess_array = array('id' => $userInfo[0]->id, 'user' => $userInfo[0]->user, 'rol' => $userInfo[0]->rol, 'groupUser' => $userInfo[0]->id_group);
+            $sess_array = array('id' => $userInfo[0]->id, 'user' => $userInfo[0]->user, 'rol' => $userInfo[0]->rol, 'groupManager' => $userInfo[0]->id_group);
 	        $this->session->set_userdata('logged_in', $sess_array);
          	$result = true;
         }

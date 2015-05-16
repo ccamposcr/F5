@@ -58,6 +58,7 @@ class Calendar_controller extends CI_Controller {
 
         {table_close}</table>{/table_close}';
         $this->load->library('calendar', $prefs);
+        $this->load->model("api_model");
     }
 
 
@@ -94,11 +95,16 @@ class Calendar_controller extends CI_Controller {
 
         if($this->session->userdata('logged_in'))
         {
-            
+            $session_data = $this->session->userdata('logged_in');
+            $rol = $session_data['rol'];
+            $groupManager = $session_data['groupManager'];
+
+            if( $this->api_model->getGroup($this->uri->segment(1))[0]->id != $groupManager && $rol == $this->api_model->getIdRol('Dependiente')[0]->id){
+                redirect($this->uri->segment(1) . '/accessDenied');
+            }
+
+
             $data['calendar'] = $this->calendar->generate($year, $month);
-            //$user['user'] = $session_data['user'];
-            //var_dump($session_data);
-            //die();
             $headerOptions = simplexml_load_file("xml/header.xml");
             $this->load->view('includes/header', $headerOptions->internal);
             $session['session_data'] = $this->session->userdata('logged_in');

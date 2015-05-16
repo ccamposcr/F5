@@ -21,6 +21,11 @@ class Api_model extends CI_MODEL
         return $query->result();
     }
 
+    function getIdRol($rol_name){
+        $query = $this->db->query("SELECT id FROM t_rol WHERE rol_name = ".$this->db->escape($rol_name));
+        return $query->result();
+    }
+
     function getTemporaryReservationState($team_id,$reservation_time,$reservation_year,$reservation_month,$reservation_day,$group_id,$pitch_id){
         $query = $this->db->query("SELECT state FROM t_temporary_schedule WHERE team_id = ".$this->db->escape($team_id)." AND reservation_time = ".$this->db->escape($reservation_time)." AND reservation_year = ".$this->db->escape($reservation_year)." AND reservation_month = ".$this->db->escape($reservation_month)." AND reservation_day = ".$this->db->escape($reservation_day)." AND group_id = ".$this->db->escape($group_id)." AND pitch_id = ".$this->db->escape($pitch_id));
         return $query->result();

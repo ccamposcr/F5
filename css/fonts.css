@@ -2,7 +2,6 @@
     font-family: 'nakamuraregular';
     src: url('../fonts/nkmr__-webfont.eot');
     src: url('../fonts/nkmr__-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/nkmr__-webfont.woff2') format('woff2'),
          url('../fonts/nkmr__-webfont.woff') format('woff'),
          url('../fonts/nkmr__-webfont.ttf') format('truetype'),
          url('../fonts/nkmr__-webfont.svg#nakamuraregular') format('svg');
@@ -15,7 +14,6 @@
     font-family: 'eurostileregular';
     src: url('../fonts/43095-webfont.eot');
     src: url('../fonts/43095-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/43095-webfont.woff2') format('woff2'),
          url('../fonts/43095-webfont.woff') format('woff'),
          url('../fonts/43095-webfont.ttf') format('truetype'),
          url('../fonts/43095-webfont.svg#eurostileregular') format('svg');
@@ -29,7 +27,6 @@
     font-family: 'eurostilebold';
     src: url('../fonts/27210-webfont.eot');
     src: url('../fonts/27210-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/27210-webfont.woff2') format('woff2'),
          url('../fonts/27210-webfont.woff') format('woff'),
          url('../fonts/27210-webfont.ttf') format('truetype'),
          url('../fonts/27210-webfont.svg#eurostilebold') format('svg');
