@@ -7,7 +7,12 @@ F5App.app.controller("modalController", function ($scope, $rootScope){
 			$scope.setStateTemporaryReservation(data);
 		}
 		$scope.$apply(function(){
-			$scope.bookingType = '';
+			if( $scope.isAdminUser() ){
+				$scope.bookingType = 'bookingOnLine';
+			}
+			else{
+				$scope.bookingType = '';
+			}
 		});
 		$scope.clearReservationForm();
 		$('#bookingForm').show();
@@ -80,13 +85,13 @@ F5App.app.controller("modalController", function ($scope, $rootScope){
 			$scope.carDataForm.type.$dirty = false;
 			$scope.carDataForm.expire_month.$dirty = false;
 			$scope.carDataForm.expire_year.$dirty = false;
-			$scope.carDataForm.cvv2.$dirty = false;
+			$scope.carDataForm.cvv.$dirty = false;
 
 			$scope.carDataForm.number.$pristine = true;
 			$scope.carDataForm.type.$pristine = true;
 			$scope.carDataForm.expire_month.$pristine = true;
 			$scope.carDataForm.expire_year.$pristine = true;
-			$scope.carDataForm.cvv2.$pristine = true;
+			$scope.carDataForm.cvv.$pristine = true;
 		}
 		
 		clearInterval($scope.timeInterval);

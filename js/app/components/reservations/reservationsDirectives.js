@@ -62,9 +62,13 @@ F5App.app.directive('available', ['$document', function($document) {
 						data.state = '1'; 
 						scope.setStateTemporaryReservation(data);
 
-						$('#formReservationModal').modal('show');
+						angular.element('#formReservationModal').modal('show');
 						var daySelected = $('#calendar .days_row.active .day').index($('#calendar .days_row.active .day.active'));
-						$('#reservationInfo').html($('#calendar .days_head .head:eq('+daySelected+')').text() + ' ' + $('#day').val()+'/'+$('#month').val()+'/'+$('#year').val());
+						$('#reservationInfo').html($('#calendar .days_head .head:eq('+daySelected+')').text() + ' ' + $('#day').val()+'/'+$('#month').val()+'/'+$('#year').val() + ' ' + angular.element(element).siblings('.reservation-time ').text());
+						if( scope.isAdminUser() ){
+							angular.element('#bookingOnLine').trigger('click');
+							scope.bookingType = 'bookingOnLine';
+						}
 					break;
 					case '5':
 						
