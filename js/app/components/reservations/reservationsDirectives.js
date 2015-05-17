@@ -289,7 +289,7 @@ F5App.app.directive('reserveBtn', ['$document','$http', function($document,$http
 	}
   }]);
 
-F5App.app.directive('showInfo', ['$document','$timeout', function($document,$timeout) {
+F5App.app.directive('showInfo', ['$document','$timeout','$http', function($document,$timeout,$http) {
     function link(scope, element, attr) {
       element.on('click', function(event) {
         event.preventDefault();
@@ -298,24 +298,26 @@ F5App.app.directive('showInfo', ['$document','$timeout', function($document,$tim
         angular.element('#team_id').val(attr.team);
         angular.element('#reservation_time').val(angular.element(element).siblings('.reservation-time').attr('data-time'));
 
-        
-        $.ajax({
+        var req = {
+			method: 'POST',
+			url: F5App.base_url + "getReservationByTime",
+			headers: {
+			   	'Content-Type': 'application/x-www-form-urlencoded'
+			},
+		 	data: $.param( scope.getDataForTemporaryReservation() ),
+		 	cache : false
+		}
 
-			type: 'POST',
-
-			url : F5App.base_url + "getReservationByTime",
-
-			data: scope.getDataForTemporaryReservation(),
-
-			async : true,
-
-			success : function(response){
-				angular.element('#loading-modal').modal('hide');
-				$timeout(function(){
-					scope.$parent.$parent.$parent.$parent.$parent.completeInfo = jQuery.parseJSON(response);
-				});
-				angular.element('#show-info-modal').modal('show');
-			}
+		$http(req).success(function(response, status, headers, config) {
+			angular.element('#loading-modal').modal('hide');
+			$timeout(function(){
+				scope.$parent.$parent.$parent.$parent.$parent.completeInfo = angular.fromJson(response);
+			});
+			angular.element('#show-info-modal').modal('show');
+	
+		}).error(function(response, status, headers, config) {
+		    // called asynchronously if an error occurs
+		    // or server returns response with an error status.
 		});
       });
     }
@@ -326,7 +328,7 @@ F5App.app.directive('showInfo', ['$document','$timeout', function($document,$tim
 	}
   }]);
 
-F5App.app.directive('delete', ['$document', function($document) {
+F5App.app.directive('delete', ['$document','$http', function($document,$http) {
     function link(scope, element, attr) {
       element.on('click', function(event) {
         event.preventDefault();
@@ -338,21 +340,24 @@ F5App.app.directive('delete', ['$document', function($document) {
 			data.state = '3'; 
 			scope.setStateTemporaryReservation(data);
 
-        	 $.ajax({
+        	 var req = {
+				method: 'POST',
+				url: F5App.base_url + "setInactiveReservation",
+				headers: {
+				   	'Content-Type': 'application/x-www-form-urlencoded'
+				},
+			 	data: $.param( data ),
+			 	cache : false
+			}
 
-				type: 'POST',
-
-				url : F5App.base_url + "setInactiveReservation",
-
-				data: data,
-
-				async : true,
-
-				success : function(response){
-					//alert('Registro Eliminado');
-					angular.element('#loading-modal').modal('hide');
-					scope.loadReservations();
-				}
+			$http(req).success(function(response, status, headers, config) {
+				//alert('Registro Eliminado');
+				angular.element('#loading-modal').modal('hide');
+				scope.loadReservations();
+		
+			}).error(function(response, status, headers, config) {
+			    // called asynchronously if an error occurs
+			    // or server returns response with an error status.
 			});
         }
         else{
@@ -425,7 +430,7 @@ F5App.app.directive('delete', ['$document', function($document) {
 	}
   }]);
 
-  F5App.app.directive('changePasswordBtn', ['$document', function($document) {
+  F5App.app.directive('changePasswordBtn', ['$document','$http', function($document,$http) {
     function link(scope, element, attr) {
       element.on('click', function(event) {
         event.preventDefault();
@@ -435,21 +440,25 @@ F5App.app.directive('delete', ['$document', function($document) {
         	'password' : scope.fields.password
         }
         if( scope.changePassForm.$valid ){
-       		$.ajax({
 
-				type: 'POST',
+			var req = {
+				method: 'POST',
+				url: F5App.base_url + "changePassword",
+				headers: {
+				   	'Content-Type': 'application/x-www-form-urlencoded'
+				},
+			 	data: $.param( data ),
+			 	cache : false
+			}
 
-				url : F5App.base_url + "changePassword",
-
-				data: data,
-
-				async : true,
-
-				success : function(response){
-					angular.element('#loading-modal').modal('hide');
-					angular.element('#change-password-modal').modal('hide');
-					alert("El password se ha cambiado satisfactoriamente");
-				}
+			$http(req).success(function(response, status, headers, config) {
+				angular.element('#loading-modal').modal('hide');
+				angular.element('#change-password-modal').modal('hide');
+				alert("El password se ha cambiado satisfactoriamente");
+		
+			}).error(function(response, status, headers, config) {
+			    // called asynchronously if an error occurs
+			    // or server returns response with an error status.
 			});
        	}
        	else{
@@ -488,7 +497,7 @@ F5App.app.directive('delete', ['$document', function($document) {
   }]);
 
 
-  F5App.app.directive('checkAvailabilityBtn', ['$document','$timeout', function($document,$timeout) {
+  F5App.app.directive('checkAvailabilityBtn', ['$document','$timeout','$http', function($document,$timeout,$http) {
     function link(scope, element, attr) {
       element.on('click', function(event) {
         event.preventDefault();
@@ -503,30 +512,34 @@ F5App.app.directive('delete', ['$document', function($document) {
 			result[i] = new Array();
 		}
 
-		$.ajax({
+		var req = {
+			method: 'POST',
+			url: F5App.base_url + "checkAvailability",
+			headers: {
+			   	'Content-Type': 'application/x-www-form-urlencoded'
+			},
+		 	data: $.param( data ),
+		 	cache : false
+		}
 
-			type: 'POST',
+		$http(req).success(function(response, status, headers, config) {
+			var daysAvailables = angular.fromJson(response);
 
-			url : F5App.base_url + "checkAvailability",
-
-			data: data,
-
-			async : true,
-
-			success : function(response){
-				var daysAvailables = jQuery.parseJSON(response);
-
-				for(i = 0; i < data['dates'].length; i++){
-					result[i].push(data['dates'][i][0] + '/'+data['dates'][i][1] + '/' +  data['dates'][i][2]);
-					result[i].push(daysAvailables[i]); 
-				}
-				$timeout(function(){
-					scope.$parent.$parent.$parent.daysAvailables = result;
-				});
-				angular.element('#loading-modal').modal('hide');
-				angular.element('#check-availability-modal').modal('show');
+			for(i = 0; i < data['dates'].length; i++){
+				result[i].push(data['dates'][i][0] + '/'+data['dates'][i][1] + '/' +  data['dates'][i][2]);
+				result[i].push(daysAvailables[i]); 
 			}
+			$timeout(function(){
+				scope.$parent.$parent.$parent.daysAvailables = result;
+			});
+			angular.element('#loading-modal').modal('hide');
+			angular.element('#check-availability-modal').modal('show');
+
+		}).error(function(response, status, headers, config) {
+		    // called asynchronously if an error occurs
+		    // or server returns response with an error status.
 		});
+
        });
     }
     return {
@@ -574,19 +587,20 @@ F5App.app.directive('returnToFormReservation', ['$document', function($document)
 	}
   }]);
 
-F5App.app.directive('reserveAndPayBtn', ['$document', function($document) {
+F5App.app.directive('reserveAndPayBtn', ['$document','$http', function($document,$http) {
     function link(scope, element, attr) {
       element.on('click', function(event) {
         event.preventDefault();
         if( scope.carDataForm.$valid ){
         	alert('valid');
-        	$.ajax({
 
-				type: 'POST',
-
-				url : F5App.base_url + "acceptCreditCardPayment",
-
-				data: {
+        	var req = {
+				method: 'POST',
+				url: F5App.base_url + "acceptCreditCardPayment",
+				headers: {
+				   	'Content-Type': 'application/x-www-form-urlencoded'
+				},
+			 	data: $.param( {
 					number : scope.fields.number,
 					type : scope.fields.type, 
         			expire_month : scope.fields.expire_month,
@@ -595,16 +609,17 @@ F5App.app.directive('reserveAndPayBtn', ['$document', function($document) {
         			first_name : scope.fields.name,
         			last_name : scope.fields.lastname1,
         			total : '1'
-				},
+				} ),
+			 	cache : false
+			}
 
-				async : true,
-
-				success : function(response){
-					angular.element('#loading-modal').modal('hide');
-
-				}
+			$http(req).success(function(response, status, headers, config) {
+				angular.element('#loading-modal').modal('hide');
+		
+			}).error(function(response, status, headers, config) {
+			    // called asynchronously if an error occurs
+			    // or server returns response with an error status.
 			});
-
         }
         else{
         	alert("Por favor ingrese correctamente los datos erróneos en el formulario");
