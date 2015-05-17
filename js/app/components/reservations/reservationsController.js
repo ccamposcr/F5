@@ -34,37 +34,42 @@ F5App.app.controller("reservationController", function ($scope, $rootScope,$time
 		 	cache : false
 		}
 
-		$http(req).success(function(data, status, headers, config) {
-			$timeout(function(){
-				$scope.reservations = $scope.sortReservations(angular.fromJson(data));
-			});
+		$http(req).success(function(response, status, headers, config) {
+			//$timeout(function(){
+				$scope.reservations = $scope.sortReservations(angular.fromJson(response));
+			//});
 			angular.element('#loading-modal').modal('hide');
 			angular.element('#dailyResevations').show();
 	
-		}).error(function(data, status, headers, config) {
+		}).error(function(response, status, headers, config) {
 		    // called asynchronously if an error occurs
 		    // or server returns response with an error status.
 		});
 	}
 
 	$scope.loadPitchsPagination = function (){
-		$.ajax({
 
-			type: 'POST',
+		var req = {
+			method: 'POST',
+			url: F5App.base_url + "getPitchByGroup",
+			headers: {
+			   	'Content-Type': 'application/x-www-form-urlencoded'
+			},
+		 	data: $.param( { group: $scope.getGroup() } ),
+		 	cache : false
+		}
 
-			url : F5App.base_url + "getPitchByGroup",
-
-			data: { group: $scope.getGroup() },
-
-			async : true,
-
-			success : function(response){
-				$timeout(function(){
-					$scope.pitchs = jQuery.parseJSON(response);
-				});
-				angular.element('#pitchs').show();
-			}
+		$http(req).success(function(response, status, headers, config) {
+			//$timeout(function(){
+				$scope.pitchs = angular.fromJson(response);
+			//});
+			angular.element('#pitchs').show();
+	
+		}).error(function(response, status, headers, config) {
+		    // called asynchronously if an error occurs
+		    // or server returns response with an error status.
 		});
+
 		$scope.pitchValue = angular.element('#pitch').val();
 	}
 
@@ -149,29 +154,23 @@ F5App.app.controller("reservationController", function ($scope, $rootScope,$time
 	}
 
 	$rootScope.setStateTemporaryReservation = function(data){
-		$.ajax({
 
-			type: 'POST',
+		var req = {
+			method: 'POST',
+			url: F5App.base_url + "setTemporaryReservationState",
+			headers: {
+			   	'Content-Type': 'application/x-www-form-urlencoded'
+			},
+		 	data: $.param( data ),
+		 	cache : false
+		}
 
-			url : F5App.base_url + "setTemporaryReservationState",
-
-			data: data,
-
-			async : true
+		$http(req).success(function(response, status, headers, config) {
+	
+		}).error(function(response, status, headers, config) {
+		    // called asynchronously if an error occurs
+		    // or server returns response with an error status.
 		});
-
-		/*data.team_id = ( data.team_id == '1' ) ? '2' : '1';
-
-		$.ajax({
-
-			type: 'POST',
-
-			url : F5App.base_url + "setTemporaryReservationState",
-
-			data: data,
-
-			async : true
-		});*/
 	}
 
 	$rootScope.isDateForBookingValid = function(){
@@ -212,20 +211,24 @@ F5App.app.controller("reservationController", function ($scope, $rootScope,$time
 	}
 
 	$rootScope.sendEmail = function(data){
-		$.ajax({
 
-			type: 'POST',
+		var req = {
+			method: 'POST',
+			url: F5App.base_url + "sendEmail",
+			headers: {
+			   	'Content-Type': 'application/x-www-form-urlencoded'
+			},
+		 	data: $.param( data ),
+		 	cache : false
+		}
 
-			url : F5App.base_url + "sendEmail",
-
-			data: data,
-
-			async : true,
-
-			success : function(response){
-				angular.element('#loading-modal').modal('hide');
-				$scope.loadReservations();
-			}
+		$http(req).success(function(response, status, headers, config) {
+			angular.element('#loading-modal').modal('hide');
+			$scope.loadReservations();
+	
+		}).error(function(response, status, headers, config) {
+		    // called asynchronously if an error occurs
+		    // or server returns response with an error status.
 		});
 	}
 

@@ -16,7 +16,7 @@ F5App.app.directive('loadDay', ['$document', function($document) {
   }]);
 
 
-F5App.app.directive('available', ['$document', function($document) {
+F5App.app.directive('available', ['$document','$http', function($document,$http) {
     function link(scope, element, attr) {
       element.on('click', function(event) {
         event.preventDefault();
@@ -24,63 +24,66 @@ F5App.app.directive('available', ['$document', function($document) {
         angular.element('#team_id').val(attr.team);
         angular.element('#reservation_time').val(angular.element(element).siblings('.reservation-time').attr('data-time'));
 
-        $.ajax({
+        var req = {
+			method: 'POST',
+			url: F5App.base_url + "getTemporaryReservationState",
+			headers: {
+			   	'Content-Type': 'application/x-www-form-urlencoded'
+			},
+		 	data: $.param( scope.getDataForTemporaryReservation() ),
+		 	cache : false
+		}
 
-			type: 'POST',
+		$http(req).success(function(response, status, headers, config) {
+			angular.element('#loading-modal').modal('hide');
+			var response = angular.fromJson(response);
+			var state = 0;
+			/*
+				States 
+				1: Other user is viewing the same cell
+				2. Other user is booking the same cell
+				3. Register is Expired, so you can book you reservation now
+				4. The BD didn't return anything data, so you can book you reservation now.
+				5. The reservation already exists
+			*/
 
-			url : F5App.base_url + "getTemporaryReservationState",
+			state = ( response.length == 0 ) ? '4' : response[0].state;
 
-			data: scope.getDataForTemporaryReservation(),
+			switch(state){
+				case '1':
+					angular.element('#reservation-watching-by-other-user-modal').modal('show');
+				break;
+				case '2':
+					angular.element('#reservation-in-use-by-other-user-modal').modal('show');
+				break;
+				case '3':
+				case '4':
+					var data = scope.getDataForTemporaryReservation();
+					data.state = '1'; 
+					scope.setStateTemporaryReservation(data);
 
-			async : true,
-
-			success : function(response){
-				angular.element('#loading-modal').modal('hide');
-				var response = jQuery.parseJSON(response);
-				var state = 0;
-				/*
-					States 
-					1: Other user is viewing the same cell
-					2. Other user is booking the same cell
-					3. Register is Expired, so you can book you reservation now
-					4. The BD didn't return anything data, so you can book you reservation now.
-					5. The reservation already exists
-				*/
-
-				state = ( response.length == 0 ) ? '4' : response[0].state;
-
-				switch(state){
-					case '1':
-						angular.element('#reservation-watching-by-other-user-modal').modal('show');
-					break;
-					case '2':
-						angular.element('#reservation-in-use-by-other-user-modal').modal('show');
-					break;
-					case '3':
-					case '4':
-						var data = scope.getDataForTemporaryReservation();
-						data.state = '1'; 
-						scope.setStateTemporaryReservation(data);
-
-						angular.element('#formReservationModal').modal('show');
-						var daySelected = angular.element('#calendar .days_row.active .day').index(angular.element('#calendar .days_row.active .day.active'));
-						angular.element('#reservationInfo').html(angular.element('#calendar .days_head .head:eq('+daySelected+')').text() + ' ' + angular.element('#day').val()+'/'+angular.element('#month').val()+'/'+angular.element('#year').val() + ' ' + angular.element(element).siblings('.reservation-time ').text());
-						if( scope.isAdminUser() ){
-							angular.element('#bookingOnLine').trigger('click');
-							scope.bookingType = 'bookingOnLine';
-						}
-					break;
-					case '5':
-						
-						//location.reload();
-						angular.element('#formReservationModal').modal('hide');
-						//angular.element('#already-reserved-modal').modal('show');
-						alert('Esta casilla ya fue reservada. Por favor escoja otra casilla para reservar');
-						scope.loadReservations();
-						
-					break;
-				}
+					angular.element('#formReservationModal').modal('show');
+					var daySelected = angular.element('#calendar .days_row.active .day').index(angular.element('#calendar .days_row.active .day.active'));
+					angular.element('#reservationInfo').html(angular.element('#calendar .days_head .head:eq('+daySelected+')').text() + ' ' + angular.element('#day').val()+'/'+angular.element('#month').val()+'/'+angular.element('#year').val() + ' ' + angular.element(element).siblings('.reservation-time ').text());
+					if( scope.isAdminUser() ){
+						angular.element('#bookingOnLine').trigger('click');
+						scope.bookingType = 'bookingOnLine';
+					}
+				break;
+				case '5':
+					
+					//location.reload();
+					angular.element('#formReservationModal').modal('hide');
+					//angular.element('#already-reserved-modal').modal('show');
+					alert('Esta casilla ya fue reservada. Por favor escoja otra casilla para reservar');
+					scope.loadReservations();
+					
+				break;
 			}
+	
+		}).error(function(response, status, headers, config) {
+		    // called asynchronously if an error occurs
+		    // or server returns response with an error status.
 		});
       });
 
@@ -92,42 +95,44 @@ F5App.app.directive('available', ['$document', function($document) {
 	}
   }]);
 
-F5App.app.directive('bookingOnLine', ['$document', function($document) {
+F5App.app.directive('bookingOnLine', ['$document','$http', function($document,$http) {
     function link(scope, element, attr) {
       element.on('click', function(event) {
         event.preventDefault();
         angular.element('#loading-modal').modal('show');
         var data = scope.getDataForTemporaryReservation();
 
-        //data.reservation_day = "29";
-        $.ajax({
+		var req = {
+			method: 'POST',
+			url: F5App.base_url + "checkIfReservationExist",
+			headers: {
+			   	'Content-Type': 'application/x-www-form-urlencoded'
+			},
+		 	data: $.param( data ),
+		 	cache : false
+		}
 
-			type: 'POST',
-
-			url : F5App.base_url + "checkIfReservationExist",
-
-			data: data,
-
-			async : true,
-
-			success : function(response){
-				angular.element('#loading-modal').modal('hide');
-				if(jQuery.parseJSON(response).length > 0){
-					data.state = '5';// Reservada
-					scope.setStateTemporaryReservation(data);
-					
-					//location.reload();
-					angular.element('#formReservationModal').modal('hide');
-					//angular.element('#already-reserved-modal').modal('show');
-					alert('Esta casilla ya fue reservada. Por favor escoja otra casilla para reservar');
-					scope.loadReservations();
-					
-				}
-				else{
-					data.state = '2'; 
-					scope.setStateTemporaryReservation(data);
-				}
+		$http(req).success(function(response, status, headers, config) {
+			angular.element('#loading-modal').modal('hide');
+			if(angular.fromJson(response).length > 0){
+				data.state = '5';// Reservada
+				scope.setStateTemporaryReservation(data);
+				
+				//location.reload();
+				angular.element('#formReservationModal').modal('hide');
+				//angular.element('#already-reserved-modal').modal('show');
+				alert('Esta casilla ya fue reservada. Por favor escoja otra casilla para reservar');
+				scope.loadReservations();
+				
 			}
+			else{
+				data.state = '2'; 
+				scope.setStateTemporaryReservation(data);
+			}
+	
+		}).error(function(response, status, headers, config) {
+		    // called asynchronously if an error occurs
+		    // or server returns response with an error status.
 		});
 
 
