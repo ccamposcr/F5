@@ -16,7 +16,7 @@ F5App.app.directive('loadDay', ['$document', function($document) {
   }]);
 
 
-F5App.app.directive('available', ['$document','$http', function($document,$http) {
+F5App.app.directive('available', ['$document','$http','$timeout', function($document,$http,$timeout) {
     function link(scope, element, attr) {
       element.on('click', function(event) {
         event.preventDefault();
@@ -66,8 +66,10 @@ F5App.app.directive('available', ['$document','$http', function($document,$http)
 					var daySelected = angular.element('#calendar .days_row.active .day').index(angular.element('#calendar .days_row.active .day.active'));
 					angular.element('#reservationInfo').html(angular.element('#calendar .days_head .head:eq('+daySelected+')').text() + ' ' + angular.element('#day').val()+'/'+angular.element('#month').val()+'/'+angular.element('#year').val() + ' ' + angular.element(element).siblings('.reservation-time ').text());
 					if( scope.isAdminUser() ){
-						angular.element('#bookingOnLine').trigger('click');
-						scope.bookingType = 'bookingOnLine';
+						$timeout(function(){
+							angular.element('#bookingOnLine').trigger('click');
+							scope.bookingType = 'bookingOnLine';
+						});
 					}
 				break;
 				case '5':
@@ -95,7 +97,7 @@ F5App.app.directive('available', ['$document','$http', function($document,$http)
 	}
   }]);
 
-F5App.app.directive('bookingOnLine', ['$document','$http', function($document,$http) {
+F5App.app.directive('bookingOnLine', ['$document','$http','$interval', function($document,$http, $interval) {
     function link(scope, element, attr) {
       element.on('click', function(event) {
         event.preventDefault();
@@ -139,15 +141,13 @@ F5App.app.directive('bookingOnLine', ['$document','$http', function($document,$h
 		var minutes = 09,
 			seconds = 60;
 
-		scope.timeInterval = setInterval(function(){
+		scope.timeInterval = $interval(function(){
 			seconds--;
-			scope.$apply(function(){
-				scope.time = '00:'+minutes+':'+seconds;
-			});
+			scope.time = '00:'+minutes+':'+seconds;
 
 			if( minutes == 0 && seconds == 0){
 				F5App.leaveSafelyPage = true;
-				clearInterval(scope.timeInterval);
+				$interval.cancel(scope.timeInterval);
 				location.reload();
 			}
 			
@@ -167,7 +167,7 @@ F5App.app.directive('bookingOnLine', ['$document','$http', function($document,$h
 	}
   }]);
 
-F5App.app.directive('reserveBtn', ['$document', function($document) {
+F5App.app.directive('reserveBtn', ['$document','$http', function($document,$http) {
     function link(scope, element, attr) {
       element.on('click', function(event) {
         event.preventDefault();
@@ -176,19 +176,19 @@ F5App.app.directive('reserveBtn', ['$document', function($document) {
         	//console.log('valido');
 
        		var data = scope.getDataForReservation();
-        	 $.ajax({
 
-				type: 'POST',
+       		var req = {
+				method: 'POST',
+				url: F5App.base_url + "createReservation",
+				headers: {
+				   	'Content-Type': 'application/x-www-form-urlencoded'
+				},
+			 	data: $.param( data ),
+			 	cache : false
+			}
 
-				url : F5App.base_url + "createReservation",
-
-				data: data,
-
-				async : true,
-
-				success : function(response){
-					
-					var dataTmp = scope.getDataForTemporaryReservation();
+			$http(req).success(function(response, status, headers, config) {
+				var dataTmp = scope.getDataForTemporaryReservation();
 					dataTmp.state = '5'; 
 					scope.setStateTemporaryReservation(dataTmp);
 
@@ -225,46 +225,54 @@ F5App.app.directive('reserveBtn', ['$document', function($document) {
 							result[i] = new Array();
 						}
 
-						$.ajax({
 
-							type: 'POST',
+						var req = {
+							method: 'POST',
+							url: F5App.base_url + "reserveAllWeeksSameDay",
+							headers: {
+							   	'Content-Type': 'application/x-www-form-urlencoded'
+							},
+						 	data: $.param( data ),
+						 	cache : false
+						}
 
-							url : F5App.base_url + "reserveAllWeeksSameDay",
+						$http(req).success(function(response, status, headers, config) {
+							angular.element('#formReservationModal').modal('hide');
+							angular.element('#set-pitch-all-weeks-modal').modal('hide');
+							//scope.loadReservations();
 
-							data: data,
+							var daysAvailables = angular.fromJson(response);
 
-							async : true,
-
-							success : function(response){
-								angular.element('#formReservationModal').modal('hide');
-								angular.element('#set-pitch-all-weeks-modal').modal('hide');
-								scope.loadReservations();
-
-								var daysAvailables = jQuery.parseJSON(response);
-
-								for(i = 0; i < data['dates'].length; i++){
-									result[i].push(data['dates'][i][0] + '/'+data['dates'][i][1] + '/' +  data['dates'][i][2]);
-									result[i].push(daysAvailables[i]); 
-								}
-
-								var dates_str = '\n';
-
-								for(var i = 0; i < result.length ; i++){
-									dates_str += result[i][0] +' -> ';
-									dates_str += (result[i][1]) ? 'Reservado correctamente' : 'NO Reservado (Ocupado)';
-									dates_str += '\n';
-								}
-								scope.sendEmail({	'email' : data.email,
-											'data_reservation' : 'Su reservación ha sido creada satisfactoriamente \nFecha: '
-											 + tmp.reservation_day +'/'+ tmp.reservation_month +'/'+ tmp.reservation_year + 
-											 '\nHora: '+ scope.getCorrectTimeReservation(data.reservation_time) + '\nNombre: '+ 
-											 data.name + ' '+ data.lastname +'\nTambién se han reservado la cancha fija los siguientes días de todas las semanas ' + dates_str
-										});
+							for(i = 0; i < data['dates'].length; i++){
+								result[i].push(data['dates'][i][0] + '/'+data['dates'][i][1] + '/' +  data['dates'][i][2]);
+								result[i].push(daysAvailables[i]); 
 							}
+
+							var dates_str = '\n';
+
+							for(var i = 0; i < result.length ; i++){
+								dates_str += result[i][0] +' -> ';
+								dates_str += (result[i][1]) ? 'Reservado correctamente' : 'NO Reservado (Ocupado)';
+								dates_str += '\n';
+							}
+							scope.sendEmail({	'email' : data.email,
+										'data_reservation' : 'Su reservación ha sido creada satisfactoriamente \nFecha: '
+										 + tmp.reservation_day +'/'+ tmp.reservation_month +'/'+ tmp.reservation_year + 
+										 '\nHora: '+ scope.getCorrectTimeReservation(data.reservation_time) + '\nNombre: '+ 
+										 data.name + ' '+ data.lastname +'\nTambién se han reservado la cancha fija los siguientes días de todas las semanas ' + dates_str
+									});
+				
+						}).error(function(response, status, headers, config) {
+						    // called asynchronously if an error occurs
+						    // or server returns response with an error status.
 						});
 					}
-				}
+		
+			}).error(function(response, status, headers, config) {
+			    // called asynchronously if an error occurs
+			    // or server returns response with an error status.
 			});
+
         }
         else{
         	//console.log('invalido');

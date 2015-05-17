@@ -223,7 +223,7 @@ F5App.app.controller("reservationController", function ($scope, $rootScope,$time
 		}
 
 		$http(req).success(function(response, status, headers, config) {
-			angular.element('#loading-modal').modal('hide');
+			//angular.element('#loading-modal').modal('hide');
 			$scope.loadReservations();
 	
 		}).error(function(response, status, headers, config) {

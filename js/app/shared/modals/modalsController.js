@@ -1,4 +1,4 @@
-F5App.app.controller("modalController", function ($scope, $rootScope){
+F5App.app.controller("modalController", function ($scope, $rootScope,$interval){
 	angular.element('#formReservationModal').on('hidden.bs.modal', function(){
 		
 		if( !$scope.successReservation ){
@@ -6,14 +6,14 @@ F5App.app.controller("modalController", function ($scope, $rootScope){
 			data.state = '3'; 
 			$scope.setStateTemporaryReservation(data);
 		}
-		$scope.$apply(function(){
+		//$scope.$apply(function(){
 			if( $scope.isAdminUser() ){
 				$scope.bookingType = 'bookingOnLine';
 			}
 			else{
 				$scope.bookingType = '';
 			}
-		});
+		//});
 		$scope.clearReservationForm();
 		angular.element('#bookingForm').show();
         angular.element('#carDataForm').hide();
@@ -94,7 +94,7 @@ F5App.app.controller("modalController", function ($scope, $rootScope){
 			$scope.carDataForm.cvv.$pristine = true;
 		}
 		
-		clearInterval($scope.timeInterval);
+		$interval.cancel($scope.timeInterval);
 		$scope.time = '00:10:00';
 	}
 
