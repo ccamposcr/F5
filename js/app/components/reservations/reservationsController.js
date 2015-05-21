@@ -150,6 +150,7 @@ F5App.app.controller("reservationController", function ($scope, $rootScope,$time
 		data.type_reservation = $rootScope.fields.typeReservation;
 		data.referee_required = (!!$scope.fields.setReferee) ? '1' : '0';
 		data.setPitchAllWeeks = !!$rootScope.fields.setPitchAllWeeks;
+		data.id_user = ( angular.element('#id_user').val() ) ? angular.element('#id_user').val() : '0';
 		return data;
 	}
 
