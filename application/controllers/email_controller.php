@@ -19,6 +19,12 @@ class Email_controller extends CI_Controller {
         $config['charset'] = 'iso-8859-1';
         
         $this->email->initialize($config);*/
+        $config['protocol'] = 'sendmail';
+        $config['mailpath'] = '/usr/sbin/sendmail';
+        $config['charset'] = 'iso-8859-1';
+        $config['wordwrap'] = TRUE;
+
+        $this->email->initialize($config);
     }
 
     public function sendEmail(){
@@ -28,7 +34,7 @@ class Email_controller extends CI_Controller {
 		$this->email->to($email); 
 		/*$this->email->cc($email); 
 		$this->email->bcc($email);*/
-		$this->email->subject('Su Reservacion se ha efectuado correctamente');
+		$this->email->subject('Su reservación se ha efectuado correctamente');
 		$this->email->message($data_reservation);	
 		$this->email->send();
         echo $this->email->print_debugger();

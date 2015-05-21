@@ -46,6 +46,7 @@
     <script src="<?php echo base_url(); ?>js/app/components/gallery/galleryController.js"></script>
     <script src="<?php echo base_url(); ?>js/app/components/reservations/reservationsController.js"></script>
 	<script src="<?php echo base_url(); ?>js/app/components/reservations/reservationsDirectives.js"></script>
+	<script src="<?php echo base_url(); ?>js/app/components/reservations/reservationsService.js"></script>
     
     </body>
 </html>
