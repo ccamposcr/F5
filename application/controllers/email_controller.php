@@ -29,7 +29,7 @@ class Email_controller extends CI_Controller {
     public function sendEmail(){
     	$email = ( isset($_POST['email']) ) ? strip_tags($_POST['email']) : '';
     	$data_reservation = ( isset($_POST['data_reservation']) ) ? strip_tags($_POST['data_reservation']) : '';
-        $this->email->from('reserva@f5.cr');
+        $this->email->from('reserva@f5.cr', 'Reservaciones F5');
 		$this->email->to($email); 
 		$this->email->cc('reserva@f5.cr'); 
 		$this->email->subject('Su reservación se ha efectuado correctamente');
