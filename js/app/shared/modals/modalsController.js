@@ -27,9 +27,6 @@ F5App.app.controller("modalController", function ($scope, $rootScope,$interval){
 
 	angular.element('#formReservationModal').on('show.bs.modal', function(){
 		$scope.successReservation = false;
-		if( $scope.fields.typeReservationSelected == 'reto' ){
-			$scope.fields.typeReservation = 2;
-		}
 	});
 
 	angular.element('#search-modal').on('hidden.bs.modal', function(){
