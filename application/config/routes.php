@@ -91,7 +91,7 @@ $route['(:any)/verifyLogin'] = 'login_controller/verify';
 //Pages Routes
 $route['escazu/galeria'] = 'pages_controller/escazu_gallery';
 $route['desamparados/galeria'] = 'pages_controller/desamparados_gallery';
-$route['(:any)/accessDenied'] = 'pages_controller/access_denied';
+$route['(:any)/accesoDenegado'] = 'pages_controller/access_denied';
 $route['logout'] = 'admin_controller/logout';
 
 

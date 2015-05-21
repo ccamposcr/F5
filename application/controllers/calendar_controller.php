@@ -100,7 +100,7 @@ class Calendar_controller extends CI_Controller {
             $groupManager = $session_data['groupManager'];
 
             if( $this->api_model->getGroup($this->uri->segment(1))[0]->id != $groupManager && $rol == $this->api_model->getIdRol('Dependiente')[0]->id){
-                redirect($this->uri->segment(1) . '/accessDenied');
+                redirect($this->uri->segment(1) . '/accesoDenegado');
             }
 
 
