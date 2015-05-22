@@ -196,7 +196,6 @@
                                 <dd class="contentInfoForm">
                                     <label>A&ntilde;o Expiraci&oacute;n</label>
                                     <select ng-model="fields.expire_year" name="expire_year" required>
-                                        <option value="2014">2014</option>
                                         <option value="2015">2015</option>
                                         <option value="2016">2016</option>
                                         <option value="2017">2017</option>
@@ -213,9 +212,14 @@
                                 </dd>
                                 <dd class="contentInfoForm">
                                     <label>C&oacute;digo de Validaci&oacute;n (cvv)</label>
-                                    <input type="text" class="form-control" ng-model="fields.cvv" name="cvv" required ng-pattern="/^\d+$/"/>
+                                    <input type="text" class="form-control" ng-model="fields.cvv" name="cvv" required ng-minlength="3" ng-maxlength="4" ng-pattern="/^\d+$/"/>
                                     <span class="error" ng-show="carDataForm.cvv.$error.required && carDataForm.cvv.$dirty">Por favor ingrese su ccv</span>
                                     <span class="error" ng-show="carDataForm.cvv.$invalid && carDataForm.cvv.$dirty">Por favor ingrese &uacute;nicamente n&uacute;meros</span>
+                                    <span class="error" ng-show="(carDataForm.cvv.$error.minlength || carDataForm.cvv.$error.maxlength) && carDataForm.cvv.$dirty">Por favor ingrese min&iacute;mo 3 o m&aacute;ximo 4 n&uacute;meros</span>
+                                </dd>
+                                <dd ng-if="!!fields.response_error" class="contentInfoForm">
+                                    <span class="error">Error: Por favor corriga los siguientes campos:</span>
+                                    <span class="error" ng-repeat="error in fields.response_error">{{error.field}} {{error.issue}}</span>
                                 </dd>
                             </dl>
                         </form>
@@ -240,6 +244,7 @@
                 <input for="bookingForm" type="submit" class="btn btn-primary insertCardData" ng-if="bookingType == 'bookingOnLine' && fields.stepReservation == 1" value="Continuar" ng-disabled="bookingForm.$invalid"/>
                 <input for="bookingForm" type="submit" class="btn btn-primary returnToFormReservation" ng-if="bookingType == 'bookingOnLine' && fields.stepReservation == 2" value="Regresar"/>
                 <input for="bookingForm" type="submit" class="btn btn-primary reserveAndPayBtn" ng-if="bookingType == 'bookingOnLine' && fields.stepReservation == 2" value="Reservar" ng-disabled="carDataForm.$invalid"/>
+                <input for="bookingForm" type="submit" class="hide reserveBtn" id="reserveAfterPayBtn" ng-if="bookingType == 'bookingOnLine' && fields.stepReservation == 2">
                 <?php
                   }
                 ?>
@@ -306,6 +311,34 @@
               </div>
               <div class="modal-body">
                 <p>Cargando ...</p>
+                <img src="<?php echo base_url(); ?>img/loading.gif" width="127" height="128"/>
+              </div>
+            </div>
+          </div>
+        </div>
+<!-- sending-email -->
+        <div class="modal fade loading" id="sending-email-modal">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">F5 Reservaciones</h4>
+              </div>
+              <div class="modal-body">
+                <p>Enviando email, por favor no cierre esta ventana ...</p>
+                <img src="<?php echo base_url(); ?>img/loading.gif" width="127" height="128"/>
+              </div>
+            </div>
+          </div>
+        </div>
+<!-- processing-credit-card-modal -->
+        <div class="modal fade loading" id="processing-card-modal">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">F5 Reservaciones</h4>
+              </div>
+              <div class="modal-body">
+                <p>Procesando Tarjeta, por favor no cierre esta ventana ...</p>
                 <img src="<?php echo base_url(); ?>img/loading.gif" width="127" height="128"/>
               </div>
             </div>
@@ -384,7 +417,7 @@
                       <div class="divContentShowInfoModal"><label>Requiere &Aacute;rbitro:</label><span> {{(completeInfo[0].referee_required == 1) ? 'S&iacute;' : 'No'}}</span></div>
                       <div class="divContentShowInfoModal"><label>Fecha de Reservaci&oacute;n:</label><span> {{completeInfo[0].reservation_day}}/{{completeInfo[0].reservation_month}}/{{completeInfo[0].reservation_year}}</span></div>
                       <div class="divContentShowInfoModal"><label>Hora de Reservaci&oacute;n:</label><span> {{getCorrectTimeReservation(completeInfo[0].reservation_time)}}</span></div>
-                      <div class="divContentShowInfoModal"><label>Usuario del sistema:</label><span> {{(completeInfo[0].admin_user) ? completeInfo[0].admin_user : 'An&oacute;nimo' }}</span></div>
+                      <div class="divContentShowInfoModal"><label>Usuario del sistema:</label><span> {{(completeInfo[0].admin_user) ? completeInfo[0].admin_user : 'N/A' }}</span></div>
                       <div class="divContentShowInfoModal"><label>Total Cobrado:</label><span> {{completeInfo[0].reservation_price}}</span></div>
                       <button ng-if="isAdminUser() && getRol() == isRol('Admin')" type="button" class="btn btn-warning delete" data-dismiss="modal">Eliminar Reservaci&oacute;n</button>
                   </div>

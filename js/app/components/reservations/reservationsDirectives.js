@@ -202,9 +202,9 @@ F5App.app.directive('reserveBtn', ['$document','$http', function($document,$http
 						
 						angular.element('#formReservationModal').modal('hide');
 						scope.sendEmail({	'email' : data.email,
-											'data_reservation' : 'Su reservación ha sido creada satisfactoriamente \nFecha: '
+											'data_reservation' : 'Su reservación ha sido creada satisfactoriamente <br>Fecha: '
 											 + data.reservation_day +'/'+ data.reservation_month +'/'+ data.reservation_year + 
-											 '\nHora: '+ scope.getCorrectTimeReservation(data.reservation_time) +'\nNombre: '+
+											 '<br>Hora: '+ scope.getCorrectTimeReservation(data.reservation_time) +'<br>Nombre: '+
 											 data.name + ' '+ data.lastname
 										});
 						//scope.loadReservations();					
@@ -248,18 +248,18 @@ F5App.app.directive('reserveBtn', ['$document','$http', function($document,$http
 								result[i].push(daysAvailables[i]); 
 							}
 
-							var dates_str = '\n';
+							var dates_str = '<br>';
 
 							for(var i = 0; i < result.length ; i++){
 								dates_str += result[i][0] +' -> ';
 								dates_str += (result[i][1]) ? 'Reservado correctamente' : 'NO Reservado (Ocupado)';
-								dates_str += '\n';
+								dates_str += '<br>';
 							}
 							scope.sendEmail({	'email' : data.email,
-										'data_reservation' : 'Su reservación ha sido creada satisfactoriamente \nFecha: '
+										'data_reservation' : 'Su reservación ha sido creada satisfactoriamente <br>Fecha: '
 										 + tmp.reservation_day +'/'+ tmp.reservation_month +'/'+ tmp.reservation_year + 
-										 '\nHora: '+ scope.getCorrectTimeReservation(data.reservation_time) + '\nNombre: '+ 
-										 data.name + ' '+ data.lastname +'\nTambién se han reservado la cancha fija los siguientes días de todas las semanas ' + dates_str
+										 '<br />Hora: '+ scope.getCorrectTimeReservation(data.reservation_time) + '<br>Nombre: '+ 
+										 data.name + ' '+ data.lastname +'<br>También se han reservado la cancha fija los siguientes días de todas las semanas ' + dates_str
 									});
 				
 						}).error(function(response, status, headers, config) {
@@ -587,13 +587,13 @@ F5App.app.directive('returnToFormReservation', ['$document', function($document)
 	}
   }]);
 
-F5App.app.directive('reserveAndPayBtn', ['$document','$http', function($document,$http) {
+F5App.app.directive('reserveAndPayBtn', ['$document','$http','$timeout', function($document,$http,$timeout) {
     function link(scope, element, attr) {
       element.on('click', function(event) {
         event.preventDefault();
         if( scope.carDataForm.$valid ){
-        	alert('valid');
-
+        	//alert('valid');
+        	angular.element('#processing-card-modal').modal('show');
         	var req = {
 				method: 'POST',
 				url: F5App.base_url + "acceptCreditCardPayment",
@@ -605,7 +605,7 @@ F5App.app.directive('reserveAndPayBtn', ['$document','$http', function($document
 					type : scope.fields.type, 
         			expire_month : scope.fields.expire_month,
         			expire_year : scope.fields.expire_year,
-        			cvv2 : scope.fields.ccv,
+        			cvv : scope.fields.cvv,
         			first_name : scope.fields.name,
         			last_name : scope.fields.lastname1,
         			total : '1'
@@ -614,8 +614,18 @@ F5App.app.directive('reserveAndPayBtn', ['$document','$http', function($document
 			}
 
 			$http(req).success(function(response, status, headers, config) {
-				angular.element('#loading-modal').modal('hide');
-		
+				angular.element('#processing-card-modal').modal('hide');
+				console.log(response);
+				if( response.state == "approved" ){
+					angular.element('#formReservationModal').modal('hide');
+					$timeout(function(){
+							angular.element('#reserveAfterPayBtn').trigger('click');
+					});
+				}
+				else{
+					scope.fields.response_error = response.details;
+				}
+				
 			}).error(function(response, status, headers, config) {
 			    // called asynchronously if an error occurs
 			    // or server returns response with an error status.

@@ -217,7 +217,7 @@ F5App.app.controller("reservationController", function ($scope, $rootScope,$time
 	}
 
 	$rootScope.sendEmail = function(data){
-
+		angular.element('#sending-email-modal').modal('show');
 		var req = {
 			method: 'POST',
 			url: F5App.base_url + "sendEmail",
@@ -230,6 +230,7 @@ F5App.app.controller("reservationController", function ($scope, $rootScope,$time
 
 		$http(req).success(function(response, status, headers, config) {
 			//angular.element('#loading-modal').modal('hide');
+			angular.element('#sending-email-modal').modal('hide');
 			$scope.loadReservations();
 	
 		}).error(function(response, status, headers, config) {
