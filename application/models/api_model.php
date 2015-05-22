@@ -70,8 +70,11 @@ class Api_model extends CI_MODEL
     function testSMS(){
         //$CI = &get_instance();
         //$this->smsdb = $CI->load->database('smsDB', TRUE);
-        $this->smsdb = $this->load->database('smsDB',true);
-        $query = $this->smsdb->query("INSERT INTO cta_distua(user, text, phone) VALUES (F5,Test,83180160)");
+        $smsdb = $this->load->database('smsDB',true);
+        var_dump( $smsdb);
+        //$query = $smsdb->query("INSERT INTO cta_distua(user, text, phone) VALUES (F5,Test,83180160)");
+        //echo $query->result();
+
        // return $query->result();
         //return "{type:'Fiat', model:500, color:'white'}";
     }

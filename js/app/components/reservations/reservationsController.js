@@ -137,7 +137,8 @@ F5App.app.controller("reservationController", function ($scope, $rootScope,$time
 					group_id : $scope.getGroup(), 
 					pitch_id : $scope.getPitch(),
 					team_id : angular.element('#team_id').val(),
-					reservation_time : angular.element('#reservation_time').val()
+					reservation_time : angular.element('#reservation_time').val(),
+					id_user : ( angular.element('#id_user').val() ) ? angular.element('#id_user').val() : '0'
 				};
 	}
 
@@ -150,7 +151,7 @@ F5App.app.controller("reservationController", function ($scope, $rootScope,$time
 		data.type_reservation = $rootScope.fields.typeReservation;
 		data.referee_required = (!!$scope.fields.setReferee) ? '1' : '0';
 		data.setPitchAllWeeks = !!$rootScope.fields.setPitchAllWeeks;
-		data.id_user = ( angular.element('#id_user').val() ) ? angular.element('#id_user').val() : '0';
+		//data.id_user = ( angular.element('#id_user').val() ) ? angular.element('#id_user').val() : '0';
 		return data;
 	}
 
