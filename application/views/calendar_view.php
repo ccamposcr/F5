@@ -421,7 +421,7 @@
                       <div class="divContentShowInfoModal"><label>Total Cobrado:</label><span> {{completeInfo[0].reservation_price}}</span></div>
                       
                       <div ng-if="completeInfo[0].id_group_all_weeks != '0'" class="divContentShowInfoModal">
-                        <label for="deleteAllCccurrences">Esta reservaci&oacute;n forma parte de una reserva de cancha fija, seleccione si desea eliminar las dem&aacute;s ocurrencias de cancha fija.</label>
+                        <span>Esta reservaci&oacute;n forma parte de una reserva de cancha fija, seleccione si desea eliminar las dem&aacute;s ocurrencias de cancha fija.</span>
                         <input type="checkbox" ng-model="fields.deleteAllCccurrences" name="deleteAllCccurrences" />
                       </div>
                       <div class="divContentShowInfoModal">
