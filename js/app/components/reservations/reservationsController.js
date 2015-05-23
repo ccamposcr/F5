@@ -3,6 +3,7 @@ F5App.app.controller("reservationController", function ($scope, $rootScope,$time
    $scope.times = ['08:00 a.m.','09:00 a.m.','10:00 a.m.','11:00 a.m.','12:00 m.d','01:00 p.m.','02:00 p.m.','03:00 p.m.','04:00 p.m.','05:00 p.m.','06:00 p.m.','07:00 p.m.','08:00 p.m.','09:00 p.m.','10:00 p.m.','11:00 p.m.'];
 	//var path = ( window.location.pathname.replace('/','').replace(/\/$/, '').split('/').length <= 2 ) ? './' : '../';
    $scope.roles = {'Admin':'1','Dependiente':'2'};
+   
    $rootScope.loadReservations = function (){
    		angular.element('#loading-modal').modal('show');
    		angular.element('#dailyResevations').hide();
@@ -202,6 +203,7 @@ F5App.app.controller("reservationController", function ($scope, $rootScope,$time
 			reservation_month,
 			reservation_year;
 
+		data.push([angular.element('#day').val(),angular.element('#month').val(),angular.element('#year').val()]);	
 		for(var i = range; i<= daysPerYear ; i++){
 			var from = new Date(angular.element('#year').val(),angular.element('#month').val() - 1,angular.element('#day').val());
 			var to = new Date(angular.element('#year').val(),angular.element('#month').val() - 1,angular.element('#day').val());

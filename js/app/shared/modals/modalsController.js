@@ -34,6 +34,10 @@ F5App.app.controller("modalController", function ($scope, $rootScope,$interval){
 		$scope.searchText = '';
 	});
 
+	angular.element('#show-info-modal').on('hidden.bs.modal', function(){
+		$scope.fields.deleteAllCccurrences = '';
+	});
+
 	var onCancel = function(){
 		angular.element('#formReservationModal').modal('hide');
 	}

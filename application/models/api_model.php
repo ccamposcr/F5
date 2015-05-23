@@ -53,13 +53,17 @@ class Api_model extends CI_MODEL
         return $query->result();
     }
 
-    function createReservation($team_id,$reservation_time,$reservation_year,$reservation_month,$reservation_day,$group_id,$pitch_id,$name,$lastname,$phone,$email,$type_reservation,$referee_required,$reservation_price,$id_user){
-        $this->db->query("INSERT INTO t_reservations(name, lastname, phone, email, team_id, type_reservation, referee_required, reservation_time, reservation_year, reservation_month, reservation_day, reservation_price, pitch_id, group_id, active, id_user) 
-            VALUES (".$this->db->escape($name).",".$this->db->escape($lastname).",".$this->db->escape($phone).",".$this->db->escape($email).",".$this->db->escape($team_id).",".$this->db->escape($type_reservation).",".$this->db->escape($referee_required).",".$this->db->escape($reservation_time).",".$this->db->escape($reservation_year).",".$this->db->escape($reservation_month).",".$this->db->escape($reservation_day).",".$this->db->escape($reservation_price).",".$this->db->escape($pitch_id).",".$this->db->escape($group_id).",'1',".$this->db->escape($id_user).")");
+    function createReservation($team_id,$reservation_time,$reservation_year,$reservation_month,$reservation_day,$group_id,$pitch_id,$name,$lastname,$phone,$email,$type_reservation,$referee_required,$reservation_price,$id_user,$id_group_all_weeks){
+        $this->db->query("INSERT INTO t_reservations(name, lastname, phone, email, team_id, type_reservation, referee_required, reservation_time, reservation_year, reservation_month, reservation_day, reservation_price, pitch_id, group_id, active, id_user, id_group_all_weeks) 
+            VALUES (".$this->db->escape($name).",".$this->db->escape($lastname).",".$this->db->escape($phone).",".$this->db->escape($email).",".$this->db->escape($team_id).",".$this->db->escape($type_reservation).",".$this->db->escape($referee_required).",".$this->db->escape($reservation_time).",".$this->db->escape($reservation_year).",".$this->db->escape($reservation_month).",".$this->db->escape($reservation_day).",".$this->db->escape($reservation_price).",".$this->db->escape($pitch_id).",".$this->db->escape($group_id).",'1',".$this->db->escape($id_user).",".$this->db->escape($id_group_all_weeks).")");
     }
 
     function setInactiveReservation($team_id,$reservation_time,$reservation_year,$reservation_month,$reservation_day,$group_id,$pitch_id){
         $this->db->query("UPDATE t_reservations SET active = '0' WHERE team_id = ".$this->db->escape($team_id)." AND reservation_time = ".$this->db->escape($reservation_time)." AND reservation_year = ".$this->db->escape($reservation_year)." AND reservation_month = ".$this->db->escape($reservation_month)." AND reservation_day = ".$this->db->escape($reservation_day)." AND group_id = ".$this->db->escape($group_id)." AND pitch_id = ".$this->db->escape($pitch_id));
+    }
+
+    function setInactiveReservationAllWeeks($id_group_all_weeks){
+        $this->db->query("UPDATE t_reservations SET active = '0' WHERE id_group_all_weeks = ".$this->db->escape($id_group_all_weeks));
     }
 
     function getClientsData(){
@@ -72,8 +76,8 @@ class Api_model extends CI_MODEL
         //$this->smsdb = $CI->load->database('smsDB', TRUE);
         $smsdb = $this->load->database('smsDB',true);
         var_dump( $smsdb);
-        //$query = $smsdb->query("INSERT INTO cta_distua(user, text, phone) VALUES (F5,Test,83180160)");
-        //echo $query->result();
+        $query = $smsdb->query("INSERT INTO cta_distua(user, text, phone) VALUES (F5,Test,83180160)");
+        echo $query->result();
 
        // return $query->result();
         //return "{type:'Fiat', model:500, color:'white'}";

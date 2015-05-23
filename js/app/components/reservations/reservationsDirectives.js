@@ -177,29 +177,28 @@ F5App.app.directive('reserveBtn', ['$document','$http', function($document,$http
 
        		var data = scope.getDataForReservation();
 
-       		var req = {
-				method: 'POST',
-				url: F5App.base_url + "createReservation",
-				headers: {
-				   	'Content-Type': 'application/x-www-form-urlencoded'
-				},
-			 	data: $.param( data ),
-			 	cache : false
-			}
+			if(!data.setPitchAllWeeks){
+				//angular.element('#successful-reserved-modal').modal('show');
+				//alert("Su reservación ha sido creada satisfactoriamente");
 
-			$http(req).success(function(response, status, headers, config) {
-				var dataTmp = scope.getDataForTemporaryReservation();
-					dataTmp.state = '5'; 
-					scope.setStateTemporaryReservation(dataTmp);
+				var req = {
+					method: 'POST',
+					url: F5App.base_url + "createReservation",
+					headers: {
+					   	'Content-Type': 'application/x-www-form-urlencoded'
+					},
+				 	data: $.param( data ),
+				 	cache : false
+				}
 
-					//location.reload();
-					scope.$parent.successReservation = true;
-					
+				$http(req).success(function(response, status, headers, config) {
+					var dataTmp = scope.getDataForTemporaryReservation();
+						dataTmp.state = '5'; 
+						scope.setStateTemporaryReservation(dataTmp);
 
-					if(!data.setPitchAllWeeks){
-						//angular.element('#successful-reserved-modal').modal('show');
-						//alert("Su reservación ha sido creada satisfactoriamente");
-						
+						//location.reload();
+						//scope.$parent.successReservation = true;
+
 						angular.element('#formReservationModal').modal('hide');
 						scope.sendEmail({	'email' : data.email,
 											'data_reservation' : 'Su reservación ha sido creada satisfactoriamente <br>Fecha: '
@@ -207,71 +206,71 @@ F5App.app.directive('reserveBtn', ['$document','$http', function($document,$http
 											 '<br>Hora: '+ scope.getCorrectTimeReservation(data.reservation_time) +'<br>Nombre: '+
 											 data.name + ' '+ data.lastname
 										});
-						//scope.loadReservations();					
+						//scope.loadReservations();	
+
+				}).error(function(response, status, headers, config) {
+				    // called asynchronously if an error occurs
+				    // or server returns response with an error status.
+				});				
+			}
+			else{
+				angular.element('#loading-modal').modal('hide');
+				angular.element('#set-pitch-all-weeks-modal').modal('show');
+				var tmp = {
+					reservation_day : data.reservation_day,
+					reservation_month : data.reservation_month,
+					reservation_year : data.reservation_year
+				};
+
+				data['dates'] = scope.calculateDayPerWeek();
+				var result = new Array();
+
+				for(var i = 0; i < data['dates'].length ; i++){
+					result[i] = new Array();
+				}
+
+
+				var req = {
+					method: 'POST',
+					url: F5App.base_url + "reserveAllWeeksSameDay",
+					headers: {
+					   	'Content-Type': 'application/x-www-form-urlencoded'
+					},
+				 	data: $.param( data ),
+				 	cache : false
+				}
+
+				$http(req).success(function(response, status, headers, config) {
+					angular.element('#formReservationModal').modal('hide');
+					angular.element('#set-pitch-all-weeks-modal').modal('hide');
+					//scope.loadReservations();
+
+					var daysAvailables = angular.fromJson(response);
+
+					for(i = 0; i < data['dates'].length; i++){
+						result[i].push(data['dates'][i][0] + '/'+data['dates'][i][1] + '/' +  data['dates'][i][2]);
+						result[i].push(daysAvailables[i]); 
 					}
-					else{
-						angular.element('#loading-modal').modal('hide');
-						angular.element('#set-pitch-all-weeks-modal').modal('show');
-						var tmp = {
-							reservation_day : data.reservation_day,
-							reservation_month : data.reservation_month,
-							reservation_year : data.reservation_year
-						};
 
-						data['dates'] = scope.calculateDayPerWeek();
-						var result = new Array();
+					var dates_str = '<br>';
 
-						for(var i = 0; i < data['dates'].length ; i++){
-							result[i] = new Array();
-						}
-
-
-						var req = {
-							method: 'POST',
-							url: F5App.base_url + "reserveAllWeeksSameDay",
-							headers: {
-							   	'Content-Type': 'application/x-www-form-urlencoded'
-							},
-						 	data: $.param( data ),
-						 	cache : false
-						}
-
-						$http(req).success(function(response, status, headers, config) {
-							angular.element('#formReservationModal').modal('hide');
-							angular.element('#set-pitch-all-weeks-modal').modal('hide');
-							//scope.loadReservations();
-
-							var daysAvailables = angular.fromJson(response);
-
-							for(i = 0; i < data['dates'].length; i++){
-								result[i].push(data['dates'][i][0] + '/'+data['dates'][i][1] + '/' +  data['dates'][i][2]);
-								result[i].push(daysAvailables[i]); 
-							}
-
-							var dates_str = '<br>';
-
-							for(var i = 0; i < result.length ; i++){
-								dates_str += result[i][0] +' -> ';
-								dates_str += (result[i][1]) ? 'Reservado correctamente' : 'NO Reservado (Ocupado)';
-								dates_str += '<br>';
-							}
-							scope.sendEmail({	'email' : data.email,
-										'data_reservation' : 'Su reservación ha sido creada satisfactoriamente <br>Fecha: '
-										 + tmp.reservation_day +'/'+ tmp.reservation_month +'/'+ tmp.reservation_year + 
-										 '<br />Hora: '+ scope.getCorrectTimeReservation(data.reservation_time) + '<br>Nombre: '+ 
-										 data.name + ' '+ data.lastname +'<br>También se han reservado la cancha fija los siguientes días de todas las semanas ' + dates_str
-									});
-				
-						}).error(function(response, status, headers, config) {
-						    // called asynchronously if an error occurs
-						    // or server returns response with an error status.
-						});
+					for(var i = 0; i < result.length ; i++){
+						dates_str += result[i][0] +' -> ';
+						dates_str += (result[i][1]) ? 'Reservado correctamente' : 'NO Reservado (Ocupado)';
+						dates_str += '<br>';
 					}
+					scope.sendEmail({	'email' : data.email,
+								'data_reservation' : 'Su reservación ha sido creada satisfactoriamente <br>Fecha: '
+								 + tmp.reservation_day +'/'+ tmp.reservation_month +'/'+ tmp.reservation_year + 
+								 '<br />Hora: '+ scope.getCorrectTimeReservation(data.reservation_time) + '<br>Nombre: '+ 
+								 data.name + ' '+ data.lastname +'<br>También se han reservado la cancha fija los siguientes días de todas las semanas ' + dates_str
+							});
 		
-			}).error(function(response, status, headers, config) {
-			    // called asynchronously if an error occurs
-			    // or server returns response with an error status.
-			});
+				}).error(function(response, status, headers, config) {
+				    // called asynchronously if an error occurs
+				    // or server returns response with an error status.
+				});
+			}
 
         }
         else{
@@ -310,9 +309,9 @@ F5App.app.directive('showInfo', ['$document','$timeout','$http', function($docum
 
 		$http(req).success(function(response, status, headers, config) {
 			angular.element('#loading-modal').modal('hide');
-			$timeout(function(){
-				scope.$parent.$parent.$parent.$parent.$parent.completeInfo = angular.fromJson(response);
-			});
+			//$timeout(function(){
+				scope.$root.completeInfo = angular.fromJson(response);
+			//});
 			angular.element('#show-info-modal').modal('show');
 	
 		}).error(function(response, status, headers, config) {
@@ -340,25 +339,48 @@ F5App.app.directive('delete', ['$document','$http', function($document,$http) {
 			data.state = '3'; 
 			scope.setStateTemporaryReservation(data);
 
-        	 var req = {
-				method: 'POST',
-				url: F5App.base_url + "setInactiveReservation",
-				headers: {
-				   	'Content-Type': 'application/x-www-form-urlencoded'
-				},
-			 	data: $.param( data ),
-			 	cache : false
-			}
+			if(!scope.fields.deleteAllCccurrences){
+	        	var req = {
+					method: 'POST',
+					url: F5App.base_url + "setInactiveReservation",
+					headers: {
+					   	'Content-Type': 'application/x-www-form-urlencoded'
+					},
+				 	data: $.param( data ),
+				 	cache : false
+				}
 
-			$http(req).success(function(response, status, headers, config) {
-				//alert('Registro Eliminado');
-				angular.element('#loading-modal').modal('hide');
-				scope.loadReservations();
-		
-			}).error(function(response, status, headers, config) {
-			    // called asynchronously if an error occurs
-			    // or server returns response with an error status.
-			});
+				$http(req).success(function(response, status, headers, config) {
+					//alert('Registro Eliminado');
+					angular.element('#loading-modal').modal('hide');
+					scope.loadReservations();
+			
+				}).error(function(response, status, headers, config) {
+				    // called asynchronously if an error occurs
+				    // or server returns response with an error status.
+				});
+			}else{
+				//console.log(scope.completeInfo[0].id_group_all_weeks);
+				var req = {
+					method: 'POST',
+					url: F5App.base_url + "setInactiveReservationAllWeeks",
+					headers: {
+					   	'Content-Type': 'application/x-www-form-urlencoded'
+					},
+				 	data: $.param( { id_group_all_weeks: scope.completeInfo[0].id_group_all_weeks } ),
+				 	cache : false
+				}
+
+				$http(req).success(function(response, status, headers, config) {
+					//alert('Registro Eliminado');
+					angular.element('#loading-modal').modal('hide');
+					scope.loadReservations();
+			
+				}).error(function(response, status, headers, config) {
+				    // called asynchronously if an error occurs
+				    // or server returns response with an error status.
+				});
+			}
         }
         else{
         	angular.element('#loading-modal').modal('hide');
@@ -383,9 +405,9 @@ F5App.app.directive('delete', ['$document','$http', function($document,$http) {
 		$http.get(F5App.base_url + "getClientsData").
 		  success(function(data, status, headers, config) {
 		    angular.element('#loading-modal').modal('hide');
-		 	$timeout(function(){
-				scope.$parent.clients = angular.fromJson(data);
-			});
+		 	//$timeout(function(){
+				scope.$root.clients = angular.fromJson(data);
+			//});
 			angular.element('#search-modal').modal('show');
 			scope.$parent.selectUserMode = false;
 		  }).
@@ -411,9 +433,9 @@ F5App.app.directive('delete', ['$document','$http', function($document,$http) {
         $http.get(F5App.base_url + "getClientsData").
 		  success(function(data, status, headers, config) {
 		    angular.element('#loading-modal').modal('hide');
-		 	$timeout(function(){
-				scope.$parent.clients = angular.fromJson(data);
-			});
+		 	//$timeout(function(){
+				scope.$root.clients = angular.fromJson(data);
+			//});
 			angular.element('#search-modal').modal('show');
 			scope.$parent.selectUserMode = true;
 		  }).
@@ -529,9 +551,9 @@ F5App.app.directive('delete', ['$document','$http', function($document,$http) {
 				result[i].push(data['dates'][i][0] + '/'+data['dates'][i][1] + '/' +  data['dates'][i][2]);
 				result[i].push(daysAvailables[i]); 
 			}
-			$timeout(function(){
-				scope.$parent.$parent.$parent.daysAvailables = result;
-			});
+			//$timeout(function(){
+				scope.$root.daysAvailables = result;
+			//});
 			angular.element('#loading-modal').modal('hide');
 			angular.element('#check-availability-modal').modal('show');
 

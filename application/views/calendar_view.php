@@ -419,7 +419,14 @@
                       <div class="divContentShowInfoModal"><label>Hora de Reservaci&oacute;n:</label><span> {{getCorrectTimeReservation(completeInfo[0].reservation_time)}}</span></div>
                       <div class="divContentShowInfoModal"><label>Usuario del sistema:</label><span> {{(completeInfo[0].admin_user) ? completeInfo[0].admin_user : 'N/A' }}</span></div>
                       <div class="divContentShowInfoModal"><label>Total Cobrado:</label><span> {{completeInfo[0].reservation_price}}</span></div>
-                      <button ng-if="isAdminUser() && getRol() == isRol('Admin')" type="button" class="btn btn-warning delete" data-dismiss="modal">Eliminar Reservaci&oacute;n</button>
+                      
+                      <div ng-if="completeInfo[0].id_group_all_weeks != '0'" class="divContentShowInfoModal">
+                        <label for="deleteAllCccurrences">Esta reservaci&oacute;n forma parte de una reserva de cancha fija, seleccione si desea eliminar las dem&aacute;s ocurrencias de cancha fija.</label>
+                        <input type="checkbox" ng-model="fields.deleteAllCccurrences" name="deleteAllCccurrences" />
+                      </div>
+                      <div class="divContentShowInfoModal">
+                        <button ng-if="isAdminUser() && getRol() == isRol('Admin')" type="button" class="btn btn-warning delete" data-dismiss="modal">Eliminar <span ng-hide="fields.deleteAllCccurrences">Reservaci&oacute;n</span><span ng-show="fields.deleteAllCccurrences">Reservaciones Fijas</span></button>
+                      </div>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
