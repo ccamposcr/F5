@@ -60,9 +60,10 @@
             <ul id="reservations" ng-if="!isDateForBookingValid() && !isAdminUser()">
                 <li class="row clearfix" ng-repeat="data in reservations">
                     <span class="reservation-time" data-time="{{timesForReservations[$index]}}">{{times[$index]}}</span>
-                    <span class="blocked {{reservation.type_reservation == 1 ? 'completa' : ''}}" data-team="{{$index+1}}" ng-repeat="reservation in data">
+                    <span ng-if="($index+1 == reservation.team_id && $index+1 == 1) || ($index+1 == reservation.team_id && $index+1 == 2)" class="blocked {{reservation.type_reservation == 1 ? 'completa' : ''}}" data-team="{{$index+1}}" ng-repeat="reservation in data">
                         <span ng-if="!!reservation.name && !! reservation.lastname">Reservado por:</span>  {{reservation.name}} {{reservation.lastname}}
                     </span>
+                    <span ng-if="!($index+1 == reservation.team_id && $index+1 == 1) && !($index+1 == reservation.team_id && $index+1 == 2) && !data[$index - 1].id" class="blocked {{reservation.type_reservation == 1 ? 'completa' : ''}}" data-team="{{$index+1}}" ng-repeat="reservation in data"></span>
                 </li>
             </ul>
         </div>
