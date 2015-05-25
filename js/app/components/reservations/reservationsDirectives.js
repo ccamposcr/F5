@@ -200,13 +200,17 @@ F5App.app.directive('reserveBtn', ['$document','$http', function($document,$http
 						//scope.$parent.successReservation = true;
 
 						angular.element('#formReservationModal').modal('hide');
-						scope.sendEmail({	'email' : data.email,
-											'data_reservation' : 'Su reservación ha sido creada satisfactoriamente <br>Fecha: '
-											 + data.reservation_day +'/'+ data.reservation_month +'/'+ data.reservation_year + 
-											 '<br>Hora: '+ scope.getCorrectTimeReservation(data.reservation_time) +'<br>Nombre: '+
-											 data.name + ' '+ data.lastname
-										});
-						//scope.loadReservations();	
+						if( !!data.email ){
+							scope.sendEmail({	'email' : data.email,
+												'data_reservation' : 'Su reservación ha sido creada satisfactoriamente <br>Fecha: '
+												 + data.reservation_day +'/'+ data.reservation_month +'/'+ data.reservation_year + 
+												 '<br>Hora: '+ scope.getCorrectTimeReservation(data.reservation_time) +'<br>Nombre: '+
+												 data.name + ' '+ data.lastname
+											});
+						}else{
+							angular.element('#loading-modal').modal('hide');
+							scope.loadReservations();
+						}
 
 				}).error(function(response, status, headers, config) {
 				    // called asynchronously if an error occurs
@@ -245,26 +249,30 @@ F5App.app.directive('reserveBtn', ['$document','$http', function($document,$http
 					angular.element('#set-pitch-all-weeks-modal').modal('hide');
 					//scope.loadReservations();
 
-					var daysAvailables = angular.fromJson(response);
+					if( !!data.email ){
+						var daysAvailables = angular.fromJson(response);
 
-					for(i = 0; i < data['dates'].length; i++){
-						result[i].push(data['dates'][i][0] + '/'+data['dates'][i][1] + '/' +  data['dates'][i][2]);
-						result[i].push(daysAvailables[i]); 
+						for(i = 0; i < data['dates'].length; i++){
+							result[i].push(data['dates'][i][0] + '/'+data['dates'][i][1] + '/' +  data['dates'][i][2]);
+							result[i].push(daysAvailables[i]); 
+						}
+
+						var dates_str = '<br>';
+
+						for(var i = 0; i < result.length ; i++){
+							dates_str += result[i][0] +' -> ';
+							dates_str += (result[i][1]) ? 'Reservado correctamente' : 'NO Reservado (Ocupado)';
+							dates_str += '<br>';
+						}
+						scope.sendEmail({	'email' : data.email,
+									'data_reservation' : 'Su reservación ha sido creada satisfactoriamente <br>Fecha: '
+									 + tmp.reservation_day +'/'+ tmp.reservation_month +'/'+ tmp.reservation_year + 
+									 '<br />Hora: '+ scope.getCorrectTimeReservation(data.reservation_time) + '<br>Nombre: '+ 
+									 data.name + ' '+ data.lastname +'<br>También se han reservado la cancha fija los siguientes días de todas las semanas ' + dates_str
+								});
+					}else{
+						scope.loadReservations();
 					}
-
-					var dates_str = '<br>';
-
-					for(var i = 0; i < result.length ; i++){
-						dates_str += result[i][0] +' -> ';
-						dates_str += (result[i][1]) ? 'Reservado correctamente' : 'NO Reservado (Ocupado)';
-						dates_str += '<br>';
-					}
-					scope.sendEmail({	'email' : data.email,
-								'data_reservation' : 'Su reservación ha sido creada satisfactoriamente <br>Fecha: '
-								 + tmp.reservation_day +'/'+ tmp.reservation_month +'/'+ tmp.reservation_year + 
-								 '<br />Hora: '+ scope.getCorrectTimeReservation(data.reservation_time) + '<br>Nombre: '+ 
-								 data.name + ' '+ data.lastname +'<br>También se han reservado la cancha fija los siguientes días de todas las semanas ' + dates_str
-							});
 		
 				}).error(function(response, status, headers, config) {
 				    // called asynchronously if an error occurs
