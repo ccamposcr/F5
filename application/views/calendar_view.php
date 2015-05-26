@@ -32,7 +32,7 @@
           <input type="hidden" value="" id="reservation_time" />
           <input type="hidden" value="<?=$isAdminUser?>" id="isAdminUser"/>
         </div>
-        <div id="dailyResevations">
+        <div id="dailyResevations" ng-init="getDateFromServer()">
             <ul id="timeAndTeamInfo" class="clearfix">
                 <li>Hora</li>
                 <li>Equipo 1</li>

@@ -83,6 +83,7 @@ $route['changePassword'] = 'login_controller/changePassword';
 $route['reserveAllWeeksSameDay'] = 'api_controller/reserveAllWeeksSameDay';
 $route['checkAvailability'] = 'api_controller/checkAvailability';
 $route['acceptCreditCardPayment'] = 'paypal_controller/acceptCreditCardPayment';
+$route['getDateFromServer'] = 'api_controller/getDateFromServer';
 
 //Login - Logout Routes
 $route['(:any)/login'] = 'login_controller';

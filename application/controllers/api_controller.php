@@ -176,4 +176,8 @@ class Api_controller extends CI_Controller {
         $result = $this->api_model->testSMS();
         //echo json_encode($result);
     }
+
+    public function getDateFromServer(){
+        echo unix_to_human(time());
+    }
 }

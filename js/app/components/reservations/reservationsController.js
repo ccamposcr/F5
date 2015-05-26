@@ -121,7 +121,7 @@ F5App.app.controller("reservationController", function ($scope, $rootScope,$time
 			async : false,
 
 			success : function(response){
-					group = jQuery.parseJSON(response)[0].id;
+				group = jQuery.parseJSON(response)[0].id;
 			}
 		});
 		return group;
@@ -176,8 +176,25 @@ F5App.app.controller("reservationController", function ($scope, $rootScope,$time
 		});
 	}
 
+	$scope.getDateFromServer = function(){
+		$.ajax({
+
+			type: 'POST',
+
+			url : F5App.base_url + "getDateFromServer",
+
+			async : false,
+
+			success : function(response){
+				$timeout(function(){
+					$scope.dateFromServer = response;
+				});
+			}
+		});
+	}
+
 	$rootScope.isDateForBookingValid = function(){
-		return new Date(angular.element('#year').val(),angular.element('#month').val() - 1,angular.element('#day').val(),'23','59','59') > new Date();
+		return new Date(angular.element('#year').val(),angular.element('#month').val() - 1,angular.element('#day').val(),'23','59','59') > new Date($scope.dateFromServer);
 	}
 
 	$rootScope.isAdminUser = function(){
