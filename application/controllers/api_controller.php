@@ -180,4 +180,9 @@ class Api_controller extends CI_Controller {
     public function getDateFromServer(){
         echo unix_to_human(time());
     }
+
+    public function getRates(){
+        $result = $this->api_model->getRates();
+        echo json_encode($result);
+    }
 }

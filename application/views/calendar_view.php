@@ -147,7 +147,7 @@
                                     <dd class="radio"><input id="challenge" type="radio" name="typeReservation" value="2" ng-model="fields.typeReservation" ng-click="fields.setReferee = true" ng-checked="(fields.typeReservationSelected == 'reto') && (fields.typeReservation = 2)" required><label for="challenge">Reto <span ng-if="fields.typeReservationSelected == 'normal'">(Marque esta opci&oacute;n si necesita Equipo 2 para Reto)</span></label></dd>
                                     <!--<span class="error" ng-show="!fields.typeReservation">Por favor seleccione una opci&oacute;n</span>-->
                                 <dt>Opciones Adicionales</dt>
-                                    <dd class="checkbox"><input id="setReferee" name="setReferee" type="checkbox" ng-model="fields.setReferee" ng-disabled="fields.typeReservation==2" ng-checked="(fields.typeReservationSelected == 'reto') && (fields.setReferee = true)"><label for="setReferee">Pagar &Aacute;rbitro (Marque esta opci&oacute;n &uacute;nicamente si necesita &aacute;rbitro)</label></dd>
+                                    <dd class="checkbox"><input id="setReferee" name="setReferee" type="checkbox" ng-model="fields.setReferee" ng-disabled="fields.typeReservation==2" ng-checked="(fields.typeReservationSelected == 'reto') && (fields.setReferee = true)"><label for="setReferee">Pagar &Aacute;rbitro (Reto: se cobra obligatoriamente la mitad del costo del &aacute;rbitro<br/>en ambos equipos)</label></dd>
                                     <dd ng-if="fields.typeReservationSelected == 'normal'" class="checkbox"><input id="setPitchAllWeeks" name="setPitchAllWeeks" type="checkbox" ng-model="fields.setPitchAllWeeks"><label for="setPitchAllWeeks">Cancha Fija(Reservar esta cancha este mismo día todas las semanas)<br/>*Se cobra d&eacute;posito</label><button ng-if="fields.setPitchAllWeeks" type="button" class="btn btn-primary checkAvailabilityBtn">Comprobar Disponibilidad</button></dd>
                             </dl>
                             
@@ -156,9 +156,16 @@
                     <?php 
                     if( !$isAdminUser ){
                     ?>
-                    <div id="carDataForm">
+                    <div id="carDataForm" ng-init="getRates()">
                         <form name="carDataForm">
                             <dl>
+                                <dd class="contentInfoForm">
+                                    <h4>Detalle a cobrar:</h4>
+                                    <p>Cancha: {{(fields.typeReservation == '1') ? rates.cancha_completa : rates.cancha_completa/2}} colones</p>
+                                    <p ng-if="!!fields.setReferee">&Aacute;rbitro: {{(fields.typeReservation == '1') ? rates.arbitro : rates.arbitro/2}} colones</p>
+                                    <p ng-if="!!fields.setPitchAllWeeks">D&eacute;posito (Cancha Fija): {{rates.cancha_fija_deposito}} colones</p>
+                                    <p>Total: {{ ( (fields.typeReservation == '1') ? rates.cancha_completa * 1 : rates.cancha_completa/2 ) + ( (!!fields.setReferee) ? ( (fields.typeReservation == '1') ? rates.arbitro * 1 : rates.arbitro/2 ) : 0 ) + ( (!!fields.setPitchAllWeeks) ? rates.cancha_fija_deposito * 1 : 0 ) }} colones</p>
+                                </dd>
                                 <dd class="contentInfoForm"><label>Nombre:</label> {{fields.name}}<br/><label>Apellido:</label> {{fields.lastname1}}</dd>
                                 <dd class="contentInfoForm">
                                     <label>Tarjeta</label>
@@ -411,17 +418,17 @@
                     <h4 class="modal-title">Informaci&oacute;n de la Reservaci&oacute;n</h4>
                   </div>
                   <div class="modal-body">
-                      <div class="divContentShowInfoModal"><label>Nombre:</label><span> {{completeInfo[0].name}}</span></div>
-                      <div class="divContentShowInfoModal"><label>Apellidos:</label><span> {{completeInfo[0].lastname}}</span></div>
-                      <div class="divContentShowInfoModal"><label>Tel&eacute;fono:</label><span> {{completeInfo[0].phone}}</span></div>
-                      <div class="divContentShowInfoModal"><label>Email:</label><span> {{completeInfo[0].email}}</span></div>
-                      <div class="divContentShowInfoModal"><label>Requiere &Aacute;rbitro:</label><span> {{(completeInfo[0].referee_required == 1) ? 'S&iacute;' : 'No'}}</span></div>
-                      <div class="divContentShowInfoModal"><label>Fecha de Reservaci&oacute;n:</label><span> {{completeInfo[0].reservation_day}}/{{completeInfo[0].reservation_month}}/{{completeInfo[0].reservation_year}}</span></div>
-                      <div class="divContentShowInfoModal"><label>Hora de Reservaci&oacute;n:</label><span> {{getCorrectTimeReservation(completeInfo[0].reservation_time)}}</span></div>
-                      <div class="divContentShowInfoModal"><label>Usuario del sistema:</label><span> {{(completeInfo[0].admin_user) ? completeInfo[0].admin_user : 'N/A' }}</span></div>
-                      <div class="divContentShowInfoModal"><label>Total Cobrado:</label><span> {{completeInfo[0].reservation_price}}</span></div>
+                      <div class="divContentShowInfoModal"><label>Nombre:</label><span> {{completeInfo.name}}</span></div>
+                      <div class="divContentShowInfoModal"><label>Apellidos:</label><span> {{completeInfo.lastname}}</span></div>
+                      <div class="divContentShowInfoModal"><label>Tel&eacute;fono:</label><span> {{completeInfo.phone}}</span></div>
+                      <div class="divContentShowInfoModal"><label>Email:</label><span> {{completeInfo.email}}</span></div>
+                      <div class="divContentShowInfoModal"><label>Requiere &Aacute;rbitro:</label><span> {{(completeInfo.referee_required == 1) ? 'S&iacute;' : 'No'}}</span></div>
+                      <div class="divContentShowInfoModal"><label>Fecha de Reservaci&oacute;n:</label><span> {{completeInfo.reservation_day}}/{{completeInfo.reservation_month}}/{{completeInfo.reservation_year}}</span></div>
+                      <div class="divContentShowInfoModal"><label>Hora de Reservaci&oacute;n:</label><span> {{getCorrectTimeReservation(completeInfo.reservation_time)}}</span></div>
+                      <div class="divContentShowInfoModal"><label>Usuario del sistema:</label><span> {{(completeInfo.admin_user) ? completeInfo.admin_user : 'N/A' }}</span></div>
+                      <div class="divContentShowInfoModal"><label>Total Cobrado:</label><span> {{completeInfo.reservation_price}}</span></div>
                       
-                      <div ng-if="completeInfo[0].id_group_all_weeks != '0' && completeInfo[0].id_group_all_weeks != ''" class="divContentShowInfoModal">
+                      <div ng-if="completeInfo.id_group_all_weeks != '0' && completeInfo.id_group_all_weeks != ''" class="divContentShowInfoModal">
                         <span>Esta reservaci&oacute;n forma parte de una reserva de cancha fija, seleccione si desea eliminar las dem&aacute;s ocurrencias de cancha fija.</span>
                         <input type="checkbox" ng-model="fields.deleteAllCccurrences" name="deleteAllCccurrences" />
                       </div>

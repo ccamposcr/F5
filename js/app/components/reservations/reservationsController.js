@@ -193,6 +193,24 @@ F5App.app.controller("reservationController", function ($scope, $rootScope,$time
 		});
 	}
 
+	$rootScope.getRates = function(){
+		var req = {
+			method: 'POST',
+			url: F5App.base_url + "getRates",
+			headers: {
+			   	'Content-Type': 'application/x-www-form-urlencoded'
+			},
+		 	cache : false
+		}
+
+		$http(req).success(function(response, status, headers, config) {
+			$rootScope.rates = angular.fromJson(response)[0];
+		}).error(function(response, status, headers, config) {
+		    // called asynchronously if an error occurs
+		    // or server returns response with an error status.
+		});
+	}
+
 	$rootScope.isDateForBookingValid = function(){
 		return new Date(angular.element('#year').val(),angular.element('#month').val() - 1,angular.element('#day').val(),'23','59','59') > new Date($scope.dateFromServer);
 	}

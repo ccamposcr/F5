@@ -318,7 +318,7 @@ F5App.app.directive('showInfo', ['$document','$timeout','$http', function($docum
 		$http(req).success(function(response, status, headers, config) {
 			angular.element('#loading-modal').modal('hide');
 			//$timeout(function(){
-				scope.$root.completeInfo = angular.fromJson(response);
+				scope.$root.completeInfo = angular.fromJson(response)[0];
 			//});
 			angular.element('#show-info-modal').modal('show');
 	
@@ -368,14 +368,14 @@ F5App.app.directive('delete', ['$document','$http', function($document,$http) {
 				    // or server returns response with an error status.
 				});
 			}else{
-				//console.log(scope.completeInfo[0].id_group_all_weeks);
+				//console.log(scope.completeInfo.id_group_all_weeks);
 				var req = {
 					method: 'POST',
 					url: F5App.base_url + "setInactiveReservationAllWeeks",
 					headers: {
 					   	'Content-Type': 'application/x-www-form-urlencoded'
 					},
-				 	data: $.param( { id_group_all_weeks: scope.completeInfo[0].id_group_all_weeks } ),
+				 	data: $.param( { id_group_all_weeks: scope.completeInfo.id_group_all_weeks } ),
 				 	cache : false
 				}
 

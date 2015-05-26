@@ -82,6 +82,11 @@ class Api_model extends CI_MODEL
        // return $query->result();
         //return "{type:'Fiat', model:500, color:'white'}";
     }
+
+    function getRates(){
+        $query = $this->db->query("SELECT * FROM t_rates");
+        return $query->result();
+    }
 }
 //end model
 
