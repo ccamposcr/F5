@@ -12,7 +12,7 @@ class Api_model extends CI_MODEL
     }
 
     function getReservationByDay($reservation_year,$reservation_month,$reservation_day,$group_id,$pitch_id){
-    	$query = $this->db->query("SELECT * FROM t_reservations WHERE reservation_year = ".$this->db->escape($reservation_year)." AND reservation_month = ".$this->db->escape($reservation_month)." AND reservation_day = ".$this->db->escape($reservation_day)." AND group_id = ".$this->db->escape($group_id)." AND pitch_id = ".$this->db->escape($pitch_id)." AND active ='1' ORDER BY reservation_time ASC");
+    	$query = $this->db->query("SELECT * FROM t_reservations WHERE reservation_year = ".$this->db->escape($reservation_year)." AND reservation_month = ".$this->db->escape($reservation_month)." AND reservation_day = ".$this->db->escape($reservation_day)." AND group_id = ".$this->db->escape($group_id)." AND pitch_id = ".$this->db->escape($pitch_id)." AND active ='1' GROUP BY name,lastname,phone,email,team_id,type_reservation,referee_required,reservation_time,reservation_year,reservation_month,reservation_day,reservation_price,pitch_id,group_id,active,id_user,id_group_all_weeks ORDER BY reservation_time ASC");
         return $query->result_array();
     }
 
