@@ -92,8 +92,25 @@ class Api_controller extends CI_Controller {
         $email = ( isset($_POST['email']) ) ? strip_tags($_POST['email']) : 1;
         $type_reservation = ( isset($_POST['type_reservation']) ) ? strip_tags($_POST['type_reservation']) : 1;
         $referee_required = ( isset($_POST['referee_required']) ) ? strip_tags($_POST['referee_required']) : 1;
-        $reservation_price = ( isset($_POST['reservation_price']) ) ? strip_tags($_POST['reservation_price']) : 1;
+        $setPitchAllWeeks = ( isset($_POST['setPitchAllWeeks']) ) ? strip_tags($_POST['setPitchAllWeeks']) : 0;
+        //$reservation_price = ( isset($_POST['reservation_price']) ) ? strip_tags($_POST['reservation_price']) : 1;
         $id_user = ( isset($_POST['id_user']) ) ? strip_tags($_POST['id_user']) : 0;
+
+        $rates = $this->api_model->getRates()[0];
+        $cancha_completa = $rates->cancha_completa;
+        $arbitro = $rates->arbitro;
+        $cancha_fija_deposito = $rates->cancha_fija_deposito;
+        $total_CRC = 0;
+
+        $total_CRC += ($type_reservation == '1') ? $cancha_completa : $cancha_completa/2 ;
+        if( $referee_required == '1' ){
+            $total_CRC += ($type_reservation == '1') ? $arbitro : $arbitro/2 ;
+        }
+        if( $setPitchAllWeeks == 'true' ){
+            $total_CRC += $cancha_fija_deposito;
+        }
+        $reservation_price = $total_CRC;
+
         $this->api_model->createReservation($team_id,$reservation_time,$reservation_year,$reservation_month,$reservation_day,$group_id,$pitch_id,$name,$lastname,$phone,$email,$type_reservation,$referee_required,$reservation_price,$id_user,0);
     }
 
@@ -127,11 +144,27 @@ class Api_controller extends CI_Controller {
         $email = ( isset($_POST['email']) ) ? strip_tags($_POST['email']) : 1;
         $type_reservation = ( isset($_POST['type_reservation']) ) ? strip_tags($_POST['type_reservation']) : 1;
         $referee_required = ( isset($_POST['referee_required']) ) ? strip_tags($_POST['referee_required']) : 1;
-        $reservation_price = ( isset($_POST['reservation_price']) ) ? strip_tags($_POST['reservation_price']) : 1;
+        $setPitchAllWeeks = ( isset($_POST['setPitchAllWeeks']) ) ? strip_tags($_POST['setPitchAllWeeks']) : 0;
+        //$reservation_price = ( isset($_POST['reservation_price']) ) ? strip_tags($_POST['reservation_price']) : 1;
         $dates = ( isset($_POST['dates']) ) ? $_POST['dates'] : '0';
         $id_user = ( isset($_POST['id_user']) ) ? strip_tags($_POST['id_user']) : 0;
         $res;
         $id_group_all_weeks = uniqid();
+
+        $rates = $this->api_model->getRates()[0];
+        $cancha_completa = $rates->cancha_completa;
+        $arbitro = $rates->arbitro;
+        $cancha_fija_deposito = $rates->cancha_fija_deposito;
+        $total_CRC = 0;
+
+        $total_CRC += ($type_reservation == '1') ? $cancha_completa : $cancha_completa/2 ;
+        if( $referee_required == '1' ){
+            $total_CRC += ($type_reservation == '1') ? $arbitro : $arbitro/2 ;
+        }
+        if( $setPitchAllWeeks == 'true' ){
+            $total_CRC += $cancha_fija_deposito;
+        }
+        $reservation_price = $total_CRC;
 
         foreach ($dates as $key => $value) {
             if( !$this->api_model->checkIfReservationExist($team_id,$reservation_time,$value[2],$value[1],$value[0],$group_id,$pitch_id) ){
