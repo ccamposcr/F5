@@ -161,10 +161,10 @@
                             <dl>
                                 <dd class="contentInfoForm">
                                     <h4>Detalle a cobrar:</h4>
-                                    <p>Cancha: {{(fields.typeReservation == '1') ? rates.cancha_completa : rates.cancha_completa/2}} colones</p>
-                                    <p ng-if="!!fields.setReferee">&Aacute;rbitro: {{(fields.typeReservation == '1') ? rates.arbitro : rates.arbitro/2}} colones</p>
-                                    <p ng-if="!!fields.setPitchAllWeeks">D&eacute;posito (Cancha Fija): {{rates.cancha_fija_deposito}} colones</p>
-                                    <p>Total: {{ ( (fields.typeReservation == '1') ? rates.cancha_completa * 1 : rates.cancha_completa/2 ) + ( (!!fields.setReferee) ? ( (fields.typeReservation == '1') ? rates.arbitro * 1 : rates.arbitro/2 ) : 0 ) + ( (!!fields.setPitchAllWeeks) ? rates.cancha_fija_deposito * 1 : 0 ) }} colones</p>
+                                    <p>Cancha: {{(fields.typeReservation == '1') ? rates.cancha_completa : rates.cancha_completa/2 | currency:""}} colones</p>
+                                    <p ng-if="!!fields.setReferee">&Aacute;rbitro: {{(fields.typeReservation == '1') ? rates.arbitro : rates.arbitro/2 | currency:""}} colones</p>
+                                    <p ng-if="!!fields.setPitchAllWeeks">D&eacute;posito (Cancha Fija): {{rates.cancha_fija_deposito | currency:""}} colones</p>
+                                    <p>Total: {{ ( (fields.typeReservation == '1') ? rates.cancha_completa * 1 : rates.cancha_completa/2 ) + ( (!!fields.setReferee) ? ( (fields.typeReservation == '1') ? rates.arbitro * 1 : rates.arbitro/2 ) : 0 ) + ( (!!fields.setPitchAllWeeks) ? rates.cancha_fija_deposito * 1 : 0 ) | currency:""}} colones</p>
                                 </dd>
                                 <dd class="contentInfoForm"><label>Nombre:</label> {{fields.name}}<br/><label>Apellido:</label> {{fields.lastname1}}</dd>
                                 <dd class="contentInfoForm">

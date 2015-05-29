@@ -11,6 +11,7 @@ class Paypal_controller extends CI_Controller {
         $this->host = 'https://api.sandbox.paypal.com';
         $this->client_id = 'AdB3iRARTpvKZx1jqjubgf8A3sOuAU2m8BVed7tD7cQ_0XD6EThMbjDlw8J9';
         $this->secret = 'EOUlnRASDZY8kDAikr1-gPMjTLCbQJ9YP9DTEIYypqy9MsVCg5Q0fKY8bvKz';
+        $this->load->model("api_model");
     }
  
     function get_access_token() {
@@ -58,7 +59,34 @@ class Paypal_controller extends CI_Controller {
         $cvv = ( isset($_POST['cvv']) ) ? strip_tags($_POST['cvv']) : '';
         $first_name = ( isset($_POST['first_name']) ) ? strip_tags($_POST['first_name']) : '';
         $last_name = ( isset($_POST['last_name']) ) ? strip_tags($_POST['last_name']) : '';
-        $total = ( isset($_POST['total']) ) ? strip_tags($_POST['total']) : '';
+        
+        $type_reservation = ( isset($_POST['type_reservation']) ) ? strip_tags($_POST['type_reservation']) : 0;
+        $referee_required = ( isset($_POST['referee_required']) ) ? strip_tags($_POST['referee_required']) : 0;
+        $setPitchAllWeeks = ( isset($_POST['setPitchAllWeeks']) ) ? strip_tags($_POST['setPitchAllWeeks']) : 0;
+
+        $rates = $this->api_model->getRates()[0];
+        $cancha_completa = $rates->cancha_completa;
+        $arbitro = $rates->arbitro;
+        $cancha_fija_deposito = $rates->cancha_fija_deposito;
+        $total_CRC = 0;
+
+        $total_CRC += ($type_reservation == '1') ? $cancha_completa : $cancha_completa/2 ;
+        if( $referee_required == '1' ){
+            $total_CRC += ($type_reservation == '1') ? $arbitro : $arbitro/2 ;
+        }
+        if( $setPitchAllWeeks == 'true' ){
+            $total_CRC += $cancha_fija_deposito;
+        }
+
+        $data = file_get_contents(
+            'http://jsonrates.com/convert/?'.
+            'from=CRC'.
+            '&to=USD'.
+            '&amount='.$total_CRC.
+            '&apiKey=jr-79fad8c3b8f1f752dd22bce47b3684e9'
+        );
+        $json = json_decode($data);
+        $total_USD = round((float) $json->amount);
 
         $payment = array(
         'intent' => 'sale',
@@ -78,7 +106,7 @@ class Paypal_controller extends CI_Controller {
             ),
         'transactions' => array (array(
                 'amount' => array(
-                    'total' => $total,
+                    'total' => $total_USD,
                     'currency' => 'USD'
                     ),
                 'description' => 'payment by a credit card using a test script'

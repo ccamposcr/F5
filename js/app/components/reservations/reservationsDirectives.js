@@ -622,7 +622,15 @@ F5App.app.directive('reserveAndPayBtn', ['$document','$http','$timeout', functio
       element.on('click', function(event) {
         event.preventDefault();
         if( scope.carDataForm.$valid ){
-        	//alert('valid');
+        	var data = scope.getDataForReservation();
+        	data.number = scope.fields.number;
+			data.type = scope.fields.type;
+			data.expire_month = scope.fields.expire_month;
+			data.expire_year = scope.fields.expire_year;
+			data.cvv = scope.fields.cvv;
+			data.first_name = scope.fields.name;
+			data.last_name = scope.fields.lastname1;
+
         	angular.element('#processing-card-modal').modal('show');
         	var req = {
 				method: 'POST',
@@ -630,16 +638,7 @@ F5App.app.directive('reserveAndPayBtn', ['$document','$http','$timeout', functio
 				headers: {
 				   	'Content-Type': 'application/x-www-form-urlencoded'
 				},
-			 	data: $.param( {
-					number : scope.fields.number,
-					type : scope.fields.type, 
-        			expire_month : scope.fields.expire_month,
-        			expire_year : scope.fields.expire_year,
-        			cvv : scope.fields.cvv,
-        			first_name : scope.fields.name,
-        			last_name : scope.fields.lastname1,
-        			total : '1'
-				} ),
+			 	data: $.param( data ),
 			 	cache : false
 			}
 

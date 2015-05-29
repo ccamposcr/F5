@@ -20,7 +20,7 @@ F5App.app.controller("galleryController", function ($scope, $rootScope){
 			    animation: "slide",
 			    controlNav: false,
 			    animationLoop: true,
-			    slideshow: false,
+			    slideshow: true,
 			    sync: angular.element(this).siblings('.carousel')
 			});
 		});
