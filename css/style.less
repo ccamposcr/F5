@@ -206,7 +206,7 @@ textarea {
     .error{
         color: @red;
         margin-left: 95px;
-        display: inline-block;
+        display: block;
     }
 
     .checkbox{
@@ -217,6 +217,61 @@ textarea {
         button{
             margin-left: -41px;
         }
+    }
+}
+
+#carDataForm{
+    dl{
+        dd.contentInfoForm{
+            label{
+                width: 95px;
+            }
+
+            input.input_ccv{
+                width: 60px;
+            }
+
+            input.input_number{
+                width: 202px;
+            }
+
+            select{
+                width: 150px;
+                height: 30px;
+                display: inline-block;
+                margin-bottom: 8px;
+            }
+            
+            &.reservationInformation{
+                padding-left: 15px;
+                margin-bottom: 25px;
+                
+                h4{
+                    font-weight: bold;
+                }
+
+                table{
+                    tr{
+                        &.total{
+                            font-weight: bold;
+                        }
+
+                        th{
+                            width: 150px;
+                        }
+
+                        td{
+                            border: 1px solid #3a3333;
+                            padding:5px; 
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .error{
+        margin-left: 115px;
     }
 }
 
@@ -364,6 +419,27 @@ textarea {
 
         button{
             margin-top: 20px;
+        }
+
+        .pitchInformation {
+            color: @red;
+            margin-top: 25px;
+
+            p{
+                margin: 0;
+            }
+
+            input[type="checkbox"]{
+                width: 15px;
+                height: 15px;
+                position: relative;
+                top: 4px;
+                margin-right: 10px;
+            }
+
+            span{
+                font-weight: bold;
+            }
         }
     }
 }

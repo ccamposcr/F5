@@ -17,7 +17,6 @@
 			<type></type>
 		</button>
 	</external>
-
 	<internal>
 		<button>
 			<text>Inicio</text>
@@ -35,4 +34,16 @@
 			<type>galeria</type>
 		</button>
 	</internal>
+	<error>
+		<button>
+			<text>Inicio</text>
+			<url></url>
+			<type>home</type>
+		</button>
+		<button>
+			<text>Galer&amp;iacute;a</text>
+			<url>/galeria</url>
+			<type>galeria</type>
+		</button>
+	</error>
 </header>

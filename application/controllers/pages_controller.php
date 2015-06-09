@@ -19,7 +19,7 @@ class Pages_controller extends CI_Controller {
 
     function escazu_gallery(){
         $headerOptions = simplexml_load_file("xml/header.xml");
-        $this->load->view('includes/header',$headerOptions->internal);
+        $this->load->view('includes/header', $headerOptions->internal);
     	$this->load->view('escazu_gallery_view');
 
         $footerOptions = simplexml_load_file("xml/footer.xml");
@@ -36,10 +36,14 @@ class Pages_controller extends CI_Controller {
     }
 
     function page_404(){
+        $headerOptions = simplexml_load_file("xml/header.xml");
+        $this->load->view('includes/header', $headerOptions->error);
     	$this->load->view('404_view');
     }
 
     function access_denied(){
+        $headerOptions = simplexml_load_file("xml/header.xml");
+        $this->load->view('includes/header', $headerOptions->error);
         $this->load->view('access_denied_view');
     }
 }

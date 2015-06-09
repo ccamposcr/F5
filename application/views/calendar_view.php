@@ -159,23 +159,45 @@
                     <div id="carDataForm" ng-init="getRates()">
                         <form name="carDataForm">
                             <dl>
-                                <dd class="contentInfoForm">
+                                <dd class="contentInfoForm reservationInformation">
                                     <h4>Detalle a cobrar:</h4>
-                                    <p>Cancha: {{(fields.typeReservation == '1') ? rates.cancha_completa : rates.cancha_completa/2 | currency:""}} colones</p>
-                                    <p ng-if="!!fields.setReferee">&Aacute;rbitro: {{(fields.typeReservation == '1') ? rates.arbitro : rates.arbitro/2 | currency:""}} colones</p>
-                                    <p ng-if="!!fields.setPitchAllWeeks">D&eacute;posito (Cancha Fija): {{rates.cancha_fija_deposito | currency:""}} colones</p>
-                                    <p>Total: {{ ( (fields.typeReservation == '1') ? rates.cancha_completa * 1 : rates.cancha_completa/2 ) + ( (!!fields.setReferee) ? ( (fields.typeReservation == '1') ? rates.arbitro * 1 : rates.arbitro/2 ) : 0 ) + ( (!!fields.setPitchAllWeeks) ? rates.cancha_fija_deposito * 1 : 0 ) | currency:""}} colones</p>
+                                    <!--<p><span>Cancha:</span> {{(fields.typeReservation == '1') ? rates.cancha_completa : rates.cancha_completa/2 | currency:""}} colones</p>
+                                    <p ng-if="!!fields.setReferee"><span>&Aacute;rbitro:</span> {{(fields.typeReservation == '1') ? rates.arbitro : rates.arbitro/2 | currency:""}} colones</p>
+                                    <p ng-if="!!fields.setPitchAllWeeks"><span>D&eacute;posito</span> (Cancha Fija): {{rates.cancha_fija_deposito | currency:""}} colones</p>
+                                    <p><span>Total:</span> {{ ( (fields.typeReservation == '1') ? rates.cancha_completa * 1 : rates.cancha_completa/2 ) + ( (!!fields.setReferee) ? ( (fields.typeReservation == '1') ? rates.arbitro * 1 : rates.arbitro/2 ) : 0 ) + ( (!!fields.setPitchAllWeeks) ? rates.cancha_fija_deposito * 1 : 0 ) | currency:""}} colones</p>-->
+                                    <table>
+                                      <tr>
+                                        <th>Detalle</th>
+                                        <th>Monto</th>
+                                      </tr>
+                                      <tr>
+                                        <td>Cancha</td>
+                                        <td>{{(fields.typeReservation == '1') ? rates.cancha_completa : rates.cancha_completa/2 | currency:""}} colones</td>
+                                      </tr>
+                                      <tr ng-if="!!fields.setReferee">
+                                        <td>&Aacute;rbitro</td>
+                                        <td>{{(fields.typeReservation == '1') ? rates.arbitro : rates.arbitro/2 | currency:""}} colones</td>
+                                      </tr>
+                                      <tr ng-if="!!fields.setPitchAllWeeks">
+                                        <td>D&eacute;posito (Cancha Fija)</td>
+                                        <td>{{rates.cancha_fija_deposito | currency:""}} colones</td>
+                                      </tr>
+                                      <tr class="total">
+                                        <td>Total</td>
+                                        <td>{{ ( (fields.typeReservation == '1') ? rates.cancha_completa * 1 : rates.cancha_completa/2 ) + ( (!!fields.setReferee) ? ( (fields.typeReservation == '1') ? rates.arbitro * 1 : rates.arbitro/2 ) : 0 ) + ( (!!fields.setPitchAllWeeks) ? rates.cancha_fija_deposito * 1 : 0 ) | currency:""}} colones</td>
+                                      </tr>
+                                    </table>
                                 </dd>
                                 <dd class="contentInfoForm"><label>Nombre:</label> {{fields.name}}<br/><label>Apellido:</label> {{fields.lastname1}}</dd>
                                 <dd class="contentInfoForm">
                                     <label>Tarjeta</label>
-                                    <input type="text" class="form-control" ng-model="fields.number" name="number" required ng-pattern="/^\d+$/"/>
+                                    <input type="text" class="form-control input_number" ng-model="fields.number" name="number" required ng-pattern="/^\d+$/"/>
                                     <span class="error" ng-show="carDataForm.number.$error.required && carDataForm.number.$dirty">Por favor ingrese su Tarjeta</span>
                                     <span class="error" ng-show="carDataForm.number.$invalid && carDataForm.number.$dirty">Por favor ingrese &uacute;nicamente n&uacute;meros</span>
                                 </dd>
                                 <dd class="contentInfoForm">
                                     <label>Tipo</label>
-                                    <select ng-model="fields.type" name="type" required>
+                                    <select ng-model="fields.type" name="type" required class="form-control">
                                         <option value="visa">Visa</option>
                                         <option value="mastercard">Mastercard</option>
                                         <option value="discover">Discover</option>
@@ -185,7 +207,7 @@
                                 </dd>
                                 <dd class="contentInfoForm">
                                     <label>Mes Expiraci&oacute;n</label>
-                                    <select ng-model="fields.expire_month" name="expire_month" required>
+                                    <select ng-model="fields.expire_month" name="expire_month" required class="form-control">
                                         <option value="1">1 - Enero</option>
                                         <option value="2">2 - Febrero</option>
                                         <option value="3">3 - Marzo</option>
@@ -203,7 +225,7 @@
                                 </dd>
                                 <dd class="contentInfoForm">
                                     <label>A&ntilde;o Expiraci&oacute;n</label>
-                                    <select ng-model="fields.expire_year" name="expire_year" required>
+                                    <select ng-model="fields.expire_year" name="expire_year" required class="form-control">
                                         <option value="2015">2015</option>
                                         <option value="2016">2016</option>
                                         <option value="2017">2017</option>
@@ -220,7 +242,7 @@
                                 </dd>
                                 <dd class="contentInfoForm">
                                     <label>C&oacute;digo de Validaci&oacute;n (cvv)</label>
-                                    <input type="text" class="form-control" ng-model="fields.cvv" name="cvv" required ng-minlength="3" ng-maxlength="4" ng-pattern="/^\d+$/"/>
+                                    <input type="text" class="form-control input_ccv" ng-model="fields.cvv" name="cvv" required ng-minlength="3" ng-maxlength="4" ng-pattern="/^\d+$/"/>
                                     <span class="error" ng-show="carDataForm.cvv.$error.required && carDataForm.cvv.$dirty">Por favor ingrese su ccv</span>
                                     <span class="error" ng-show="carDataForm.cvv.$invalid && carDataForm.cvv.$dirty">Por favor ingrese &uacute;nicamente n&uacute;meros</span>
                                     <span class="error" ng-show="(carDataForm.cvv.$error.minlength || carDataForm.cvv.$error.maxlength) && carDataForm.cvv.$dirty">Por favor ingrese min&iacute;mo 3 o m&aacute;ximo 4 n&uacute;meros</span>
@@ -428,9 +450,9 @@
                       <div class="divContentShowInfoModal"><label>Usuario del sistema:</label><span> {{(completeInfo.admin_user) ? completeInfo.admin_user : 'N/A' }}</span></div>
                       <div class="divContentShowInfoModal"><label>Total Cobrado:</label><span> {{completeInfo.reservation_price}}</span></div>
                       
-                      <div ng-if="completeInfo.id_group_all_weeks != '0' && completeInfo.id_group_all_weeks != ''" class="divContentShowInfoModal">
-                        <span>Esta reservaci&oacute;n forma parte de una reserva de cancha fija, seleccione si desea eliminar las dem&aacute;s ocurrencias de cancha fija.</span>
-                        <input type="checkbox" ng-model="fields.deleteAllCccurrences" name="deleteAllCccurrences" />
+                      <div ng-if="completeInfo.id_group_all_weeks != '0' && completeInfo.id_group_all_weeks != ''" class="divContentShowInfoModal pitchInformation">
+                        <p>Esta reservaci&oacute;n forma parte de una reserva de cancha fija.</p>
+                        <input type="checkbox" ng-model="fields.deleteAllCccurrences" name="deleteAllCccurrences" /><span>(Seleccione si desea eliminar las dem&aacute;s ocurrencias de esta cancha fija).</span>
                       </div>
                       <div class="divContentShowInfoModal">
                         <button ng-if="isAdminUser() && getRol() == isRol('Admin')" type="button" class="btn btn-warning delete" data-dismiss="modal">Eliminar <span ng-hide="fields.deleteAllCccurrences">Reservaci&oacute;n</span><span ng-show="fields.deleteAllCccurrences">Reservaciones Fijas</span></button>
