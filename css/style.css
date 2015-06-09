@@ -157,6 +157,9 @@ textarea {
 #bookingOnLine .checkbox button {
   margin-left: -41px;
 }
+#carDataForm {
+  display: none;
+}
 #carDataForm dl dd.contentInfoForm label {
   width: 95px;
 }
@@ -167,7 +170,7 @@ textarea {
   width: 202px;
 }
 #carDataForm dl dd.contentInfoForm select {
-  width: 150px;
+  width: 202px;
   height: 30px;
   display: inline-block;
   margin-bottom: 8px;
@@ -303,9 +306,6 @@ textarea {
 }
 #show-info-modal .modal-body .pitchInformation span {
   font-weight: bold;
-}
-#carDataForm {
-  display: none;
 }
 /* ==========================================================================
    HEADER
