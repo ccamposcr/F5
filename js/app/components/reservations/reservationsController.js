@@ -187,7 +187,7 @@ F5App.app.controller("reservationController", function ($scope, $rootScope,$time
 
 			success : function(response){
 				$timeout(function(){
-					$scope.dateFromServer = response;
+					$scope.dateFromServer = ( !!Date.parse(response) ) ? response : response.replace(/-/g,'/') + ' GMT';
 				});
 			}
 		});
@@ -212,7 +212,7 @@ F5App.app.controller("reservationController", function ($scope, $rootScope,$time
 	}
 
 	$rootScope.isDateForBookingValid = function(){
-		return new Date(angular.element('#year').val(),angular.element('#month').val() - 1,angular.element('#day').val(),'23','59','59') > new Date($scope.dateFromServer);
+		return  new Date(angular.element('#year').val(),angular.element('#month').val() - 1,angular.element('#day').val(),'23','59','59') > new Date($scope.dateFromServer);
 	}
 
 	$rootScope.isAdminUser = function(){
