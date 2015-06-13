@@ -1,4 +1,4 @@
-F5App.app.controller("modalController", function ($scope, $rootScope,$interval){
+F5App.app.controller("modalController", function ($scope, $rootScope,$interval, $timeout){
 	angular.element('#formReservationModal').on('hidden.bs.modal', function(){
 		
 		if( !$scope.successReservation ){
@@ -23,6 +23,12 @@ F5App.app.controller("modalController", function ($scope, $rootScope,$interval){
 	angular.element('#change-password-modal').on('hidden.bs.modal', function(){
 		$scope.fields.password = '';
 		$scope.fields.confirmation = '';
+	});
+
+	angular.element('#change-password-modal').on('show.bs.modal', function(){
+		$timeout(function(){
+			$scope.fields.accountName = angular.element('#name_user').val();
+		});
 	});
 
 	angular.element('#formReservationModal').on('show.bs.modal', function(){

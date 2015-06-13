@@ -19,9 +19,9 @@ class Login_model extends CI_MODEL {
         return $result;
     }
 
-    function changePassword($user,$password){
+    function changePassword($user,$password,$name){
         $password =  MD5($password);
-        $this->db->query("UPDATE t_admin SET password=".$this->db->escape($password)."WHERE user = ".$this->db->escape($user));
+        $this->db->query("UPDATE t_admin SET password=".$this->db->escape($password).",name=".$this->db->escape($name)."WHERE user = ".$this->db->escape($user));
     }
 }
   

@@ -58,7 +58,7 @@ class Login_controller extends CI_Controller {
         $userInfo = $this->login_model->login(strip_tags($user), strip_tags($password));
         $result = false;
         if( $userInfo ) {
-            $sess_array = array('id' => $userInfo[0]->id, 'user' => $userInfo[0]->user, 'rol' => $userInfo[0]->rol, 'groupManager' => $userInfo[0]->id_group);
+            $sess_array = array('id' => $userInfo[0]->id, 'user' => $userInfo[0]->user, 'rol' => $userInfo[0]->rol, 'groupManager' => $userInfo[0]->id_group, 'name' => $userInfo[0]->name);
 	        $this->session->set_userdata('logged_in', $sess_array);
          	$result = true;
         }
@@ -73,7 +73,8 @@ class Login_controller extends CI_Controller {
       function changePassword(){
         $user = ( isset($_POST['user']) ) ? strip_tags($_POST['user']) : '';
         $password = ( isset($_POST['password']) ) ? strip_tags($_POST['password']) : '';
-        $this->login_model->changePassword($user,$password);
+        $name = ( isset($_POST['name']) ) ? strip_tags($_POST['name']) : '';
+        $this->login_model->changePassword($user,$password,$name);
       }
 }
 /* End of file login_view.php */

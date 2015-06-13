@@ -307,7 +307,8 @@ F5App.app.controller("reservationController", function ($scope, $rootScope,$time
 		client : '',
 		typeReservationSelected : '',
 		setPitchAllWeeks : '',
-		stepReservation : 1
+		stepReservation : 1,
+		accountName : ''
 	}
 
 	$scope.loadReservations();

@@ -467,7 +467,8 @@ F5App.app.directive('delete', ['$document','$http', function($document,$http) {
         angular.element('#loading-modal').modal('show');
         var data = {
         	'user' : angular.element('#user').val(),
-        	'password' : scope.fields.password
+        	'password' : scope.fields.password,
+        	'name' : scope.fields.accountName
         }
         if( scope.changePassForm.$valid ){
 
@@ -484,7 +485,9 @@ F5App.app.directive('delete', ['$document','$http', function($document,$http) {
 			$http(req).success(function(response, status, headers, config) {
 				angular.element('#loading-modal').modal('hide');
 				angular.element('#change-password-modal').modal('hide');
-				alert("El password se ha cambiado satisfactoriamente");
+				alert("La cuenta se ha actualizado satisfactoriamente.");
+				F5App.leaveSafelyPage = true;
+				window.location = '/logout';
 		
 			}).error(function(response, status, headers, config) {
 			    // called asynchronously if an error occurs
