@@ -487,7 +487,7 @@ F5App.app.directive('delete', ['$document','$http', function($document,$http) {
 				angular.element('#change-password-modal').modal('hide');
 				alert("La cuenta se ha actualizado satisfactoriamente.");
 				F5App.leaveSafelyPage = true;
-				window.location = '/logout';
+				window.location = F5App.base_url + 'logout';
 		
 			}).error(function(response, status, headers, config) {
 			    // called asynchronously if an error occurs
