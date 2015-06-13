@@ -11,7 +11,8 @@ class Email_controller extends CI_Controller {
         $config['wordwrap'] = TRUE;
         $config['smtp_host'] = 'ssl://smtpout.secureserver.net';
         $config['smtp_user'] = 'reserva@f5.cr';
-        $config['smtp_pass'] = 'Reserva2014';
+        $config['smtp_pass'] = 'avega0184';
+        //$config['smtp_pass'] = 'Reserva2014';
         $config['smtp_port'] = '465';
         $config['mailtype'] = 'html';
         $config['charset'] = 'utf-8';

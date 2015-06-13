@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <footer>
 	<escazu>
-		<detail>Escazu: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil consequuntur, nesciunt dicta</detail>
-		<mapUrl>https://www.google.co.cr/maps/place/Parque+Central+de+Escaz%C3%BA/@9.918851,-84.1455156,16z/data=!4m2!3m1!1s0x0000000000000000:0xde34c064f2506db8?hl=es-419</mapUrl>
-		<phone>(506)8888-8888</phone>
-		<email>info_f5@test.com</email>
-		<skype>f5Escazu</skype>
+		<detail>Desde Santa Ana o Guachipelin: De la entrada principal del Costa Rica Country Club, 500 mts Sur, 100 Mts Oeste, contiguos a fabrica de T&amp;eacute; Mondaiza.
+&lt;br/&gt;&lt;br/&gt;Desde San Jos&amp;eacute;: Del Scotiabank 1.5km al sur (subiendo hacia escaz&amp;eacute; Centro), 600 mts Oeste, contiguos a f&amp;aacute;brica de T&amp;eacute; Mondaiza.
+&lt;br/&gt;&lt;br/&gt;Desde Escaz&amp;uacute; Centro: Del Banco Nacional 400 mts Norte, 100 oeste, contiguos a f&amp;aacute;brica de T&amp;eacute; Mondaiza.</detail>
+		<mapUrl>https://goo.gl/itWeJb</mapUrl>
+		<phone1>(506)8376-2121</phone1>
+		<phone2>(506)8830-8780</phone2>
+		<email>info@f5.cr</email>
 	</escazu>
 
 	<desamparados>
-		<detail>Desamparados: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil consequuntur, nesciunt dicta</detail>
-		<mapUrl>https://www.google.co.cr/maps/place/Parque+el+Bosque/@9.8956572,-84.0609129,15z/data=!4m2!3m1!1s0x0000000000000000:0x3282645e6f917d0b?hl=es-419</mapUrl>
-		<phone>(506)8888-8888</phone>
-		<email>info_f5@test.com</email>
-		<skype>f5Desamparados</skype>
+		<detail>Del costado este del Centro Comercial Multicentro, 300 mts norte, sobre la carretera a Calle Fallas.</detail>
+		<mapUrl></mapUrl>
+		<phone1>(506)8376-2121</phone1>
+		<phone2>(506)8830-8780</phone2>
+		<email>info@f5.cr</email>
 	</desamparados>
 </footer>

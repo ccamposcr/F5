@@ -146,6 +146,9 @@ textarea {
   width: 450px;
   margin-bottom: 8px;
 }
+#bookingOnLine dl dd.contentInfoForm input.capitalize-text {
+  text-transform: capitalize;
+}
 #bookingOnLine .error {
   color: #c4302c;
   margin-left: 95px;
@@ -621,6 +624,24 @@ textarea {
   font-size: 20px;
   font-weight: normal;
 }
+#divContent .content-column {
+  width: 50%;
+  float: left;
+}
+#divContent .content-column.column-2 {
+  padding-left: 45px;
+}
+#divContent .content-column .services li {
+  color: #ffffff;
+  font-family: 'eurostileregular';
+  font-size: 19px;
+}
+#divContent .content-column p {
+  margin-bottom: 10px;
+  font-family: 'eurostileregular';
+  font-size: 20px;
+  font-weight: bold;
+}
 #contentLogin {
   width: 450px;
   margin: 20px auto;
@@ -714,15 +735,15 @@ textarea {
 #divWrapperFooter {
   width: 100%;
   background: url(../img/footer-background.jpg) center center repeat;
+  padding-top: 10px;
 }
 #divContentFooter {
   width: 960px;
   margin: 0 auto;
-  padding: 10px;
+  padding: 10px 25px;
   border-top: 1px solid rgba(11, 11, 11, 0.3);
 }
 #divSocialsIcons {
-  width: 210px;
   margin: 0px auto;
   display: table;
 }
@@ -770,6 +791,8 @@ a.fa-youtube:hover {
   font-size: 16px;
   margin: 0 auto;
   display: table;
+  width: 100%;
+  text-align: center;
 }
 #siteseal img {
   width: 15%;
@@ -786,20 +809,21 @@ a.fa-youtube:hover {
   text-transform: capitalize;
   height: 160px;
 }
-#divContentInfoFooter,
-#contentSocialIcons,
+#contentSocialIcons {
+  width: 250px;
+}
 #infoContact {
-  height: 160px;
-  width: 293px;
+  width: 240px;
 }
 #divContentInfoFooter {
-  margin: 0;
+  width: 400px;
   float: left;
 }
 #divContentInfoFooter p {
   color: #ffffff;
   font-family: 'eurostileregular';
   font-size: 16px;
+  text-align: justify;
 }
 .sticky-footer {
   position: absolute;
@@ -835,6 +859,9 @@ a.fa-youtube:hover {
 #contentSocialIcons a.fa-youtube:hover {
   text-decoration: none;
 }
+#contentSocialIcons a.fa-facebook {
+  margin-left: 85px;
+}
 #infoContact {
   float: right;
 }
@@ -853,6 +880,11 @@ a.fa-youtube:hover {
   padding: 0;
   text-decoration: none;
   margin-left: 20px;
+  display: inline-block;
+}
+#infoContact ul li a.phone-2 {
+  margin-left: 80px;
+  margin-top: 5px;
 }
 #infoContact ul li span {
   font-size: 18px;

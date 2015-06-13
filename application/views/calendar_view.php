@@ -121,15 +121,15 @@
                                   ?>
                                 </dt>
                                     <dd class="contentInfoForm">
-                                        <label>Nombre</label><input type="text" class="form-control" ng-model="fields.name" name="name" required/>
+                                        <label>Nombre</label><input type="text" class="form-control capitalize-text" ng-model="fields.name" name="name" required/>
                                         <span class="error" ng-show="bookingForm.name.$error.required && bookingForm.name.$dirty">Por favor ingrese su Nombre</span>
                                     </dd>
                                     <dd class="contentInfoForm">
-                                        <label>1<sub>er</sub> Apellido</label><input type="text" class="form-control" ng-model="fields.lastname1" name="lastname1" required/>
+                                        <label>1<sub>er</sub> Apellido</label><input type="text" class="form-control capitalize-text" ng-model="fields.lastname1" name="lastname1" required/>
                                         <span class="error" ng-show="bookingForm.lastname1.$error.required && bookingForm.lastname1.$dirty">Por favor ingrese su 1<sub>er</sub>Apellido</span>
                                     </dd>
                                     <dd class="contentInfoForm">
-                                        <label>2<sub>do</sub> Apellido</label><input type="text" class="form-control" ng-model="fields.lastname2" name="lastname2" required/>
+                                        <label>2<sub>do</sub> Apellido</label><input type="text" class="form-control capitalize-text" ng-model="fields.lastname2" name="lastname2" required/>
                                         <span class="error" ng-show="bookingForm.lastname2.$error.required && bookingForm.lastname2.$dirty">Por favor ingrese su 2<sub>do</sub>Apellido</span>
                                     </dd>
                                     <dd class="contentInfoForm">

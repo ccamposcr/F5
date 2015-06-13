@@ -199,6 +199,10 @@ textarea {
                 display: inline-block;
                 width: 450px;
                 margin-bottom: 8px;
+
+                &.capitalize-text{
+                    text-transform: capitalize;
+                }
             }
         }
     }
@@ -818,6 +822,30 @@ textarea {
         font-size: 20px;
         font-weight: normal;
     }
+
+    .content-column{
+        width: 50%;
+        float: left;
+
+        &.column-2{
+            padding-left: 45px;
+        }
+
+        .services{
+            li{
+                color: @white;
+                font-family: @font-content;
+                font-size: 19px;
+            }
+        }
+
+        p{
+            margin-bottom: 10px;
+            font-family: @font-content;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    }
 }
 
 #contentLogin{
@@ -942,18 +970,19 @@ textarea {
 #divWrapperFooter{
     width: 100%;
     background: url(../img/footer-background.jpg) center center repeat;
+    padding-top: 10px;
 }
 
 #divContentFooter{
     width: 960px;
     margin: 0 auto;
-    padding: 10px;
+    padding: 10px 25px;
     border-top: 1px solid rgba(11, 11, 11, 0.3);
 }
 
 //social icons
 #divSocialsIcons{
-    width: 210px;
+    //width: 210px;
     margin: 0px auto;
     display:table;
 
@@ -1007,7 +1036,10 @@ a.fa-youtube{
     font-size: 16px; 
     margin: 0 auto;
     display: table;
+    width: 100%;
+    text-align: center;
 }
+
 #siteseal{
     img{
         width:15%;
@@ -1024,19 +1056,24 @@ a.fa-youtube{
     text-transform: capitalize;
     height: 160px;
 }
-#divContentInfoFooter, #contentSocialIcons, #infoContact{
-    height: 160px;
-    width: 293px;
+
+#contentSocialIcons{
+    width: 250px;
+}
+
+#infoContact{
+    width: 240px;
 }
 
 #divContentInfoFooter{
-    margin: 0;
+    width: 400px;
     float: left;
 
     p{
         color: @white;
         font-family: @font-content;
         font-size: 16px;
+        text-align: justify;
     }
 }
 
@@ -1073,6 +1110,10 @@ a.fa-youtube{
         &:hover{
             text-decoration: none;
         }
+    }
+
+    a.fa-facebook{
+        margin-left: 85px;
     }  
 }
 
@@ -1097,6 +1138,12 @@ a.fa-youtube{
                 padding: 0;
                 text-decoration: none;
                 margin-left: 20px;
+                display: inline-block;
+
+                &.phone-2{
+                    margin-left: 80px;
+                    margin-top: 5px;
+                }
             }
             
             span{
