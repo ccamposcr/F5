@@ -801,6 +801,10 @@ a.fa-youtube:hover {
   font-family: 'eurostileregular';
   font-size: 16px;
 }
+.sticky-footer {
+  position: absolute;
+  bottom: 0;
+}
 #contentSocialIcons {
   float: left;
 }

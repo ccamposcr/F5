@@ -15,5 +15,6 @@
 	<script src="<?php echo base_url(); ?>js/vendor/angular.min.js"></script>
     <script src="<?php echo base_url(); ?>js/app/shared/app.js"></script>
     <script src="<?php echo base_url(); ?>js/app/shared/header/headerController.js"></script>
+    <script src="<?php echo base_url(); ?>js/main.js"></script>
     </body>
 </html>
