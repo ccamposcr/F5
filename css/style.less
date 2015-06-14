@@ -322,7 +322,7 @@ textarea {
 
 //change-password
 
-#change-password-modal{
+#edit-account-modal{
 
     .modal-body{
         padding-bottom:10px; 
@@ -340,10 +340,16 @@ textarea {
             margin-top: 5px;
         }
 
-        span{
+        .error{
             color:@red;
             display:block;
             margin-left: 180px;
+        }
+
+        .userAccountToEdit{
+            display: inline-block;
+            width: 52%;
+            font-size: 16px;
         }
     }
     
@@ -387,7 +393,7 @@ textarea {
         }
     }
 
-    .info_personas{
+    .client_info{
         padding: 3px;
     }
 }
@@ -447,6 +453,25 @@ textarea {
                 font-weight: bold;
             }
         }
+    }
+}
+
+#show-accounts-modal{
+    table{
+
+        tr{
+            border-bottom: 1px solid @lightGray;
+
+            th{
+                width: 180px;
+                font-size: 16px;
+                color: @red;
+            }
+        }
+    }
+
+    .client_info{
+        padding: 3px;
     }
 }
 

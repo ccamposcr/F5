@@ -466,9 +466,9 @@ F5App.app.directive('delete', ['$document','$http', function($document,$http) {
         event.preventDefault();
         angular.element('#loading-modal').modal('show');
         var data = {
-        	'user' : angular.element('#user').val(),
+        	'user' : scope.fields.userAccountToEdit,
         	'password' : scope.fields.password,
-        	'name' : scope.fields.accountName
+        	'name' : scope.fields.nameAccountToEdit
         }
         if( scope.changePassForm.$valid ){
 
@@ -484,10 +484,21 @@ F5App.app.directive('delete', ['$document','$http', function($document,$http) {
 
 			$http(req).success(function(response, status, headers, config) {
 				angular.element('#loading-modal').modal('hide');
-				angular.element('#change-password-modal').modal('hide');
-				alert("La cuenta se ha actualizado satisfactoriamente.");
-				F5App.leaveSafelyPage = true;
-				window.location = F5App.base_url + 'logout';
+				alert("La cuenta se ha actualizado satisfactoriamente. Nota: Debe deslogearse y volver a logearse con la cuenta moficada para visualizar los cambios");
+				angular.element('#edit-account-modal').modal('hide');
+				
+				$http.get(F5App.base_url + "getAccountsData").
+				  success(function(data, status, headers, config) {
+				 	//$timeout(function(){
+						scope.$root.accounts = angular.fromJson(data);
+					//});
+				  }).
+				  error(function(data, status, headers, config) {
+				    // called asynchronously if an error occurs
+				    // or server returns response with an error status.
+				  });
+				//F5App.leaveSafelyPage = true;
+				//window.location = F5App.base_url + 'logout';
 		
 			}).error(function(response, status, headers, config) {
 			    // called asynchronously if an error occurs
@@ -666,6 +677,51 @@ F5App.app.directive('reserveAndPayBtn', ['$document','$http','$timeout', functio
         else{
         	alert("Por favor ingrese correctamente los datos erróneos en el formulario");
         }
+      });
+    }
+    return {
+    	restrict : 'C',
+    	scope : false,
+    	link:link
+	}
+  }]);
+
+  F5App.app.directive('modifyAccountsBtn', ['$document','$timeout','$http', function($document,$timeout,$http) {
+    function link(scope, element, attr) {
+      element.on('click', function(event) {
+        event.preventDefault();
+        angular.element('#loading-modal').modal('show');
+        $http.get(F5App.base_url + "getAccountsData").
+		  success(function(data, status, headers, config) {
+		    angular.element('#loading-modal').modal('hide');
+		 	//$timeout(function(){
+				scope.$root.accounts = angular.fromJson(data);
+			//});
+			angular.element('#show-accounts-modal').modal('show');
+		  }).
+		  error(function(data, status, headers, config) {
+		    // called asynchronously if an error occurs
+		    // or server returns response with an error status.
+		  });
+      });
+    }
+    return {
+    	restrict : 'C',
+    	scope : false,
+    	link:link
+	}
+  }]);
+
+  F5App.app.directive('editAccountBtn', ['$document','$timeout','$http', function($document,$timeout,$http) {
+    function link(scope, element, attr) {
+      element.on('click', function(event) {
+        event.preventDefault();
+        angular.element('#edit-account-modal').modal('show');
+        //console.log(attr.value);
+        $timeout(function(){
+        	scope.fields.nameAccountToEdit = attr.accountnametoedit;
+        	scope.fields.userAccountToEdit = attr.usertoedit;
+        });
       });
     }
     return {

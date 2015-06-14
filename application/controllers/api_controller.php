@@ -218,4 +218,9 @@ class Api_controller extends CI_Controller {
         $result = $this->api_model->getRates();
         echo json_encode($result);
     }
+
+    public function getAccountsData(){
+        $result = $this->api_model->getAccountsData();
+        echo json_encode($result);
+    }
 }

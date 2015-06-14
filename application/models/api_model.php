@@ -87,6 +87,11 @@ class Api_model extends CI_MODEL
         $query = $this->db->query("SELECT * FROM t_rates");
         return $query->result();
     }
+
+    function getAccountsData(){
+        $query = $this->db->query("SELECT id,user,name,rol,id_group FROM t_admin");
+        return $query->result();
+    }
 }
 //end model
 

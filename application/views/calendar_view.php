@@ -477,11 +477,11 @@
                     <table id="searchResults">
                       <tr><th ng-if="selectUserMode"></th><th>Nombre</th><th>Apellidos</th><th>Tel&eacute;fono</th><th>Email</th></tr>
                       <tr ng-repeat="client in clients | filter:searchText" class="rowClient">
-                        <td ng-if="selectUserMode" class="info_personas"><input class="client" type="radio" name="client" ng-model="fields.client" value="{{$index}}"/></td>
-                        <td class="info_personas">{{$index+1}}. {{client.name}}</td>
-                        <td class="info_personas">{{client.lastname}}</td>
-                        <td class="info_personas">{{client.phone}}</td>
-                        <td class="info_personas">{{client.email}}</td>
+                        <td ng-if="selectUserMode" class="client_info"><input class="client" type="radio" name="client" ng-model="fields.client" value="{{$index}}"/></td>
+                        <td class="client_info">{{$index+1}}. {{client.name}}</td>
+                        <td class="client_info">{{client.lastname}}</td>
+                        <td class="client_info">{{client.phone}}</td>
+                        <td class="client_info">{{client.email}}</td>
                         <input type="hidden" value="{{client.name}}" class="clientName" />
                         <input type="hidden" value="{{client.lastname}}" class="clientLastName" />
                         <input type="hidden" value="{{client.phone}}" class="clientPhone" />
@@ -496,8 +496,33 @@
                 </div>
               </div>
             </div>
+
+<!-- show-accounts-modal-->
+            <div class="modal fade" id="show-accounts-modal">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title">Modificar Cuentas</h4>
+                  </div>
+                  <div class="modal-body">
+                    <table id="searchResults">
+                      <tr><th>Usuario</th><th>Nombre asociado a la cuenta</th><th></th></tr>
+                      <tr ng-repeat="account in accounts" class="rowClient">
+                        <td class="client_info">{{$index+1}}. {{account.user}}</td>
+                        <td class="client_info">{{account.name}}</td>
+                        <td class="client_info"><a href="#" class="editAccountBtn" name="account" data-accountnametoedit="{{account.name}}" data-usertoedit="{{account.user}}">Editar</a></td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
 <!-- change-password-modal -->
-            <div class="modal fade" id="change-password-modal">
+            <div class="modal fade" id="edit-account-modal">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -506,7 +531,8 @@
                   </div>
                   <div class="modal-body">
                     <form name="changePassForm">
-                      <label>Nombre Cuenta</label><input type="text" ng-model="fields.accountName" class="form-control" name="accountName" required/>
+                      <label>Usuario</label><span class="userAccountToEdit">{{fields.userAccountToEdit}}</span>
+                      <label>Nombre Cuenta</label><input type="text" ng-model="fields.nameAccountToEdit" class="form-control" name="nameAccountToEdit" required/>
                       <label>Nueva contrase&ntilde;a</label><input type="password" ng-model="fields.password" class="form-control" name="password" ng-minlength="5" required/>
                       <label>Confirmaci&oacute;n contrase&ntilde;a</label><input type="password" ng-model="fields.confirmation" class="form-control" name="confirmation" ng-minlength="5" required/>
                       <span class="error" ng-show="changePassForm.password.$error.required && changePassForm.password.$dirty || changePassForm.confirmation.$error.required && changePassForm.confirmation.$dirty">Ambos campos de password son requeridos</span>

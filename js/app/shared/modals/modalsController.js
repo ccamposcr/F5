@@ -20,16 +20,28 @@ F5App.app.controller("modalController", function ($scope, $rootScope,$interval, 
 		//$scope.loadReservations();
 	});
 
-	angular.element('#change-password-modal').on('hidden.bs.modal', function(){
-		$scope.fields.password = '';
-		$scope.fields.confirmation = '';
-	});
-
-	angular.element('#change-password-modal').on('show.bs.modal', function(){
+	angular.element('#edit-account-modal').on('hidden.bs.modal', function(){
 		$timeout(function(){
-			$scope.fields.accountName = angular.element('#name_user').val();
+			$scope.fields.password = '';
+			$scope.fields.confirmation = '';
+			$scope.fields.nameAccountToEdit = '';
+
+			$scope.changePassForm.password.$pristine = true;
+			$scope.changePassForm.password.$dirty = false;
+
+			$scope.changePassForm.confirmation.$pristine = true;
+			$scope.changePassForm.confirmation.$dirty = false;
+
+			$scope.changePassForm.nameAccountToEdit.$pristine = true;
+			$scope.changePassForm.nameAccountToEdit.$dirty = false;
 		});
 	});
+
+	/*angular.element('#edit-account-modal').on('show.bs.modal', function(){
+		$timeout(function(){
+			$scope.fields.userToEdit = angular.element('#name_user').val();
+		});
+	});*/
 
 	angular.element('#formReservationModal').on('show.bs.modal', function(){
 		$scope.successReservation = false;

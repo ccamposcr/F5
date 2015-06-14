@@ -223,24 +223,29 @@ textarea {
 #formReservationModal .modal-body {
   padding-bottom: 0;
 }
-#change-password-modal .modal-body {
+#edit-account-modal .modal-body {
   padding-bottom: 10px;
 }
-#change-password-modal form label {
+#edit-account-modal form label {
   width: 180px;
   font-size: 16px;
 }
-#change-password-modal form input {
+#edit-account-modal form input {
   width: 300px;
   display: inline-block;
   margin-top: 5px;
 }
-#change-password-modal form span {
+#edit-account-modal form .error {
   color: #c4302c;
   display: block;
   margin-left: 180px;
 }
-#change-password-modal .changePasswordBtn[disabled] {
+#edit-account-modal form .userAccountToEdit {
+  display: inline-block;
+  width: 52%;
+  font-size: 16px;
+}
+#edit-account-modal .changePasswordBtn[disabled] {
   background-color: #d2cfcf;
 }
 #search-modal .modal-body {
@@ -266,7 +271,7 @@ textarea {
   font-size: 16px;
   color: #c4302c;
 }
-#search-modal .info_personas {
+#search-modal .client_info {
   padding: 3px;
 }
 #check-availability-modal {
@@ -309,6 +314,17 @@ textarea {
 }
 #show-info-modal .modal-body .pitchInformation span {
   font-weight: bold;
+}
+#show-accounts-modal table tr {
+  border-bottom: 1px solid #d2cfcf;
+}
+#show-accounts-modal table tr th {
+  width: 180px;
+  font-size: 16px;
+  color: #c4302c;
+}
+#show-accounts-modal .client_info {
+  padding: 3px;
 }
 /* ==========================================================================
    HEADER

@@ -7,7 +7,7 @@
         <input type="hidden" value="<?=$session_data['rol']?>" id="rol_user"/>
         <input type="hidden" value="<?=$session_data['name']?>" id="name_user"/>
         <input type="hidden" value="<?=$session_data['groupManager']?>" id="group_manager"/>
-        <span>Bienvenido <?php echo $session_data['name'];?></span> | <a href="#" data-toggle="modal" data-target="#change-password-modal">Modificar Cuenta</a> | <a href="<?php echo base_url(); ?>logout">Cerrar Sesi&oacute;n</a>
+        <span>Bienvenido <?php echo $session_data['name'];?></span> <span ng-if="isAdminUser() && getRol() == isRol('Admin')">| <a href="#" data-toggle="modal" class="modifyAccountsBtn">Modificar Cuentas</a></span> | <a href="<?php echo base_url(); ?>logout">Cerrar Sesi&oacute;n</a>
     <?php
     }
     else/*( isset($adminBtn) )*/{
