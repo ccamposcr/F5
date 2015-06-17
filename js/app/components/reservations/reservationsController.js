@@ -276,6 +276,29 @@ F5App.app.controller("reservationController", function ($scope, $rootScope,$time
 		});
 	}
 
+	$rootScope.sendSMS = function(data){
+		angular.element('#sending-sms-modal').modal('show');
+		var req = {
+			method: 'POST',
+			url: F5App.base_url + "sendSMS",
+			headers: {
+			   	'Content-Type': 'application/x-www-form-urlencoded'
+			},
+		 	data: $.param( data ),
+		 	cache : false
+		}
+
+		$http(req).success(function(response, status, headers, config) {
+			//angular.element('#loading-modal').modal('hide');
+			angular.element('#sending-sms-modal').modal('hide');
+			$scope.loadReservations();
+	
+		}).error(function(response, status, headers, config) {
+		    // called asynchronously if an error occurs
+		    // or server returns response with an error status.
+		});
+	}
+
 	$rootScope.getCorrectTimeReservation = function(time){
 		return $scope.times[$scope.timesForReservations.indexOf(time)];
 	}

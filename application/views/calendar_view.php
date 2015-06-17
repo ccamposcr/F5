@@ -360,6 +360,20 @@
             </div>
           </div>
         </div>
+<!-- sending-email -->
+        <div class="modal fade loading" id="sending-sms-modal">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">F5 Reservaciones</h4>
+              </div>
+              <div class="modal-body">
+                <p>Enviando SMS, por favor no cierre esta ventana ...</p>
+                <img src="<?php echo base_url(); ?>img/loading.gif" width="127" height="128"/>
+              </div>
+            </div>
+          </div>
+        </div>
 <!-- processing-credit-card-modal -->
         <div class="modal fade loading" id="processing-card-modal">
           <div class="modal-dialog">

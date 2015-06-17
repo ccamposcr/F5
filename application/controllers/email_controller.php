@@ -6,9 +6,12 @@ class Email_controller extends CI_Controller {
     {
         parent::__construct();
         $this->load->library('email');
+    }
+
+    public function sendEmail(){
+
         $config['protocol'] = 'smtp';
-        
-        $config['wordwrap'] = TRUE;
+        //$config['wordwrap'] = TRUE;
         $config['smtp_host'] = 'ssl://smtpout.secureserver.net';
         $config['smtp_user'] = 'reserva@f5.cr';
         $config['smtp_pass'] = 'Avega0184';
@@ -19,23 +22,39 @@ class Email_controller extends CI_Controller {
         $config['newline'] = "\r\n";
         
         $this->email->initialize($config);
-        /*$config['protocol'] = 'sendmail';
-        $config['mailpath'] = '/usr/sbin/sendmail';
-        $config['charset'] = 'iso-8859-1';
-        $config['wordwrap'] = TRUE;
 
-        $this->email->initialize($config);*/
+        $email = ( isset($_POST['email']) ) ? strip_tags($_POST['email']) : '';
+        $data_reservation = ( isset($_POST['data_reservation']) ) ? strip_tags($_POST['data_reservation']) : '';
+        $this->email->from('reserva@f5.cr', 'Reservaciones F5');
+        $this->email->to($email); 
+        $this->email->cc('reserva@f5.cr'); 
+        $this->email->subject('Su reservación se ha efectuado correctamente');
+        $this->email->message($data_reservation);   
+        $this->email->send();
+        echo $this->email->print_debugger();
     }
 
-    public function sendEmail(){
-    	$email = ( isset($_POST['email']) ) ? strip_tags($_POST['email']) : '';
-    	$data_reservation = ( isset($_POST['data_reservation']) ) ? strip_tags($_POST['data_reservation']) : '';
+    public function sendSMS(){
+
+        $config['protocol'] = 'smtp';
+        $config['smtp_host'] = 'ssl://smtpout.secureserver.net';
+        $config['smtp_user'] = 'reserva@f5.cr';
+        $config['smtp_pass'] = 'Avega0184';
+        //$config['smtp_pass'] = 'Reserva2014';
+        $config['smtp_port'] = '465';
+        $config['mailtype'] = 'text';
+        //$config['charset'] = 'utf-8';
+        $config['newline'] = "\r\n";
+        
+        $this->email->initialize($config);
+
+        $phone = ( isset($_POST['phone']) ) ? strip_tags($_POST['phone']) : '';
+        $data_reservation = ( isset($_POST['data_reservation']) ) ? strip_tags($_POST['data_reservation']) : '';
         $this->email->from('reserva@f5.cr', 'Reservaciones F5');
-		$this->email->to($email); 
-		$this->email->cc('reserva@f5.cr'); 
-		$this->email->subject('Su reservación se ha efectuado correctamente');
-		$this->email->message($data_reservation);	
-		$this->email->send();
+        $this->email->to('dualimentos@tec-sms.com'); 
+        $this->email->subject($phone);
+        $this->email->message($data_reservation);   
+        $this->email->send();
         echo $this->email->print_debugger();
     }
 }

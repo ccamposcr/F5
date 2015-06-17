@@ -78,6 +78,7 @@ $route['setInactiveReservation'] = 'api_controller/setInactiveReservation';
 $route['setInactiveReservationAllWeeks'] = 'api_controller/setInactiveReservationAllWeeks';
 $route['checkExpiredReservations'] = 'check_expired_reservations_controller/checkExpiredReservations';
 $route['sendEmail'] = 'email_controller/sendEmail';
+$route['sendSMS'] = 'email_controller/sendSMS';
 $route['getClientsData'] = 'api_controller/getClientsData';
 $route['changePassword'] = 'login_controller/changePassword';
 $route['reserveAllWeeksSameDay'] = 'api_controller/reserveAllWeeksSameDay';

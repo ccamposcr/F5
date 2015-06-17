@@ -200,6 +200,15 @@ F5App.app.directive('reserveBtn', ['$document','$http', function($document,$http
 						//scope.$parent.successReservation = true;
 
 						angular.element('#formReservationModal').modal('hide');
+						if( !!data.phone){
+							scope.sendSMS({	'phone' : data.phone,
+												'data_reservation' : 'Su reservacion ha sido creada satisfactoriamente <br>Fecha: '
+												 + data.reservation_day +'/'+ data.reservation_month +'/'+ data.reservation_year + 
+												 '<br>Hora: '+ scope.getCorrectTimeReservation(data.reservation_time) +'<br>Nombre: '+
+												 data.name + ' '+ data.lastname
+											});
+						}
+						
 						if( !!data.email ){
 							scope.sendEmail({	'email' : data.email,
 												'data_reservation' : 'Su reservación ha sido creada satisfactoriamente <br>Fecha: '
