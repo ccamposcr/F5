@@ -202,19 +202,49 @@ F5App.app.directive('reserveBtn', ['$document','$http', function($document,$http
 						angular.element('#formReservationModal').modal('hide');
 						if( !!data.phone){
 							scope.sendSMS({	'phone' : data.phone,
-												'data_reservation' : 'Su reservacion ha sido creada satisfactoriamente <br>Fecha: '
+												'data_reservation' : 'Su reservacion ha sido creada satisfactoriamente \r\nFecha: '
 												 + data.reservation_day +'/'+ data.reservation_month +'/'+ data.reservation_year + 
-												 '<br>Hora: '+ scope.getCorrectTimeReservation(data.reservation_time) +'<br>Nombre: '+
+												 '\r\nHora: '+ scope.getCorrectTimeReservation(data.reservation_time) +'\r\nNombre: '+
 												 data.name + ' '+ data.lastname
 											});
 						}
 						
 						if( !!data.email ){
 							scope.sendEmail({	'email' : data.email,
-												'data_reservation' : 'Su reservación ha sido creada satisfactoriamente <br>Fecha: '
-												 + data.reservation_day +'/'+ data.reservation_month +'/'+ data.reservation_year + 
-												 '<br>Hora: '+ scope.getCorrectTimeReservation(data.reservation_time) +'<br>Nombre: '+
-												 data.name + ' '+ data.lastname
+												'data_reservation' : 'Hola!!'
+												+ '<br/><br/>'
+												+ 'Mediante este correo electrónico te confirmamos la reserva hecha a nombre de: ' + data.name + ' '+ data.lastname
+												+ ' en F5 ' + ( (data.group_id == 1) ? 'Escazú' : "Desamparados" ) + '.'
+												+ '<br/><br/>'
+												+ 'Por favor verificar que hayamos hecho correctamente nuestro trabajo:'
+												+ '<br/><br/>'
+												+ 'Fecha de la reserva: ' + data.reservation_day +'/'+ data.reservation_month +'/'+ data.reservation_year
+												+ '<br/>'
+												+ 'Hora de la reserva: ' + scope.getCorrectTimeReservation(data.reservation_time)
+												+ '<br/>'
+												+ 'Requiere Árbitro: ' + ( (data.referee_required == 1) ? 'Sí' : "No" )
+												+ '<br/>'
+												+ 'Monto a cancelar(ado): ¢00000'
+												+ '<br/><br/>'
+												+ 'Ya sabes cómo llegar?, te dejamos estos links para que se te haga más fácil encontrarnos!!'
+												+ '<br/><br/>'
+												+ 'F5 ' + ( (data.group_id == 1) ? 'Escazú, Conducir allí usando <a href="https://www.google.co.cr/maps/place/Futbol+5+Escazu/@9.9228973,-84.1414574,176m/data=!3m1!1e3!4m5!1m2!2m1!1sF5+Escazu!3m1!1s0x0000000000000000:0x7e581f528391695e!6m1!1e1">Google Maps</a>' : 'Desamparados, Conducir allí usando <a href="https://www.google.co.cr/maps/place/Futbol+5+Escazu/@9.9228973,-84.1414574,176m/data=!3m1!1e3!4m5!1m2!2m1!1sF5+Escazu!3m1!1s0x0000000000000000:0x7e581f528391695e!6m1!1e1">Google Maps</a>' )
+												+ '<br/><br/>'
+												+ 'F5 ' + ( (data.group_id == 1) ? 'Escazú, Conducir allí usando <a href="http://waze.to/lr/hd1u0mq3ux">Waze</a>' : 'Desamparados, Conducir allí usando <a href="http://waze.to/lr/hd1u0mq3ux">Waze</a>' )
+												+ '<br/><br/>'
+												+ 'De tener cualquier duda llámanos y te ayudaremos a solventarla.'
+												+ '<br/><br/><br/>'
+												+ 'Atentamente'
+												+ '<br/><br/>'
+												+ 'Equipo F5'
+												+ '<br/>'
+												+ 'Teléfonos: 8376-2121 / 7206-3300'
+												+ '<br/>'
+												+ 'Visítanos en nuestra web <a href="www.f5.cr">www.f5.cr</a>'
+												+ '<br/>'
+												+ 'Visítanos en nuestro <a href="https://www.facebook.com/f5costarica?fref=ts">Facebook</a>'
+												+ '<br/><br/><br/>'
+												+ '<img src="f5.cr' + F5App.base_url + 'img/logo.png"/>'
 											});
 						}else{
 							angular.element('#loading-modal').modal('hide');

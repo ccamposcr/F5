@@ -20,16 +20,19 @@ class Email_controller extends CI_Controller {
         $config['mailtype'] = 'html';
         $config['charset'] = 'utf-8';
         $config['newline'] = "\r\n";
+        $config['crlf'] = "\r\n";
+        
         
         $this->email->initialize($config);
 
         $email = ( isset($_POST['email']) ) ? strip_tags($_POST['email']) : '';
-        $data_reservation = ( isset($_POST['data_reservation']) ) ? strip_tags($_POST['data_reservation']) : '';
+        $data_reservation = ( isset($_POST['data_reservation']) ) ? $_POST['data_reservation'] : '';
         $this->email->from('reserva@f5.cr', 'Reservaciones F5');
         $this->email->to($email); 
         $this->email->cc('reserva@f5.cr'); 
-        $this->email->subject('Su reservación se ha efectuado correctamente');
-        $this->email->message($data_reservation);   
+        $this->email->subject('F5 | Su reservación se ha efectuado correctamente');
+        $this->email->message($data_reservation);
+        //$this->email->message("test<br/>test");
         $this->email->send();
         echo $this->email->print_debugger();
     }
@@ -45,15 +48,18 @@ class Email_controller extends CI_Controller {
         $config['mailtype'] = 'text';
         //$config['charset'] = 'utf-8';
         $config['newline'] = "\r\n";
+        $config['crlf'] = "\r\n";
         
         $this->email->initialize($config);
 
         $phone = ( isset($_POST['phone']) ) ? strip_tags($_POST['phone']) : '';
-        $data_reservation = ( isset($_POST['data_reservation']) ) ? strip_tags($_POST['data_reservation']) : '';
+        $data_reservation = ( isset($_POST['data_reservation']) ) ? $_POST['data_reservation'] : '';
         $this->email->from('reserva@f5.cr', 'Reservaciones F5');
         $this->email->to('dualimentos@tec-sms.com'); 
-        $this->email->subject($phone);
-        $this->email->message($data_reservation);   
+        //$this->email->subject($phone);
+        $this->email->subject('83180160');
+        //$this->email->message($data_reservation);
+        $this->email->message("test\r\ntest"); 
         $this->email->send();
         echo $this->email->print_debugger();
     }
