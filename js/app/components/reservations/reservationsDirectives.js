@@ -202,10 +202,38 @@ F5App.app.directive('reserveBtn', ['$document','$http', function($document,$http
 						angular.element('#formReservationModal').modal('hide');
 						if( !!data.phone){
 							scope.sendSMS({	'phone' : data.phone,
-												'data_reservation' : 'Su reservacion ha sido creada satisfactoriamente \r\nFecha: '
-												 + data.reservation_day +'/'+ data.reservation_month +'/'+ data.reservation_year + 
-												 '\r\nHora: '+ scope.getCorrectTimeReservation(data.reservation_time) +'\r\nNombre: '+
-												 data.name + ' '+ data.lastname
+												'data_reservation' : 'Hola!!'
+												+ '\r\n'
+												+ 'Mediante este sms te confirmamos la reserva hecha a nombre de: ' + data.name + ' '+ data.lastname
+												+ ' en F5 ' + ( (data.group_id == 1) ? 'Escazú' : "Desamparados" ) + '.'
+												+ '\r\n'
+												+ 'Por favor verificar que hayamos hecho correctamente nuestro trabajo:'
+												+ '\r\n'
+												+ 'Fecha de la reserva: ' + data.reservation_day +'/'+ data.reservation_month +'/'+ data.reservation_year
+												+ '\r\n'
+												+ ', Hora de la reserva: ' + scope.getCorrectTimeReservation(data.reservation_time)
+												+ '\r\n'
+												+ ', Requiere Árbitro: ' + ( (data.referee_required == 1) ? 'Sí' : "No" )
+												+ '\r\n'
+												+ ', Monto a cancelar(ado): ¢00000.'
+												+ '\r\n'
+												+ 'Ya sabes cómo llegar?, te dejamos estos links para que se te haga más fácil encontrarnos!!'
+												+ '\r\n'
+												+ ' F5 ' + ( (data.group_id == 1) ? 'Escazú, Conducir allí usando Google Maps https://goo.gl/itWeJb' : 'Desamparados, Conducir allí usando Google Maps https://goo.gl/itWeJb' )
+												+ '\r\n'
+												+ ' F5 ' + ( (data.group_id == 1) ? 'Escazú, Conducir allí usando Waze http://waze.to/lr/hd1u0mq3ux' : 'Desamparados, Conducir allí usando Waze http://waze.to/lr/hd1u0mq3ux' )
+												+ '\r\n'
+												+ ' De tener cualquier duda llámanos y te ayudaremos a solventarla.'
+												+ '\r\n'
+												+ 'Atentamente '
+												+ '\r\n'
+												+ 'Equipo F5 '
+												+ '\r\n'
+												+ 'Teléfonos: 8376-2121 / 7206-3300 '
+												+ '\r\n'
+												+ 'Visítanos en nuestra web www.f5.cr '
+												+ '\r\n'
+												+ 'Visítanos en nuestro Facebook https://www.facebook.com/f5costarica'
 											});
 						}
 						
@@ -288,6 +316,44 @@ F5App.app.directive('reserveBtn', ['$document','$http', function($document,$http
 					angular.element('#set-pitch-all-weeks-modal').modal('hide');
 					//scope.loadReservations();
 
+					if( !!data.phone){
+						scope.sendSMS({	'phone' : data.phone,
+												'data_reservation' : 'Hola!!'
+												+ '\r\n'
+												+ 'Mediante este sms te confirmamos la reserva hecha a nombre de: ' + data.name + ' '+ data.lastname
+												+ ' en F5 ' + ( (data.group_id == 1) ? 'Escazú' : "Desamparados" ) + '.'
+												+ '\r\n'
+												+ 'Por favor verificar que hayamos hecho correctamente nuestro trabajo:'
+												+ '\r\n'
+												+ 'Fecha de la reserva: ' + data.reservation_day +'/'+ data.reservation_month +'/'+ data.reservation_year
+												+ '\r\n'
+												+ ', Hora de la reserva: ' + scope.getCorrectTimeReservation(data.reservation_time)
+												+ '\r\n'
+												+ ', Requiere Árbitro: ' + ( (data.referee_required == 1) ? 'Sí' : "No" )
+												+ '\r\n'
+												+ ', También se ha reservado esta fecha como cancha fija'
+												+ '\r\n'
+												+ ', Monto a cancelar(ado): ¢00000.'
+												+ '\r\n'
+												+ 'Ya sabes cómo llegar?, te dejamos estos links para que se te haga más fácil encontrarnos!!'
+												+ '\r\n'
+												+ ' F5 ' + ( (data.group_id == 1) ? 'Escazú, Conducir allí usando Google Maps https://goo.gl/itWeJb' : 'Desamparados, Conducir allí usando Google Maps https://goo.gl/itWeJb' )
+												+ '\r\n'
+												+ ' F5 ' + ( (data.group_id == 1) ? 'Escazú, Conducir allí usando Waze http://waze.to/lr/hd1u0mq3ux' : 'Desamparados, Conducir allí usando Waze http://waze.to/lr/hd1u0mq3ux' )
+												+ '\r\n'
+												+ ' De tener cualquier duda llámanos y te ayudaremos a solventarla.'
+												+ '\r\n'
+												+ 'Atentamente '
+												+ '\r\n'
+												+ 'Equipo F5 '
+												+ '\r\n'
+												+ 'Teléfonos: 8376-2121 / 7206-3300 '
+												+ '\r\n'
+												+ 'Visítanos en nuestra web www.f5.cr '
+												+ '\r\n'
+												+ 'Visítanos en nuestro Facebook https://www.facebook.com/f5costarica'
+											});
+					}
 					if( !!data.email ){
 						var daysAvailables = angular.fromJson(response);
 

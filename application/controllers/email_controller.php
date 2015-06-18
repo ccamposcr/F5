@@ -29,10 +29,9 @@ class Email_controller extends CI_Controller {
         $data_reservation = ( isset($_POST['data_reservation']) ) ? $_POST['data_reservation'] : '';
         $this->email->from('reserva@f5.cr', 'Reservaciones F5');
         $this->email->to($email); 
-        $this->email->cc('reserva@f5.cr'); 
+        $this->email->cc('avega@universal.co.cr'); 
         $this->email->subject('F5 | Su reservación se ha efectuado correctamente');
         $this->email->message($data_reservation);
-        //$this->email->message("test<br/>test");
         $this->email->send();
         echo $this->email->print_debugger();
     }
@@ -58,8 +57,12 @@ class Email_controller extends CI_Controller {
         $this->email->to('dualimentos@tec-sms.com'); 
         //$this->email->subject($phone);
         $this->email->subject('83180160');
-        //$this->email->message($data_reservation);
-        $this->email->message("test\r\ntest"); 
+        $this->email->message($data_reservation);
+        $this->email->send();
+        echo $this->email->print_debugger();
+
+        $this->email->subject('72063300');
+        $this->email->message($data_reservation);
         $this->email->send();
         echo $this->email->print_debugger();
     }
