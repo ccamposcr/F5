@@ -172,19 +172,19 @@
                                       </tr>
                                       <tr>
                                         <td>Cancha</td>
-                                        <td>{{(fields.typeReservation == '1') ? rates.cancha_completa : rates.cancha_completa/2 | currency:""}} colones</td>
+                                        <td>{{(fields.typeReservation == '1') ? specificRates.cancha_completa : specificRates.cancha_completa/2 | currency:""}} colones</td>
                                       </tr>
                                       <tr ng-if="!!fields.setReferee">
                                         <td>&Aacute;rbitro</td>
-                                        <td>{{(fields.typeReservation == '1') ? rates.arbitro : rates.arbitro/2 | currency:""}} colones</td>
+                                        <td>{{(fields.typeReservation == '1') ? specificRates.arbitro : specificRates.arbitro/2 | currency:""}} colones</td>
                                       </tr>
                                       <tr ng-if="!!fields.setPitchAllWeeks">
                                         <td>D&eacute;posito (Cancha Fija)</td>
-                                        <td>{{rates.cancha_fija_deposito | currency:""}} colones</td>
+                                        <td>{{(fields.typeReservation == '1') ? specificRates.cancha_fija_completa_deposito : specificRates.cancha_fija_reto_deposito | currency:""}} colones</td>
                                       </tr>
                                       <tr class="total">
                                         <td>Total</td>
-                                        <td>{{ ( (fields.typeReservation == '1') ? rates.cancha_completa * 1 : rates.cancha_completa/2 ) + ( (!!fields.setReferee) ? ( (fields.typeReservation == '1') ? rates.arbitro * 1 : rates.arbitro/2 ) : 0 ) + ( (!!fields.setPitchAllWeeks) ? rates.cancha_fija_deposito * 1 : 0 ) | currency:""}} colones</td>
+                                        <td>{{ ( (fields.typeReservation == '1') ? specificRates.cancha_completa * 1 : specificRates.cancha_completa/2 ) + ( (!!fields.setReferee) ? ( (fields.typeReservation == '1') ? specificRates.arbitro * 1 : specificRates.arbitro/2 ) : 0 ) + ( (!!fields.setPitchAllWeeks) ? specificRates.cancha_fija_deposito * 1 : 0 ) | currency:""}} colones</td>
                                       </tr>
                                     </table>
                                 </dd>

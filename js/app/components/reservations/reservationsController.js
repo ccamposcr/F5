@@ -204,7 +204,7 @@ F5App.app.controller("reservationController", function ($scope, $rootScope,$time
 		}
 
 		$http(req).success(function(response, status, headers, config) {
-			$rootScope.rates = angular.fromJson(response)[0];
+			$rootScope.rates = angular.fromJson(response);
 		}).error(function(response, status, headers, config) {
 		    // called asynchronously if an error occurs
 		    // or server returns response with an error status.

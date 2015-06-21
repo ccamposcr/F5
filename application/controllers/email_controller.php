@@ -56,12 +56,12 @@ class Email_controller extends CI_Controller {
         $this->email->from('reserva@f5.cr', 'Reservaciones F5');
         $this->email->to('dualimentos@tec-sms.com'); 
         //$this->email->subject($phone);
-        $this->email->subject('83180160');
+        $this->email->subject('88308780');
         $this->email->message($data_reservation);
         $this->email->send();
         echo $this->email->print_debugger();
 
-        $this->email->subject('72063300');
+        $this->email->subject('83180160');
         $this->email->message($data_reservation);
         $this->email->send();
         echo $this->email->print_debugger();

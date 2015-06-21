@@ -24,6 +24,18 @@ F5App.app.directive('available', ['$document','$http','$timeout', function($docu
         angular.element('#team_id').val(attr.team);
         angular.element('#reservation_time').val(angular.element(element).siblings('.reservation-time').attr('data-time'));
 
+        /* -- Specific Rates -- */
+        var date = new Date(angular.element('#year').val(),angular.element('#month').val() - 1,angular.element('#day').val()).getDay(),
+        	isWeekend = (date == 6 || date == 0),
+        	hourSelected = scope.getDataForTemporaryReservation().reservation_time.split('-')[0];
+
+    	for(var i = 0; i < scope.rates.length; i++){
+        	if(scope.rates[i].weekend == isWeekend && parseInt(hourSelected) >= parseInt(scope.rates[i].hora_inicio) && parseInt(hourSelected) <= parseInt(scope.rates[i].hora_final) ){
+        		scope.$root.specificRates = scope.rates[i];
+        	}
+        }
+        
+        /* -- Specific Rates End -- */
         var req = {
 			method: 'POST',
 			url: F5App.base_url + "getTemporaryReservationState",
