@@ -184,7 +184,7 @@
                                       </tr>
                                       <tr class="total">
                                         <td>Total</td>
-                                        <td>{{ ( (fields.typeReservation == '1') ? specificRates.cancha_completa * 1 : specificRates.cancha_completa/2 ) + ( (!!fields.setReferee) ? ( (fields.typeReservation == '1') ? specificRates.arbitro * 1 : specificRates.arbitro/2 ) : 0 ) + ( (!!fields.setPitchAllWeeks) ? specificRates.cancha_fija_deposito * 1 : 0 ) | currency:""}} colones</td>
+                                        <td>{{ ( (fields.typeReservation == '1') ? specificRates.cancha_completa * 1 : specificRates.cancha_completa/2 ) + ( (!!fields.setReferee) ? ( (fields.typeReservation == '1') ? specificRates.arbitro * 1 : specificRates.arbitro/2 ) : 0 ) + ( (!!fields.setPitchAllWeeks) ? ( (fields.typeReservation == '1') ? specificRates.cancha_fija_completa_deposito * 1 : specificRates.cancha_fija_reto_deposito * 1 ) : 0 ) | currency:""}} colones</td>
                                       </tr>
                                     </table>
                                 </dd>
