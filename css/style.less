@@ -247,31 +247,10 @@ textarea {
                 display: inline-block;
                 margin-bottom: 8px;
             }
-            
-            &.reservationInformation{
+
+            &.paymentInformation{
                 padding-left: 15px;
                 margin-bottom: 25px;
-                
-                h4{
-                    font-weight: bold;
-                }
-
-                table{
-                    tr{
-                        &.total{
-                            font-weight: bold;
-                        }
-
-                        th{
-                            width: 150px;
-                        }
-
-                        td{
-                            border: 1px solid @darkGray;
-                            padding:5px; 
-                        }
-                    }
-                }
             }
         }
     }
@@ -317,6 +296,32 @@ textarea {
 
     .modal-body {
         padding-bottom: 0;
+    }
+
+    .paymentInformation{
+        padding-left: 15px;
+        margin-bottom: 25px;
+        
+        h4{
+            font-weight: bold;
+        }
+
+        table{
+            tr{
+                &.total{
+                    font-weight: bold;
+                }
+
+                th{
+                    width: 150px;
+                }
+
+                td{
+                    border: 1px solid @darkGray;
+                    padding:5px; 
+                }
+            }
+        }
     }
 }
 

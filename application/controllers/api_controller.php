@@ -96,10 +96,24 @@ class Api_controller extends CI_Controller {
         //$reservation_price = ( isset($_POST['reservation_price']) ) ? strip_tags($_POST['reservation_price']) : 1;
         $id_user = ( isset($_POST['id_user']) ) ? strip_tags($_POST['id_user']) : 0;
 
-        $rates = $this->api_model->getRates()[0];
-        $cancha_completa = $rates->cancha_completa;
-        $arbitro = $rates->arbitro;
-        $cancha_fija_deposito = $rates->cancha_fija_deposito;
+        /* -- Specific Rates -- */
+        $rates = $this->api_model->getRates();
+        $date = date('w', strtotime($reservation_year.'-'.$reservation_month.'-'.$reservation_day));
+        $isWeekend = ($date == 6 || $date == 0);
+        $hourSelected = explode("-",$reservation_time)[0];
+
+        for($i = 0; $i < count($rates); $i++){
+            if( $rates[$i]->weekend == $isWeekend && (int) $hourSelected >= (int) $rates[$i]->hora_inicio && (int) $hourSelected <= (int) $rates[$i]->hora_final ){
+                $specificRates = $rates[$i];
+                break;
+            }
+        }
+        /* -- Specific Rates End -- */
+
+        $cancha_completa = $specificRates->cancha_completa;
+        $arbitro = $specificRates->arbitro;
+        $cancha_fija_completa_deposito = $specificRates->cancha_fija_completa_deposito;
+        $cancha_fija_reto_deposito = $specificRates->cancha_fija_reto_deposito;
         $total_CRC = 0;
 
         $total_CRC += ($type_reservation == '1') ? $cancha_completa : $cancha_completa/2 ;
@@ -107,7 +121,7 @@ class Api_controller extends CI_Controller {
             $total_CRC += ($type_reservation == '1') ? $arbitro : $arbitro/2 ;
         }
         if( $setPitchAllWeeks == 'true' ){
-            $total_CRC += $cancha_fija_deposito;
+            $total_CRC += ($type_reservation == '1') ? $cancha_fija_completa_deposito : $cancha_fija_reto_deposito;
         }
         $reservation_price = $total_CRC;
 
@@ -151,10 +165,24 @@ class Api_controller extends CI_Controller {
         $res;
         $id_group_all_weeks = uniqid();
 
-        $rates = $this->api_model->getRates()[0];
-        $cancha_completa = $rates->cancha_completa;
-        $arbitro = $rates->arbitro;
-        $cancha_fija_deposito = $rates->cancha_fija_deposito;
+        /* -- Specific Rates -- */
+        $rates = $this->api_model->getRates();
+        $date = date('w', strtotime($reservation_year.'-'.$reservation_month.'-'.$reservation_day));
+        $isWeekend = ($date == 6 || $date == 0);
+        $hourSelected = explode("-",$reservation_time)[0];
+
+        for($i = 0; $i < count($rates); $i++){
+            if( $rates[$i]->weekend == $isWeekend && (int) $hourSelected >= (int) $rates[$i]->hora_inicio && (int) $hourSelected <= (int) $rates[$i]->hora_final ){
+                $specificRates = $rates[$i];
+                break;
+            }
+        }
+        /* -- Specific Rates End -- */
+
+        $cancha_completa = $specificRates->cancha_completa;
+        $arbitro = $specificRates->arbitro;
+        $cancha_fija_completa_deposito = $specificRates->cancha_fija_completa_deposito;
+        $cancha_fija_reto_deposito = $specificRates->cancha_fija_reto_deposito;
         $total_CRC = 0;
 
         $total_CRC += ($type_reservation == '1') ? $cancha_completa : $cancha_completa/2 ;
@@ -162,9 +190,10 @@ class Api_controller extends CI_Controller {
             $total_CRC += ($type_reservation == '1') ? $arbitro : $arbitro/2 ;
         }
         if( $setPitchAllWeeks == 'true' ){
-            $total_CRC += $cancha_fija_deposito;
+            $total_CRC += ($type_reservation == '1') ? $cancha_fija_completa_deposito : $cancha_fija_reto_deposito;
         }
         $reservation_price = $total_CRC;
+
 
         foreach ($dates as $key => $value) {
             if( !$this->api_model->checkIfReservationExist($team_id,$reservation_time,$value[2],$value[1],$value[0],$group_id,$pitch_id) ){

@@ -75,7 +75,7 @@
           } 
         ?>
     </div>
-    <div id="modals" ng-controller="modalController">
+    <div id="modals" ng-controller="modalController" ng-init="getRates()">
         <div class="modal fade" id="formReservationModal" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false" ng-init="isAdminUser() && (bookingType = 'bookingOnLine')">
           <div class="modal-dialog">
             <div class="modal-content">
@@ -156,10 +156,10 @@
                     <?php 
                     if( !$isAdminUser ){
                     ?>
-                    <div id="carDataForm" ng-init="getRates()">
+                    <div id="carDataForm">
                         <form name="carDataForm">
                             <dl>
-                                <dd class="contentInfoForm reservationInformation">
+                                <dd class="contentInfoForm paymentInformation">
                                     <h4>Detalle a cobrar:</h4>
                                     <!--<p><span>Cancha:</span> {{(fields.typeReservation == '1') ? rates.cancha_completa : rates.cancha_completa/2 | currency:""}} colones</p>
                                     <p ng-if="!!fields.setReferee"><span>&Aacute;rbitro:</span> {{(fields.typeReservation == '1') ? rates.arbitro : rates.arbitro/2 | currency:""}} colones</p>
@@ -280,6 +280,41 @@
                 ?>
                 <!--<button type="button" class="btn btn-primary">Send message</button>-->
               </div>
+             <?php 
+                if( $isAdminUser ){
+              ?>
+              <div ng-if="fields.typeReservation != ''" class="paymentInformation">
+                <h4>Detalle a cobrar:</h4>
+                <!--<p><span>Cancha:</span> {{(fields.typeReservation == '1') ? rates.cancha_completa : rates.cancha_completa/2 | currency:""}} colones</p>
+                <p ng-if="!!fields.setReferee"><span>&Aacute;rbitro:</span> {{(fields.typeReservation == '1') ? rates.arbitro : rates.arbitro/2 | currency:""}} colones</p>
+                <p ng-if="!!fields.setPitchAllWeeks"><span>D&eacute;posito</span> (Cancha Fija): {{rates.cancha_fija_deposito | currency:""}} colones</p>
+                <p><span>Total:</span> {{ ( (fields.typeReservation == '1') ? rates.cancha_completa * 1 : rates.cancha_completa/2 ) + ( (!!fields.setReferee) ? ( (fields.typeReservation == '1') ? rates.arbitro * 1 : rates.arbitro/2 ) : 0 ) + ( (!!fields.setPitchAllWeeks) ? rates.cancha_fija_deposito * 1 : 0 ) | currency:""}} colones</p>-->
+                <table>
+                  <tr>
+                    <th>Detalle</th>
+                    <th>Monto</th>
+                  </tr>
+                  <tr>
+                    <td>Cancha</td>
+                    <td>{{(fields.typeReservation == '1') ? specificRates.cancha_completa : specificRates.cancha_completa/2 | currency:""}} colones</td>
+                  </tr>
+                  <tr ng-if="!!fields.setReferee">
+                    <td>&Aacute;rbitro</td>
+                    <td>{{(fields.typeReservation == '1') ? specificRates.arbitro : specificRates.arbitro/2 | currency:""}} colones</td>
+                  </tr>
+                  <tr ng-if="!!fields.setPitchAllWeeks">
+                    <td>D&eacute;posito (Cancha Fija)</td>
+                    <td>{{(fields.typeReservation == '1') ? specificRates.cancha_fija_completa_deposito : specificRates.cancha_fija_reto_deposito | currency:""}} colones</td>
+                  </tr>
+                  <tr class="total">
+                    <td>Total</td>
+                    <td>{{ ( (fields.typeReservation == '1') ? specificRates.cancha_completa * 1 : specificRates.cancha_completa/2 ) + ( (!!fields.setReferee) ? ( (fields.typeReservation == '1') ? specificRates.arbitro * 1 : specificRates.arbitro/2 ) : 0 ) + ( (!!fields.setPitchAllWeeks) ? ( (fields.typeReservation == '1') ? specificRates.cancha_fija_completa_deposito * 1 : specificRates.cancha_fija_reto_deposito * 1 ) : 0 ) | currency:""}} colones</td>
+                  </tr>
+                </table>
+              </div>
+              <?php
+                }
+               ?>
             </div>
           </div>
         </div>

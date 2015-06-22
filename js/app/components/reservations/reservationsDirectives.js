@@ -25,17 +25,20 @@ F5App.app.directive('available', ['$document','$http','$timeout', function($docu
         angular.element('#reservation_time').val(angular.element(element).siblings('.reservation-time').attr('data-time'));
 
         /* -- Specific Rates -- */
-        var date = new Date(angular.element('#year').val(),angular.element('#month').val() - 1,angular.element('#day').val()).getDay(),
-        	isWeekend = (date == 6 || date == 0),
-        	hourSelected = scope.getDataForTemporaryReservation().reservation_time.split('-')[0];
+        if( !!scope.rates ){
+	        var date = new Date(angular.element('#year').val(),angular.element('#month').val() - 1,angular.element('#day').val()).getDay(),
+	        	isWeekend = (date == 6 || date == 0),
+	        	hourSelected = scope.getDataForTemporaryReservation().reservation_time.split('-')[0];
 
-    	for(var i = 0; i < scope.rates.length; i++){
-        	if(scope.rates[i].weekend == isWeekend && parseInt(hourSelected) >= parseInt(scope.rates[i].hora_inicio) && parseInt(hourSelected) <= parseInt(scope.rates[i].hora_final) ){
-        		scope.$root.specificRates = scope.rates[i];
-        	}
-        }
-        
+	    	for(var i = 0; i < scope.rates.length; i++){
+	        	if(scope.rates[i].weekend == isWeekend && parseInt(hourSelected) >= parseInt(scope.rates[i].hora_inicio) && parseInt(hourSelected) <= parseInt(scope.rates[i].hora_final) ){
+	        		scope.$root.specificRates = scope.rates[i];
+	        		break;
+	        	}
+	        }
+	    }
         /* -- Specific Rates End -- */
+
         var req = {
 			method: 'POST',
 			url: F5App.base_url + "getTemporaryReservationState",
@@ -227,7 +230,7 @@ F5App.app.directive('reserveBtn', ['$document','$http', function($document,$http
 												+ '\r\n'
 												+ ', Requiere Árbitro: ' + ( (data.referee_required == 1) ? 'Sí' : "No" )
 												+ '\r\n'
-												+ ', Monto a cancelar(ado): ¢00000.'
+												+ ', Monto a cancelar(ado): ¢' + ( ((scope.fields.typeReservation == '1') ? scope.specificRates.cancha_completa * 1 : scope.specificRates.cancha_completa/2 ) + ( (!!scope.fields.setReferee) ? ( (scope.fields.typeReservation == '1') ? scope.specificRates.arbitro * 1 : scope.specificRates.arbitro/2 ) : 0 ) + ( (!!scope.fields.setPitchAllWeeks) ? ( (scope.fields.typeReservation == '1') ? scope.specificRates.cancha_fija_completa_deposito * 1 : scope.specificRates.cancha_fija_reto_deposito * 1 ) : 0 ) )
 												+ '\r\n'
 												+ 'Ya sabes cómo llegar?, te dejamos estos links para que se te haga más fácil encontrarnos!!'
 												+ '\r\n'
@@ -264,7 +267,7 @@ F5App.app.directive('reserveBtn', ['$document','$http', function($document,$http
 												+ '<br/>'
 												+ 'Requiere Árbitro: ' + ( (data.referee_required == 1) ? 'Sí' : "No" )
 												+ '<br/>'
-												+ 'Monto a cancelar(ado): ¢00000'
+												+ 'Monto a cancelar(ado): ¢' + ( ((scope.fields.typeReservation == '1') ? scope.specificRates.cancha_completa * 1 : scope.specificRates.cancha_completa/2 ) + ( (!!scope.fields.setReferee) ? ( (scope.fields.typeReservation == '1') ? scope.specificRates.arbitro * 1 : scope.specificRates.arbitro/2 ) : 0 ) + ( (!!scope.fields.setPitchAllWeeks) ? ( (scope.fields.typeReservation == '1') ? scope.specificRates.cancha_fija_completa_deposito * 1 : scope.specificRates.cancha_fija_reto_deposito * 1 ) : 0 ) )
 												+ '<br/><br/>'
 												+ 'Ya sabes cómo llegar?, te dejamos estos links para que se te haga más fácil encontrarnos!!'
 												+ '<br/><br/>'
@@ -345,7 +348,7 @@ F5App.app.directive('reserveBtn', ['$document','$http', function($document,$http
 												+ '\r\n'
 												+ ', También se ha reservado esta fecha como cancha fija'
 												+ '\r\n'
-												+ ', Monto a cancelar(ado): ¢00000.'
+												+ ', Monto a cancelar(ado): ¢' + ( ((scope.fields.typeReservation == '1') ? scope.specificRates.cancha_completa * 1 : scope.specificRates.cancha_completa/2 ) + ( (!!scope.fields.setReferee) ? ( (scope.fields.typeReservation == '1') ? scope.specificRates.arbitro * 1 : scope.specificRates.arbitro/2 ) : 0 ) + ( (!!scope.fields.setPitchAllWeeks) ? ( (scope.fields.typeReservation == '1') ? scope.specificRates.cancha_fija_completa_deposito * 1 : scope.specificRates.cancha_fija_reto_deposito * 1 ) : 0 ) )
 												+ '\r\n'
 												+ 'Ya sabes cómo llegar?, te dejamos estos links para que se te haga más fácil encontrarnos!!'
 												+ '\r\n'
@@ -396,7 +399,7 @@ F5App.app.directive('reserveBtn', ['$document','$http', function($document,$http
 									+ '<br/>'
 									+ 'Requiere Árbitro: ' + ( (data.referee_required == 1) ? 'Sí' : "No" )
 									+ '<br/>'
-									+ 'Monto a cancelar(ado): ¢00000'
+									+ 'Monto a cancelar(ado): ¢' + ( ((scope.fields.typeReservation == '1') ? scope.specificRates.cancha_completa * 1 : scope.specificRates.cancha_completa/2 ) + ( (!!scope.fields.setReferee) ? ( (scope.fields.typeReservation == '1') ? scope.specificRates.arbitro * 1 : scope.specificRates.arbitro/2 ) : 0 ) + ( (!!scope.fields.setPitchAllWeeks) ? ( (scope.fields.typeReservation == '1') ? scope.specificRates.cancha_fija_completa_deposito * 1 : scope.specificRates.cancha_fija_reto_deposito * 1 ) : 0 ) )
 									+ '<br/><br/>'
 									+ 'También se ha reservado esta cancha fija las siguientes fechas' + '<table>' + dates_str + '</table>'
 									+ '<br/><br/>'

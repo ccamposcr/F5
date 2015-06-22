@@ -178,22 +178,9 @@ textarea {
   display: inline-block;
   margin-bottom: 8px;
 }
-#carDataForm dl dd.contentInfoForm.reservationInformation {
+#carDataForm dl dd.contentInfoForm.paymentInformation {
   padding-left: 15px;
   margin-bottom: 25px;
-}
-#carDataForm dl dd.contentInfoForm.reservationInformation h4 {
-  font-weight: bold;
-}
-#carDataForm dl dd.contentInfoForm.reservationInformation table tr.total {
-  font-weight: bold;
-}
-#carDataForm dl dd.contentInfoForm.reservationInformation table tr th {
-  width: 150px;
-}
-#carDataForm dl dd.contentInfoForm.reservationInformation table tr td {
-  border: 1px solid #3a3333;
-  padding: 5px;
 }
 #carDataForm .error {
   margin-left: 115px;
@@ -222,6 +209,23 @@ textarea {
 }
 #formReservationModal .modal-body {
   padding-bottom: 0;
+}
+#formReservationModal .paymentInformation {
+  padding-left: 15px;
+  margin-bottom: 25px;
+}
+#formReservationModal .paymentInformation h4 {
+  font-weight: bold;
+}
+#formReservationModal .paymentInformation table tr.total {
+  font-weight: bold;
+}
+#formReservationModal .paymentInformation table tr th {
+  width: 150px;
+}
+#formReservationModal .paymentInformation table tr td {
+  border: 1px solid #3a3333;
+  padding: 5px;
 }
 #edit-account-modal .modal-body {
   padding-bottom: 10px;
