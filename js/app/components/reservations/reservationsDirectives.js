@@ -182,7 +182,7 @@ F5App.app.directive('bookingOnLine', ['$document','$http','$interval', function(
 	}
   }]);
 
-F5App.app.directive('reserveBtn', ['$document','$http', function($document,$http) {
+F5App.app.directive('reserveBtn', ['$document','$http','$filter', function($document,$http,$filter) {
     function link(scope, element, attr) {
       element.on('click', function(event) {
         event.preventDefault();
@@ -230,7 +230,7 @@ F5App.app.directive('reserveBtn', ['$document','$http', function($document,$http
 												+ '\r\n'
 												+ ', Requiere Árbitro: ' + ( (data.referee_required == 1) ? 'Sí' : "No" )
 												+ '\r\n'
-												+ ', Monto a cancelar(ado): ¢' + ( ((scope.fields.typeReservation == '1') ? scope.specificRates.cancha_completa * 1 : scope.specificRates.cancha_completa/2 ) + ( (!!scope.fields.setReferee) ? ( (scope.fields.typeReservation == '1') ? scope.specificRates.arbitro * 1 : scope.specificRates.arbitro/2 ) : 0 ) + ( (!!scope.fields.setPitchAllWeeks) ? ( (scope.fields.typeReservation == '1') ? scope.specificRates.cancha_fija_completa_deposito * 1 : scope.specificRates.cancha_fija_reto_deposito * 1 ) : 0 ) )
+												+ ', Monto a cancelar(ado): ' + $filter('currency')(( ((scope.fields.typeReservation == '1') ? scope.specificRates.cancha_completa * 1 : scope.specificRates.cancha_completa/2 ) + ( (!!scope.fields.setReferee) ? ( (scope.fields.typeReservation == '1') ? scope.specificRates.arbitro * 1 : scope.specificRates.arbitro/2 ) : 0 ) + ( (!!scope.fields.setPitchAllWeeks) ? ( (scope.fields.typeReservation == '1') ? scope.specificRates.cancha_fija_completa_deposito * 1 : scope.specificRates.cancha_fija_reto_deposito * 1 ) : 0 ) ),'') + ' colones' 
 												+ '\r\n'
 												+ 'Ya sabes cómo llegar?, te dejamos estos links para que se te haga más fácil encontrarnos!!'
 												+ '\r\n'
@@ -267,7 +267,7 @@ F5App.app.directive('reserveBtn', ['$document','$http', function($document,$http
 												+ '<br/>'
 												+ 'Requiere Árbitro: ' + ( (data.referee_required == 1) ? 'Sí' : "No" )
 												+ '<br/>'
-												+ 'Monto a cancelar(ado): ¢' + ( ((scope.fields.typeReservation == '1') ? scope.specificRates.cancha_completa * 1 : scope.specificRates.cancha_completa/2 ) + ( (!!scope.fields.setReferee) ? ( (scope.fields.typeReservation == '1') ? scope.specificRates.arbitro * 1 : scope.specificRates.arbitro/2 ) : 0 ) + ( (!!scope.fields.setPitchAllWeeks) ? ( (scope.fields.typeReservation == '1') ? scope.specificRates.cancha_fija_completa_deposito * 1 : scope.specificRates.cancha_fija_reto_deposito * 1 ) : 0 ) )
+												+ 'Monto a cancelar(ado): ' + $filter('currency')(( ((scope.fields.typeReservation == '1') ? scope.specificRates.cancha_completa * 1 : scope.specificRates.cancha_completa/2 ) + ( (!!scope.fields.setReferee) ? ( (scope.fields.typeReservation == '1') ? scope.specificRates.arbitro * 1 : scope.specificRates.arbitro/2 ) : 0 ) + ( (!!scope.fields.setPitchAllWeeks) ? ( (scope.fields.typeReservation == '1') ? scope.specificRates.cancha_fija_completa_deposito * 1 : scope.specificRates.cancha_fija_reto_deposito * 1 ) : 0 ) ),'') + ' colones'
 												+ '<br/><br/>'
 												+ 'Ya sabes cómo llegar?, te dejamos estos links para que se te haga más fácil encontrarnos!!'
 												+ '<br/><br/>'
@@ -348,7 +348,7 @@ F5App.app.directive('reserveBtn', ['$document','$http', function($document,$http
 												+ '\r\n'
 												+ ', También se ha reservado esta fecha como cancha fija'
 												+ '\r\n'
-												+ ', Monto a cancelar(ado): ¢' + ( ((scope.fields.typeReservation == '1') ? scope.specificRates.cancha_completa * 1 : scope.specificRates.cancha_completa/2 ) + ( (!!scope.fields.setReferee) ? ( (scope.fields.typeReservation == '1') ? scope.specificRates.arbitro * 1 : scope.specificRates.arbitro/2 ) : 0 ) + ( (!!scope.fields.setPitchAllWeeks) ? ( (scope.fields.typeReservation == '1') ? scope.specificRates.cancha_fija_completa_deposito * 1 : scope.specificRates.cancha_fija_reto_deposito * 1 ) : 0 ) )
+												+ ', Monto a cancelar(ado): ' + $filter('currency')(( ((scope.fields.typeReservation == '1') ? scope.specificRates.cancha_completa * 1 : scope.specificRates.cancha_completa/2 ) + ( (!!scope.fields.setReferee) ? ( (scope.fields.typeReservation == '1') ? scope.specificRates.arbitro * 1 : scope.specificRates.arbitro/2 ) : 0 ) + ( (!!scope.fields.setPitchAllWeeks) ? ( (scope.fields.typeReservation == '1') ? scope.specificRates.cancha_fija_completa_deposito * 1 : scope.specificRates.cancha_fija_reto_deposito * 1 ) : 0 ) ),'') + ' colones' 
 												+ '\r\n'
 												+ 'Ya sabes cómo llegar?, te dejamos estos links para que se te haga más fácil encontrarnos!!'
 												+ '\r\n'
@@ -399,7 +399,7 @@ F5App.app.directive('reserveBtn', ['$document','$http', function($document,$http
 									+ '<br/>'
 									+ 'Requiere Árbitro: ' + ( (data.referee_required == 1) ? 'Sí' : "No" )
 									+ '<br/>'
-									+ 'Monto a cancelar(ado): ¢' + ( ((scope.fields.typeReservation == '1') ? scope.specificRates.cancha_completa * 1 : scope.specificRates.cancha_completa/2 ) + ( (!!scope.fields.setReferee) ? ( (scope.fields.typeReservation == '1') ? scope.specificRates.arbitro * 1 : scope.specificRates.arbitro/2 ) : 0 ) + ( (!!scope.fields.setPitchAllWeeks) ? ( (scope.fields.typeReservation == '1') ? scope.specificRates.cancha_fija_completa_deposito * 1 : scope.specificRates.cancha_fija_reto_deposito * 1 ) : 0 ) )
+									+ 'Monto a cancelar(ado): ' + $filter('currency')(( ((scope.fields.typeReservation == '1') ? scope.specificRates.cancha_completa * 1 : scope.specificRates.cancha_completa/2 ) + ( (!!scope.fields.setReferee) ? ( (scope.fields.typeReservation == '1') ? scope.specificRates.arbitro * 1 : scope.specificRates.arbitro/2 ) : 0 ) + ( (!!scope.fields.setPitchAllWeeks) ? ( (scope.fields.typeReservation == '1') ? scope.specificRates.cancha_fija_completa_deposito * 1 : scope.specificRates.cancha_fija_reto_deposito * 1 ) : 0 ) ),'') + ' colones' 
 									+ '<br/><br/>'
 									+ 'También se ha reservado esta cancha fija las siguientes fechas' + '<table>' + dates_str + '</table>'
 									+ '<br/><br/>'
