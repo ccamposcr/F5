@@ -883,3 +883,56 @@ F5App.app.directive('reserveAndPayBtn', ['$document','$http','$timeout', functio
     	link:link
 	}
   }]);
+
+  F5App.app.directive('updateRatesBtn', ['$document','$http', function($document,$http) {
+    function link(scope, element, attr) {
+      element.on('click', function(event) {
+        event.preventDefault();
+        console.log(element);
+        console.log(attr);
+        angular.element('#loading-modal').modal('show');
+
+        var updatedRates = [];
+		angular.element('form[name="changeRatesForm"] tr.rates').each(function(){
+		    updatedRates.push({	'id': angular.element(this).attr('id'), 
+								'cancha_completa' : angular.element(this).find('.cancha_completa').val(),
+								'arbitro' : angular.element(this).find('.arbitro').val(),
+								'cancha_fija_completa' : angular.element(this).find('.cancha_fija_completa').val(),
+								'cancha_fija_reto' : angular.element(this).find('.cancha_fija_reto').val()
+			});
+		});
+
+        if( scope.changeRatesForm.$valid ){
+
+			var req = {
+				method: 'POST',
+				url: F5App.base_url + "changeRates",
+				headers: {
+				   	'Content-Type': 'application/x-www-form-urlencoded'
+				},
+			 	data: $.param( data ),
+			 	cache : false
+			}
+
+			$http(req).success(function(response, status, headers, config) {
+				angular.element('#loading-modal').modal('hide');
+				alert("Las tarifas han sido actualizados");
+				angular.element('#edit-rates-modal').modal('hide');
+				
+		
+			}).error(function(response, status, headers, config) {
+			    // called asynchronously if an error occurs
+			    // or server returns response with an error status.
+			});
+       	}
+       	else{
+       		alert("Por favor ingrese correctamente los datos erróneos");
+       	}
+      });
+    }
+    return {
+    	restrict : 'C',
+    	scope : false,
+    	link:link
+	}
+  }]);

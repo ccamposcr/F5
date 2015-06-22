@@ -570,7 +570,7 @@
                 </div>
               </div>
             </div>
-<!-- change-password-modal -->
+<!-- change-account data-modal -->
             <div class="modal fade" id="edit-account-modal">
               <div class="modal-dialog">
                 <div class="modal-content">
@@ -593,6 +593,46 @@
                   <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                     <button type="button" class="btn btn-primary changePasswordBtn" ng-disabled="changePassForm.$invalid">Guardar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+<!-- change-rates-modal -->
+            <div class="modal fade" id="edit-rates-modal">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title">Modificar tarifas</h4>
+                  </div>
+                  <div class="modal-body">
+                    <form name="changeRatesForm">
+                        <table>
+                            <tr>
+                                <th>Fin de semana</th>
+                                <th>Hora inicio</th>
+                                <th>Hora final</th>
+                                <th>Tarifa cancha completa</th>
+                                <th>Tarifa &aacute;rbitro</th>
+                                <th>Tarifa C. fija completa (dep)</th>
+                                <th>Tarifa C. fija reto (dep)</th>
+                            </tr>
+                            <tr id="{{rate.id}}" ng-repeat="rate in rates" class="rates">
+                                <td>{{(rate.weekend == '1') ? 'Sí' : 'No'}}</td>
+                                <td>{{rate.hora_inicio}}</td>
+                                <td>{{rate.hora_final}}</td>
+                                <td><input class="cancha_completa" name="cancha_completa" type="text" ng-value="{{rate.cancha_completa}}" required ng-pattern="/^\d+$/"/></td>
+                                <td><input class="arbitro" name="arbitro" type="text" ng-value="{{rate.arbitro}}" required ng-pattern="/^\d+$/"/></td>
+                                <td><input class="cancha_fija_completa" name="cancha_fija_completa" type="text" ng-value="{{rate.cancha_fija_completa_deposito}}" required ng-pattern="/^\d+$/"/></td>
+                                <td><input class="cancha_fija_reto" name="cancha_fija_reto" type="text" ng-value="{{rate.cancha_fija_reto_deposito}}" required ng-pattern="/^\d+$/"/></td>
+                            </tr>
+                        </table>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary updateRatesBtn" ng-disabled="changeRatesForm.$invalid">Guardar</button>
                   </div>
                 </div>
               </div>
