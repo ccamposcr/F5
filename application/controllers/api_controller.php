@@ -252,4 +252,9 @@ class Api_controller extends CI_Controller {
         $result = $this->api_model->getAccountsData();
         echo json_encode($result);
     }
+
+    public function changeRates(){
+        $updatedRates = ( isset($_POST['updatedRates']) ) ? strip_tags($_POST['updatedRates']) : '';
+        $this->api_model->changeRates($updatedRates);
+    }
 }

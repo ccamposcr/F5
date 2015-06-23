@@ -92,6 +92,16 @@ class Api_model extends CI_MODEL
         $query = $this->db->query("SELECT id,user,name,rol,id_group FROM t_admin");
         return $query->result();
     }
+
+    function changeRates($updatedRates){
+        $rates = json_decode($updatedRates);
+        //var_dump($rates);
+        //die();
+        for($i = 0; $i < count($rates); $i++){
+            $rates[$i]->cancha_completa;
+            $this->db->query("UPDATE t_rates SET cancha_completa = ".$this->db->escape($rates[$i]->cancha_completa).",arbitro = ".$this->db->escape($rates[$i]->arbitro).",cancha_fija_completa_deposito = ".$this->db->escape($rates[$i]->cancha_fija_completa).",cancha_fija_reto_deposito = ".$this->db->escape($rates[$i]->cancha_fija_reto)." WHERE id = ".$this->db->escape($rates[$i]->id));
+        }
+    }
 }
 //end model
 

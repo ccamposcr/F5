@@ -888,8 +888,6 @@ F5App.app.directive('reserveAndPayBtn', ['$document','$http','$timeout', functio
     function link(scope, element, attr) {
       element.on('click', function(event) {
         event.preventDefault();
-        console.log(element);
-        console.log(attr);
         angular.element('#loading-modal').modal('show');
 
         var updatedRates = [];
@@ -910,7 +908,7 @@ F5App.app.directive('reserveAndPayBtn', ['$document','$http','$timeout', functio
 				headers: {
 				   	'Content-Type': 'application/x-www-form-urlencoded'
 				},
-			 	data: $.param( data ),
+			 	data:  $.param({updatedRates : angular.toJson(updatedRates)}),
 			 	cache : false
 			}
 
@@ -924,6 +922,7 @@ F5App.app.directive('reserveAndPayBtn', ['$document','$http','$timeout', functio
 			    // called asynchronously if an error occurs
 			    // or server returns response with an error status.
 			});
+
        	}
        	else{
        		alert("Por favor ingrese correctamente los datos erróneos");

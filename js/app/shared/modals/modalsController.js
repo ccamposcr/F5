@@ -56,6 +56,10 @@ F5App.app.controller("modalController", function ($scope, $rootScope,$interval, 
 		$scope.fields.deleteAllCccurrences = '';
 	});
 
+	angular.element('#edit-rates-modal').on('show.bs.modal', function(){
+		$scope.getRates();
+	});
+
 	var onCancel = function(){
 		angular.element('#formReservationModal').modal('hide');
 	}

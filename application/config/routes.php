@@ -87,6 +87,7 @@ $route['acceptCreditCardPayment'] = 'paypal_controller/acceptCreditCardPayment';
 $route['getDateFromServer'] = 'api_controller/getDateFromServer';
 $route['getRates'] = 'api_controller/getRates';
 $route['getAccountsData'] = 'api_controller/getAccountsData';
+$route['changeRates'] = 'api_controller/changeRates';
 
 //Login - Logout Routes
 $route['(:any)/login'] = 'login_controller';
