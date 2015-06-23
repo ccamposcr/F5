@@ -21,6 +21,7 @@
 			    		<li><span class="fa fa-map-marker"></span><a target="_blank"  href="<?php echo $mapUrl ?>">Localizaci&oacute;n</a></li>
 			            <li><span class="fa fa-phone-square"></span><a target="_blank" href="tel:<?php echo $phone1 ?>"><?php echo $phone1 ?></a><a class="phone-2" target="_blank" href="tel:<?php echo $phone2 ?>"><?php echo $phone2 ?></a></li>
 			            <li><span class="fa fa-envelope"></span><a target="_blank"  href="mailto:<?php echo $email ?>"><?php echo $email ?></a></li>
+			            <li><span><img src="<?php echo base_url(); ?>img/img_waze1.png"/></span><a target="_blank"  href="mailto:<?php echo $email ?>"><?php echo $email ?></a></li>
 			            <!--<li><span class="fa fa-skype"></span><a href="skype:<?php echo $skype ?>?call"><?php echo $skype ?></a></li>-->
 			    	</ul>
 		            
