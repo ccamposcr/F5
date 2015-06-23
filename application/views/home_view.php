@@ -22,15 +22,15 @@
 
         </div>
         <div class="content-column column-1">
-            <p>En F5 contamos con servicios como:</p>
+            <p>Contamos con servicios como:</p>
             <ul class="services">
-                <li>Tenemos ventas de snacks y bebidas hidratantes.</li>
+                <li>Ventas de snacks y bebidas hidratantes.</li>
                 <li>Amplios camerinos para hombres y mujeres con agua caliente.</li>
                 <li>Realizamos campeonatos personalizados para empresas.</li>
                 <li>Conseguimos retos.</li>
-                <li>Contamos con &aacute;rbitros capacitados.</li>
+                <li>&Aacute;rbitros capacitados.</li>
                 <li>CCTV.</li>
-                <li>Contamos con escuela de f&uacute;tbol</li>
+                <li>Escuela de f&uacute;tbol</li>
             </ul>
         </div>
         <div class="content-column column-2">
