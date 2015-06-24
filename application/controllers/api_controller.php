@@ -257,4 +257,22 @@ class Api_controller extends CI_Controller {
         $updatedRates = ( isset($_POST['updatedRates']) ) ? strip_tags($_POST['updatedRates']) : '';
         $this->api_model->changeRates($updatedRates);
     }
+
+    public function updateResevation(){
+        $id = ( isset($_POST['id']) ) ? strip_tags($_POST['id']) : '1';
+        $name = ( isset($_POST['name']) ) ? strip_tags($_POST['name']) : '';
+        $lastname = ( isset($_POST['lastname']) ) ? strip_tags($_POST['lastname']) : '';
+        $phone = ( isset($_POST['phone']) ) ? strip_tags($_POST['phone']) : '';
+        $email = ( isset($_POST['email']) ) ? strip_tags($_POST['email']) : '';
+        $this->api_model->updateResevation($id,$name,$lastname,$phone,$email);
+    }
+
+    public function updateReservationAllWeeks(){
+        $id_group_all_weeks = ( isset($_POST['id_group_all_weeks']) ) ? strip_tags($_POST['id_group_all_weeks']) : '1';
+        $name = ( isset($_POST['name']) ) ? strip_tags($_POST['name']) : '';
+        $lastname = ( isset($_POST['lastname']) ) ? strip_tags($_POST['lastname']) : '';
+        $phone = ( isset($_POST['phone']) ) ? strip_tags($_POST['phone']) : '';
+        $email = ( isset($_POST['email']) ) ? strip_tags($_POST['email']) : '';
+        $this->api_model->updateReservationAllWeeks($id_group_all_weeks,$name,$lastname,$phone,$email);
+    }
 }

@@ -88,6 +88,8 @@ $route['getDateFromServer'] = 'api_controller/getDateFromServer';
 $route['getRates'] = 'api_controller/getRates';
 $route['getAccountsData'] = 'api_controller/getAccountsData';
 $route['changeRates'] = 'api_controller/changeRates';
+$route['updateResevation'] = 'api_controller/updateResevation';
+$route['updateReservationAllWeeks'] = 'api_controller/updateReservationAllWeeks';
 
 //Login - Logout Routes
 $route['(:any)/login'] = 'login_controller';

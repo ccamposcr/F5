@@ -515,10 +515,9 @@
                         </div>
                         <button ng-if="isAdminUser() && getRol() == isRol('Admin')" type="button" class="btn btn-warning delete" data-dismiss="modal">Eliminar <span ng-hide="fields.deleteAllCccurrences">Reservaci&oacute;n</span><span ng-show="fields.deleteAllCccurrences">Reservaciones Fijas</span></button>
                         <div ng-if="completeInfo.id_group_all_weeks != '0' && completeInfo.id_group_all_weeks != ''" class="divContentShowInfoModal pitchInformation">
-                            <p>Esta reservaci&oacute;n forma parte de una reserva de cancha fija.</p>
                             <input type="checkbox" ng-model="fields.editAllCccurrences" name="editAllCccurrences" /><span>(Seleccione si desea editar las dem&aacute;s ocurrencias de esta cancha fija).</span>
                           </div>
-                        <button ng-if="isAdminUser() && getRol() == isRol('Admin')" type="button" class="btn btn-warning saveBookingEdited" data-dismiss="modal">Guardar Cambios</button>
+                        <button ng-if="isAdminUser() && getRol() == isRol('Admin')" type="button" class="btn btn-warning saveBookingEdited" data-dismiss="modal">Actualizar <span ng-hide="fields.editAllCccurrences">Reservaci&oacute;n</span><span ng-show="fields.editAllCccurrences">Reservaciones</span></button>
                       </div>
                   </div>
                   <div class="modal-footer">

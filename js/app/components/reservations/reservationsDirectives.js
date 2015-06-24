@@ -943,35 +943,13 @@ F5App.app.directive('saveBookingEdited', ['$document','$http', function($documen
         angular.element('#loading-modal').modal('show');
 
 		if(!scope.fields.editAllCccurrences){
-			console.log(scope.completeInfo.id_group_all_weeks);
-        	/*var req = {
+        	var req = {
 				method: 'POST',
-				url: F5App.base_url + "setInactiveReservation",
+				url: F5App.base_url + "updateResevation",
 				headers: {
 				   	'Content-Type': 'application/x-www-form-urlencoded'
 				},
-			 	data: $.param( data ),
-			 	cache : false
-			}
-
-			$http(req).success(function(response, status, headers, config) {
-				//alert('Registro Eliminado');
-				angular.element('#loading-modal').modal('hide');
-				scope.loadReservations();
-		
-			}).error(function(response, status, headers, config) {
-			    // called asynchronously if an error occurs
-			    // or server returns response with an error status.
-			});*/
-		}else{
-			console.log(scope.completeInfo.id_group_all_weeks);
-			/*var req = {
-				method: 'POST',
-				url: F5App.base_url + "setInactiveReservationAllWeeks",
-				headers: {
-				   	'Content-Type': 'application/x-www-form-urlencoded'
-				},
-			 	data: $.param( { id_group_all_weeks: scope.completeInfo.id_group_all_weeks } ),
+			 	data: $.param(scope.completeInfo),
 			 	cache : false
 			}
 
@@ -984,7 +962,27 @@ F5App.app.directive('saveBookingEdited', ['$document','$http', function($documen
 			    // called asynchronously if an error occurs
 			    // or server returns response with an error status.
 			});
-			*/
+		}else{
+			var req = {
+				method: 'POST',
+				url: F5App.base_url + "updateReservationAllWeeks",
+				headers: {
+				   	'Content-Type': 'application/x-www-form-urlencoded'
+				},
+			 	data: $.param(scope.completeInfo),
+			 	cache : false
+			}
+
+			$http(req).success(function(response, status, headers, config) {
+				//alert('Registro Eliminado');
+				angular.element('#loading-modal').modal('hide');
+				scope.loadReservations();
+		
+			}).error(function(response, status, headers, config) {
+			    // called asynchronously if an error occurs
+			    // or server returns response with an error status.
+			});
+			
 		}
       });
     }

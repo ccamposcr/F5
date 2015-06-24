@@ -102,6 +102,14 @@ class Api_model extends CI_MODEL
             $this->db->query("UPDATE t_rates SET cancha_completa = ".$this->db->escape($rates[$i]->cancha_completa).",arbitro = ".$this->db->escape($rates[$i]->arbitro).",cancha_fija_completa_deposito = ".$this->db->escape($rates[$i]->cancha_fija_completa).",cancha_fija_reto_deposito = ".$this->db->escape($rates[$i]->cancha_fija_reto)." WHERE id = ".$this->db->escape($rates[$i]->id));
         }
     }
+
+    function updateResevation($id,$name,$lastname,$phone,$email){
+        $this->db->query("UPDATE t_reservations SET name = ".$this->db->escape($name).",lastname = ".$this->db->escape($lastname).",phone = ".$this->db->escape($phone).",email = ".$this->db->escape($email)." WHERE id = ".$this->db->escape($id));
+    }
+
+    function updateReservationAllWeeks($id_group_all_weeks,$name,$lastname,$phone,$email){
+        $this->db->query("UPDATE t_reservations SET name = ".$this->db->escape($name).",lastname = ".$this->db->escape($lastname).",phone = ".$this->db->escape($phone).",email = ".$this->db->escape($email)." WHERE id_group_all_weeks = ".$this->db->escape($id_group_all_weeks));
+    }
 }
 //end model
 
