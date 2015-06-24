@@ -486,25 +486,39 @@
                 <div class="modal-content">
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <h4 class="modal-title">Informaci&oacute;n de la Reservaci&oacute;n</h4>
+                    <h4 class="modal-title"><span ng-if="isAdminUser() && getRol() == isRol('Dependiente')">Informaci&oacute;n</span> <span ng-if="isAdminUser() && getRol() == isRol('Admin')">Edici&oacute;n</span> de la Reservaci&oacute;n</h4>
                   </div>
                   <div class="modal-body">
-                      <div class="divContentShowInfoModal"><label>Nombre:</label><span> {{completeInfo.name}}</span></div>
-                      <div class="divContentShowInfoModal"><label>Apellidos:</label><span> {{completeInfo.lastname}}</span></div>
-                      <div class="divContentShowInfoModal"><label>Tel&eacute;fono:</label><span> {{completeInfo.phone}}</span></div>
-                      <div class="divContentShowInfoModal"><label>Email:</label><span> {{completeInfo.email}}</span></div>
+                     <div ng-if="isAdminUser() && getRol() == isRol('Dependiente')">
+                       <div class="divContentShowInfoModal"><label>Nombre:</label><span> {{completeInfo.name}}</span></div>
+                       <div class="divContentShowInfoModal"><label>Apellidos:</label><span> {{completeInfo.lastname}}</span></div>
+                       <div class="divContentShowInfoModal"><label>Tel&eacute;fono:</label><span> {{completeInfo.phone}}</span></div>
+                       <div class="divContentShowInfoModal"><label>Email:</label><span> {{completeInfo.email}}</span></div>
+                     </div>
+                     <div ng-if="isAdminUser() && getRol() == isRol('Admin')" id="{{completeInfo.id}}">
+                       <div class="divContentShowInfoModal"><label>Nombre:</label><input ng-model="completeInfo.name" type="text"/></div>
+                       <div class="divContentShowInfoModal"><label>Apellidos:</label><input ng-model="completeInfo.lastname" type="text"/></div>
+                       <div class="divContentShowInfoModal"><label>Tel&eacute;fono:</label><input ng-model="completeInfo.phone" type="text"/></div>
+                       <div class="divContentShowInfoModal"><label>Email:</label><input ng-model="completeInfo.email" type="text"/></div>
+                     </div>
+
                       <div class="divContentShowInfoModal"><label>Requiere &Aacute;rbitro:</label><span> {{(completeInfo.referee_required == 1) ? 'S&iacute;' : 'No'}}</span></div>
                       <div class="divContentShowInfoModal"><label>Fecha de Reservaci&oacute;n:</label><span> {{completeInfo.reservation_day}}/{{completeInfo.reservation_month}}/{{completeInfo.reservation_year}}</span></div>
                       <div class="divContentShowInfoModal"><label>Hora de Reservaci&oacute;n:</label><span> {{getCorrectTimeReservation(completeInfo.reservation_time)}}</span></div>
                       <div class="divContentShowInfoModal"><label>Usuario del sistema:</label><span> {{(completeInfo.admin_user) ? completeInfo.admin_user : 'N/A' }}</span></div>
                       <div class="divContentShowInfoModal"><label>Total Cobrado:</label><span> {{completeInfo.reservation_price}}</span></div>
                       
-                      <div ng-if="completeInfo.id_group_all_weeks != '0' && completeInfo.id_group_all_weeks != ''" class="divContentShowInfoModal pitchInformation">
-                        <p>Esta reservaci&oacute;n forma parte de una reserva de cancha fija.</p>
-                        <input type="checkbox" ng-model="fields.deleteAllCccurrences" name="deleteAllCccurrences" /><span>(Seleccione si desea eliminar las dem&aacute;s ocurrencias de esta cancha fija).</span>
-                      </div>
                       <div class="divContentShowInfoModal">
+                        <div ng-if="completeInfo.id_group_all_weeks != '0' && completeInfo.id_group_all_weeks != ''" class="divContentShowInfoModal pitchInformation">
+                            <p>Esta reservaci&oacute;n forma parte de una reserva de cancha fija.</p>
+                            <input type="checkbox" ng-model="fields.deleteAllCccurrences" name="deleteAllCccurrences" /><span>(Seleccione si desea eliminar las dem&aacute;s ocurrencias de esta cancha fija).</span>
+                        </div>
                         <button ng-if="isAdminUser() && getRol() == isRol('Admin')" type="button" class="btn btn-warning delete" data-dismiss="modal">Eliminar <span ng-hide="fields.deleteAllCccurrences">Reservaci&oacute;n</span><span ng-show="fields.deleteAllCccurrences">Reservaciones Fijas</span></button>
+                        <div ng-if="completeInfo.id_group_all_weeks != '0' && completeInfo.id_group_all_weeks != ''" class="divContentShowInfoModal pitchInformation">
+                            <p>Esta reservaci&oacute;n forma parte de una reserva de cancha fija.</p>
+                            <input type="checkbox" ng-model="fields.editAllCccurrences" name="editAllCccurrences" /><span>(Seleccione si desea editar las dem&aacute;s ocurrencias de esta cancha fija).</span>
+                          </div>
+                        <button ng-if="isAdminUser() && getRol() == isRol('Admin')" type="button" class="btn btn-warning saveBookingEdited" data-dismiss="modal">Guardar Cambios</button>
                       </div>
                   </div>
                   <div class="modal-footer">
