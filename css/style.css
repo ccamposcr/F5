@@ -301,13 +301,17 @@ textarea {
 }
 #show-info-modal .modal-body button {
   margin-top: 20px;
+  margin-bottom: 15px;
 }
 #show-info-modal .modal-body .pitchInformation {
   color: #c4302c;
-  margin-top: 25px;
+  margin-top: 10px;
 }
 #show-info-modal .modal-body .pitchInformation p {
   margin: 0;
+  font-weight: bold;
+  margin-bottom: 22px;
+  font-size: 16px;
 }
 #show-info-modal .modal-body .pitchInformation input[type="checkbox"] {
   width: 15px;
@@ -318,6 +322,11 @@ textarea {
 }
 #show-info-modal .modal-body .pitchInformation span {
   font-weight: bold;
+}
+#show-info-modal .error {
+  display: block;
+  margin-left: 154px;
+  color: #c4302c;
 }
 #show-accounts-modal table tr {
   border-bottom: 1px solid #d2cfcf;
