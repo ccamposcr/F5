@@ -916,7 +916,7 @@ F5App.app.directive('reserveAndPayBtn', ['$document','$http','$timeout', functio
 				angular.element('#loading-modal').modal('hide');
 				alert("Las tarifas han sido actualizados");
 				angular.element('#edit-rates-modal').modal('hide');
-				
+				scope.getRates();
 		
 			}).error(function(response, status, headers, config) {
 			    // called asynchronously if an error occurs
