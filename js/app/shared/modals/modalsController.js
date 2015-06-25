@@ -54,6 +54,7 @@ F5App.app.controller("modalController", function ($scope, $rootScope,$interval, 
 
 	angular.element('#show-info-modal').on('hidden.bs.modal', function(){
 		$scope.fields.deleteAllCccurrences = '';
+		$scope.fields.editAllCccurrences = '';
 	});
 
 	angular.element('#edit-rates-modal').on('show.bs.modal', function(){

@@ -496,10 +496,36 @@
                        <div class="divContentShowInfoModal"><label>Email:</label><span> {{completeInfo.email}}</span></div>
                      </div>
                      <div ng-if="isAdminUser() && getRol() == isRol('Admin')" id="{{completeInfo.id}}">
-                       <div class="divContentShowInfoModal"><label>Nombre:</label><input ng-model="completeInfo.name" type="text"/></div>
-                       <div class="divContentShowInfoModal"><label>Apellidos:</label><input ng-model="completeInfo.lastname" type="text"/></div>
-                       <div class="divContentShowInfoModal"><label>Tel&eacute;fono:</label><input ng-model="completeInfo.phone" type="text"/></div>
-                       <div class="divContentShowInfoModal"><label>Email:</label><input ng-model="completeInfo.email" type="text"/></div>
+                        <div ng-if="completeInfo.id_group_all_weeks != '0' && completeInfo.id_group_all_weeks != ''" class="divContentShowInfoModal pitchInformation">
+                            <p>Esta reservaci&oacute;n forma parte de una reserva de cancha fija.</p>
+                        </div>
+                        <form id="editReservationForm" name="editReservationForm">
+                            <div class="divContentShowInfoModal">
+                                <label>Nombre:</label>
+                                <input ng-model="completeInfo.name" type="text" name="name" required/>
+                                <span class="error" ng-show="editReservationForm.name.$error.required && editReservationForm.name.$dirty">Por favor ingrese el Nombre</span>
+                            </div>
+                            <div class="divContentShowInfoModal">
+                                <label>Apellidos:</label>
+                                <input ng-model="completeInfo.lastname" type="text" name="lastname" required/>
+                                <span class="error" ng-show="editReservationForm.lastname.$error.required && editReservationForm.lastname.$dirty">Por favor ingrese los Apellidos</span>
+                            </div>
+                            <div class="divContentShowInfoModal">
+                                <label>Celular:</label>
+                                <input ng-model="completeInfo.phone" type="tel" name="phone" required ng-minlength="8" ng-maxlength="8" ng-pattern="/^\d+$/" />
+                                <span class="error" ng-show="editReservationForm.phone.$dirty && (editReservationForm.phone.$error.minlength || editReservationForm.phone.$error.maxlength) || editReservationForm.phone.$dirty && editReservationForm.phone.$invalid">Por favor ingrese un t&eacute;lefono de 8 n&uacute;meros</span>
+                                <span class="error" ng-show="editReservationForm.phone.$error.required && editReservationForm.phone.$dirty">Por favor ingrese el celular</span>
+                            </div>
+                            <div class="divContentShowInfoModal">
+                                <label>Email:</label>
+                                <input ng-model="completeInfo.email" type="email" name="email"/>
+                                <span class="error" ng-show="editReservationForm.email.$dirty && editReservationForm.email.$invalid">Por favor ingrese un correo el&eacute;ctronico v&aacute;lido</span>
+                            </div>
+                            <div ng-if="completeInfo.id_group_all_weeks != '0' && completeInfo.id_group_all_weeks != ''" class="divContentShowInfoModal pitchInformation">
+                                <input type="checkbox" ng-model="fields.editAllCccurrences" name="editAllCccurrences" /><span>(Seleccione si desea actualizar las dem&aacute;s ocurrencias de esta cancha fija).</span>
+                            </div>
+                            <button type="submit" ng-disabled="editReservationForm.$invalid" ng-if="isAdminUser() && getRol() == isRol('Admin')" class="btn btn-warning saveBookingEdited" data-dismiss="modal">Actualizar <span ng-hide="fields.editAllCccurrences">Reservaci&oacute;n</span><span ng-show="fields.editAllCccurrences">Reservaciones</span></button>
+                        </form>
                      </div>
 
                       <div class="divContentShowInfoModal"><label>Requiere &Aacute;rbitro:</label><span> {{(completeInfo.referee_required == 1) ? 'S&iacute;' : 'No'}}</span></div>
@@ -510,14 +536,9 @@
                       
                       <div class="divContentShowInfoModal">
                         <div ng-if="completeInfo.id_group_all_weeks != '0' && completeInfo.id_group_all_weeks != ''" class="divContentShowInfoModal pitchInformation">
-                            <p>Esta reservaci&oacute;n forma parte de una reserva de cancha fija.</p>
                             <input type="checkbox" ng-model="fields.deleteAllCccurrences" name="deleteAllCccurrences" /><span>(Seleccione si desea eliminar las dem&aacute;s ocurrencias de esta cancha fija).</span>
                         </div>
                         <button ng-if="isAdminUser() && getRol() == isRol('Admin')" type="button" class="btn btn-warning delete" data-dismiss="modal">Eliminar <span ng-hide="fields.deleteAllCccurrences">Reservaci&oacute;n</span><span ng-show="fields.deleteAllCccurrences">Reservaciones Fijas</span></button>
-                        <div ng-if="completeInfo.id_group_all_weeks != '0' && completeInfo.id_group_all_weeks != ''" class="divContentShowInfoModal pitchInformation">
-                            <input type="checkbox" ng-model="fields.editAllCccurrences" name="editAllCccurrences" /><span>(Seleccione si desea editar las dem&aacute;s ocurrencias de esta cancha fija).</span>
-                          </div>
-                        <button ng-if="isAdminUser() && getRol() == isRol('Admin')" type="button" class="btn btn-warning saveBookingEdited" data-dismiss="modal">Actualizar <span ng-hide="fields.editAllCccurrences">Reservaci&oacute;n</span><span ng-show="fields.editAllCccurrences">Reservaciones</span></button>
                       </div>
                   </div>
                   <div class="modal-footer">
