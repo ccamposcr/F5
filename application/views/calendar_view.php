@@ -502,12 +502,12 @@
                         <form id="editReservationForm" name="editReservationForm">
                             <div class="divContentShowInfoModal">
                                 <label>Nombre:</label>
-                                <input ng-model="completeInfo.name" type="text" name="name" required/>
+                                <input class="capitalize-text" ng-model="completeInfo.name" type="text" name="name" required/>
                                 <span class="error" ng-show="editReservationForm.name.$error.required && editReservationForm.name.$dirty">Por favor ingrese el Nombre</span>
                             </div>
                             <div class="divContentShowInfoModal">
                                 <label>Apellidos:</label>
-                                <input ng-model="completeInfo.lastname" type="text" name="lastname" required/>
+                                <input class="capitalize-text" ng-model="completeInfo.lastname" type="text" name="lastname" required/>
                                 <span class="error" ng-show="editReservationForm.lastname.$error.required && editReservationForm.lastname.$dirty">Por favor ingrese los Apellidos</span>
                             </div>
                             <div class="divContentShowInfoModal">
@@ -561,8 +561,8 @@
                       <tr><th ng-if="selectUserMode"></th><th>Nombre</th><th>Apellidos</th><th>Tel&eacute;fono</th><th>Email</th></tr>
                       <tr ng-repeat="client in clients | filter:searchText" class="rowClient">
                         <td ng-if="selectUserMode" class="client_info"><input class="client" type="radio" name="client" ng-model="fields.client" value="{{$index}}"/></td>
-                        <td class="client_info">{{$index+1}}. {{client.name}}</td>
-                        <td class="client_info">{{client.lastname}}</td>
+                        <td class="client_info capitalize-text">{{$index+1}}. {{client.name}}</td>
+                        <td class="client_info capitalize-text">{{client.lastname}}</td>
                         <td class="client_info">{{client.phone}}</td>
                         <td class="client_info">{{client.email}}</td>
                         <input type="hidden" value="{{client.name}}" class="clientName" />

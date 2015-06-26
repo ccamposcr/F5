@@ -94,6 +94,9 @@ textarea {
   display: block;
   opacity: 1;
 }
+.capitalize-text {
+  text-transform: capitalize;
+}
 /* ==========================================================================
    MODAL
 ========================================================================== */
@@ -145,9 +148,6 @@ textarea {
   display: inline-block;
   width: 450px;
   margin-bottom: 8px;
-}
-#bookingOnLine dl dd.contentInfoForm input.capitalize-text {
-  text-transform: capitalize;
 }
 #bookingOnLine .error {
   color: #c4302c;
@@ -587,6 +587,9 @@ textarea {
   width: 387px;
   height: 33px;
   text-align: center;
+}
+#dailyResevations #reservations li.row > span:not(.reservation-time) {
+  text-transform: capitalize;
 }
 #dailyResevations #reservations li.row > span.blocked {
   background-color: #c4302c;

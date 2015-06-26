@@ -217,38 +217,18 @@ F5App.app.directive('reserveBtn', ['$document','$http','$filter', function($docu
 						angular.element('#formReservationModal').modal('hide');
 						if( !!data.phone){
 							scope.sendSMS({	'phone' : data.phone,
-												'data_reservation' : 'Hola!!'
-												+ '\r\n'
-												+ 'Mediante este sms te confirmamos la reserva hecha a nombre de: ' + data.name + ' '+ data.lastname
-												+ ' en F5 ' + ( (data.group_id == 1) ? 'Escazú' : "Desamparados" ) + '.'
-												+ '\r\n'
-												+ 'Por favor verificar que hayamos hecho correctamente nuestro trabajo:'
-												+ '\r\n'
-												+ 'Fecha de la reserva: ' + data.reservation_day +'/'+ data.reservation_month +'/'+ data.reservation_year
-												+ '\r\n'
-												+ ', Hora de la reserva: ' + scope.getCorrectTimeReservation(data.reservation_time)
-												+ '\r\n'
-												+ ', Requiere Árbitro: ' + ( (data.referee_required == 1) ? 'Sí' : "No" )
-												+ '\r\n'
+												'data_reservation' : 'F5 confirma Reserva:'
+												+ ' Nombre: ' + data.name.capitalize() + ' '+ data.lastname.capitalize()
+												+ ', Fecha: ' + data.reservation_day +'/'+ data.reservation_month +'/'+ data.reservation_year
+												+ ', Hora: ' + scope.getCorrectTimeReservation(data.reservation_time)
+												+ ', Árbitro: ' + ( (data.referee_required == 1) ? 'Sí' : "No" )
 												+ ', Monto a cancelar(ado): ' + $filter('currency')(( ((scope.fields.typeReservation == '1') ? scope.specificRates.cancha_completa * 1 : scope.specificRates.cancha_completa/2 ) + ( (!!scope.fields.setReferee) ? ( (scope.fields.typeReservation == '1') ? scope.specificRates.arbitro * 1 : scope.specificRates.arbitro/2 ) : 0 ) + ( (!!scope.fields.setPitchAllWeeks) ? ( (scope.fields.typeReservation == '1') ? scope.specificRates.cancha_fija_completa_deposito * 1 : scope.specificRates.cancha_fija_reto_deposito * 1 ) : 0 ) ),'') + ' colones' 
-												+ '\r\n'
-												+ 'Ya sabes cómo llegar?, te dejamos estos links para que se te haga más fácil encontrarnos!!'
-												+ '\r\n'
-												+ ' F5 ' + ( (data.group_id == 1) ? 'Escazú, Conducir allí usando Google Maps https://goo.gl/itWeJb' : 'Desamparados, Conducir allí usando Google Maps https://goo.gl/itWeJb' )
-												+ '\r\n'
-												+ ' F5 ' + ( (data.group_id == 1) ? 'Escazú, Conducir allí usando Waze http://waze.to/lr/hd1u0mq3ux' : 'Desamparados, Conducir allí usando Waze http://waze.to/lr/hd1u0mq3ux' )
-												+ '\r\n'
-												+ ' De tener cualquier duda llámanos y te ayudaremos a solventarla.'
-												+ '\r\n'
-												+ 'Atentamente '
-												+ '\r\n'
-												+ 'Equipo F5 '
-												+ '\r\n'
-												+ 'Teléfonos: 8376-2121 / 7206-3300 '
-												+ '\r\n'
-												+ 'Visítanos en nuestra web www.f5.cr '
-												+ '\r\n'
-												+ 'Visítanos en nuestro Facebook https://www.facebook.com/f5costarica'
+												+ ' Por favor presentarse 10 minutos antes.'
+												+ ( (data.group_id == 1) ? ' Llegar con Google Maps https://goo.gl/itWeJb ó Waze http://waze.to/lr/hd1u0mq3ux' : ' Llegar con Google Maps https://goo.gl/itWeJb ó Waze http://waze.to/lr/hd1u0mq3ux' )
+												+ ' Atte: Equipo F5'
+												+ ' Teléfonos: 8376-2121 / 7206-3300'
+												+ ' www.f5.cr '
+												+ ' https://www.facebook.com/f5costarica'
 											});
 						}
 						
@@ -256,7 +236,7 @@ F5App.app.directive('reserveBtn', ['$document','$http','$filter', function($docu
 							scope.sendEmail({	'email' : data.email,
 												'data_reservation' : 'Hola!!'
 												+ '<br/><br/>'
-												+ 'Mediante este correo electrónico te confirmamos la reserva hecha a nombre de: ' + data.name + ' '+ data.lastname
+												+ 'Mediante este correo electrónico te confirmamos la reserva hecha a nombre de: ' + data.name.capitalize() + ' '+ data.lastname.capitalize()
 												+ ' en F5 ' + ( (data.group_id == 1) ? 'Escazú' : "Desamparados" ) + '.'
 												+ '<br/><br/>'
 												+ 'Por favor verificar que hayamos hecho correctamente nuestro trabajo:'
@@ -333,40 +313,18 @@ F5App.app.directive('reserveBtn', ['$document','$http','$filter', function($docu
 
 					if( !!data.phone){
 						scope.sendSMS({	'phone' : data.phone,
-												'data_reservation' : 'Hola!!'
-												+ '\r\n'
-												+ 'Mediante este sms te confirmamos la reserva hecha a nombre de: ' + data.name + ' '+ data.lastname
-												+ ' en F5 ' + ( (data.group_id == 1) ? 'Escazú' : "Desamparados" ) + '.'
-												+ '\r\n'
-												+ 'Por favor verificar que hayamos hecho correctamente nuestro trabajo:'
-												+ '\r\n'
-												+ 'Fecha de la reserva: ' + data.reservation_day +'/'+ data.reservation_month +'/'+ data.reservation_year
-												+ '\r\n'
-												+ ', Hora de la reserva: ' + scope.getCorrectTimeReservation(data.reservation_time)
-												+ '\r\n'
-												+ ', Requiere Árbitro: ' + ( (data.referee_required == 1) ? 'Sí' : "No" )
-												+ '\r\n'
-												+ ', También se ha reservado esta fecha como cancha fija'
-												+ '\r\n'
+												'data_reservation' : 'F5 confirma Reserva:'
+												+ ' Nombre: ' + data.name.capitalize() + ' '+ data.lastname.capitalize()
+												+ ', Fecha: ' + data.reservation_day +'/'+ data.reservation_month +'/'+ data.reservation_year
+												+ ', Hora: ' + scope.getCorrectTimeReservation(data.reservation_time)
+												+ ', Árbitro: ' + ( (data.referee_required == 1) ? 'Sí' : "No" )
 												+ ', Monto a cancelar(ado): ' + $filter('currency')(( ((scope.fields.typeReservation == '1') ? scope.specificRates.cancha_completa * 1 : scope.specificRates.cancha_completa/2 ) + ( (!!scope.fields.setReferee) ? ( (scope.fields.typeReservation == '1') ? scope.specificRates.arbitro * 1 : scope.specificRates.arbitro/2 ) : 0 ) + ( (!!scope.fields.setPitchAllWeeks) ? ( (scope.fields.typeReservation == '1') ? scope.specificRates.cancha_fija_completa_deposito * 1 : scope.specificRates.cancha_fija_reto_deposito * 1 ) : 0 ) ),'') + ' colones' 
-												+ '\r\n'
-												+ 'Ya sabes cómo llegar?, te dejamos estos links para que se te haga más fácil encontrarnos!!'
-												+ '\r\n'
-												+ ' F5 ' + ( (data.group_id == 1) ? 'Escazú, Conducir allí usando Google Maps https://goo.gl/itWeJb' : 'Desamparados, Conducir allí usando Google Maps https://goo.gl/itWeJb' )
-												+ '\r\n'
-												+ ' F5 ' + ( (data.group_id == 1) ? 'Escazú, Conducir allí usando Waze http://waze.to/lr/hd1u0mq3ux' : 'Desamparados, Conducir allí usando Waze http://waze.to/lr/hd1u0mq3ux' )
-												+ '\r\n'
-												+ ' De tener cualquier duda llámanos y te ayudaremos a solventarla.'
-												+ '\r\n'
-												+ 'Atentamente '
-												+ '\r\n'
-												+ 'Equipo F5 '
-												+ '\r\n'
-												+ 'Teléfonos: 8376-2121 / 7206-3300 '
-												+ '\r\n'
-												+ 'Visítanos en nuestra web www.f5.cr '
-												+ '\r\n'
-												+ 'Visítanos en nuestro Facebook https://www.facebook.com/f5costarica'
+												+ ' Por favor presentarse 10 minutos antes.'
+												+ ( (data.group_id == 1) ? ' Llegar con Google Maps https://goo.gl/itWeJb ó Waze http://waze.to/lr/hd1u0mq3ux' : ' Llegar con Google Maps https://goo.gl/itWeJb ó Waze http://waze.to/lr/hd1u0mq3ux' )
+												+ ' Atte: Equipo F5'
+												+ ' Teléfonos: 8376-2121 / 7206-3300'
+												+ ' www.f5.cr '
+												+ ' https://www.facebook.com/f5costarica'
 											});
 					}
 					if( !!data.email ){
@@ -388,7 +346,7 @@ F5App.app.directive('reserveBtn', ['$document','$http','$filter', function($docu
 						scope.sendEmail({	'email' : data.email,
 									'data_reservation' : 'Hola!!'
 									+ '<br/><br/>'
-									+ 'Mediante este correo electrónico te confirmamos la reserva hecha a nombre de: ' + data.name + ' '+ data.lastname
+									+ 'Mediante este correo electrónico te confirmamos la reserva hecha a nombre de: ' + data.name.capitalize() + ' '+ data.lastname.capitalize()
 									+ ' en F5 ' + ( (data.group_id == 1) ? 'Escazú' : "Desamparados" ) + '.'
 									+ '<br/><br/>'
 									+ 'Por favor verificar que hayamos hecho correctamente nuestro trabajo:'

@@ -134,6 +134,11 @@ textarea {
     display: block;
     opacity: 1;
 }
+
+.capitalize-text{
+    text-transform: capitalize;
+}
+
 /* ==========================================================================
    MODAL
 ========================================================================== */
@@ -199,10 +204,6 @@ textarea {
                 display: inline-block;
                 width: 450px;
                 margin-bottom: 8px;
-
-                &.capitalize-text{
-                    text-transform: capitalize;
-                }
             }
         }
     }
@@ -788,6 +789,9 @@ textarea {
             width: 387px;
             height: 33px;
             text-align: center;
+            &:not(.reservation-time){
+                text-transform: capitalize;
+            }
 
             &.blocked{
                 background-color: @red;

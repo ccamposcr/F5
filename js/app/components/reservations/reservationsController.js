@@ -145,8 +145,8 @@ F5App.app.controller("reservationController", function ($scope, $rootScope,$time
 
 	$rootScope.getDataForReservation = function(){
 		var data = $scope.getDataForTemporaryReservation();
-		data.name = $rootScope.fields.name;
-		data.lastname = $rootScope.fields.lastname1 + ' ' + $rootScope.fields.lastname2;
+		data.name = $rootScope.fields.name.capitalize();
+		data.lastname = $rootScope.fields.lastname1.capitalize() + ' ' + $rootScope.fields.lastname2.capitalize();
 		data.phone = $rootScope.fields.phone;
 		data.email = $rootScope.fields.email;
 		data.type_reservation = $rootScope.fields.typeReservation;
