@@ -77,6 +77,7 @@ $route['createReservation'] = 'api_controller/createReservation';
 $route['setInactiveReservation'] = 'api_controller/setInactiveReservation';
 $route['setInactiveReservationAllWeeks'] = 'api_controller/setInactiveReservationAllWeeks';
 $route['checkExpiredReservations'] = 'check_expired_reservations_controller/checkExpiredReservations';
+$route['deleteAllTmpReservationsEndDay'] = 'check_expired_reservations_controller/deleteAllTmpReservationsEndDay';
 $route['sendEmail'] = 'email_controller/sendEmail';
 $route['sendSMS'] = 'email_controller/sendSMS';
 $route['getClientsData'] = 'api_controller/getClientsData';

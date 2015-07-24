@@ -8,4 +8,8 @@ class Check_expired_reservations_controller extends CI_Controller {
     function checkExpiredReservations() {
        $this->check_expired_reservations_model->checkExpiredReservations(); 
     }
+
+    function deleteAllTmpReservationsEndDay(){
+    	$this->check_expired_reservations_model->deleteAllTmpReservationsEndDay(); 
+    }
 }
