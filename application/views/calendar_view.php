@@ -63,7 +63,7 @@
                     <span ng-if="($index+1 == reservation.team_id && $index+1 == 1) || ($index+1 == reservation.team_id && $index+1 == 2)" class="blocked {{reservation.type_reservation == 1 ? 'completa' : ''}}" data-team="{{$index+1}}" ng-repeat="reservation in data">
                         <span ng-if="!!reservation.name && !! reservation.lastname">Reservado por:</span>  {{reservation.name}} {{reservation.lastname}}
                     </span>
-                    <span ng-if="!($index+1 == reservation.team_id && $index+1 == 1) && !($index+1 == reservation.team_id && $index+1 == 2) && !data[$index - 1].id" class="blocked {{reservation.type_reservation == 1 ? 'completa' : ''}}" data-team="{{$index+1}}" ng-repeat="reservation in data"></span>
+                    <span ng-if="(!($index+1 == reservation.team_id && $index+1 == 1) && !($index+1 == reservation.team_id && $index+1 == 2) && !data[$index - 1].id) || (!reservation.id && $index+1 == 1 || $index+1 == 2 && !!data[$index - 1].id && !data[$index].id)" class="blocked {{reservation.type_reservation == 1 ? 'completa' : ''}}" data-team="{{$index+1}}" ng-repeat="reservation in data"></span>
                 </li>
             </ul>
         </div>
