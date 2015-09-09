@@ -40,13 +40,13 @@
 
 
 	<script src="<?php echo base_url(); ?>js/vendor/angular.min.js"></script>
-    <script src="<?php echo base_url(); ?>js/app/shared/app.js"></script>
-    <script src="<?php echo base_url(); ?>js/app/shared/header/headerController.js"></script>
-    <script src="<?php echo base_url(); ?>js/app/shared/modals/modalsController.js"></script>
+    <script src="<?php echo base_url(); ?>js/app/shared/app.min.js"></script>
+    <script src="<?php echo base_url(); ?>js/app/shared/header/headerController.min.js"></script>
+    <script src="<?php echo base_url(); ?>js/app/shared/modals/modalsController.min.js"></script>
 
-    <script src="<?php echo base_url(); ?>js/app/components/gallery/galleryController.js"></script>
-    <script src="<?php echo base_url(); ?>js/app/components/reservations/reservationsController.js"></script>
-	<script src="<?php echo base_url(); ?>js/app/components/reservations/reservationsDirectives.js"></script>
+    <script src="<?php echo base_url(); ?>js/app/components/gallery/galleryController.min.js"></script>
+    <script src="<?php echo base_url(); ?>js/app/components/reservations/reservationsController.min.js"></script>
+	<script src="<?php echo base_url(); ?>js/app/components/reservations/reservationsDirectives.min.js"></script>
     
     </body>
 </html>

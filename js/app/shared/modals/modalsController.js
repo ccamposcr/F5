@@ -1,4 +1,4 @@
-F5App.app.controller("modalController", function ($scope, $rootScope,$interval, $timeout){
+F5App.app.controller("modalController", ['$scope','$rootScope','$interval','$timeout', function ($scope, $rootScope,$interval, $timeout){
 	angular.element('#formReservationModal').on('hidden.bs.modal', function(){
 		
 		if( !$scope.successReservation ){
@@ -122,4 +122,4 @@ F5App.app.controller("modalController", function ($scope, $rootScope,$interval, 
 		$scope.time = '00:10:00';
 	}
 
-});
+}]);

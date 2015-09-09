@@ -153,7 +153,7 @@ F5App.app.directive('bookingOnLine', ['$document','$http','$interval', function(
 		});
 
 
-		var minutes = 09,
+		var minutes = 9,
 			seconds = 60;
 
 		scope.timeInterval = $interval(function(){

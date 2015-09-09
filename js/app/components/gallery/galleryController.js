@@ -1,4 +1,4 @@
-F5App.app.controller("galleryController", function ($scope, $rootScope){
+F5App.app.controller("galleryController", ['$scope','$rootScope', function ($scope, $rootScope){
 
    $scope.loadGallery = function (){
    	var album = ( arguments.length != 0 ) ? arguments[0] : '#album1' 
@@ -32,4 +32,4 @@ F5App.app.controller("galleryController", function ($scope, $rootScope){
 
    };
 
-});
+}]);

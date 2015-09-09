@@ -1,4 +1,4 @@
-F5App.app.controller("headerController", function ($scope, $rootScope){
+F5App.app.controller("headerController", ['$scope','$rootScope',function ($scope, $rootScope){
 
    $scope.setActive = function (){
    		if( !!window.location.href.match('reservaciones') || !!window.location.href.match('admin')){
@@ -12,4 +12,4 @@ F5App.app.controller("headerController", function ($scope, $rootScope){
    		}
    };
 
-});
+}]);
